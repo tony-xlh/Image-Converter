@@ -1,2 +1,3 @@
-# TIFF-Converter
-Convert TIFF files in the browser with Dynamic Web TWAIN
+# Image-Converter
+
+Convert images files in the browser with Dynamic Web TWAIN
