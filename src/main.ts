@@ -9,10 +9,10 @@ let chooseFilesContainer = document.createElement("div");
 let fileInput = document.createElement("input");
 fileInput.style.display = "none";
 fileInput.multiple = true;
-fileInput.accept = ".bmp,.jpeg,.jpg,.png,.pdf,.tiff,.tif";
+fileInput.accept = ".bmp,.jpeg,.jpg,.png,.pdf,.tiff,.tif,.zip";
 fileInput.type = "file";
-fileInput.addEventListener("change",function(){
-  appendFiles();
+fileInput.addEventListener("change",async function(){
+  await appendFiles();
   listFiles();
 })
 let chooseFilesButton = DynamsoftButton("Choose Files");
@@ -74,10 +74,16 @@ function DynamsoftButton(text:string){
   return anchor;
 }
 
-function appendFiles(){
+async function appendFiles(){
   if (fileInput.files) {
     for (let index = 0; index < fileInput.files.length; index++) {
-      filesSelected.push(fileInput.files[index]);
+      let file = fileInput.files[index];
+      if (file.name.endsWith(".zip")) {
+        await loadImagesFromZip(file);
+      }else{
+        filesSelected.push(file);
+      }
+      
     }
   }
 }
@@ -251,5 +257,27 @@ function getFileNameWithoutExtension(filename:string){
   }else{
     return filename;
   }
+}
+
+async function loadImagesFromZip(zipFile:File){
+  const buffer = await zipFile.arrayBuffer();
+  let JSZip = (window as any)["JSZip"];
+  let zip = new JSZip();
+  await zip.loadAsync(buffer);
+  const files = zip.files;
+  const filenames = Object.keys(files);
+  for (let index = 0; index < filenames.length; index++) {
+    const filename = filenames[index];
+    const lowerCase = filename.toLowerCase();
+    const file = files[filename];
+    if (file.dir === false) {
+      if (lowerCase.endsWith(".jpg") || lowerCase.endsWith(".jpeg") || lowerCase.endsWith(".png") || lowerCase.endsWith(".bmp") || lowerCase.endsWith(".pdf") || lowerCase.endsWith(".tif") || lowerCase.endsWith(".tiff")) {
+        let blob:Blob = await file.async("blob");
+        let imgFile = new File([blob],filename);
+        filesSelected.push(imgFile);
+      }
+    }
+  }
+
 }
 
