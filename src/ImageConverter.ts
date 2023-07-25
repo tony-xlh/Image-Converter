@@ -83,8 +83,7 @@ export class ImageConverter {
       {
         WebTwainId: 'dwtcontrol'
       },
-      function(obj:any) {
-        console.log(obj);
+      function(obj:WebTwain) {
         pThis.DWObject = obj;
       },
       function(err:string) {
