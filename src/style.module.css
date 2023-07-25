@@ -6,6 +6,17 @@
   justify-content: space-between;
 }
 
+.convertActions {
+  padding-right: 1em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .textUpperCase {
   text-transform: uppercase;
 }
