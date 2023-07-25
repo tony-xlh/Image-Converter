@@ -1,0 +1,32 @@
+import JSZip from 'jszip';
+export declare class ImageConverter {
+    private container;
+    private filesSelected;
+    private DWObject;
+    private fileInput;
+    private useZipCheckbox;
+    private files;
+    private convertActions;
+    private formatSelect;
+    private convertButton;
+    private chooseFilesButton;
+    constructor(container: HTMLDivElement);
+    createElements(): void;
+    initDWT(): void;
+    DynamsoftButton(text: string): HTMLAnchorElement;
+    appendFiles(): Promise<void>;
+    listFiles(): void;
+    fileItem(file: File): HTMLDivElement;
+    deleteSelected(file: File): void;
+    useEllipsesForLongText(text: string): string;
+    convertAndDownload(): Promise<void>;
+    loadImageFromFile(file: File): Promise<void>;
+    save(file: File, zip: JSZip | undefined): Promise<void>;
+    saveImages(file: File): Promise<void>;
+    appendImagesToZip(file: File, zip: JSZip): Promise<void>;
+    getImageIndices(): number[];
+    downloadBlob(content: Blob, filename: string): void;
+    getBlob(indices: number[], type: number): Promise<Blob>;
+    getFileNameWithoutExtension(filename: string): string;
+    loadImagesFromZip(zipFile: File): Promise<void>;
+}
