@@ -12,6 +12,9 @@
       "require": "./dist/image-converter.umd.cjs"
     }
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
