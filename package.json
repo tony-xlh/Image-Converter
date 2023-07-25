@@ -1,5 +1,6 @@
 {
   "name": "batch-image-converter",
+  "description": "Convert images in batch in the browser.",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -15,6 +16,21 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "repository": "https://github.com/tony-xlh/Image-Converter",
+  "author": "xulihang <xulihanghai@gmail.com> (https://github.com/xulihang)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tony-xlh/Image-Converter/issues"
+  },
+  "homepage": "https://github.com/tony-xlh/Image-Converter#readme",
+  "keywords": [
+    "tiff",
+    "pdf",
+    "jpg",
+    "bmp",
+    "convert",
+    "dynamsoft"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
