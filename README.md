@@ -6,6 +6,8 @@ It can convert images in bmp, jpeg, png, tiff and pdf to images in jpeg, png, ti
 
 You can select multiple images or load multiple images from a zip file. You can export the images one by one or in a zip file.
 
+[Online demo](https://tony-xlh.github.io/Image-Converter/)
+
 ## Installation
 
 1. Via CDN:
