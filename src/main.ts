@@ -159,12 +159,7 @@ async function convertAndDownload(){
   }
   if (useZipCheckbox.checked && zip) {
     zip.generateAsync({type:"blob"}).then(function(content) {
-      const link = document.createElement('a')
-      link.href = URL.createObjectURL(content);
-      link.download = "images.zip";
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
+      downloadBlob(content,"images.zip");
     });
   }
 }
