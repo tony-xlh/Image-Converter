@@ -1,5 +1,7 @@
 import styles from './style.module.css';
 import JSZip from 'jszip';
+import Dynamsoft from 'dwt';
+import { WebTwain } from 'dwt/dist/types/WebTwain';
 
 let filesSelected:File[] = [];
 let container = document.querySelector<HTMLDivElement>('#app');
@@ -53,8 +55,7 @@ actionsContainer.appendChild(convertActions);
 container!.appendChild(files);
 container!.appendChild(actionsContainer);
 
-let DWObject:any;
-let Dynamsoft = (window as any)["Dynamsoft"];
+let DWObject:WebTwain;
 initDWT();
 
 function initDWT(){
