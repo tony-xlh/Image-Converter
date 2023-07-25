@@ -13,8 +13,10 @@ fileInput.multiple = true;
 fileInput.accept = ".bmp,.jpeg,.jpg,.png,.pdf,.tiff,.tif,.zip";
 fileInput.type = "file";
 fileInput.addEventListener("change",async function(){
+  chooseFilesButton.innerText = "Loading...";
   await appendFiles();
   listFiles();
+  chooseFilesButton.innerText = "Choose Files";
 })
 let chooseFilesButton = DynamsoftButton("Choose Files");
 chooseFilesButton.addEventListener("click",function(){
@@ -147,6 +149,7 @@ function useEllipsesForLongText(text:string){
 }
 
 async function convertAndDownload(){
+  convertButton.innerText = "Converting...";
   let zip:JSZip|undefined;
   if (useZipCheckbox.checked) {
     zip = new JSZip();
@@ -162,6 +165,7 @@ async function convertAndDownload(){
       downloadBlob(content,"images.zip");
     });
   }
+  convertButton.innerText = "Convert";
 }
 
 async function loadImageFromFile(file:File){
