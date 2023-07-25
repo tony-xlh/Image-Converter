@@ -1,4 +1,5 @@
-import styles from './style.module.css'
+import styles from './style.module.css';
+import JSZip from 'jszip';
 
 let filesSelected:File[] = [];
 let container = document.querySelector<HTMLDivElement>('#app');
@@ -32,15 +33,21 @@ for (const format of ["JPG","PNG","PDF","TIFF"]) {
   formatSelect.options.add(new Option(format,format));
 }
 formatSelector.appendChild(formatSelect);
+let useZip = document.createElement("label");
+useZip.innerText = "Download as Zip:"
+useZip.style.marginLeft = "10px";
+let useZipCheckbox = document.createElement("input");
+useZipCheckbox.type = "checkbox";
+useZip.appendChild(useZipCheckbox);
 let convertButton = DynamsoftButton("Convert");
 convertButton.style.marginLeft = "10px";
 convertButton.addEventListener("click",function(){
   convertAndDownload();
 })
 convertActions.appendChild(formatSelector);
+convertActions.appendChild(useZip);
 convertActions.appendChild(convertButton);
 actionsContainer.appendChild(convertActions);
-
 container!.appendChild(files);
 container!.appendChild(actionsContainer);
 
@@ -79,6 +86,7 @@ async function appendFiles(){
     for (let index = 0; index < fileInput.files.length; index++) {
       let file = fileInput.files[index];
       if (file.name.endsWith(".zip")) {
+        useZipCheckbox.checked = true;
         await loadImagesFromZip(file);
       }else{
         filesSelected.push(file);
@@ -139,11 +147,25 @@ function useEllipsesForLongText(text:string){
 }
 
 async function convertAndDownload(){
+  let zip:JSZip|undefined;
+  if (useZipCheckbox.checked) {
+    zip = new JSZip();
+  }
   for (let index = 0; index < filesSelected.length; index++) {
     const file = filesSelected[index];
     DWObject.RemoveAllImages();
     await loadImageFromFile(file);
-    await save(file);
+    await save(file,zip);
+  }
+  if (useZipCheckbox.checked && zip) {
+    zip.generateAsync({type:"blob"}).then(function(content) {
+      const link = document.createElement('a')
+      link.href = URL.createObjectURL(content);
+      link.download = "images.zip";
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    });
   }
 }
 
@@ -160,33 +182,17 @@ async function loadImageFromFile(file:File){
   })
 }
 
-async function save(file:File){
-  if (DWObject.HowManyImagesInBuffer > 1) {
-    await saveMultipleImage(file);
+async function save(file:File,zip:JSZip|undefined){
+  if (useZipCheckbox.checked === false) {
+    await saveImages(file);
   }else{
-    await saveSingleImage(file);
+    if (zip) {
+      await appendImagesToZip(file,zip);
+    }
   }
 }
 
-async function saveSingleImage(file:File){
-  let selectedFormatIndex = formatSelect.selectedIndex;
-  //"JPG","PNG","PDF","TIFF"
-  if (selectedFormatIndex === 0) {
-    let blob = await getBlob([0],Dynamsoft.DWT.EnumDWT_ImageType.IT_JPG);
-    downloadBlob(blob,getFileNameWithoutExtension(file.name)+".jpg");
-  }else if (selectedFormatIndex === 1) {
-    let blob = await getBlob([0],Dynamsoft.DWT.EnumDWT_ImageType.IT_PNG);
-    downloadBlob(blob,getFileNameWithoutExtension(file.name)+".png");
-  }else if (selectedFormatIndex === 2) {
-    let blob = await getBlob([0],Dynamsoft.DWT.EnumDWT_ImageType.IT_PDF);
-    downloadBlob(blob,getFileNameWithoutExtension(file.name)+".pdf");
-  }else if (selectedFormatIndex === 3) {
-    let blob = await getBlob([0],Dynamsoft.DWT.EnumDWT_ImageType.IT_TIF);
-    downloadBlob(blob,getFileNameWithoutExtension(file.name)+".tiff");
-  }
-}
-
-async function saveMultipleImage(file:File){
+async function saveImages(file:File){
   let selectedFormatIndex = formatSelect.selectedIndex;
   //"JPG","PNG","PDF","TIFF"
   let fileType = 7;
@@ -204,15 +210,52 @@ async function saveMultipleImage(file:File){
     fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_TIF;
     extension = ".tiff";
   }
-  console.log(fileType);
-  console.log(extension);
   if (selectedFormatIndex > 1) {
     let blob = await getBlob(getImageIndices(),fileType);
     downloadBlob(blob,getFileNameWithoutExtension(file.name)+extension);
   }else{
-    for (let index = 0; index < DWObject.HowManyImagesInBuffer; index++) {
-      let blob = await getBlob([index],fileType);
-      downloadBlob(blob,getFileNameWithoutExtension(file.name)+"-"+index+extension);
+    if (DWObject.HowManyImagesInBuffer > 1) {
+      for (let index = 0; index < DWObject.HowManyImagesInBuffer; index++) {
+        let blob = await getBlob([index],fileType);
+        downloadBlob(blob,getFileNameWithoutExtension(file.name)+"-"+index+extension);
+      }
+    }else{
+      let blob = await getBlob([0],fileType);
+      downloadBlob(blob,getFileNameWithoutExtension(file.name)+extension);
+    }
+  }
+}
+
+async function appendImagesToZip(file:File,zip:JSZip){
+  let selectedFormatIndex = formatSelect.selectedIndex;
+  //"JPG","PNG","PDF","TIFF"
+  let fileType = 7;
+  let extension = "";
+  if (selectedFormatIndex === 0) {
+    fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_JPG;
+    extension = ".jpg";
+  }else if (selectedFormatIndex === 1) {
+    fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_PNG;
+    extension = ".png";
+  }else if (selectedFormatIndex === 2) {
+    fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_PDF;
+    extension = ".pdf";
+  }else if (selectedFormatIndex === 3) {
+    fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_TIF;
+    extension = ".tiff";
+  }
+  if (selectedFormatIndex > 1) {
+    let blob = await getBlob(getImageIndices(),fileType);
+    zip.file(getFileNameWithoutExtension(file.name)+extension, blob);
+  }else{
+    if (DWObject.HowManyImagesInBuffer > 1) {
+      for (let index = 0; index < DWObject.HowManyImagesInBuffer; index++) {
+        let blob = await getBlob([index],fileType);
+        zip.file(getFileNameWithoutExtension(file.name)+"-"+index+extension, blob);
+      }
+    }else{
+      let blob = await getBlob([0],fileType);
+      zip.file(getFileNameWithoutExtension(file.name)+extension, blob);
     }
   }
 }
@@ -261,7 +304,6 @@ function getFileNameWithoutExtension(filename:string){
 
 async function loadImagesFromZip(zipFile:File){
   const buffer = await zipFile.arrayBuffer();
-  let JSZip = (window as any)["JSZip"];
   let zip = new JSZip();
   await zip.loadAsync(buffer);
   const files = zip.files;
