@@ -136,7 +136,7 @@ export class ImageConverter {
     container.className = styles.oneFile;
     let title = document.createElement("div");
     title.innerText = this.useEllipsesForLongText(file.name);
-    title.style.width = "30%";
+    title.className = styles.title;
     let fileSize = document.createElement("div");
     fileSize.innerText = file.size/1000 + "kb";
     let deleteButton = this.DynamsoftButton("Delete");
