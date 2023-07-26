@@ -3,6 +3,11 @@ import JSZip from 'jszip';
 import Dynamsoft from 'dwt';
 import { WebTwain } from 'dwt/dist/types/WebTwain';
 
+export interface Config {
+  license?:string;
+  container?:HTMLDivElement;
+}
+
 export class ImageConverter {
   private container!:HTMLDivElement;
   private filesSelected:File[] = [];
@@ -14,10 +19,15 @@ export class ImageConverter {
   private formatSelect!:HTMLSelectElement;
   private convertButton!:HTMLElement;
   private chooseFilesButton!:HTMLElement;
-  constructor(container?:HTMLDivElement) {
-    if (container) {
-      this.container = container;
-      this.createElements();
+  constructor(config?:Config) {
+    if (config) {
+      if (config.container) {
+        this.container = config.container;
+        this.createElements();
+      }
+      if (config.license) {
+        Dynamsoft.DWT.ProductKey = config.license;
+      }
     }
     this.initDWT();
   }
