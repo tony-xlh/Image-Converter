@@ -8,6 +8,18 @@ export interface Config {
   container?:HTMLDivElement;
 }
 
+export enum ImageFormat {
+  JPG = 0,
+  PNG = 1,
+  PDF = 2,
+  TIFF = 3
+}
+
+export interface ConvertedFile {
+  filename:string;
+  blob:Blob;
+}
+
 export class ImageConverter {
   private container!:HTMLDivElement;
   private filesSelected:File[] = [];
@@ -30,6 +42,46 @@ export class ImageConverter {
       }
     }
     this.initDWT();
+  }
+
+  async convert(file:File,targetFormat:ImageFormat){
+    let files:ConvertedFile[] = [];
+    this.DWObject.RemoveAllImages();
+    await this.loadImageFromFile(file);
+    let fileType = 7;
+    let extension = "";
+    if (targetFormat === ImageFormat.JPG) {
+      fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_JPG;
+      extension = ".jpg";
+    }else if (targetFormat === ImageFormat.PNG) {
+      fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_PNG;
+      extension = ".png";
+    }else if (targetFormat === ImageFormat.PDF) {
+      fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_PDF;
+      extension = ".pdf";
+    }else if (targetFormat === ImageFormat.TIFF) {
+      fileType = Dynamsoft.DWT.EnumDWT_ImageType.IT_TIF;
+      extension = ".tiff";
+    }
+    if (targetFormat > 1) {
+      let blob = await this.getBlob(this.getImageIndices(),fileType);
+      files.push({filename:this.getFileNameWithoutExtension(file.name)+extension,blob:blob})
+    }else{
+      if (this.DWObject.HowManyImagesInBuffer > 1) {
+        for (let index = 0; index < this.DWObject.HowManyImagesInBuffer; index++) {
+          let blob = await this.getBlob([index],fileType);
+          files.push({filename:this.getFileNameWithoutExtension(file.name)+"-"+index+extension,blob:blob})
+        }
+      }else{
+        let blob = await this.getBlob([0],fileType);
+        files.push({filename:this.getFileNameWithoutExtension(file.name)+extension,blob:blob})
+      }
+    }
+    return files;
+  }
+
+  getDWObject(){
+    return this.DWObject;
   }
 
   createElements(){
