@@ -1,16 +1,17 @@
 var hp = Object.defineProperty;
 var fp = (l, n, L) => n in l ? hp(l, n, { enumerable: !0, configurable: !0, writable: !0, value: L }) : l[n] = L;
 var ga = (l, n, L) => (fp(l, typeof n != "symbol" ? n + "" : n, L), L);
-const gp = "_oneFile_fm07m_1", mp = "_convertActions_fm07m_9", pp = "_actions_fm07m_13", _p = "_textUpperCase_fm07m_20", vp = "_primaryBtn_fm07m_24", yp = "_secondaryBtn_fm07m_41", gu = {
+const gp = "_oneFile_1fi1j_1", mp = "_title_1fi1j_9", pp = "_convertActions_1fi1j_14", _p = "_actions_1fi1j_19", vp = "_textUpperCase_1fi1j_26", yp = "_primaryBtn_1fi1j_30", bp = "_secondaryBtn_1fi1j_47", Ns = {
   oneFile: gp,
-  convertActions: mp,
-  actions: pp,
-  textUpperCase: _p,
-  primaryBtn: vp,
-  secondaryBtn: yp
+  title: mp,
+  convertActions: pp,
+  actions: _p,
+  textUpperCase: vp,
+  primaryBtn: yp,
+  secondaryBtn: bp
 };
 var Ku = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function bp(l) {
+function wp(l) {
   return l && l.__esModule && Object.prototype.hasOwnProperty.call(l, "default") ? l.default : l;
 }
 function Yu(l) {
@@ -32,10 +33,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   (function(L) {
     l.exports = L();
   })(function() {
-    return function L(x, re, R) {
+    return function L(k, re, R) {
       function C(U, H) {
         if (!re[U]) {
-          if (!x[U]) {
+          if (!k[U]) {
             var K = typeof Yu == "function" && Yu;
             if (!H && K)
               return K(U, !0);
@@ -45,17 +46,17 @@ https://github.com/nodeca/pako/blob/main/LICENSE
             throw Y.code = "MODULE_NOT_FOUND", Y;
           }
           var F = re[U] = { exports: {} };
-          x[U][0].call(F.exports, function(q) {
-            var O = x[U][1][q];
+          k[U][0].call(F.exports, function(q) {
+            var O = k[U][1][q];
             return C(O || q);
-          }, F, F.exports, L, x, re, R);
+          }, F, F.exports, L, k, re, R);
         }
         return re[U].exports;
       }
       for (var p = typeof Yu == "function" && Yu, N = 0; N < R.length; N++)
         C(R[N]);
       return C;
-    }({ 1: [function(L, x, re) {
+    }({ 1: [function(L, k, re) {
       var R = L("./utils"), C = L("./support"), p = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       re.encode = function(N) {
         for (var U, H, K, Y, F, q, O, J = [], E = 0, me = N.length, Ee = me, Le = R.getTypeOf(N) !== "string"; E < N.length; )
@@ -72,7 +73,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           U = p.indexOf(N.charAt(O++)) << 2 | (Y = p.indexOf(N.charAt(O++))) >> 4, H = (15 & Y) << 4 | (F = p.indexOf(N.charAt(O++))) >> 2, K = (3 & F) << 6 | (q = p.indexOf(N.charAt(O++))), me[J++] = U, F !== 64 && (me[J++] = H), q !== 64 && (me[J++] = K);
         return me;
       };
-    }, { "./support": 30, "./utils": 32 }], 2: [function(L, x, re) {
+    }, { "./support": 30, "./utils": 32 }], 2: [function(L, k, re) {
       var R = L("./external"), C = L("./stream/DataWorker"), p = L("./stream/Crc32Probe"), N = L("./stream/DataLengthProbe");
       function U(H, K, Y, F, q) {
         this.compressedSize = H, this.uncompressedSize = K, this.crc32 = Y, this.compression = F, this.compressedContent = q;
@@ -87,15 +88,15 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         return new C(R.Promise.resolve(this.compressedContent)).withStreamInfo("compressedSize", this.compressedSize).withStreamInfo("uncompressedSize", this.uncompressedSize).withStreamInfo("crc32", this.crc32).withStreamInfo("compression", this.compression);
       } }, U.createWorkerFrom = function(H, K, Y) {
         return H.pipe(new p()).pipe(new N("uncompressedSize")).pipe(K.compressWorker(Y)).pipe(new N("compressedSize")).withStreamInfo("compression", K);
-      }, x.exports = U;
-    }, { "./external": 6, "./stream/Crc32Probe": 25, "./stream/DataLengthProbe": 26, "./stream/DataWorker": 27 }], 3: [function(L, x, re) {
+      }, k.exports = U;
+    }, { "./external": 6, "./stream/Crc32Probe": 25, "./stream/DataLengthProbe": 26, "./stream/DataWorker": 27 }], 3: [function(L, k, re) {
       var R = L("./stream/GenericWorker");
       re.STORE = { magic: "\0\0", compressWorker: function() {
         return new R("STORE compression");
       }, uncompressWorker: function() {
         return new R("STORE decompression");
       } }, re.DEFLATE = L("./flate");
-    }, { "./flate": 7, "./stream/GenericWorker": 28 }], 4: [function(L, x, re) {
+    }, { "./flate": 7, "./stream/GenericWorker": 28 }], 4: [function(L, k, re) {
       var R = L("./utils"), C = function() {
         for (var p, N = [], U = 0; U < 256; U++) {
           p = U;
@@ -105,7 +106,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return N;
       }();
-      x.exports = function(p, N) {
+      k.exports = function(p, N) {
         return p !== void 0 && p.length ? R.getTypeOf(p) !== "string" ? function(U, H, K, Y) {
           var F = C, q = Y + K;
           U ^= -1;
@@ -120,12 +121,12 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           return -1 ^ U;
         }(0 | N, p, p.length, 0) : 0;
       };
-    }, { "./utils": 32 }], 5: [function(L, x, re) {
+    }, { "./utils": 32 }], 5: [function(L, k, re) {
       re.base64 = !1, re.binary = !1, re.dir = !1, re.createFolders = !0, re.date = null, re.compression = null, re.compressionOptions = null, re.comment = null, re.unixPermissions = null, re.dosPermissions = null;
-    }, {}], 6: [function(L, x, re) {
+    }, {}], 6: [function(L, k, re) {
       var R = null;
-      R = typeof Promise < "u" ? Promise : L("lie"), x.exports = { Promise: R };
-    }, { lie: 37 }], 7: [function(L, x, re) {
+      R = typeof Promise < "u" ? Promise : L("lie"), k.exports = { Promise: R };
+    }, { lie: 37 }], 7: [function(L, k, re) {
       var R = typeof Uint8Array < "u" && typeof Uint16Array < "u" && typeof Uint32Array < "u", C = L("pako"), p = L("./utils"), N = L("./stream/GenericWorker"), U = R ? "uint8array" : "array";
       function H(K, Y) {
         N.call(this, "FlateWorker/" + K), this._pako = null, this._pakoAction = K, this._pakoOptions = Y, this.meta = {};
@@ -147,7 +148,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, re.uncompressWorker = function() {
         return new H("Inflate", {});
       };
-    }, { "./stream/GenericWorker": 28, "./utils": 32, pako: 38 }], 8: [function(L, x, re) {
+    }, { "./stream/GenericWorker": 28, "./utils": 32, pako: 38 }], 8: [function(L, k, re) {
       function R(F, q) {
         var O, J = "";
         for (O = 0; O < q; O++)
@@ -232,8 +233,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         N.prototype.lock.call(this);
         for (var F = this._sources, q = 0; q < F.length; q++)
           F[q].lock();
-      }, x.exports = Y;
-    }, { "../crc32": 4, "../signature": 23, "../stream/GenericWorker": 28, "../utf8": 31, "../utils": 32 }], 9: [function(L, x, re) {
+      }, k.exports = Y;
+    }, { "../crc32": 4, "../signature": 23, "../stream/GenericWorker": 28, "../utf8": 31, "../utils": 32 }], 9: [function(L, k, re) {
       var R = L("../compressions"), C = L("./ZipFileWorker");
       re.generateWorker = function(p, N, U) {
         var H = new C(N.streamFiles, U, N.platform, N.encodeFileName), K = 0;
@@ -253,7 +254,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return H;
       };
-    }, { "../compressions": 3, "./ZipFileWorker": 8 }], 10: [function(L, x, re) {
+    }, { "../compressions": 3, "./ZipFileWorker": 8 }], 10: [function(L, k, re) {
       function R() {
         if (!(this instanceof R))
           return new R();
@@ -268,8 +269,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }
       (R.prototype = L("./object")).loadAsync = L("./load"), R.support = L("./support"), R.defaults = L("./defaults"), R.version = "3.10.1", R.loadAsync = function(C, p) {
         return new R().loadAsync(C, p);
-      }, R.external = L("./external"), x.exports = R;
-    }, { "./defaults": 5, "./external": 6, "./load": 11, "./object": 15, "./support": 30 }], 11: [function(L, x, re) {
+      }, R.external = L("./external"), k.exports = R;
+    }, { "./defaults": 5, "./external": 6, "./load": 11, "./object": 15, "./support": 30 }], 11: [function(L, k, re) {
       var R = L("./utils"), C = L("./external"), p = L("./utf8"), N = L("./zipEntries"), U = L("./stream/Crc32Probe"), H = L("./nodejsUtils");
       function K(Y) {
         return new C.Promise(function(F, q) {
@@ -281,7 +282,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           }).resume();
         });
       }
-      x.exports = function(Y, F) {
+      k.exports = function(Y, F) {
         var q = this;
         return F = R.extend(F || {}, { base64: !1, checkCRC32: !1, optimizedBinaryString: !1, createFolders: !1, decodeFileName: p.utf8decode }), H.isNode && H.isStream(Y) ? C.Promise.reject(new Error("JSZip can't accept a stream when loading a zip file.")) : R.prepareContent("the loaded zip file", Y, !0, F.optimizedBinaryString, F.base64).then(function(O) {
           var J = new N(F);
@@ -300,7 +301,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           return J.zipComment.length && (q.comment = J.zipComment), q;
         });
       };
-    }, { "./external": 6, "./nodejsUtils": 14, "./stream/Crc32Probe": 25, "./utf8": 31, "./utils": 32, "./zipEntries": 33 }], 12: [function(L, x, re) {
+    }, { "./external": 6, "./nodejsUtils": 14, "./stream/Crc32Probe": 25, "./utf8": 31, "./utils": 32, "./zipEntries": 33 }], 12: [function(L, k, re) {
       var R = L("../utils"), C = L("../stream/GenericWorker");
       function p(N, U) {
         C.call(this, "Nodejs stream input adapter for " + N), this._upstreamEnded = !1, this._bindStream(U);
@@ -318,8 +319,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         return !!C.prototype.pause.call(this) && (this._stream.pause(), !0);
       }, p.prototype.resume = function() {
         return !!C.prototype.resume.call(this) && (this._upstreamEnded ? this.end() : this._stream.resume(), !0);
-      }, x.exports = p;
-    }, { "../stream/GenericWorker": 28, "../utils": 32 }], 13: [function(L, x, re) {
+      }, k.exports = p;
+    }, { "../stream/GenericWorker": 28, "../utils": 32 }], 13: [function(L, k, re) {
       var R = L("readable-stream").Readable;
       function C(p, N, U) {
         R.call(this, N), this._helper = p;
@@ -334,9 +335,9 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }
       L("../utils").inherits(C, R), C.prototype._read = function() {
         this._helper.resume();
-      }, x.exports = C;
-    }, { "../utils": 32, "readable-stream": 16 }], 14: [function(L, x, re) {
-      x.exports = { isNode: typeof Buffer < "u", newBufferFrom: function(R, C) {
+      }, k.exports = C;
+    }, { "../utils": 32, "readable-stream": 16 }], 14: [function(L, k, re) {
+      k.exports = { isNode: typeof Buffer < "u", newBufferFrom: function(R, C) {
         if (Buffer.from && Buffer.from !== Uint8Array.from)
           return Buffer.from(R, C);
         if (typeof R == "number")
@@ -352,7 +353,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, isStream: function(R) {
         return R && typeof R.on == "function" && typeof R.pause == "function" && typeof R.resume == "function";
       } };
-    }, {}], 15: [function(L, x, re) {
+    }, {}], 15: [function(L, k, re) {
       function R(Oe, Te, Re) {
         var Ve, We = p.getTypeOf(Te), le = p.extend(Re || {}, H);
         le.date = le.date || /* @__PURE__ */ new Date(), le.compression !== null && (le.compression = le.compression.toUpperCase()), typeof le.unixPermissions == "string" && (le.unixPermissions = parseInt(le.unixPermissions, 8)), le.unixPermissions && 16384 & le.unixPermissions && (le.dir = !0), le.dosPermissions && 16 & le.dosPermissions && (le.dir = !0), le.dir && (Oe = E(Oe)), le.createFolders && (Ve = J(Oe)) && me.call(this, Ve, !0);
@@ -436,10 +437,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, generateNodeStream: function(Oe, Te) {
         return (Oe = Oe || {}).type || (Oe.type = "nodebuffer"), this.generateInternalStream(Oe).toNodejsStream(Te);
       } };
-      x.exports = Le;
-    }, { "./compressedObject": 2, "./defaults": 5, "./generate": 9, "./nodejs/NodejsStreamInputAdapter": 12, "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31, "./utils": 32, "./zipObject": 35 }], 16: [function(L, x, re) {
-      x.exports = L("stream");
-    }, { stream: void 0 }], 17: [function(L, x, re) {
+      k.exports = Le;
+    }, { "./compressedObject": 2, "./defaults": 5, "./generate": 9, "./nodejs/NodejsStreamInputAdapter": 12, "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31, "./utils": 32, "./zipObject": 35 }], 16: [function(L, k, re) {
+      k.exports = L("stream");
+    }, { stream: void 0 }], 17: [function(L, k, re) {
       var R = L("./DataReader");
       function C(p) {
         R.call(this, p);
@@ -461,8 +462,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           return [];
         var N = this.data.slice(this.zero + this.index, this.zero + this.index + p);
         return this.index += p, N;
-      }, x.exports = C;
-    }, { "../utils": 32, "./DataReader": 18 }], 18: [function(L, x, re) {
+      }, k.exports = C;
+    }, { "../utils": 32, "./DataReader": 18 }], 18: [function(L, k, re) {
       var R = L("../utils");
       function C(p) {
         this.data = p, this.length = p.length, this.index = 0, this.zero = 0;
@@ -490,8 +491,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, readDate: function() {
         var p = this.readInt(4);
         return new Date(Date.UTC(1980 + (p >> 25 & 127), (p >> 21 & 15) - 1, p >> 16 & 31, p >> 11 & 31, p >> 5 & 63, (31 & p) << 1));
-      } }, x.exports = C;
-    }, { "../utils": 32 }], 19: [function(L, x, re) {
+      } }, k.exports = C;
+    }, { "../utils": 32 }], 19: [function(L, k, re) {
       var R = L("./Uint8ArrayReader");
       function C(p) {
         R.call(this, p);
@@ -500,8 +501,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         this.checkOffset(p);
         var N = this.data.slice(this.zero + this.index, this.zero + this.index + p);
         return this.index += p, N;
-      }, x.exports = C;
-    }, { "../utils": 32, "./Uint8ArrayReader": 21 }], 20: [function(L, x, re) {
+      }, k.exports = C;
+    }, { "../utils": 32, "./Uint8ArrayReader": 21 }], 20: [function(L, k, re) {
       var R = L("./DataReader");
       function C(p) {
         R.call(this, p);
@@ -516,8 +517,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         this.checkOffset(p);
         var N = this.data.slice(this.zero + this.index, this.zero + this.index + p);
         return this.index += p, N;
-      }, x.exports = C;
-    }, { "../utils": 32, "./DataReader": 18 }], 21: [function(L, x, re) {
+      }, k.exports = C;
+    }, { "../utils": 32, "./DataReader": 18 }], 21: [function(L, k, re) {
       var R = L("./ArrayReader");
       function C(p) {
         R.call(this, p);
@@ -527,32 +528,32 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           return new Uint8Array(0);
         var N = this.data.subarray(this.zero + this.index, this.zero + this.index + p);
         return this.index += p, N;
-      }, x.exports = C;
-    }, { "../utils": 32, "./ArrayReader": 17 }], 22: [function(L, x, re) {
+      }, k.exports = C;
+    }, { "../utils": 32, "./ArrayReader": 17 }], 22: [function(L, k, re) {
       var R = L("../utils"), C = L("../support"), p = L("./ArrayReader"), N = L("./StringReader"), U = L("./NodeBufferReader"), H = L("./Uint8ArrayReader");
-      x.exports = function(K) {
+      k.exports = function(K) {
         var Y = R.getTypeOf(K);
         return R.checkSupport(Y), Y !== "string" || C.uint8array ? Y === "nodebuffer" ? new U(K) : C.uint8array ? new H(R.transformTo("uint8array", K)) : new p(R.transformTo("array", K)) : new N(K);
       };
-    }, { "../support": 30, "../utils": 32, "./ArrayReader": 17, "./NodeBufferReader": 19, "./StringReader": 20, "./Uint8ArrayReader": 21 }], 23: [function(L, x, re) {
+    }, { "../support": 30, "../utils": 32, "./ArrayReader": 17, "./NodeBufferReader": 19, "./StringReader": 20, "./Uint8ArrayReader": 21 }], 23: [function(L, k, re) {
       re.LOCAL_FILE_HEADER = "PK", re.CENTRAL_FILE_HEADER = "PK", re.CENTRAL_DIRECTORY_END = "PK", re.ZIP64_CENTRAL_DIRECTORY_LOCATOR = "PK\x07", re.ZIP64_CENTRAL_DIRECTORY_END = "PK", re.DATA_DESCRIPTOR = "PK\x07\b";
-    }, {}], 24: [function(L, x, re) {
+    }, {}], 24: [function(L, k, re) {
       var R = L("./GenericWorker"), C = L("../utils");
       function p(N) {
         R.call(this, "ConvertWorker to " + N), this.destType = N;
       }
       C.inherits(p, R), p.prototype.processChunk = function(N) {
         this.push({ data: C.transformTo(this.destType, N.data), meta: N.meta });
-      }, x.exports = p;
-    }, { "../utils": 32, "./GenericWorker": 28 }], 25: [function(L, x, re) {
+      }, k.exports = p;
+    }, { "../utils": 32, "./GenericWorker": 28 }], 25: [function(L, k, re) {
       var R = L("./GenericWorker"), C = L("../crc32");
       function p() {
         R.call(this, "Crc32Probe"), this.withStreamInfo("crc32", 0);
       }
       L("../utils").inherits(p, R), p.prototype.processChunk = function(N) {
         this.streamInfo.crc32 = C(N.data, this.streamInfo.crc32 || 0), this.push(N);
-      }, x.exports = p;
-    }, { "../crc32": 4, "../utils": 32, "./GenericWorker": 28 }], 26: [function(L, x, re) {
+      }, k.exports = p;
+    }, { "../crc32": 4, "../utils": 32, "./GenericWorker": 28 }], 26: [function(L, k, re) {
       var R = L("../utils"), C = L("./GenericWorker");
       function p(N) {
         C.call(this, "DataLengthProbe for " + N), this.propName = N, this.withStreamInfo(N, 0);
@@ -563,8 +564,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           this.streamInfo[this.propName] = U + N.data.length;
         }
         C.prototype.processChunk.call(this, N);
-      }, x.exports = p;
-    }, { "../utils": 32, "./GenericWorker": 28 }], 27: [function(L, x, re) {
+      }, k.exports = p;
+    }, { "../utils": 32, "./GenericWorker": 28 }], 27: [function(L, k, re) {
       var R = L("../utils"), C = L("./GenericWorker");
       function p(N) {
         C.call(this, "DataWorker");
@@ -599,8 +600,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
             N = this.data.slice(this.index, U);
         }
         return this.index = U, this.push({ data: N, meta: { percent: this.max ? this.index / this.max * 100 : 0 } });
-      }, x.exports = p;
-    }, { "../utils": 32, "./GenericWorker": 28 }], 28: [function(L, x, re) {
+      }, k.exports = p;
+    }, { "../utils": 32, "./GenericWorker": 28 }], 28: [function(L, k, re) {
       function R(C) {
         this.name = C || "default", this.streamInfo = {}, this.generatedError = null, this.extraStreamInfo = {}, this.isPaused = !0, this.isFinished = !1, this.isLocked = !1, this._listeners = { data: [], end: [], error: [] }, this.previous = null;
       }
@@ -662,8 +663,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, toString: function() {
         var C = "Worker " + this.name;
         return this.previous ? this.previous + " -> " + C : C;
-      } }, x.exports = R;
-    }, {}], 29: [function(L, x, re) {
+      } }, k.exports = R;
+    }, {}], 29: [function(L, k, re) {
       var R = L("../utils"), C = L("./ConvertWorker"), p = L("./GenericWorker"), N = L("../base64"), U = L("../support"), H = L("../external"), K = null;
       if (U.nodestream)
         try {
@@ -748,8 +749,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         if (R.checkSupport("nodestream"), this._outputType !== "nodebuffer")
           throw new Error(this._outputType + " is not supported by this method");
         return new K(this, { objectMode: this._outputType !== "nodebuffer" }, q);
-      } }, x.exports = F;
-    }, { "../base64": 1, "../external": 6, "../nodejs/NodejsStreamOutputAdapter": 13, "../support": 30, "../utils": 32, "./ConvertWorker": 24, "./GenericWorker": 28 }], 30: [function(L, x, re) {
+      } }, k.exports = F;
+    }, { "../base64": 1, "../external": 6, "../nodejs/NodejsStreamOutputAdapter": 13, "../support": 30, "../utils": 32, "./ConvertWorker": 24, "./GenericWorker": 28 }], 30: [function(L, k, re) {
       if (re.base64 = !0, re.array = !0, re.string = !0, re.arraybuffer = typeof ArrayBuffer < "u" && typeof Uint8Array < "u", re.nodebuffer = typeof Buffer < "u", re.uint8array = typeof Uint8Array < "u", typeof ArrayBuffer > "u")
         re.blob = !1;
       else {
@@ -770,7 +771,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       } catch {
         re.nodestream = !1;
       }
-    }, { "readable-stream": 16 }], 31: [function(L, x, re) {
+    }, { "readable-stream": 16 }], 31: [function(L, k, re) {
       for (var R = L("./utils"), C = L("./support"), p = L("./nodejsUtils"), N = L("./stream/GenericWorker"), U = new Array(256), H = 0; H < 256; H++)
         U[H] = 252 <= H ? 6 : 248 <= H ? 5 : 240 <= H ? 4 : 224 <= H ? 3 : 192 <= H ? 2 : 1;
       U[254] = U[254] = 1;
@@ -826,7 +827,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, re.Utf8DecodeWorker = K, R.inherits(Y, N), Y.prototype.processChunk = function(F) {
         this.push({ data: re.utf8encode(F.data), meta: F.meta });
       }, re.Utf8EncodeWorker = Y;
-    }, { "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./support": 30, "./utils": 32 }], 32: [function(L, x, re) {
+    }, { "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./support": 30, "./utils": 32 }], 32: [function(L, k, re) {
       var R = L("./support"), C = L("./base64"), p = L("./nodejsUtils"), N = L("./external");
       function U(O) {
         return O;
@@ -978,7 +979,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           }(Le))), Le) : N.Promise.reject(new Error("Can't read the data of '" + O + "'. Is it in a supported JavaScript type (String, Blob, ArrayBuffer, etc) ?"));
         });
       };
-    }, { "./base64": 1, "./external": 6, "./nodejsUtils": 14, "./support": 30, setimmediate: 54 }], 33: [function(L, x, re) {
+    }, { "./base64": 1, "./external": 6, "./nodejsUtils": 14, "./support": 30, setimmediate: 54 }], 33: [function(L, k, re) {
       var R = L("./reader/readerFor"), C = L("./utils"), p = L("./signature"), N = L("./zipEntry"), U = L("./support");
       function H(K) {
         this.files = [], this.loadOptions = K;
@@ -1039,8 +1040,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         this.reader = R(K);
       }, load: function(K) {
         this.prepareReader(K), this.readEndOfCentral(), this.readCentralDir(), this.readLocalFiles();
-      } }, x.exports = H;
-    }, { "./reader/readerFor": 22, "./signature": 23, "./support": 30, "./utils": 32, "./zipEntry": 34 }], 34: [function(L, x, re) {
+      } }, k.exports = H;
+    }, { "./reader/readerFor": 22, "./signature": 23, "./support": 30, "./utils": 32, "./zipEntry": 34 }], 34: [function(L, k, re) {
       var R = L("./reader/readerFor"), C = L("./utils"), p = L("./compressedObject"), N = L("./crc32"), U = L("./utf8"), H = L("./compressions"), K = L("./support");
       function Y(F, q) {
         this.options = F, this.loadOptions = q;
@@ -1115,8 +1116,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           return q.readInt(1) !== 1 || N(this.fileComment) !== q.readInt(4) ? null : U.utf8decode(q.readData(F.length - 5));
         }
         return null;
-      } }, x.exports = Y;
-    }, { "./compressedObject": 2, "./compressions": 3, "./crc32": 4, "./reader/readerFor": 22, "./support": 30, "./utf8": 31, "./utils": 32 }], 35: [function(L, x, re) {
+      } }, k.exports = Y;
+    }, { "./compressedObject": 2, "./compressions": 3, "./crc32": 4, "./reader/readerFor": 22, "./support": 30, "./utf8": 31, "./utils": 32 }], 35: [function(L, k, re) {
       function R(q, O, J) {
         this.name = q, this.dir = J.dir, this.date = J.date, this.comment = J.comment, this.unixPermissions = J.unixPermissions, this.dosPermissions = J.dosPermissions, this._data = O, this._dataBinary = J.binary, this.options = { compression: J.compression, compressionOptions: J.compressionOptions };
       }
@@ -1150,8 +1151,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.");
       }, F = 0; F < K.length; F++)
         R.prototype[K[F]] = Y;
-      x.exports = R;
-    }, { "./compressedObject": 2, "./stream/DataWorker": 27, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31 }], 36: [function(L, x, re) {
+      k.exports = R;
+    }, { "./compressedObject": 2, "./stream/DataWorker": 27, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31 }], 36: [function(L, k, re) {
       (function(R) {
         var C, p, N = R.MutationObserver || R.WebKitMutationObserver;
         if (N) {
@@ -1185,11 +1186,11 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           }
           p = !1;
         }
-        x.exports = function(O) {
+        k.exports = function(O) {
           F.push(O) !== 1 || p || C();
         };
       }).call(this, typeof Ku < "u" ? Ku : typeof self < "u" ? self : typeof window < "u" ? window : {});
-    }, {}], 37: [function(L, x, re) {
+    }, {}], 37: [function(L, k, re) {
       var R = L("immediate");
       function C() {
       }
@@ -1242,7 +1243,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return Ee;
       }
-      (x.exports = K).prototype.finally = function(E) {
+      (k.exports = K).prototype.finally = function(E) {
         if (typeof E != "function")
           return this;
         var me = this.constructor;
@@ -1326,10 +1327,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         var Re;
         return Te;
       };
-    }, { immediate: 36 }], 38: [function(L, x, re) {
+    }, { immediate: 36 }], 38: [function(L, k, re) {
       var R = {};
-      (0, L("./lib/utils/common").assign)(R, L("./lib/deflate"), L("./lib/inflate"), L("./lib/zlib/constants")), x.exports = R;
-    }, { "./lib/deflate": 39, "./lib/inflate": 40, "./lib/utils/common": 41, "./lib/zlib/constants": 44 }], 39: [function(L, x, re) {
+      (0, L("./lib/utils/common").assign)(R, L("./lib/deflate"), L("./lib/inflate"), L("./lib/zlib/constants")), k.exports = R;
+    }, { "./lib/deflate": 39, "./lib/inflate": 40, "./lib/utils/common": 41, "./lib/zlib/constants": 44 }], 39: [function(L, k, re) {
       var R = L("./zlib/deflate"), C = L("./utils/common"), p = L("./utils/strings"), N = L("./zlib/messages"), U = L("./zlib/zstream"), H = Object.prototype.toString, K = 0, Y = -1, F = 0, q = 8;
       function O(E) {
         if (!(this instanceof O))
@@ -1373,7 +1374,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, re.gzip = function(E, me) {
         return (me = me || {}).gzip = !0, J(E, me);
       };
-    }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/deflate": 46, "./zlib/messages": 51, "./zlib/zstream": 53 }], 40: [function(L, x, re) {
+    }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/deflate": 46, "./zlib/messages": 51, "./zlib/zstream": 53 }], 40: [function(L, k, re) {
       var R = L("./zlib/inflate"), C = L("./utils/common"), p = L("./utils/strings"), N = L("./zlib/constants"), U = L("./zlib/messages"), H = L("./zlib/zstream"), K = L("./zlib/gzheader"), Y = Object.prototype.toString;
       function F(O) {
         if (!(this instanceof F))
@@ -1410,7 +1411,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       }, re.Inflate = F, re.inflate = q, re.inflateRaw = function(O, J) {
         return (J = J || {}).raw = !0, q(O, J);
       }, re.ungzip = q;
-    }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/constants": 44, "./zlib/gzheader": 47, "./zlib/inflate": 49, "./zlib/messages": 51, "./zlib/zstream": 53 }], 41: [function(L, x, re) {
+    }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/constants": 44, "./zlib/gzheader": 47, "./zlib/inflate": 49, "./zlib/messages": 51, "./zlib/zstream": 53 }], 41: [function(L, k, re) {
       var R = typeof Uint8Array < "u" && typeof Uint16Array < "u" && typeof Int32Array < "u";
       re.assign = function(N) {
         for (var U = Array.prototype.slice.call(arguments, 1); U.length; ) {
@@ -1448,7 +1449,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
       re.setTyped = function(N) {
         N ? (re.Buf8 = Uint8Array, re.Buf16 = Uint16Array, re.Buf32 = Int32Array, re.assign(re, C)) : (re.Buf8 = Array, re.Buf16 = Array, re.Buf32 = Array, re.assign(re, p));
       }, re.setTyped(R);
-    }, {}], 42: [function(L, x, re) {
+    }, {}], 42: [function(L, k, re) {
       var R = L("./common"), C = !0, p = !0;
       try {
         String.fromCharCode.apply(null, [0]);
@@ -1501,8 +1502,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           F--;
         return F < 0 || F === 0 ? Y : F + N[K[F]] > Y ? F : Y;
       };
-    }, { "./common": 41 }], 43: [function(L, x, re) {
-      x.exports = function(R, C, p, N) {
+    }, { "./common": 41 }], 43: [function(L, k, re) {
+      k.exports = function(R, C, p, N) {
         for (var U = 65535 & R | 0, H = R >>> 16 & 65535 | 0, K = 0; p !== 0; ) {
           for (p -= K = 2e3 < p ? 2e3 : p; H = H + (U = U + C[N++] | 0) | 0, --K; )
             ;
@@ -1510,9 +1511,9 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return U | H << 16 | 0;
       };
-    }, {}], 44: [function(L, x, re) {
-      x.exports = { Z_NO_FLUSH: 0, Z_PARTIAL_FLUSH: 1, Z_SYNC_FLUSH: 2, Z_FULL_FLUSH: 3, Z_FINISH: 4, Z_BLOCK: 5, Z_TREES: 6, Z_OK: 0, Z_STREAM_END: 1, Z_NEED_DICT: 2, Z_ERRNO: -1, Z_STREAM_ERROR: -2, Z_DATA_ERROR: -3, Z_BUF_ERROR: -5, Z_NO_COMPRESSION: 0, Z_BEST_SPEED: 1, Z_BEST_COMPRESSION: 9, Z_DEFAULT_COMPRESSION: -1, Z_FILTERED: 1, Z_HUFFMAN_ONLY: 2, Z_RLE: 3, Z_FIXED: 4, Z_DEFAULT_STRATEGY: 0, Z_BINARY: 0, Z_TEXT: 1, Z_UNKNOWN: 2, Z_DEFLATED: 8 };
-    }, {}], 45: [function(L, x, re) {
+    }, {}], 44: [function(L, k, re) {
+      k.exports = { Z_NO_FLUSH: 0, Z_PARTIAL_FLUSH: 1, Z_SYNC_FLUSH: 2, Z_FULL_FLUSH: 3, Z_FINISH: 4, Z_BLOCK: 5, Z_TREES: 6, Z_OK: 0, Z_STREAM_END: 1, Z_NEED_DICT: 2, Z_ERRNO: -1, Z_STREAM_ERROR: -2, Z_DATA_ERROR: -3, Z_BUF_ERROR: -5, Z_NO_COMPRESSION: 0, Z_BEST_SPEED: 1, Z_BEST_COMPRESSION: 9, Z_DEFAULT_COMPRESSION: -1, Z_FILTERED: 1, Z_HUFFMAN_ONLY: 2, Z_RLE: 3, Z_FIXED: 4, Z_DEFAULT_STRATEGY: 0, Z_BINARY: 0, Z_TEXT: 1, Z_UNKNOWN: 2, Z_DEFLATED: 8 };
+    }, {}], 45: [function(L, k, re) {
       var R = function() {
         for (var C, p = [], N = 0; N < 256; N++) {
           C = N;
@@ -1522,14 +1523,14 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return p;
       }();
-      x.exports = function(C, p, N, U) {
+      k.exports = function(C, p, N, U) {
         var H = R, K = U + N;
         C ^= -1;
         for (var Y = U; Y < K; Y++)
           C = C >>> 8 ^ H[255 & (C ^ p[Y])];
         return -1 ^ C;
       };
-    }, {}], 46: [function(L, x, re) {
+    }, {}], 46: [function(L, k, re) {
       var R, C = L("../utils/common"), p = L("./trees"), N = L("./adler32"), U = L("./crc32"), H = L("./messages"), K = 0, Y = 4, F = 0, q = -2, O = -1, J = 4, E = 2, me = 8, Ee = 9, Le = 286, Oe = 30, Te = 19, Re = 2 * Le + 1, Ve = 15, We = 3, le = 258, je = le + We + 1, fe = 42, Me = 113, Z = 1, Ue = 2, ct = 3, mt = 4;
       function at(ge, Wt) {
         return ge.msg = H[Wt], Wt;
@@ -1782,12 +1783,12 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return xt.strstart += xt.lookahead, xt.block_start = xt.strstart, xt.insert = xt.lookahead, xt.lookahead = 0, xt.match_length = xt.prev_length = We - 1, xt.match_available = 0, ge.next_in = Zt, ge.input = rt, ge.avail_in = Ut, xt.wrap = bt, F;
       }, re.deflateInfo = "pako deflate (from Nodeca project)";
-    }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./messages": 51, "./trees": 52 }], 47: [function(L, x, re) {
-      x.exports = function() {
+    }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./messages": 51, "./trees": 52 }], 47: [function(L, k, re) {
+      k.exports = function() {
         this.text = 0, this.time = 0, this.xflags = 0, this.os = 0, this.extra = null, this.extra_len = 0, this.name = "", this.comment = "", this.hcrc = 0, this.done = !1;
       };
-    }, {}], 48: [function(L, x, re) {
-      x.exports = function(R, C) {
+    }, {}], 48: [function(L, k, re) {
+      k.exports = function(R, C) {
         var p, N, U, H, K, Y, F, q, O, J, E, me, Ee, Le, Oe, Te, Re, Ve, We, le, je, fe, Me, Z, Ue;
         p = R.state, N = R.next_in, Z = R.input, U = N + (R.avail_in - 5), H = R.next_out, Ue = R.output, K = H - (C - R.avail_out), Y = H + (R.avail_out - 257), F = p.dmax, q = p.wsize, O = p.whave, J = p.wnext, E = p.window, me = p.hold, Ee = p.bits, Le = p.lencode, Oe = p.distcode, Te = (1 << p.lenbits) - 1, Re = (1 << p.distbits) - 1;
         e:
@@ -1867,7 +1868,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           } while (N < U && H < Y);
         N -= le = Ee >> 3, me &= (1 << (Ee -= le << 3)) - 1, R.next_in = N, R.next_out = H, R.avail_in = N < U ? U - N + 5 : 5 - (N - U), R.avail_out = H < Y ? Y - H + 257 : 257 - (H - Y), p.hold = me, p.bits = Ee;
       };
-    }, {}], 49: [function(L, x, re) {
+    }, {}], 49: [function(L, k, re) {
       var R = L("../utils/common"), C = L("./adler32"), p = L("./crc32"), N = L("./inffast"), U = L("./inftrees"), H = 1, K = 2, Y = 0, F = -2, q = 1, O = 852, J = 592;
       function E(fe) {
         return (fe >>> 24 & 255) + (fe >>> 8 & 65280) + ((65280 & fe) << 8) + ((255 & fe) << 24);
@@ -2334,9 +2335,9 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         var Z, Ue = Me.length;
         return fe && fe.state ? (Z = fe.state).wrap !== 0 && Z.mode !== 11 ? F : Z.mode === 11 && C(1, Me, Ue, 0) !== Z.check ? -3 : je(fe, Me, Ue, Ue) ? (Z.mode = 31, -4) : (Z.havedict = 1, Y) : F;
       }, re.inflateInfo = "pako inflate (from Nodeca project)";
-    }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./inffast": 48, "./inftrees": 50 }], 50: [function(L, x, re) {
+    }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./inffast": 48, "./inftrees": 50 }], 50: [function(L, k, re) {
       var R = L("../utils/common"), C = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 0, 0], p = [16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 16, 72, 78], N = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577, 0, 0], U = [16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 64, 64];
-      x.exports = function(H, K, Y, F, q, O, J, E) {
+      k.exports = function(H, K, Y, F, q, O, J, E) {
         var me, Ee, Le, Oe, Te, Re, Ve, We, le, je = E.bits, fe = 0, Me = 0, Z = 0, Ue = 0, ct = 0, mt = 0, at = 0, Ye = 0, Et = 0, Je = 0, ce = null, Ht = 0, Dt = new R.Buf16(16), Be = new R.Buf16(16), Ge = null, lt = 0;
         for (fe = 0; fe <= 15; fe++)
           Dt[fe] = 0;
@@ -2379,9 +2380,9 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         }
         return Je !== 0 && (q[Te + Je] = fe - at << 24 | 64 << 16 | 0), E.bits = ct, 0;
       };
-    }, { "../utils/common": 41 }], 51: [function(L, x, re) {
-      x.exports = { 2: "need dictionary", 1: "stream end", 0: "", "-1": "file error", "-2": "stream error", "-3": "data error", "-4": "insufficient memory", "-5": "buffer error", "-6": "incompatible version" };
-    }, {}], 52: [function(L, x, re) {
+    }, { "../utils/common": 41 }], 51: [function(L, k, re) {
+      k.exports = { 2: "need dictionary", 1: "stream end", 0: "", "-1": "file error", "-2": "stream error", "-3": "data error", "-4": "insufficient memory", "-5": "buffer error", "-6": "incompatible version" };
+    }, {}], 52: [function(L, k, re) {
       var R = L("../utils/common"), C = 0, p = 1;
       function N(Ne) {
         for (var bt = Ne.length; 0 <= --bt; )
@@ -2568,11 +2569,11 @@ https://github.com/nodeca/pako/blob/main/LICENSE
           bt.bi_valid === 16 ? (Ht(bt, bt.bi_buf), bt.bi_buf = 0, bt.bi_valid = 0) : 8 <= bt.bi_valid && (bt.pending_buf[bt.pending++] = 255 & bt.bi_buf, bt.bi_buf >>= 8, bt.bi_valid -= 8);
         }(Ne);
       };
-    }, { "../utils/common": 41 }], 53: [function(L, x, re) {
-      x.exports = function() {
+    }, { "../utils/common": 41 }], 53: [function(L, k, re) {
+      k.exports = function() {
         this.input = null, this.next_in = 0, this.avail_in = 0, this.total_in = 0, this.output = null, this.next_out = 0, this.avail_out = 0, this.total_out = 0, this.msg = "", this.state = null, this.data_type = 2, this.adler = 0;
       };
-    }, {}], 54: [function(L, x, re) {
+    }, {}], 54: [function(L, k, re) {
       (function(R) {
         (function(C, p) {
           if (!C.setImmediate) {
@@ -2653,8 +2654,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     }, {}] }, {}, [10])(10);
   });
 })(_f);
-var wp = _f.exports;
-const pf = /* @__PURE__ */ bp(wp);
+var Ip = _f.exports;
+const pf = /* @__PURE__ */ wp(Ip);
 var vf = !!(typeof global == "object" && global.process && global.process.release && global.process.release.name && typeof HTMLCanvasElement > "u"), Xi = vf ? global : self || {}, G = Xi.Dynamsoft || { Lib: {} };
 (function(l) {
   l.Lib || (l.Lib = {}), l.DWT || (l.DWT = {}), l = l.Lib, l.bNode = vf, l.noop = function() {
@@ -2666,7 +2667,7 @@ var vf = !!(typeof global == "object" && global.process && global.process.releas
     var F, q, O, J, E = E.toLowerCase(), Ht = Ht.toLowerCase(), me = /harmonyos/g.test(E), Ee = (Ht == "linux" && 0 <= E.indexOf("windows nt") && (Ht = "harmonyos", me = !0), !me && /cros/.test(E)), Le = !me && /android/g.test(E) || /android/g.test(Ht), Oe = /iphone/g.test(E) || /iphone/g.test(Ht), Te = /macintosh/.test(E), Re = navigator.maxTouchPoints || 0, Te = /ipad/g.test(E) || (Te || Ht == "macintel") && 1 < Re, Re = /ucweb|ucbrowser/g.test(E), Ve = !Re && /nexus/g.test(E) && /version\/[\d.]+.*safari\//g.test(E), We = /playbook/g.test(E), mt = /hp-tablet/g.test(E), le = /blackberry|bb10/g.test(E), je = /symbian/g.test(E), fe = /windows phone/g.test(E), at = /mobile/g.test(E), Me = /arm64|aarch64/g.test(E), Z = /mips64/g.test(E), Ue = /huaweibrowser/g.test(E), ct = /jsdom/g.test(E), mt = We || Te || mt, at = !mt && !Ee && (Oe || Ve || le || je || fe || Le || me || at), ce = !at && !mt && !Ee, Ye = ce && /win32|win64|windows/.test(Ht), Et = Ye && /win64|x64/.test(E), Je = ce && /mac68k|macppc|macintosh|macintel/.test(E), ce = ce && /linux/.test(Ht), Ht = Ht == "win64" || /wow64|x86_64|win64|x64/.test(E) || Me || Z, Dt = /wow64/g.test(E), Be = !1, Ge = /opera|opr/g.test(E), lt = /360se/g.test(E), ot = /maxthon/g.test(E), Kt = /tencenttraveler|qqbrowser/g.test(E), Lt = /the world/g.test(E), bn = /metasr/g.test(E), Fn = /avant/g.test(E), wn = /firefox|fxios/g.test(E), ge = /gecko/g.test(E), Wt = !(wn || Ue) && /edge\/|edga\/|edgios\/|edg\//g.test(E), xt = !(le || We || Re || Ge || Wt || Ue || ct) && /chrome|crios/g.test(E), He = at || mt, Ne = !1, bt = "", Ut = 0, Zt = 0, rt = "";
     return !Ye || Wt || wn || xt || (q = E.indexOf("msie "), O = E.indexOf("trident"), J = E.indexOf("rv:"), Ne = q != -1 || O != -1 || J != -1), !(Je || Oe || Te || Ye || le || We || Ve) || Re || Ge || Wt || Ne || wn || (F = E.match(/version\/([\d.]+).*safari\//)) && (le || We || Ve || (xt = !(Be = n)), rt = F[1]), Wt ? (-1 < (q = E.indexOf("edge/")) ? q += 5 : -1 < (q = E.indexOf("edg/")) ? q += 4 : -1 < (q = E.indexOf("edga/")) ? q += 5 : -1 < (q = E.indexOf("edgios/")) && (q += 7), -1 < q && -1 < (F = (rt = E.slice(q)).indexOf(" ")) && (rt = rt.slice(0, F)), He = n) : wn ? (F = E.indexOf("firefox/"), He = n, -1 < F ? (F = -1 < (O = (rt = F = -1 < (O = (F = E.slice(F + 8)).indexOf(" ")) ? F.slice(0, O) : F).indexOf(".")) ? rt.slice(0, O) : F) < 27 && (He = !1) : (Oe || Te) && -1 < (F = E.indexOf("fxios/")) && (rt = F = (F = E.slice(F + 6)).slice(0, F.indexOf(" ")))) : Ne ? (J = E.indexOf("msie "), le = E.indexOf("trident"), We = E.indexOf("rv:"), J != -1 ? bt = F = (F = E.slice(J + 5)).slice(0, F.indexOf(";")) : We != -1 ? bt = F = (F = (F = E.slice(We + 3)).slice(0, F.indexOf(";"))).slice(0, F.indexOf(")")) : le != -1 && (bt = F = (F = E.slice(le + 7)).slice(0, F.indexOf(";"))), (bt === "" || 10 <= parseInt(bt)) && (He = n), rt = F) : Be ? (F = rt.indexOf("."), He = n, -1 < F && (F = rt.slice(0, F)) < 7 && (He = !1)) : Re ? (-1 < (F = E.indexOf("ucweb")) ? rt = E.slice(F + 5) : -1 < (F = E.indexOf("ucbrowser/")) && -1 < (F = (rt = E.slice(F + 10)).indexOf(" ")) && (rt = rt.slice(0, F)), He = n) : Ge ? (-1 < (F = E.indexOf("version/")) ? rt = E.slice(F + 8) : -1 < (F = E.indexOf("opr/")) && (rt = E.slice(F + 4)), He = n) : je ? (-1 < (F = E.indexOf("browserng/")) && (rt = E.slice(F + 10)), He = n) : fe ? (-1 < (F = E.indexOf("iemobile/")) && (rt = E.slice(F + 9)), He = n) : xt ? (-1 < (q = E.indexOf("chrome/")) ? -1 < (F = (rt = E.slice(q + 7)).indexOf(" ")) && (rt = rt.slice(0, F)) : -1 < (q = E.indexOf("crios/")) && -1 < (F = (rt = E.slice(q + 6)).indexOf(" ")) && (rt = rt.slice(0, F)), He = n, -1 < (F = rt.indexOf(".")) && (F = rt.slice(0, F)) < 27 && (He = !1)) : Ue ? (-1 < (O = E.indexOf("huaweibrowser")) && -1 < (F = (rt = E.slice(O + 14)).indexOf(" ")) && (rt = rt.slice(0, F)), He = n) : ct && (-1 < (J = E.indexOf("jsdom")) && -1 < (F = (rt = E.slice(J + 6)).indexOf(" ")) && (rt = rt.slice(0, F)), He = n), (Wt || Ne) && ((We = window && window.document) && We.documentMode ? Ut = We.documentMode : (Ut = 5, We.compatMode && We.compatMode == "CSS1Compat" && (Ut = 7)), Ne && (Zt = parseInt(rt))), (Je || ce) && (Ht = !0, Je && (F = E.match(/mac os x (\d+)(_|\.)(\d+)/)) && 3 < F.length && (F[1] == 10 && F[3] < 14 || F[1] < 10) && (Ht = !1)), { bUseUserAgent: !0, bWin: Ye, bMac: Je, bLinux: ce, bMobile: at = Ye || Je || ce || Me || Z ? at : !0, bPad: mt, bChromeOS: Ee, bHarmonyOS: me, bArm64: Me, bMips64: Z, bEmbed: Me || Z, bAndroid: Le, biPhone: Oe, biPad: Te, bWin64: Et, bWOW64: Dt, bOSx64: Ht, bIE: Ne, bEdge: Wt, bChrome: xt, bFirefox: wn, bSafari: Be, bOpera: Ge, bNexus: Ve, bUC: Re, b360SE: lt, bMaxthon: ot, bTencentTraveler: Kt, bTheWorld: Lt, bMetaSr: bn, bAvant: Fn, bHuaWeiBrowser: Ue, bJSDom: ct, bGecko: ge, bHTML5Edition: He, strBrowserVersion: rt, IEVersion: Zt, IEMode: Ut };
   }
-  function x() {
+  function k() {
   }
   var re, R, C, p, N = l.Lib, U = navigator;
   N.bNode ? (N.win = global, p = L(N._defaultAgent, N._defaultPlatform), l.navInfo = p) : (typeof window == "object" ? (N.win = window, N.doc = window.document) : N.win = {}, H = !0, C = void 0, "userAgentData" in U && (R = [], (re = U.userAgentData).platform && re.platform != "" && ("brands" in re && Array.isArray(re.brands) && 0 < re.brands.length ? R = re.brands : "uaList" in re && Array.isArray(re.uaList) && 0 < re.uaList.length && (R = re.uaList), 0 < R.length && (H = !1, C = re.platform.toLowerCase(), p = function(K, Y, F) {
@@ -2686,7 +2687,7 @@ var vf = !!(typeof global == "object" && global.process && global.process.releas
       }
     }
     return Oe || Ee || Le || (Oe = !0, Ve = "100"), { bUseUserAgent: !1, bWin: q = /windows/g.test(F), bMac: /mac/g.test(F), bLinux: O = /linux/g.test(F), bAndroid: J = /android/g.test(F), bHarmonyOS: E = /harmony/g.test(F), bChromeOS: /(chromeos|chrome\sos)/g.test(F), bIE: !1, bEdge: Ee, bUC: !1, bPlaybook: !1, bBlackBerry: !1, bHuaWeiBrowser: !1, bOpera: Le, bFirefox: !1, bChrome: Oe, bJSDom: !1, biPhone: me = /iphone/g.test(F), biPad: Re = q || J || O || me ? Re : /macintel/g.test(F) && 1 < We, bPad: J && !K.mobile, bSafari: !1, bMobile: Te = J || E || me || Re ? !0 : Te, strBrowserVersion: Ve, bHTML5Edition: !0, IEVersion: 0, IEMode: 0 };
-  }(re, R, C)))), H && (p = L(U.userAgent.toLowerCase(), C = U.platform.toLowerCase()), l.navInfo = p)), N.doc || (N.doc = { getElementById: x, getElementsByTagName: x, styleSheets: [] });
+  }(re, R, C)))), H && (p = L(U.userAgent.toLowerCase(), C = U.platform.toLowerCase()), l.navInfo = p)), N.doc || (N.doc = { getElementById: k, getElementsByTagName: k, styleSheets: [] });
   var H = (H = (R = (re = N.win) == null ? void 0 : re.location) == null ? void 0 : R.protocol) || "http:";
   p.protocol = H, p.bSSL = H === "https:", p.bFileSystem = H !== "https:" && H !== "http:", l.navInfoSync = p;
 })();
@@ -2725,7 +2726,7 @@ if (G.navInfoSync.bIE) {
       typeof window < "u" ? n = window : typeof global < "u" ? n = global : typeof self < "u" && (n = self), n.Promise = l();
     }
   })(function() {
-    return function l(n, L, x) {
+    return function l(n, L, k) {
       function re(p, N) {
         if (!L[p]) {
           if (!n[p]) {
@@ -2741,28 +2742,28 @@ if (G.navInfoSync.bIE) {
           n[p][0].call(K.exports, function(Y) {
             var F = n[p][1][Y];
             return re(F || Y);
-          }, K, K.exports, l, n, L, x);
+          }, K, K.exports, l, n, L, k);
         }
         return L[p].exports;
       }
-      for (var R = typeof _dereq_ == "function" && _dereq_, C = 0; C < x.length; C++)
-        re(x[C]);
+      for (var R = typeof _dereq_ == "function" && _dereq_, C = 0; C < k.length; C++)
+        re(k[C]);
       return re;
     }({ 1: [function(l, n, L) {
-      n.exports = function(x) {
+      n.exports = function(k) {
         function re(C) {
           var p = new R(C), N = p.promise();
           return p.setHowMany(1), p.setUnwrap(), p.init(), N;
         }
-        var R = x._SomePromiseArray;
-        x.any = function(C) {
+        var R = k._SomePromiseArray;
+        k.any = function(C) {
           return re(C);
-        }, x.prototype.any = function() {
+        }, k.prototype.any = function() {
           return re(this);
         };
       };
     }, {}], 2: [function(l, n, L) {
-      function x() {
+      function k() {
         this._customScheduler = !1, this._isTickUsed = !1, this._lateQueue = new K(16), this._normalQueue = new K(16), this._haveDrainedQueues = !1;
         var Y = this;
         this.drainQueues = function() {
@@ -2798,17 +2799,17 @@ if (G.navInfoSync.bIE) {
         U = Y;
       }
       var H = l("./schedule"), K = l("./queue");
-      x.prototype.setScheduler = function(Y) {
+      k.prototype.setScheduler = function(Y) {
         var F = this._schedule;
         return this._schedule = Y, this._customScheduler = !0, F;
-      }, x.prototype.hasCustomScheduler = function() {
+      }, k.prototype.hasCustomScheduler = function() {
         return this._customScheduler;
-      }, x.prototype.haveItemsQueued = function() {
+      }, k.prototype.haveItemsQueued = function() {
         return this._isTickUsed || this._haveDrainedQueues;
-      }, x.prototype.fatalError = function(Y, F) {
+      }, k.prototype.fatalError = function(Y, F) {
         F ? (process.stderr.write("Fatal " + (Y instanceof Error ? Y.stack : Y) + `
 `), process.exit(2)) : this.throwLater(Y);
-      }, x.prototype.throwLater = function(Y, F) {
+      }, k.prototype.throwLater = function(Y, F) {
         if (arguments.length === 1 && (F = Y, Y = function() {
           throw F;
         }), typeof setTimeout < "u")
@@ -2826,15 +2827,15 @@ if (G.navInfoSync.bIE) {
     See http://goo.gl/MqrFmX
 `);
           }
-      }, x.prototype.invokeLater = re, x.prototype.invoke = R, x.prototype.settlePromises = C, x.prototype._drainQueues = function() {
+      }, k.prototype.invokeLater = re, k.prototype.invoke = R, k.prototype.settlePromises = C, k.prototype._drainQueues = function() {
         p(this._normalQueue), this._reset(), this._haveDrainedQueues = !0, p(this._lateQueue);
-      }, x.prototype._queueTick = function() {
+      }, k.prototype._queueTick = function() {
         this._isTickUsed || (this._isTickUsed = !0, this._schedule(this.drainQueues));
-      }, x.prototype._reset = function() {
+      }, k.prototype._reset = function() {
         this._isTickUsed = !1;
-      }, n.exports = x, n.exports.firstLineError = U;
+      }, n.exports = k, n.exports.firstLineError = U;
     }, { "./queue": 26, "./schedule": 29 }], 3: [function(l, n, L) {
-      n.exports = function(x, re, R, C) {
+      n.exports = function(k, re, R, C) {
         var p = !1, N = function(Y, F) {
           this._reject(F);
         }, U = function(Y, F) {
@@ -2844,27 +2845,27 @@ if (G.navInfoSync.bIE) {
         }, K = function(Y, F) {
           F.promiseRejectionQueued || this._reject(Y);
         };
-        x.prototype.bind = function(Y) {
-          p || (p = !0, x.prototype._propagateFrom = C.propagateFromFunction(), x.prototype._boundValue = C.boundValueFunction());
-          var F = R(Y), q = new x(re);
+        k.prototype.bind = function(Y) {
+          p || (p = !0, k.prototype._propagateFrom = C.propagateFromFunction(), k.prototype._boundValue = C.boundValueFunction());
+          var F = R(Y), q = new k(re);
           q._propagateFrom(this, 1);
           var O = this._target();
-          if (q._setBoundTo(F), F instanceof x) {
+          if (q._setBoundTo(F), F instanceof k) {
             var J = { promiseRejectionQueued: !1, promise: q, target: O, bindingPromise: F };
             O._then(re, U, void 0, q, J), F._then(H, K, void 0, q, J), q._setOnCancel(F);
           } else
             q._resolveCallback(O);
           return q;
-        }, x.prototype._setBoundTo = function(Y) {
+        }, k.prototype._setBoundTo = function(Y) {
           Y !== void 0 ? (this._bitField = 2097152 | this._bitField, this._boundTo = Y) : this._bitField = -2097153 & this._bitField;
-        }, x.prototype._isBound = function() {
+        }, k.prototype._isBound = function() {
           return (2097152 & this._bitField) === 2097152;
-        }, x.bind = function(Y, F) {
-          return x.resolve(F).bind(Y);
+        }, k.bind = function(Y, F) {
+          return k.resolve(F).bind(Y);
         };
       };
     }, {}], 4: [function(l, n, L) {
-      function x() {
+      function k() {
         try {
           Promise === R && (Promise = re);
         } catch {
@@ -2874,11 +2875,11 @@ if (G.navInfoSync.bIE) {
       var re;
       typeof Promise < "u" && (re = Promise);
       var R = l("./promise")();
-      R.noConflict = x, n.exports = R;
+      R.noConflict = k, n.exports = R;
     }, { "./promise": 22 }], 5: [function(l, n, L) {
-      var x = Object.create;
-      if (x) {
-        var re = x(null), R = x(null);
+      var k = Object.create;
+      if (k) {
+        var re = k(null), R = k(null);
         re[" size"] = R[" size"] = 0;
       }
       n.exports = function(C) {
@@ -2918,9 +2919,9 @@ if (G.navInfoSync.bIE) {
         };
       };
     }, { "./util": 36 }], 6: [function(l, n, L) {
-      n.exports = function(x, re, R, C) {
-        var p = l("./util"), N = p.tryCatch, U = p.errorObj, H = x._async;
-        x.prototype.break = x.prototype.cancel = function() {
+      n.exports = function(k, re, R, C) {
+        var p = l("./util"), N = p.tryCatch, U = p.errorObj, H = k._async;
+        k.prototype.break = k.prototype.cancel = function() {
           if (!C.cancellation())
             return this._warn("cancellation is disabled");
           for (var K = this, Y = K; K._isCancellable(); ) {
@@ -2935,25 +2936,25 @@ if (G.navInfoSync.bIE) {
             }
             K._isFollowing() && K._followee().cancel(), K._setWillBeCancelled(), Y = K, K = F;
           }
-        }, x.prototype._branchHasCancelled = function() {
+        }, k.prototype._branchHasCancelled = function() {
           this._branchesRemainingToCancel--;
-        }, x.prototype._enoughBranchesHaveCancelled = function() {
+        }, k.prototype._enoughBranchesHaveCancelled = function() {
           return this._branchesRemainingToCancel === void 0 || this._branchesRemainingToCancel <= 0;
-        }, x.prototype._cancelBy = function(K) {
+        }, k.prototype._cancelBy = function(K) {
           return K === this ? (this._branchesRemainingToCancel = 0, this._invokeOnCancel(), !0) : (this._branchHasCancelled(), this._enoughBranchesHaveCancelled() ? (this._invokeOnCancel(), !0) : !1);
-        }, x.prototype._cancelBranched = function() {
+        }, k.prototype._cancelBranched = function() {
           this._enoughBranchesHaveCancelled() && this._cancel();
-        }, x.prototype._cancel = function() {
+        }, k.prototype._cancel = function() {
           this._isCancellable() && (this._setCancelled(), H.invoke(this._cancelPromises, this, void 0));
-        }, x.prototype._cancelPromises = function() {
+        }, k.prototype._cancelPromises = function() {
           this._length() > 0 && this._settlePromises();
-        }, x.prototype._unsetOnCancel = function() {
+        }, k.prototype._unsetOnCancel = function() {
           this._onCancelField = void 0;
-        }, x.prototype._isCancellable = function() {
+        }, k.prototype._isCancellable = function() {
           return this.isPending() && !this._isCancelled();
-        }, x.prototype.isCancellable = function() {
+        }, k.prototype.isCancellable = function() {
           return this.isPending() && !this.isCancelled();
-        }, x.prototype._doInvokeOnCancel = function(K, Y) {
+        }, k.prototype._doInvokeOnCancel = function(K, Y) {
           if (p.isArray(K))
             for (var F = 0; F < K.length; ++F)
               this._doInvokeOnCancel(K[F], Y);
@@ -2965,17 +2966,17 @@ if (G.navInfoSync.bIE) {
               }
             } else
               K._resultCancelled(this);
-        }, x.prototype._invokeOnCancel = function() {
+        }, k.prototype._invokeOnCancel = function() {
           var K = this._onCancel();
           this._unsetOnCancel(), H.invoke(this._doInvokeOnCancel, this, K);
-        }, x.prototype._invokeInternalOnCancel = function() {
+        }, k.prototype._invokeInternalOnCancel = function() {
           this._isCancellable() && (this._doInvokeOnCancel(this._onCancel(), !0), this._unsetOnCancel());
-        }, x.prototype._resultCancelled = function() {
+        }, k.prototype._resultCancelled = function() {
           this.cancel();
         };
       };
     }, { "./util": 36 }], 7: [function(l, n, L) {
-      n.exports = function(x) {
+      n.exports = function(k) {
         function re(U, H, K) {
           return function(Y) {
             var F = K._boundValue();
@@ -3000,14 +3001,14 @@ if (G.navInfoSync.bIE) {
                   return p(H).call(F, Y);
                 }
               }
-            return x;
+            return k;
           };
         }
         var R = l("./util"), C = l("./es5").keys, p = R.tryCatch, N = R.errorObj;
         return re;
       };
     }, { "./es5": 13, "./util": 36 }], 8: [function(l, n, L) {
-      n.exports = function(x) {
+      n.exports = function(k) {
         function re() {
           this._trace = new re.CapturedTrace(C());
         }
@@ -3019,11 +3020,11 @@ if (G.navInfoSync.bIE) {
           return U >= 0 ? N[U] : void 0;
         }
         var p = !1, N = [];
-        return x.prototype._promiseCreated = function() {
-        }, x.prototype._pushContext = function() {
-        }, x.prototype._popContext = function() {
+        return k.prototype._promiseCreated = function() {
+        }, k.prototype._pushContext = function() {
+        }, k.prototype._popContext = function() {
           return null;
-        }, x._peekContext = x.prototype._peekContext = function() {
+        }, k._peekContext = k.prototype._peekContext = function() {
         }, re.prototype._pushContext = function() {
           this._trace !== void 0 && (this._trace._promiseCreated = null, N.push(this._trace));
         }, re.prototype._popContext = function() {
@@ -3034,17 +3035,17 @@ if (G.navInfoSync.bIE) {
           return null;
         }, re.CapturedTrace = null, re.create = R, re.deactivateLongStackTraces = function() {
         }, re.activateLongStackTraces = function() {
-          var U = x.prototype._pushContext, H = x.prototype._popContext, K = x._peekContext, Y = x.prototype._peekContext, F = x.prototype._promiseCreated;
+          var U = k.prototype._pushContext, H = k.prototype._popContext, K = k._peekContext, Y = k.prototype._peekContext, F = k.prototype._promiseCreated;
           re.deactivateLongStackTraces = function() {
-            x.prototype._pushContext = U, x.prototype._popContext = H, x._peekContext = K, x.prototype._peekContext = Y, x.prototype._promiseCreated = F, p = !1;
-          }, p = !0, x.prototype._pushContext = re.prototype._pushContext, x.prototype._popContext = re.prototype._popContext, x._peekContext = x.prototype._peekContext = C, x.prototype._promiseCreated = function() {
+            k.prototype._pushContext = U, k.prototype._popContext = H, k._peekContext = K, k.prototype._peekContext = Y, k.prototype._promiseCreated = F, p = !1;
+          }, p = !0, k.prototype._pushContext = re.prototype._pushContext, k.prototype._popContext = re.prototype._popContext, k._peekContext = k.prototype._peekContext = C, k.prototype._promiseCreated = function() {
             var q = this._peekContext();
             q && q._promiseCreated == null && (q._promiseCreated = this);
           };
         }, re;
       };
     }, {}], 9: [function(l, n, L) {
-      n.exports = function(x, re, R, C) {
+      n.exports = function(k, re, R, C) {
         function p(It, Mt) {
           return { promise: Mt };
         }
@@ -3091,7 +3092,7 @@ if (G.navInfoSync.bIE) {
         }
         function J() {
           var It = this._boundTo;
-          return It !== void 0 && It instanceof x ? It.isFulfilled() ? It.value() : void 0 : It;
+          return It !== void 0 && It instanceof k ? It.isFulfilled() ? It.value() : void 0 : It;
         }
         function E() {
           this._trace = new Et(this._peekContext());
@@ -3150,7 +3151,7 @@ if (G.navInfoSync.bIE) {
             var $t, Pn = new Ge(It);
             if (Mt)
               Yt._attachExtraTrace(Pn);
-            else if (Zn.longStackTraces && ($t = x._peekContext()))
+            else if (Zn.longStackTraces && ($t = k._peekContext()))
               $t.attachExtraTrace(Pn);
             else {
               var nr = fe(Pn);
@@ -3289,7 +3290,7 @@ if (G.navInfoSync.bIE) {
           var Mt = this._length = 1 + (It === void 0 ? 0 : It._length);
           Vr(this, Et), Mt > 32 && this.uncycle();
         }
-        var Je, ce, Ht, Dt, Be = x._async, Ge = l("./errors").Warning, lt = l("./util"), ot = l("./es5"), Kt = lt.canAttachTrace, Lt = /[\\\/]bluebird[\\\/]js[\\\/](release|debug|instrumented)/, bn = /\((?:timers\.js):\d+:\d+\)/, Fn = /[\/<\(](.+?):(\d+):(\d+)\)?\s*$/, wn = null, ge = null, Wt = !1, xt = !(lt.env("BLUEBIRD_DEBUG") == 0 || !lt.env("BLUEBIRD_DEBUG") && lt.env("NODE_ENV") !== "development"), He = !(lt.env("BLUEBIRD_WARNINGS") == 0 || !xt && !lt.env("BLUEBIRD_WARNINGS")), Ne = !(lt.env("BLUEBIRD_LONG_STACK_TRACES") == 0 || !xt && !lt.env("BLUEBIRD_LONG_STACK_TRACES")), bt = lt.env("BLUEBIRD_W_FORGOTTEN_RETURN") != 0 && (He || !!lt.env("BLUEBIRD_W_FORGOTTEN_RETURN"));
+        var Je, ce, Ht, Dt, Be = k._async, Ge = l("./errors").Warning, lt = l("./util"), ot = l("./es5"), Kt = lt.canAttachTrace, Lt = /[\\\/]bluebird[\\\/]js[\\\/](release|debug|instrumented)/, bn = /\((?:timers\.js):\d+:\d+\)/, Fn = /[\/<\(](.+?):(\d+):(\d+)\)?\s*$/, wn = null, ge = null, Wt = !1, xt = !(lt.env("BLUEBIRD_DEBUG") == 0 || !lt.env("BLUEBIRD_DEBUG") && lt.env("NODE_ENV") !== "development"), He = !(lt.env("BLUEBIRD_WARNINGS") == 0 || !xt && !lt.env("BLUEBIRD_WARNINGS")), Ne = !(lt.env("BLUEBIRD_LONG_STACK_TRACES") == 0 || !xt && !lt.env("BLUEBIRD_LONG_STACK_TRACES")), bt = lt.env("BLUEBIRD_W_FORGOTTEN_RETURN") != 0 && (He || !!lt.env("BLUEBIRD_W_FORGOTTEN_RETURN"));
         (function() {
           function It() {
             for (var $t = 0; $t < Yt.length; ++$t)
@@ -3302,64 +3303,64 @@ if (G.navInfoSync.bIE) {
           var Yt = [];
           Dt = function($t) {
             Yt.push($t), setTimeout(It, 1);
-          }, ot.defineProperty(x, "_unhandledRejectionCheck", { value: It }), ot.defineProperty(x, "_unhandledRejectionClear", { value: Mt });
-        })(), x.prototype.suppressUnhandledRejections = function() {
+          }, ot.defineProperty(k, "_unhandledRejectionCheck", { value: It }), ot.defineProperty(k, "_unhandledRejectionClear", { value: Mt });
+        })(), k.prototype.suppressUnhandledRejections = function() {
           var It = this._target();
           It._bitField = -1048577 & It._bitField | 524288;
-        }, x.prototype._ensurePossibleRejectionHandled = function() {
+        }, k.prototype._ensurePossibleRejectionHandled = function() {
           !(524288 & this._bitField) && (this._setRejectionIsUnhandled(), Dt(this));
-        }, x.prototype._notifyUnhandledRejectionIsHandled = function() {
+        }, k.prototype._notifyUnhandledRejectionIsHandled = function() {
           Z("rejectionHandled", Je, void 0, this);
-        }, x.prototype._setReturnedNonUndefined = function() {
+        }, k.prototype._setReturnedNonUndefined = function() {
           this._bitField = 268435456 | this._bitField;
-        }, x.prototype._returnedNonUndefined = function() {
+        }, k.prototype._returnedNonUndefined = function() {
           return (268435456 & this._bitField) !== 0;
-        }, x.prototype._notifyUnhandledRejection = function() {
+        }, k.prototype._notifyUnhandledRejection = function() {
           if (this._isRejectionUnhandled()) {
             var It = this._settledValue();
             this._setUnhandledRejectionIsNotified(), Z("unhandledRejection", ce, It, this);
           }
-        }, x.prototype._setUnhandledRejectionIsNotified = function() {
+        }, k.prototype._setUnhandledRejectionIsNotified = function() {
           this._bitField = 262144 | this._bitField;
-        }, x.prototype._unsetUnhandledRejectionIsNotified = function() {
+        }, k.prototype._unsetUnhandledRejectionIsNotified = function() {
           this._bitField = -262145 & this._bitField;
-        }, x.prototype._isUnhandledRejectionNotified = function() {
+        }, k.prototype._isUnhandledRejectionNotified = function() {
           return (262144 & this._bitField) > 0;
-        }, x.prototype._setRejectionIsUnhandled = function() {
+        }, k.prototype._setRejectionIsUnhandled = function() {
           this._bitField = 1048576 | this._bitField;
-        }, x.prototype._unsetRejectionIsUnhandled = function() {
+        }, k.prototype._unsetRejectionIsUnhandled = function() {
           this._bitField = -1048577 & this._bitField, this._isUnhandledRejectionNotified() && (this._unsetUnhandledRejectionIsNotified(), this._notifyUnhandledRejectionIsHandled());
-        }, x.prototype._isRejectionUnhandled = function() {
+        }, k.prototype._isRejectionUnhandled = function() {
           return (1048576 & this._bitField) > 0;
-        }, x.prototype._warn = function(It, Mt, Yt) {
+        }, k.prototype._warn = function(It, Mt, Yt) {
           return Te(It, Mt, Yt || this);
-        }, x.onPossiblyUnhandledRejection = function(It) {
-          var Mt = x._getContext();
+        }, k.onPossiblyUnhandledRejection = function(It) {
+          var Mt = k._getContext();
           ce = lt.contextBind(Mt, It);
-        }, x.onUnhandledRejectionHandled = function(It) {
-          var Mt = x._getContext();
+        }, k.onUnhandledRejectionHandled = function(It) {
+          var Mt = k._getContext();
           Je = lt.contextBind(Mt, It);
         };
         var Ut = function() {
         };
-        x.longStackTraces = function() {
+        k.longStackTraces = function() {
           if (Be.haveItemsQueued() && !Zn.longStackTraces)
             throw new Error(`cannot enable long stack traces after promises have been created
 
     See http://goo.gl/MqrFmX
 `);
           if (!Zn.longStackTraces && mt()) {
-            var It = x.prototype._captureStackTrace, Mt = x.prototype._attachExtraTrace, Yt = x.prototype._dereferenceTrace;
+            var It = k.prototype._captureStackTrace, Mt = k.prototype._attachExtraTrace, Yt = k.prototype._dereferenceTrace;
             Zn.longStackTraces = !0, Ut = function() {
               if (Be.haveItemsQueued() && !Zn.longStackTraces)
                 throw new Error(`cannot enable long stack traces after promises have been created
 
     See http://goo.gl/MqrFmX
 `);
-              x.prototype._captureStackTrace = It, x.prototype._attachExtraTrace = Mt, x.prototype._dereferenceTrace = Yt, re.deactivateLongStackTraces(), Zn.longStackTraces = !1;
-            }, x.prototype._captureStackTrace = E, x.prototype._attachExtraTrace = me, x.prototype._dereferenceTrace = Ee, re.activateLongStackTraces();
+              k.prototype._captureStackTrace = It, k.prototype._attachExtraTrace = Mt, k.prototype._dereferenceTrace = Yt, re.deactivateLongStackTraces(), Zn.longStackTraces = !1;
+            }, k.prototype._captureStackTrace = E, k.prototype._attachExtraTrace = me, k.prototype._dereferenceTrace = Ee, re.activateLongStackTraces();
           }
-        }, x.hasLongStackTraces = function() {
+        }, k.hasLongStackTraces = function() {
           return Zn.longStackTraces && mt();
         };
         var Zt = { unhandledrejection: { before: function() {
@@ -3441,35 +3442,35 @@ if (G.navInfoSync.bIE) {
           }
           return Yt || Mt;
         };
-        x.config = function(It) {
-          if (It = Object(It), "longStackTraces" in It && (It.longStackTraces ? x.longStackTraces() : !It.longStackTraces && x.hasLongStackTraces() && Ut()), "warnings" in It) {
+        k.config = function(It) {
+          if (It = Object(It), "longStackTraces" in It && (It.longStackTraces ? k.longStackTraces() : !It.longStackTraces && k.hasLongStackTraces() && Ut()), "warnings" in It) {
             var Mt = It.warnings;
             Zn.warnings = !!Mt, bt = Zn.warnings, lt.isObject(Mt) && "wForgottenReturn" in Mt && (bt = !!Mt.wForgottenReturn);
           }
           if ("cancellation" in It && It.cancellation && !Zn.cancellation) {
             if (Be.haveItemsQueued())
               throw new Error("cannot enable cancellation after promises are in use");
-            x.prototype._clearCancellationData = F, x.prototype._propagateFrom = q, x.prototype._onCancel = K, x.prototype._setOnCancel = Y, x.prototype._attachCancellationCallback = H, x.prototype._execute = U, Rn = q, Zn.cancellation = !0;
+            k.prototype._clearCancellationData = F, k.prototype._propagateFrom = q, k.prototype._onCancel = K, k.prototype._setOnCancel = Y, k.prototype._attachCancellationCallback = H, k.prototype._execute = U, Rn = q, Zn.cancellation = !0;
           }
-          if ("monitoring" in It && (It.monitoring && !Zn.monitoring ? (Zn.monitoring = !0, x.prototype._fireEvent = an) : !It.monitoring && Zn.monitoring && (Zn.monitoring = !1, x.prototype._fireEvent = N)), "asyncHooks" in It && lt.nodeSupportsAsyncResource) {
+          if ("monitoring" in It && (It.monitoring && !Zn.monitoring ? (Zn.monitoring = !0, k.prototype._fireEvent = an) : !It.monitoring && Zn.monitoring && (Zn.monitoring = !1, k.prototype._fireEvent = N)), "asyncHooks" in It && lt.nodeSupportsAsyncResource) {
             var Yt = Zn.asyncHooks, $t = !!It.asyncHooks;
             Yt !== $t && (Zn.asyncHooks = $t, $t ? R() : C());
           }
-          return x;
-        }, x.prototype._fireEvent = N, x.prototype._execute = function(It, Mt, Yt) {
+          return k;
+        }, k.prototype._fireEvent = N, k.prototype._execute = function(It, Mt, Yt) {
           try {
             It(Mt, Yt);
           } catch ($t) {
             return $t;
           }
-        }, x.prototype._onCancel = function() {
-        }, x.prototype._setOnCancel = function(It) {
-        }, x.prototype._attachCancellationCallback = function(It) {
-        }, x.prototype._captureStackTrace = function() {
-        }, x.prototype._attachExtraTrace = function() {
-        }, x.prototype._dereferenceTrace = function() {
-        }, x.prototype._clearCancellationData = function() {
-        }, x.prototype._propagateFrom = function(It, Mt) {
+        }, k.prototype._onCancel = function() {
+        }, k.prototype._setOnCancel = function(It) {
+        }, k.prototype._attachCancellationCallback = function(It) {
+        }, k.prototype._captureStackTrace = function() {
+        }, k.prototype._attachExtraTrace = function() {
+        }, k.prototype._dereferenceTrace = function() {
+        }, k.prototype._clearCancellationData = function() {
+        }, k.prototype._propagateFrom = function(It, Mt) {
         };
         var Rn = O, xr = function() {
           return !1;
@@ -3552,7 +3553,7 @@ if (G.navInfoSync.bIE) {
           console.warn("%c" + It, Mt ? "color: darkorange" : "color: red");
         }));
         var Zn = { warnings: He, longStackTraces: !1, cancellation: !1, monitoring: !1, asyncHooks: !1 };
-        return Ne && x.longStackTraces(), { asyncHooks: function() {
+        return Ne && k.longStackTraces(), { asyncHooks: function() {
           return Zn.asyncHooks;
         }, longStackTraces: function() {
           return Zn.longStackTraces;
@@ -3569,29 +3570,29 @@ if (G.navInfoSync.bIE) {
         }, checkForgottenReturns: Le, setBounds: Ye, warn: Te, deprecated: Oe, CapturedTrace: Et, fireDomEvent: rt, fireGlobalEvent: Xt };
       };
     }, { "./errors": 12, "./es5": 13, "./util": 36 }], 10: [function(l, n, L) {
-      n.exports = function(x) {
+      n.exports = function(k) {
         function re() {
           return this.value;
         }
         function R() {
           throw this.reason;
         }
-        x.prototype.return = x.prototype.thenReturn = function(C) {
-          return C instanceof x && C.suppressUnhandledRejections(), this._then(re, void 0, void 0, { value: C }, void 0);
-        }, x.prototype.throw = x.prototype.thenThrow = function(C) {
+        k.prototype.return = k.prototype.thenReturn = function(C) {
+          return C instanceof k && C.suppressUnhandledRejections(), this._then(re, void 0, void 0, { value: C }, void 0);
+        }, k.prototype.throw = k.prototype.thenThrow = function(C) {
           return this._then(R, void 0, void 0, { reason: C }, void 0);
-        }, x.prototype.catchThrow = function(C) {
+        }, k.prototype.catchThrow = function(C) {
           if (arguments.length <= 1)
             return this._then(void 0, R, void 0, { reason: C }, void 0);
           var p = arguments[1], N = function() {
             throw p;
           };
           return this.caught(C, N);
-        }, x.prototype.catchReturn = function(C) {
+        }, k.prototype.catchReturn = function(C) {
           if (arguments.length <= 1)
-            return C instanceof x && C.suppressUnhandledRejections(), this._then(void 0, re, void 0, { value: C }, void 0);
+            return C instanceof k && C.suppressUnhandledRejections(), this._then(void 0, re, void 0, { value: C }, void 0);
           var p = arguments[1];
-          p instanceof x && p.suppressUnhandledRejections();
+          p instanceof k && p.suppressUnhandledRejections();
           var N = function() {
             return p;
           };
@@ -3599,24 +3600,24 @@ if (G.navInfoSync.bIE) {
         };
       };
     }, {}], 11: [function(l, n, L) {
-      n.exports = function(x, re) {
+      n.exports = function(k, re) {
         function R() {
           return N(this);
         }
         function C(U, H) {
           return p(U, H, re, re);
         }
-        var p = x.reduce, N = x.all;
-        x.prototype.each = function(U) {
+        var p = k.reduce, N = k.all;
+        k.prototype.each = function(U) {
           return p(this, U, re, 0)._then(R, void 0, void 0, this, void 0);
-        }, x.prototype.mapSeries = function(U) {
+        }, k.prototype.mapSeries = function(U) {
           return p(this, U, re, re);
-        }, x.each = function(U, H) {
+        }, k.each = function(U, H) {
           return p(U, H, re, 0)._then(R, void 0, void 0, U, void 0);
-        }, x.mapSeries = C;
+        }, k.mapSeries = C;
       };
     }, {}], 12: [function(l, n, L) {
-      function x(Le, Oe) {
+      function k(Le, Oe) {
         function Te(Re) {
           return this instanceof Te ? (K(this, "message", typeof Re == "string" ? Re : Oe), K(this, "name", Le), void (Error.captureStackTrace ? Error.captureStackTrace(this, this.constructor) : Error.call(this))) : new Te(Re);
         }
@@ -3625,11 +3626,11 @@ if (G.navInfoSync.bIE) {
       function re(Le) {
         return this instanceof re ? (K(this, "name", "OperationalError"), K(this, "message", Le), this.cause = Le, this.isOperational = !0, void (Le instanceof Error ? (K(this, "message", Le.message), K(this, "stack", Le.stack)) : Error.captureStackTrace && Error.captureStackTrace(this, this.constructor))) : new re(Le);
       }
-      var R, C, p = l("./es5"), N = p.freeze, U = l("./util"), H = U.inherits, K = U.notEnumerableProp, Y = x("Warning", "warning"), F = x("CancellationError", "cancellation error"), q = x("TimeoutError", "timeout error"), O = x("AggregateError", "aggregate error");
+      var R, C, p = l("./es5"), N = p.freeze, U = l("./util"), H = U.inherits, K = U.notEnumerableProp, Y = k("Warning", "warning"), F = k("CancellationError", "cancellation error"), q = k("TimeoutError", "timeout error"), O = k("AggregateError", "aggregate error");
       try {
         R = TypeError, C = RangeError;
       } catch {
-        R = x("TypeError", "type error"), C = x("RangeError", "range error");
+        R = k("TypeError", "type error"), C = k("RangeError", "range error");
       }
       for (var J = "join pop push shift unshift slice filter forEach some every map indexOf lastIndexOf reduce reduceRight sort reverse".split(" "), E = 0; E < J.length; ++E)
         typeof Array.prototype[J[E]] == "function" && (O.prototype[J[E]] = Array.prototype[J[E]]);
@@ -3653,11 +3654,11 @@ if (G.navInfoSync.bIE) {
       var Ee = Error.__BluebirdErrorTypes__;
       Ee || (Ee = N({ CancellationError: F, TimeoutError: q, OperationalError: re, RejectionError: re, AggregateError: O }), p.defineProperty(Error, "__BluebirdErrorTypes__", { value: Ee, writable: !1, enumerable: !1, configurable: !1 })), n.exports = { Error, TypeError: R, RangeError: C, CancellationError: Ee.CancellationError, OperationalError: Ee.OperationalError, TimeoutError: Ee.TimeoutError, AggregateError: Ee.AggregateError, Warning: Y };
     }, { "./es5": 13, "./util": 36 }], 13: [function(l, n, L) {
-      var x = function() {
+      var k = function() {
         return this === void 0;
       }();
-      if (x)
-        n.exports = { freeze: Object.freeze, defineProperty: Object.defineProperty, getDescriptor: Object.getOwnPropertyDescriptor, keys: Object.keys, names: Object.getOwnPropertyNames, getPrototypeOf: Object.getPrototypeOf, isArray: Array.isArray, isES5: x, propertyIsWritable: function(F, q) {
+      if (k)
+        n.exports = { freeze: Object.freeze, defineProperty: Object.defineProperty, getDescriptor: Object.getOwnPropertyDescriptor, keys: Object.keys, names: Object.getOwnPropertyNames, getPrototypeOf: Object.getPrototypeOf, isArray: Array.isArray, isES5: k, propertyIsWritable: function(F, q) {
           var O = Object.getOwnPropertyDescriptor(F, q);
           return !(O && !O.writable && !O.set);
         } };
@@ -3686,21 +3687,21 @@ if (G.navInfoSync.bIE) {
             return !1;
           }
         };
-        n.exports = { isArray: Y, keys: p, names: p, defineProperty: U, getDescriptor: N, freeze: H, getPrototypeOf: K, isES5: x, propertyIsWritable: function() {
+        n.exports = { isArray: Y, keys: p, names: p, defineProperty: U, getDescriptor: N, freeze: H, getPrototypeOf: K, isES5: k, propertyIsWritable: function() {
           return !0;
         } };
       }
     }, {}], 14: [function(l, n, L) {
-      n.exports = function(x, re) {
-        var R = x.map;
-        x.prototype.filter = function(C, p) {
+      n.exports = function(k, re) {
+        var R = k.map;
+        k.prototype.filter = function(C, p) {
           return R(this, C, p, re);
-        }, x.filter = function(C, p, N) {
+        }, k.filter = function(C, p, N) {
           return R(C, p, N, re);
         };
       };
     }, {}], 15: [function(l, n, L) {
-      n.exports = function(x, re, R) {
+      n.exports = function(k, re, R) {
         function C(J, E, me) {
           this.promise = J, this.type = E, this.handler = me, this.called = !1, this.cancelPromise = null;
         }
@@ -3726,7 +3727,7 @@ if (G.navInfoSync.bIE) {
             if (Ee !== void 0) {
               E._setReturnedNonUndefined();
               var Le = re(Ee, E);
-              if (Le instanceof x) {
+              if (Le instanceof k) {
                 if (this.cancelPromise != null) {
                   if (Le._isCancelled()) {
                     var Oe = new F("late cancellation observer");
@@ -3740,18 +3741,18 @@ if (G.navInfoSync.bIE) {
           }
           return E.isRejected() ? (N(this), q.e = J, q) : (N(this), J);
         }
-        var Y = l("./util"), F = x.CancellationError, q = Y.errorObj, O = l("./catch_filter")(R);
+        var Y = l("./util"), F = k.CancellationError, q = Y.errorObj, O = l("./catch_filter")(R);
         return C.prototype.isFinallyHandler = function() {
           return this.type === 0;
         }, p.prototype._resultCancelled = function() {
           N(this.finallyHandler);
-        }, x.prototype._passThrough = function(J, E, me, Ee) {
+        }, k.prototype._passThrough = function(J, E, me, Ee) {
           return typeof J != "function" ? this.then() : this._then(me, Ee, void 0, new C(this, E, J), void 0);
-        }, x.prototype.lastly = x.prototype.finally = function(J) {
+        }, k.prototype.lastly = k.prototype.finally = function(J) {
           return this._passThrough(J, 0, K, K);
-        }, x.prototype.tap = function(J) {
+        }, k.prototype.tap = function(J) {
           return this._passThrough(J, 1, K);
-        }, x.prototype.tapCatch = function(J) {
+        }, k.prototype.tapCatch = function(J) {
           var E = arguments.length;
           if (E === 1)
             return this._passThrough(J, 1, void 0, K);
@@ -3759,7 +3760,7 @@ if (G.navInfoSync.bIE) {
           for (me = 0; E - 1 > me; ++me) {
             var Oe = arguments[me];
             if (!Y.isObject(Oe))
-              return x.reject(new TypeError("tapCatch statement predicate: expecting an object but got " + Y.classString(Oe)));
+              return k.reject(new TypeError("tapCatch statement predicate: expecting an object but got " + Y.classString(Oe)));
             Ee[Le++] = Oe;
           }
           Ee.length = Le;
@@ -3768,30 +3769,30 @@ if (G.navInfoSync.bIE) {
         }, C;
       };
     }, { "./catch_filter": 7, "./util": 36 }], 16: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p, N) {
+      n.exports = function(k, re, R, C, p, N) {
         function U(E, me, Ee) {
           for (var Le = 0; Le < me.length; ++Le) {
             Ee._pushContext();
             var Oe = O(me[Le])(E);
             if (Ee._popContext(), Oe === q) {
               Ee._pushContext();
-              var Te = x.reject(q.e);
+              var Te = k.reject(q.e);
               return Ee._popContext(), Te;
             }
             var Re = C(Oe, Ee);
-            if (Re instanceof x)
+            if (Re instanceof k)
               return Re;
           }
           return null;
         }
         function H(E, me, Ee, Le) {
           if (N.cancellation()) {
-            var Oe = new x(R), Te = this._finallyPromise = new x(R);
+            var Oe = new k(R), Te = this._finallyPromise = new k(R);
             this._promise = Oe.lastly(function() {
               return Te;
             }), Oe._captureStackTrace(), Oe._setOnCancel(this);
           } else {
-            var Re = this._promise = new x(R);
+            var Re = this._promise = new k(R);
             Re._captureStackTrace();
           }
           this._stack = Le, this._generatorFunction = E, this._receiver = me, this._generator = void 0, this._yieldHandlers = typeof Ee == "function" ? [Ee].concat(J) : J, this._yieldedPromise = null, this._cancellationPhase = !1;
@@ -3807,8 +3808,8 @@ if (G.navInfoSync.bIE) {
             if (me)
               this._promise._pushContext(), E = O(this._generator.return).call(this._generator, void 0), this._promise._popContext();
             else {
-              var Ee = new x.CancellationError("generator .return() sentinel");
-              x.coroutine.returnSentinel = Ee, this._promise._attachExtraTrace(Ee), this._promise._pushContext(), E = O(this._generator.throw).call(this._generator, Ee), this._promise._popContext();
+              var Ee = new k.CancellationError("generator .return() sentinel");
+              k.coroutine.returnSentinel = Ee, this._promise._attachExtraTrace(Ee), this._promise._pushContext(), E = O(this._generator.throw).call(this._generator, Ee), this._promise._popContext();
             }
             this._cancellationPhase = !0, this._yieldedPromise = null, this._continue(E);
           }
@@ -3821,7 +3822,7 @@ if (G.navInfoSync.bIE) {
           var me = O(this._generator.throw).call(this._generator, E);
           this._promise._popContext(), this._continue(me);
         }, H.prototype._resultCancelled = function() {
-          if (this._yieldedPromise instanceof x) {
+          if (this._yieldedPromise instanceof k) {
             var E = this._yieldedPromise;
             this._yieldedPromise = null, E.cancel();
           }
@@ -3837,7 +3838,7 @@ if (G.navInfoSync.bIE) {
           if (E.done === !0)
             return this._cleanup(), this._cancellationPhase ? me.cancel() : me._resolveCallback(Ee);
           var Le = C(Ee, this._promise);
-          if (!(Le instanceof x) && (Le = U(Le, this._yieldHandlers, this._promise), Le === null))
+          if (!(Le instanceof k) && (Le = U(Le, this._yieldHandlers, this._promise), Le === null))
             return void this._promiseRejected(new Y(`A value %s was yielded that could not be treated as a promise
 
     See http://goo.gl/MqrFmX
@@ -3848,8 +3849,8 @@ if (G.navInfoSync.bIE) {
 `)));
           Le = Le._target();
           var Oe = Le._bitField;
-          50397184 & Oe ? 33554432 & Oe ? x._async.invoke(this._promiseFulfilled, this, Le._value()) : 16777216 & Oe ? x._async.invoke(this._promiseRejected, this, Le._reason()) : this._promiseCancelled() : (this._yieldedPromise = Le, Le._proxy(this, null));
-        }, x.coroutine = function(E, me) {
+          50397184 & Oe ? 33554432 & Oe ? k._async.invoke(this._promiseFulfilled, this, Le._value()) : 16777216 & Oe ? k._async.invoke(this._promiseRejected, this, Le._reason()) : this._promiseCancelled() : (this._yieldedPromise = Le, Le._proxy(this, null));
+        }, k.coroutine = function(E, me) {
           if (typeof E != "function")
             throw new Y(`generatorFunction must be a function
 
@@ -3860,24 +3861,24 @@ if (G.navInfoSync.bIE) {
             var Te = E.apply(this, arguments), Re = new Le(void 0, void 0, Ee, Oe), Ve = Re.promise();
             return Re._generator = Te, Re._promiseFulfilled(void 0), Ve;
           };
-        }, x.coroutine.addYieldHandler = function(E) {
+        }, k.coroutine.addYieldHandler = function(E) {
           if (typeof E != "function")
             throw new Y("expecting a function but got " + F.classString(E));
           J.push(E);
-        }, x.spawn = function(E) {
+        }, k.spawn = function(E) {
           if (N.deprecated("Promise.spawn()", "Promise.coroutine()"), typeof E != "function")
             return re(`generatorFunction must be a function
 
     See http://goo.gl/MqrFmX
 `);
           var me = new H(E, this), Ee = me.promise();
-          return me._run(x.spawn), Ee;
+          return me._run(k.spawn), Ee;
         };
       };
     }, { "./errors": 12, "./util": 36 }], 17: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p) {
+      n.exports = function(k, re, R, C, p) {
         var N = l("./util");
-        N.canEvaluate, N.tryCatch, N.errorObj, x.join = function() {
+        N.canEvaluate, N.tryCatch, N.errorObj, k.join = function() {
           var U, H = arguments.length - 1;
           if (H > 0 && typeof arguments[H] == "function") {
             U = arguments[H];
@@ -3890,14 +3891,14 @@ if (G.navInfoSync.bIE) {
         };
       };
     }, { "./util": 36 }], 18: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p, N) {
+      n.exports = function(k, re, R, C, p, N) {
         function U(O, J, E, me) {
           this.constructor$(O), this._promise._captureStackTrace();
-          var Ee = x._getContext();
+          var Ee = k._getContext();
           if (this._callback = K.contextBind(Ee, J), this._preservedValues = me === p ? new Array(this.length()) : null, this._limit = E, this._inFlight = 0, this._queue = [], q.invoke(this._asyncInit, this, void 0), K.isArray(O))
             for (var Le = 0; Le < O.length; ++Le) {
               var Oe = O[Le];
-              Oe instanceof x && Oe.suppressUnhandledRejections();
+              Oe instanceof k && Oe.suppressUnhandledRejections();
             }
         }
         function H(O, J, E, me) {
@@ -3906,14 +3907,14 @@ if (G.navInfoSync.bIE) {
           var Ee = 0;
           if (E !== void 0) {
             if (typeof E != "object" || E === null)
-              return x.reject(new TypeError("options argument must be an object but it is " + K.classString(E)));
+              return k.reject(new TypeError("options argument must be an object but it is " + K.classString(E)));
             if (typeof E.concurrency != "number")
-              return x.reject(new TypeError("'concurrency' must be a number but it is " + K.classString(E.concurrency)));
+              return k.reject(new TypeError("'concurrency' must be a number but it is " + K.classString(E.concurrency)));
             Ee = E.concurrency;
           }
           return Ee = typeof Ee == "number" && isFinite(Ee) && Ee >= 1 ? Ee : 0, new U(O, J, Ee, me).promise();
         }
-        var K = l("./util"), Y = K.tryCatch, F = K.errorObj, q = x._async;
+        var K = l("./util"), Y = K.tryCatch, F = K.errorObj, q = k._async;
         K.inherits(U, re), U.prototype._asyncInit = function() {
           this._init$(void 0, -2);
         }, U.prototype._init = function() {
@@ -3932,7 +3933,7 @@ if (G.navInfoSync.bIE) {
             if (N.checkForgottenReturns(Ve, We, Ee !== null ? "Promise.filter" : "Promise.map", Oe), Ve === F)
               return this._reject(Ve.e), !0;
             var le = C(Ve, this._promise);
-            if (le instanceof x) {
+            if (le instanceof k) {
               le = le._target();
               var je = le._bitField;
               if (!(50397184 & je))
@@ -3958,28 +3959,28 @@ if (G.navInfoSync.bIE) {
           me.length = Ee, this._resolve(me);
         }, U.prototype.preservedValues = function() {
           return this._preservedValues;
-        }, x.prototype.map = function(O, J) {
+        }, k.prototype.map = function(O, J) {
           return H(this, O, J, null);
-        }, x.map = function(O, J, E, me) {
+        }, k.map = function(O, J, E, me) {
           return H(O, J, E, me);
         };
       };
     }, { "./util": 36 }], 19: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p) {
+      n.exports = function(k, re, R, C, p) {
         var N = l("./util"), U = N.tryCatch;
-        x.method = function(H) {
+        k.method = function(H) {
           if (typeof H != "function")
-            throw new x.TypeError("expecting a function but got " + N.classString(H));
+            throw new k.TypeError("expecting a function but got " + N.classString(H));
           return function() {
-            var K = new x(re);
+            var K = new k(re);
             K._captureStackTrace(), K._pushContext();
             var Y = U(H).apply(this, arguments), F = K._popContext();
             return p.checkForgottenReturns(Y, F, "Promise.method", K), K._resolveFromSyncValue(Y), K;
           };
-        }, x.attempt = x.try = function(H) {
+        }, k.attempt = k.try = function(H) {
           if (typeof H != "function")
             return C("expecting a function but got " + N.classString(H));
-          var K = new x(re);
+          var K = new k(re);
           K._captureStackTrace(), K._pushContext();
           var Y;
           if (arguments.length > 1) {
@@ -3990,17 +3991,17 @@ if (G.navInfoSync.bIE) {
             Y = U(H)();
           var O = K._popContext();
           return p.checkForgottenReturns(Y, O, "Promise.try", K), K._resolveFromSyncValue(Y), K;
-        }, x.prototype._resolveFromSyncValue = function(H) {
+        }, k.prototype._resolveFromSyncValue = function(H) {
           H === N.errorObj ? this._rejectCallback(H.e, !1) : this._resolveCallback(H, !0);
         };
       };
     }, { "./util": 36 }], 20: [function(l, n, L) {
-      function x(Y) {
+      function k(Y) {
         return Y instanceof Error && H.getPrototypeOf(Y) === Error.prototype;
       }
       function re(Y) {
         var F;
-        if (x(Y)) {
+        if (k(Y)) {
           F = new U(Y), F.name = Y.name, F.message = Y.message, F.stack = Y.stack;
           for (var q = H.keys(Y), O = 0; O < q.length; ++O) {
             var J = q[O];
@@ -4028,7 +4029,7 @@ if (G.navInfoSync.bIE) {
       var C = l("./util"), p = C.maybeWrapAsError, N = l("./errors"), U = N.OperationalError, H = l("./es5"), K = /^(?:name|message|stack|cause)$/;
       n.exports = R;
     }, { "./errors": 12, "./es5": 13, "./util": 36 }], 21: [function(l, n, L) {
-      n.exports = function(x) {
+      n.exports = function(k) {
         function re(K, Y) {
           var F = this;
           if (!p.isArray(K))
@@ -4049,8 +4050,8 @@ if (G.navInfoSync.bIE) {
           var O = U(Y).call(F._boundValue(), K);
           O === H && N.throwLater(O.e);
         }
-        var p = l("./util"), N = x._async, U = p.tryCatch, H = p.errorObj;
-        x.prototype.asCallback = x.prototype.nodeify = function(K, Y) {
+        var p = l("./util"), N = k._async, U = p.tryCatch, H = p.errorObj;
+        k.prototype.asCallback = k.prototype.nodeify = function(K, Y) {
           if (typeof K == "function") {
             var F = R;
             Y !== void 0 && Object(Y).spread && (F = re), this._then(F, C, void 0, this, K);
@@ -4060,7 +4061,7 @@ if (G.navInfoSync.bIE) {
       };
     }, { "./util": 36 }], 22: [function(l, n, L) {
       n.exports = function() {
-        function x() {
+        function k() {
         }
         function re(Be, Ge) {
           if (Be == null || Be.constructor !== R && typeof Promise < "u" && Be.constructor !== Promise)
@@ -4117,7 +4118,7 @@ if (G.navInfoSync.bIE) {
         var je = R.CancellationError = We.CancellationError;
         R.TimeoutError = We.TimeoutError, R.OperationalError = We.OperationalError, R.RejectionError = We.OperationalError, R.AggregateError = We.AggregateError;
         var fe = function() {
-        }, Me = {}, Z = {}, Ue = l("./thenables")(R, fe), ct = l("./promise_array")(R, fe, Ue, K, x), mt = l("./context")(R), at = mt.create, Ye = l("./debuggability")(R, mt, Le, Oe), Et = (Ye.CapturedTrace, l("./finally")(R, Ue, Z)), Je = l("./catch_filter")(Z), ce = l("./nodeback"), Ht = F.errorObj, Dt = F.tryCatch;
+        }, Me = {}, Z = {}, Ue = l("./thenables")(R, fe), ct = l("./promise_array")(R, fe, Ue, K, k), mt = l("./context")(R), at = mt.create, Ye = l("./debuggability")(R, mt, Le, Oe), Et = (Ye.CapturedTrace, l("./finally")(R, Ue, Z)), Je = l("./catch_filter")(Z), ce = l("./nodeback"), Ht = F.errorObj, Dt = F.tryCatch;
         return R.prototype.toString = function() {
           return "[object Promise]";
         }, R.prototype.caught = R.prototype.catch = function(Be) {
@@ -4308,7 +4309,7 @@ if (G.navInfoSync.bIE) {
           this._rejectionHandler0 = Be;
         }, R.prototype._settlePromise = function(Be, Ge, lt, ot) {
           var Kt = Be instanceof R, Lt = this._bitField, bn = (134217728 & Lt) !== 0;
-          65536 & Lt ? (Kt && Be._invokeInternalOnCancel(), lt instanceof Et && lt.isFinallyHandler() ? (lt.cancelPromise = Be, Dt(Ge).call(lt, ot) === Ht && Be._reject(Ht.e)) : Ge === H ? Be._fulfill(H.call(lt)) : lt instanceof x ? lt._promiseCancelled(Be) : Kt || Be instanceof ct ? Be._cancel() : lt.cancel()) : typeof Ge == "function" ? Kt ? (bn && Be._setAsyncGuaranteed(), this._settlePromiseFromHandler(Ge, lt, ot, Be)) : Ge.call(lt, ot, Be) : lt instanceof x ? lt._isResolved() || (33554432 & Lt ? lt._promiseFulfilled(ot, Be) : lt._promiseRejected(ot, Be)) : Kt && (bn && Be._setAsyncGuaranteed(), 33554432 & Lt ? Be._fulfill(ot) : Be._reject(ot));
+          65536 & Lt ? (Kt && Be._invokeInternalOnCancel(), lt instanceof Et && lt.isFinallyHandler() ? (lt.cancelPromise = Be, Dt(Ge).call(lt, ot) === Ht && Be._reject(Ht.e)) : Ge === H ? Be._fulfill(H.call(lt)) : lt instanceof k ? lt._promiseCancelled(Be) : Kt || Be instanceof ct ? Be._cancel() : lt.cancel()) : typeof Ge == "function" ? Kt ? (bn && Be._setAsyncGuaranteed(), this._settlePromiseFromHandler(Ge, lt, ot, Be)) : Ge.call(lt, ot, Be) : lt instanceof k ? lt._isResolved() || (33554432 & Lt ? lt._promiseFulfilled(ot, Be) : lt._promiseRejected(ot, Be)) : Kt && (bn && Be._setAsyncGuaranteed(), 33554432 & Lt ? Be._fulfill(ot) : Be._reject(ot));
         }, R.prototype._settlePromiseLateCancellationObserver = function(Be) {
           var Ge = Be.handler, lt = Be.promise, ot = Be.receiver, Kt = Be.value;
           typeof Ge == "function" ? lt instanceof R ? this._settlePromiseFromHandler(Ge, ot, Kt, lt) : Ge.call(ot, Kt, lt) : lt instanceof R && lt._reject(Kt);
@@ -4365,11 +4366,11 @@ if (G.navInfoSync.bIE) {
           Ye.deprecated("Promise.defer", "new Promise");
           var Be = new R(fe);
           return { promise: Be, resolve: C, reject: p };
-        }, F.notEnumerableProp(R, "_makeSelfResolutionError", U), l("./method")(R, fe, Ue, K, Ye), l("./bind")(R, fe, Ue, Ye), l("./cancel")(R, ct, K, Ye), l("./direct_resolve")(R), l("./synchronous_inspection")(R), l("./join")(R, ct, Ue, fe, Ve), R.Promise = R, R.version = "3.7.2", l("./call_get.js")(R), l("./generators.js")(R, K, fe, Ue, x, Ye), l("./map.js")(R, ct, K, Ue, fe, Ye), l("./nodeify.js")(R), l("./promisify.js")(R, fe), l("./props.js")(R, ct, Ue, K), l("./race.js")(R, fe, Ue, K), l("./reduce.js")(R, ct, K, Ue, fe, Ye), l("./settle.js")(R, ct, Ye), l("./some.js")(R, ct, K), l("./timers.js")(R, fe, Ye), l("./using.js")(R, K, Ue, at, fe, Ye), l("./any.js")(R), l("./each.js")(R, fe), l("./filter.js")(R, fe), F.toFastProperties(R), F.toFastProperties(R.prototype), N({ a: 1 }), N({ b: 2 }), N({ c: 3 }), N(1), N(function() {
+        }, F.notEnumerableProp(R, "_makeSelfResolutionError", U), l("./method")(R, fe, Ue, K, Ye), l("./bind")(R, fe, Ue, Ye), l("./cancel")(R, ct, K, Ye), l("./direct_resolve")(R), l("./synchronous_inspection")(R), l("./join")(R, ct, Ue, fe, Ve), R.Promise = R, R.version = "3.7.2", l("./call_get.js")(R), l("./generators.js")(R, K, fe, Ue, k, Ye), l("./map.js")(R, ct, K, Ue, fe, Ye), l("./nodeify.js")(R), l("./promisify.js")(R, fe), l("./props.js")(R, ct, Ue, K), l("./race.js")(R, fe, Ue, K), l("./reduce.js")(R, ct, K, Ue, fe, Ye), l("./settle.js")(R, ct, Ye), l("./some.js")(R, ct, K), l("./timers.js")(R, fe, Ye), l("./using.js")(R, K, Ue, at, fe, Ye), l("./any.js")(R), l("./each.js")(R, fe), l("./filter.js")(R, fe), F.toFastProperties(R), F.toFastProperties(R.prototype), N({ a: 1 }), N({ b: 2 }), N({ c: 3 }), N(1), N(function() {
         }), N(void 0), N(!1), N(new R(fe)), Ye.setBounds(Re.firstLineError, F.lastLineError), R;
       };
     }, { "./any.js": 1, "./async": 2, "./bind": 3, "./call_get.js": 5, "./cancel": 6, "./catch_filter": 7, "./context": 8, "./debuggability": 9, "./direct_resolve": 10, "./each.js": 11, "./errors": 12, "./es5": 13, "./filter.js": 14, "./finally": 15, "./generators.js": 16, "./join": 17, "./map.js": 18, "./method": 19, "./nodeback": 20, "./nodeify.js": 21, "./promise_array": 23, "./promisify.js": 24, "./props.js": 25, "./race.js": 27, "./reduce.js": 28, "./settle.js": 30, "./some.js": 31, "./synchronous_inspection": 32, "./thenables": 33, "./timers.js": 34, "./using.js": 35, "./util": 36, async_hooks: void 0 }], 23: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p) {
+      n.exports = function(k, re, R, C, p) {
         function N(K) {
           switch (K) {
             case -2:
@@ -4381,8 +4382,8 @@ if (G.navInfoSync.bIE) {
           }
         }
         function U(K) {
-          var Y = this._promise = new x(re);
-          K instanceof x && (Y._propagateFrom(K, 3), K.suppressUnhandledRejections()), Y._setOnCancel(this), this._values = K, this._length = 0, this._totalResolved = 0, this._init(void 0, -2);
+          var Y = this._promise = new k(re);
+          K instanceof k && (Y._propagateFrom(K, 3), K.suppressUnhandledRejections()), Y._setOnCancel(this), this._values = K, this._length = 0, this._totalResolved = 0, this._init(void 0, -2);
         }
         var H = l("./util");
         return H.isArray, H.inherits(U, p), U.prototype.length = function() {
@@ -4391,7 +4392,7 @@ if (G.navInfoSync.bIE) {
           return this._promise;
         }, U.prototype._init = function K(Y, F) {
           var q = R(this._values, this._promise);
-          if (q instanceof x) {
+          if (q instanceof k) {
             q = q._target();
             var O = q._bitField;
             if (this._values = q, (50397184 & O) === 0)
@@ -4410,7 +4411,7 @@ if (G.navInfoSync.bIE) {
           this._length = Y, this._values = this.shouldCopyValues() ? new Array(Y) : this._values;
           for (var F = this._promise, q = !1, O = null, J = 0; Y > J; ++J) {
             var E = R(K[J], F);
-            E instanceof x ? (E = E._target(), O = E._bitField) : O = null, q ? O !== null && E.suppressUnhandledRejections() : O !== null ? 50397184 & O ? q = 33554432 & O ? this._promiseFulfilled(E._value(), J) : 16777216 & O ? this._promiseRejected(E._reason(), J) : this._promiseCancelled(J) : (E._proxy(this, J), this._values[J] = E) : q = this._promiseFulfilled(E, J);
+            E instanceof k ? (E = E._target(), O = E._bitField) : O = null, q ? O !== null && E.suppressUnhandledRejections() : O !== null ? 50397184 & O ? q = 33554432 & O ? this._promiseFulfilled(E._value(), J) : 16777216 & O ? this._promiseRejected(E._reason(), J) : this._promiseCancelled(J) : (E._proxy(this, J), this._values[J] = E) : q = this._promiseFulfilled(E, J);
           }
           q || F._setAsyncGuaranteed();
         }, U.prototype._isResolved = function() {
@@ -4432,11 +4433,11 @@ if (G.navInfoSync.bIE) {
         }, U.prototype._resultCancelled = function() {
           if (!this._isResolved()) {
             var K = this._values;
-            if (this._cancel(), K instanceof x)
+            if (this._cancel(), K instanceof k)
               K.cancel();
             else
               for (var Y = 0; Y < K.length; ++Y)
-                K[Y] instanceof x && K[Y].cancel();
+                K[Y] instanceof k && K[Y].cancel();
           }
         }, U.prototype.shouldCopyValues = function() {
           return !0;
@@ -4445,7 +4446,7 @@ if (G.navInfoSync.bIE) {
         }, U;
       };
     }, { "./util": 36 }], 24: [function(l, n, L) {
-      n.exports = function(x, re) {
+      n.exports = function(k, re) {
         function R(fe) {
           return !Ve.test(fe);
         }
@@ -4484,7 +4485,7 @@ if (G.navInfoSync.bIE) {
           function at() {
             var Je = Me;
             Me === q && (Je = this);
-            var ce = new x(re);
+            var ce = new k(re);
             ce._captureStackTrace();
             var Ht = typeof Et == "string" && this !== Ye ? this[Et] : fe, Dt = J(ce, mt);
             try {
@@ -4521,7 +4522,7 @@ if (G.navInfoSync.bIE) {
         }, le = function(fe) {
           return fe.replace(/([$])/, "\\$");
         }, je = Ee ? F : H;
-        x.promisify = function(fe, Me) {
+        k.promisify = function(fe, Me) {
           if (typeof fe != "function")
             throw new Le("expecting a function but got " + O.classString(fe));
           if (C(fe))
@@ -4529,7 +4530,7 @@ if (G.navInfoSync.bIE) {
           Me = Object(Me);
           var Z = Me.context === void 0 ? q : Me.context, Ue = !!Me.multiArgs, ct = Y(fe, Z, Ue);
           return O.copyDescriptors(fe, ct, R), ct;
-        }, x.promisifyAll = function(fe, Me) {
+        }, k.promisifyAll = function(fe, Me) {
           if (typeof fe != "function" && typeof fe != "object")
             throw new Le(`the target of promisifyAll must be an object or a function
 
@@ -4554,7 +4555,7 @@ if (G.navInfoSync.bIE) {
         };
       };
     }, { "./errors": 12, "./nodeback": 20, "./util": 36 }], 25: [function(l, n, L) {
-      n.exports = function(x, re, R, C) {
+      n.exports = function(k, re, R, C) {
         function p(O) {
           var J, E = !1;
           if (U !== void 0 && O instanceof U)
@@ -4571,7 +4572,7 @@ if (G.navInfoSync.bIE) {
         }
         function N(O) {
           var J, E = R(O);
-          return K(E) ? (J = E instanceof x ? E._then(x.props, void 0, void 0, void 0, void 0) : new p(E).promise(), E instanceof x && J._propagateFrom(E, 2), J) : C(`cannot await properties of a non-object
+          return K(E) ? (J = E instanceof k ? E._then(k.props, void 0, void 0, void 0, void 0) : new p(E).promise(), E instanceof k && J._propagateFrom(E, 2), J) : C(`cannot await properties of a non-object
 
     See http://goo.gl/MqrFmX
 `);
@@ -4615,14 +4616,14 @@ if (G.navInfoSync.bIE) {
           return !1;
         }, p.prototype.getActualLength = function(O) {
           return O >> 1;
-        }, x.prototype.props = function() {
+        }, k.prototype.props = function() {
           return N(this);
-        }, x.props = function(O) {
+        }, k.props = function(O) {
           return N(O);
         };
       };
     }, { "./es5": 13, "./util": 36 }], 26: [function(l, n, L) {
-      function x(R, C, p, N, U) {
+      function k(R, C, p, N, U) {
         for (var H = 0; U > H; ++H)
           p[H + N] = R[H + C], R[H + C] = void 0;
       }
@@ -4655,21 +4656,21 @@ if (G.navInfoSync.bIE) {
         var C = this._capacity;
         this._capacity = R;
         var p = this._front, N = this._length, U = p + N & C - 1;
-        x(this, 0, this, C, U);
+        k(this, 0, this, C, U);
       }, n.exports = re;
     }, {}], 27: [function(l, n, L) {
-      n.exports = function(x, re, R, C) {
+      n.exports = function(k, re, R, C) {
         function p(H, K) {
           var Y = R(H);
-          if (Y instanceof x)
+          if (Y instanceof k)
             return U(Y);
           if (H = N.asArray(H), H === null)
             return C("expecting an array or an iterable object but got " + N.classString(H));
-          var F = new x(re);
+          var F = new k(re);
           K !== void 0 && F._propagateFrom(K, 3);
           for (var q = F._fulfill, O = F._reject, J = 0, E = H.length; E > J; ++J) {
             var me = H[J];
-            (me !== void 0 || J in H) && x.cast(me)._then(q, O, void 0, F, null);
+            (me !== void 0 || J in H) && k.cast(me)._then(q, O, void 0, F, null);
           }
           return F;
         }
@@ -4678,18 +4679,18 @@ if (G.navInfoSync.bIE) {
             return p(K, H);
           });
         };
-        x.race = function(H) {
+        k.race = function(H) {
           return p(H, void 0);
-        }, x.prototype.race = function() {
+        }, k.prototype.race = function() {
           return p(this, void 0);
         };
       };
     }, { "./util": 36 }], 28: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p, N) {
+      n.exports = function(k, re, R, C, p, N) {
         function U(J, E, me, Ee) {
           this.constructor$(J);
-          var Le = x._getContext();
-          this._fn = q.contextBind(Le, E), me !== void 0 && (me = x.resolve(me), me._attachCancellationCallback(this)), this._initialValue = me, this._currentCancellable = null, Ee === p ? this._eachValues = Array(this._length) : Ee === 0 ? this._eachValues = null : this._eachValues = void 0, this._promise._captureStackTrace(), this._init$(void 0, -5);
+          var Le = k._getContext();
+          this._fn = q.contextBind(Le, E), me !== void 0 && (me = k.resolve(me), me._attachCancellationCallback(this)), this._initialValue = me, this._currentCancellable = null, Ee === p ? this._eachValues = Array(this._length) : Ee === 0 ? this._eachValues = null : this._eachValues = void 0, this._promise._captureStackTrace(), this._init$(void 0, -5);
         }
         function H(J, E) {
           this.isFulfilled() ? E._resolve(J) : E._reject(J);
@@ -4703,13 +4704,13 @@ if (G.navInfoSync.bIE) {
         function Y(J) {
           this.accum = J, this.array._gotAccum(J);
           var E = C(this.value, this.array._promise);
-          return E instanceof x ? (this.array._currentCancellable = E, E._then(F, void 0, void 0, this, void 0)) : F.call(this, E);
+          return E instanceof k ? (this.array._currentCancellable = E, E._then(F, void 0, void 0, this, void 0)) : F.call(this, E);
         }
         function F(J) {
           var E = this.array, me = E._promise, Ee = O(E._fn);
           me._pushContext();
           var Le;
-          Le = E._eachValues !== void 0 ? Ee.call(me._boundValue(), J, this.index, this.length) : Ee.call(me._boundValue(), this.accum, J, this.index, this.length), Le instanceof x && (E._currentCancellable = Le);
+          Le = E._eachValues !== void 0 ? Ee.call(me._boundValue(), J, this.index, this.length) : Ee.call(me._boundValue(), this.accum, J, this.index, this.length), Le instanceof k && (E._currentCancellable = Le);
           var Oe = me._popContext();
           return N.checkForgottenReturns(Le, Oe, E._eachValues !== void 0 ? "Promise.each" : "Promise.reduce", me), Le;
         }
@@ -4726,14 +4727,14 @@ if (G.navInfoSync.bIE) {
         }, U.prototype._resolve = function(J) {
           this._promise._resolveCallback(J), this._values = null;
         }, U.prototype._resultCancelled = function(J) {
-          return J === this._initialValue ? this._cancel() : void (this._isResolved() || (this._resultCancelled$(), this._currentCancellable instanceof x && this._currentCancellable.cancel(), this._initialValue instanceof x && this._initialValue.cancel()));
+          return J === this._initialValue ? this._cancel() : void (this._isResolved() || (this._resultCancelled$(), this._currentCancellable instanceof k && this._currentCancellable.cancel(), this._initialValue instanceof k && this._initialValue.cancel()));
         }, U.prototype._iterate = function(J) {
           this._values = J;
           var E, me, Ee = J.length;
-          this._initialValue !== void 0 ? (E = this._initialValue, me = 0) : (E = x.resolve(J[0]), me = 1), this._currentCancellable = E;
+          this._initialValue !== void 0 ? (E = this._initialValue, me = 0) : (E = k.resolve(J[0]), me = 1), this._currentCancellable = E;
           for (var Le = me; Ee > Le; ++Le) {
             var Oe = J[Le];
-            Oe instanceof x && Oe.suppressUnhandledRejections();
+            Oe instanceof k && Oe.suppressUnhandledRejections();
           }
           if (!E.isRejected())
             for (; Ee > me; ++me) {
@@ -4741,14 +4742,14 @@ if (G.navInfoSync.bIE) {
               E = E._then(Y, void 0, void 0, Te, void 0), !(127 & me) && E._setNoAsyncGuarantee();
             }
           this._eachValues !== void 0 && (E = E._then(this._eachComplete, void 0, void 0, this, void 0)), E._then(H, H, void 0, E, this);
-        }, x.prototype.reduce = function(J, E) {
+        }, k.prototype.reduce = function(J, E) {
           return K(this, J, E, null);
-        }, x.reduce = function(J, E, me, Ee) {
+        }, k.reduce = function(J, E, me, Ee) {
           return K(J, E, me, Ee);
         };
       };
     }, { "./util": 36 }], 29: [function(l, n, L) {
-      var x, re = l("./util"), R = function() {
+      var k, re = l("./util"), R = function() {
         throw new Error(`No async scheduler available
 
     See http://goo.gl/MqrFmX
@@ -4756,18 +4757,18 @@ if (G.navInfoSync.bIE) {
       }, C = re.getNativePromise();
       if (re.isNode && typeof MutationObserver > "u") {
         var p = global.setImmediate, N = process.nextTick;
-        x = re.isRecentNode ? function(H) {
+        k = re.isRecentNode ? function(H) {
           p.call(global, H);
         } : function(H) {
           N.call(process, H);
         };
       } else if (typeof C == "function" && typeof C.resolve == "function") {
         var U = C.resolve();
-        x = function(H) {
+        k = function(H) {
           U.then(H);
         };
       } else
-        x = typeof MutationObserver < "u" && (typeof window > "u" || !window.navigator || !window.navigator.standalone && !window.cordova) && "classList" in document.documentElement ? function() {
+        k = typeof MutationObserver < "u" && (typeof window > "u" || !window.navigator || !window.navigator.standalone && !window.cordova) && "classList" in document.documentElement ? function() {
           var H = document.createElement("div"), K = { attributes: !0 }, Y = !1, F = document.createElement("div"), q = new MutationObserver(function() {
             H.classList.toggle("foo"), Y = !1;
           });
@@ -4786,13 +4787,13 @@ if (G.navInfoSync.bIE) {
         } : typeof setTimeout < "u" ? function(H) {
           setTimeout(H, 0);
         } : R;
-      n.exports = x;
+      n.exports = k;
     }, { "./util": 36 }], 30: [function(l, n, L) {
-      n.exports = function(x, re, R) {
+      n.exports = function(k, re, R) {
         function C(U) {
           this.constructor$(U);
         }
-        var p = x.PromiseInspection, N = l("./util");
+        var p = k.PromiseInspection, N = l("./util");
         N.inherits(C, re), C.prototype._promiseResolved = function(U, H) {
           this._values[U] = H;
           var K = ++this._totalResolved;
@@ -4803,16 +4804,16 @@ if (G.navInfoSync.bIE) {
         }, C.prototype._promiseRejected = function(U, H) {
           var K = new p();
           return K._bitField = 16777216, K._settledValueField = U, this._promiseResolved(H, K);
-        }, x.settle = function(U) {
+        }, k.settle = function(U) {
           return R.deprecated(".settle()", ".reflect()"), new C(U).promise();
-        }, x.allSettled = function(U) {
+        }, k.allSettled = function(U) {
           return new C(U).promise();
-        }, x.prototype.settle = function() {
-          return x.settle(this);
+        }, k.prototype.settle = function() {
+          return k.settle(this);
         };
       };
     }, { "./util": 36 }], 31: [function(l, n, L) {
-      n.exports = function(x, re, R) {
+      n.exports = function(k, re, R) {
         function C(F) {
           this.constructor$(F), this._howMany = 0, this._unwrap = !1, this._initialized = !1;
         }
@@ -4847,7 +4848,7 @@ if (G.navInfoSync.bIE) {
         }, C.prototype._promiseRejected = function(F) {
           return this._addRejected(F), this._checkOutcome();
         }, C.prototype._promiseCancelled = function() {
-          return this._values instanceof x || this._values == null ? this._cancel() : (this._addRejected(Y), this._checkOutcome());
+          return this._values instanceof k || this._values == null ? this._cancel() : (this._addRejected(Y), this._checkOutcome());
         }, C.prototype._checkOutcome = function() {
           if (this.howMany() > this._canPossiblyFulfill()) {
             for (var F = new H(), q = this.length(); q < this._values.length; ++q)
@@ -4870,14 +4871,14 @@ if (G.navInfoSync.bIE) {
           return new U(q);
         }, C.prototype._resolveEmptyArray = function() {
           this._reject(this._getRangeError(0));
-        }, x.some = function(F, q) {
+        }, k.some = function(F, q) {
           return p(F, q);
-        }, x.prototype.some = function(F) {
+        }, k.prototype.some = function(F) {
           return p(this, F);
-        }, x._SomePromiseArray = C;
+        }, k._SomePromiseArray = C;
       };
     }, { "./errors": 12, "./util": 36 }], 32: [function(l, n, L) {
-      n.exports = function(x) {
+      n.exports = function(k) {
         function re(K) {
           K !== void 0 ? (K = K._target(), this._bitField = K._bitField, this._settledValueField = K._isFateSealed() ? K._settledValue() : void 0) : (this._bitField = 0, this._settledValueField = void 0);
         }
@@ -4909,46 +4910,46 @@ if (G.navInfoSync.bIE) {
         };
         re.prototype.isCancelled = function() {
           return (8454144 & this._bitField) !== 0;
-        }, x.prototype.__isCancelled = function() {
+        }, k.prototype.__isCancelled = function() {
           return (65536 & this._bitField) === 65536;
-        }, x.prototype._isCancelled = function() {
+        }, k.prototype._isCancelled = function() {
           return this._target().__isCancelled();
-        }, x.prototype.isCancelled = function() {
+        }, k.prototype.isCancelled = function() {
           return (8454144 & this._target()._bitField) !== 0;
-        }, x.prototype.isPending = function() {
+        }, k.prototype.isPending = function() {
           return U.call(this._target());
-        }, x.prototype.isRejected = function() {
+        }, k.prototype.isRejected = function() {
           return N.call(this._target());
-        }, x.prototype.isFulfilled = function() {
+        }, k.prototype.isFulfilled = function() {
           return p.call(this._target());
-        }, x.prototype.isResolved = function() {
+        }, k.prototype.isResolved = function() {
           return H.call(this._target());
-        }, x.prototype.value = function() {
+        }, k.prototype.value = function() {
           return R.call(this._target());
-        }, x.prototype.reason = function() {
+        }, k.prototype.reason = function() {
           var K = this._target();
           return K._unsetRejectionIsUnhandled(), C.call(K);
-        }, x.prototype._value = function() {
+        }, k.prototype._value = function() {
           return this._settledValue();
-        }, x.prototype._reason = function() {
+        }, k.prototype._reason = function() {
           return this._unsetRejectionIsUnhandled(), this._settledValue();
-        }, x.PromiseInspection = re;
+        }, k.PromiseInspection = re;
       };
     }, {}], 33: [function(l, n, L) {
-      n.exports = function(x, re) {
+      n.exports = function(k, re) {
         function R(q, O) {
           if (Y(q)) {
-            if (q instanceof x)
+            if (q instanceof k)
               return q;
             var J = p(q);
             if (J === K) {
               O && O._pushContext();
-              var E = x.reject(J.e);
+              var E = k.reject(J.e);
               return O && O._popContext(), E;
             }
             if (typeof J == "function") {
               if (N(q)) {
-                var E = new x(re);
+                var E = new k(re);
                 return q._then(E._fulfill, E._reject, void 0, E, null), E;
               }
               return U(q, J, O);
@@ -4980,7 +4981,7 @@ if (G.navInfoSync.bIE) {
           function me(Re) {
             Ee && (Ee._rejectCallback(Re, Oe, !0), Ee = null);
           }
-          var Ee = new x(re), Le = Ee;
+          var Ee = new k(re), Le = Ee;
           J && J._pushContext(), Ee._captureStackTrace(), J && J._popContext();
           var Oe = !0, Te = H.tryCatch(O).call(q, E, me);
           return Oe = !1, Ee && Te === K && (Ee._rejectCallback(Te.e, !0, !0), Ee = null), Le;
@@ -4989,7 +4990,7 @@ if (G.navInfoSync.bIE) {
         return R;
       };
     }, { "./util": 36 }], 34: [function(l, n, L) {
-      n.exports = function(x, re, R) {
+      n.exports = function(k, re, R) {
         function C(q) {
           this.handle = q;
         }
@@ -4999,26 +5000,26 @@ if (G.navInfoSync.bIE) {
         function N(q) {
           throw clearTimeout(this.handle), q;
         }
-        var U = l("./util"), H = x.TimeoutError;
+        var U = l("./util"), H = k.TimeoutError;
         C.prototype._resultCancelled = function() {
           clearTimeout(this.handle);
         };
         var K = function(q) {
           return Y(+this).thenReturn(q);
-        }, Y = x.delay = function(q, O) {
+        }, Y = k.delay = function(q, O) {
           var J, E;
-          return O !== void 0 ? (J = x.resolve(O)._then(K, null, null, q, void 0), R.cancellation() && O instanceof x && J._setOnCancel(O)) : (J = new x(re), E = setTimeout(function() {
+          return O !== void 0 ? (J = k.resolve(O)._then(K, null, null, q, void 0), R.cancellation() && O instanceof k && J._setOnCancel(O)) : (J = new k(re), E = setTimeout(function() {
             J._fulfill();
           }, +q), R.cancellation() && J._setOnCancel(new C(E)), J._captureStackTrace()), J._setAsyncGuaranteed(), J;
         };
-        x.prototype.delay = function(q) {
+        k.prototype.delay = function(q) {
           return Y(q, this);
         };
         var F = function(q, O, J) {
           var E;
           E = typeof O != "string" ? O instanceof Error ? O : new H("operation timed out") : new H(O), U.markAsOriginatingFromRejection(E), q._attachExtraTrace(E), q._reject(E), J != null && J.cancel();
         };
-        x.prototype.timeout = function(q, O) {
+        k.prototype.timeout = function(q, O) {
           q = +q;
           var J, E, me = new C(setTimeout(function() {
             J.isPending() && F(J, O, E);
@@ -5027,7 +5028,7 @@ if (G.navInfoSync.bIE) {
         };
       };
     }, { "./util": 36 }], 35: [function(l, n, L) {
-      n.exports = function(x, re, R, C, p, N) {
+      n.exports = function(k, re, R, C, p, N) {
         function U(Te) {
           setTimeout(function() {
             throw Te;
@@ -5042,18 +5043,18 @@ if (G.navInfoSync.bIE) {
             if (We >= le)
               return je._fulfill();
             var fe = H(Te[We++]);
-            if (fe instanceof x && fe._isDisposable()) {
+            if (fe instanceof k && fe._isDisposable()) {
               try {
                 fe = R(fe._getDisposer().tryDispose(Re), Te.promise);
               } catch (Me) {
                 return U(Me);
               }
-              if (fe instanceof x)
+              if (fe instanceof k)
                 return fe._then(Ve, U, null, null, null);
             }
             Ve();
           }
-          var We = 0, le = Te.length, je = new x(p);
+          var We = 0, le = Te.length, je = new k(p);
           return Ve(), je;
         }
         function Y(Te, Re, Ve) {
@@ -5088,9 +5089,9 @@ if (G.navInfoSync.bIE) {
         }, O.prototype._resultCancelled = function() {
           for (var Te = this.length, Re = 0; Te > Re; ++Re) {
             var Ve = this[Re];
-            Ve instanceof x && Ve.cancel();
+            Ve instanceof k && Ve.cancel();
           }
-        }, x.using = function() {
+        }, k.using = function() {
           var Te = arguments.length;
           if (2 > Te)
             return re("you must pass at least 2 arguments to Promise.using");
@@ -5106,13 +5107,13 @@ if (G.navInfoSync.bIE) {
               fe = fe.promise(), fe._setDisposable(Me);
             } else {
               var Z = R(fe);
-              Z instanceof x && (fe = Z._then(q, null, null, { resources: le, index: je }, void 0));
+              Z instanceof k && (fe = Z._then(q, null, null, { resources: le, index: je }, void 0));
             }
             le[je] = fe;
           }
           for (var Ue = new Array(le.length), je = 0; je < Ue.length; ++je)
-            Ue[je] = x.resolve(le[je]).reflect();
-          var ct = x.all(Ue).then(function(at) {
+            Ue[je] = k.resolve(le[je]).reflect();
+          var ct = k.all(Ue).then(function(at) {
             for (var Ye = 0; Ye < at.length; ++Ye) {
               var Et = at[Ye];
               if (Et.isRejected())
@@ -5125,26 +5126,26 @@ if (G.navInfoSync.bIE) {
             var Je = We ? Re.apply(void 0, at) : Re(at), ce = mt._popContext();
             return N.checkForgottenReturns(Je, ce, "Promise.using", mt), Je;
           }), mt = ct.lastly(function() {
-            var at = new x.PromiseInspection(ct);
+            var at = new k.PromiseInspection(ct);
             return K(le, at);
           });
           return le.promise = mt, mt._setOnCancel(le), mt;
-        }, x.prototype._setDisposable = function(Te) {
+        }, k.prototype._setDisposable = function(Te) {
           this._bitField = 131072 | this._bitField, this._disposer = Te;
-        }, x.prototype._isDisposable = function() {
+        }, k.prototype._isDisposable = function() {
           return (131072 & this._bitField) > 0;
-        }, x.prototype._getDisposer = function() {
+        }, k.prototype._getDisposer = function() {
           return this._disposer;
-        }, x.prototype._unsetDisposable = function() {
+        }, k.prototype._unsetDisposable = function() {
           this._bitField = -131073 & this._bitField, this._disposer = void 0;
-        }, x.prototype.disposer = function(Te) {
+        }, k.prototype.disposer = function(Te) {
           if (typeof Te == "function")
             return new F(Te, this, C());
           throw new E();
         };
       };
     }, { "./errors": 12, "./util": 36 }], 36: [function(l, n, L) {
-      function x() {
+      function k() {
         try {
           var Ge = Me;
           return Me = null, Ge.apply(this, arguments);
@@ -5153,7 +5154,7 @@ if (G.navInfoSync.bIE) {
         }
       }
       function re(Ge) {
-        return Me = Ge, x;
+        return Me = Ge, k;
       }
       function R(Ge) {
         return Ge == null || Ge === !0 || Ge === !1 || typeof Ge == "string" || typeof Ge == "number";
@@ -5389,7 +5390,7 @@ if (G.navInfoSync.bIE) {
   function L(ye) {
     return ye === l;
   }
-  function x(ye) {
+  function k(ye) {
     return ye !== l;
   }
   function re(ye) {
@@ -5539,7 +5540,7 @@ if (G.navInfoSync.bIE) {
     }
     return 0;
   }
-  mt && x(mt.console) && (p((Ue = mt.console).log) && p(Ue.error) ? Z = { log: at, error: Ye, info: Je, warn: Et, debug: function(ye, oe, ae, ie) {
+  mt && k(mt.console) && (p((Ue = mt.console).log) && p(Ue.error) ? Z = { log: at, error: Ye, info: Je, warn: Et, debug: function(ye, oe, ae, ie) {
     if (ct.debug && Ue && p(Ue.debug)) {
       var _e = Me((/* @__PURE__ */ new Date()).getTime()), de = fe(arguments);
       Ue.debug(["[", _e, "] ", de].join(""));
@@ -5873,11 +5874,11 @@ if (G.navInfoSync.bIE) {
   if (typeof process !== Gn && process.nextTick)
     ei = process.nextTick;
   else if (typeof MessageChannel !== Gn) {
-    var ra = new MessageChannel(), Ao = [];
+    var ra = new MessageChannel(), Ro = [];
     ra.port1.onmessage = function() {
-      Ao.length && Ao.shift()();
+      Ro.length && Ro.shift()();
     }, ei = function(ye) {
-      Ao.push(ye), ra.port2.postMessage(0);
+      Ro.push(ye), ra.port2.postMessage(0);
     };
   } else
     ei = function(ye) {
@@ -5896,7 +5897,7 @@ if (G.navInfoSync.bIE) {
   }
   function ia(ye, oe) {
     return this.then(function(ae) {
-      return Zi(ye) ? ye.apply(null, _i(ae) ? ae : [ae]) : To.onlyFuncs ? ae : ye;
+      return Zi(ye) ? ye.apply(null, _i(ae) ? ae : [ae]) : Co.onlyFuncs ? ae : ye;
     }, oe || Qi);
   }
   function ma(ye) {
@@ -5907,17 +5908,17 @@ if (G.navInfoSync.bIE) {
   }
   function pa(ye) {
     return this.then(function(oe) {
-      return Zi(ye) ? ye.apply(null, _i(oe) ? oe.splice(0, 0, void 0) && oe : [void 0, oe]) : To.onlyFuncs ? oe : ye;
+      return Zi(ye) ? ye.apply(null, _i(oe) ? oe.splice(0, 0, void 0) && oe : [void 0, oe]) : Co.onlyFuncs ? oe : ye;
     }, function(oe) {
       return ye(oe);
     });
   }
-  function No(ye) {
+  function Vo(ye) {
     return this.then(Qi, ye ? function(oe) {
       throw ye(oe), oe;
     } : zn);
   }
-  var To = function() {
+  var Co = function() {
     function ye(oe) {
       this.alwaysAsyncFn = null, this.status = 0, this.pendings = [], this.promise = { then: function(ae, ie) {
         var _e = new ye();
@@ -5935,7 +5936,7 @@ if (G.navInfoSync.bIE) {
               _e.reject(Se);
             }
         }]), this.status !== 0 && this.alwaysAsyncFn(this.execCallbacks), _e.promise;
-      }, success: Ur, error: pt, otherwise: pt, apply: ia, spread: ia, ensure: ma, nodify: pa, rethrow: No, isPending: function() {
+      }, success: Ur, error: pt, otherwise: pt, apply: ia, spread: ia, ensure: ma, nodify: pa, rethrow: Vo, isPending: function() {
         return this.status === 0;
       }, getStatus: function() {
         return this.status;
@@ -5996,7 +5997,7 @@ if (G.navInfoSync.bIE) {
     }
     return ie;
   }
-  function po(ye) {
+  function _o(ye) {
     var oe = ye.charAt(0) === "/", ae = ye.slice(-1) === "/";
     return (ye = ar(oi.filter(ye.split("/"), function(ie) {
       return !!ie;
@@ -6014,11 +6015,11 @@ if (G.navInfoSync.bIE) {
       }), !de).join("/") || ".";
     }, ye.prototype.join = function() {
       var oe = fe(arguments);
-      return po(oi.filter(oe, function(ae) {
+      return _o(oi.filter(oe, function(ae) {
         return ae && N(ae);
       }).join("/"));
     }, ye.prototype.relative = function(oe, ae) {
-      oe = po(oe), ae = po(ae);
+      oe = _o(oe), ae = _o(ae);
       var ie, _e, de = oi.filter(oe.split("/"), function(qe) {
         return !!qe;
       }), Se = [], Ae = oi.filter(ae.split("/"), function(qe) {
@@ -6055,8 +6056,8 @@ if (G.navInfoSync.bIE) {
     var _e = [];
     return O(ye, function(de, Se) {
       var Ae = mn(Se);
-      $(de) ? (_e.push(Ae), x(de) && _e.push(ae, mn(de + Oe)), _e.push(oe)) : Y(de) && de.length && O(de, function(ze) {
-        $(ze) && (_e.push(Ae, ie ? mn("[]") : Oe), x(ze) && _e.push(ae, mn(ze + Oe)), _e.push(oe));
+      $(de) ? (_e.push(Ae), k(de) && _e.push(ae, mn(de + Oe)), _e.push(oe)) : Y(de) && de.length && O(de, function(ze) {
+        $(ze) && (_e.push(Ae, ie ? mn("[]") : Oe), k(ze) && _e.push(ae, mn(ze + Oe)), _e.push(oe));
       });
     }), _e.pop(), _e.join(Oe);
   }
@@ -6294,7 +6295,7 @@ if (G.navInfoSync.bIE) {
     return ye && oe.unshift(ye), oe.join("");
   }, stringify: (Ci = Xi.JSON) === null || Ci === void 0 ? void 0 : Ci.stringify, parse: (Er = Xi.JSON) === null || Er === void 0 ? void 0 : Er.parse, __ver: ui }), function(ye) {
     var oe = ye.Lib;
-    oe.mix(oe, { isDef: x, isUndef: L, isUndefined: L, isNull: re, isNaN, isFunction: p, isString: N, isObject: U, isBoolean: H, isNumber: K, isArray: Y, type: C, isPlainObject: E, isDOM: Ee, isDOMInBody: Le, each: O });
+    oe.mix(oe, { isDef: k, isUndef: L, isUndefined: L, isNull: re, isNaN, isFunction: p, isString: N, isObject: U, isBoolean: H, isNumber: K, isArray: Y, type: C, isPlainObject: E, isDOM: Ee, isDOMInBody: Le, each: O });
   }(n), ce(n.Lib, { getFormatedNow: Me, getLogger: function() {
     return Z;
   }, setLogger: function(ye) {
@@ -6386,7 +6387,7 @@ if (G.navInfoSync.bIE) {
         return oe.Promise = self.Promise, void (oe.nativePromise || (oe.nativePromise = oe.Promise));
       if (ae && ae.Promise)
         return oe.Promise = ae.Promise, void (oe.nativePromise || (oe.nativePromise = oe.Promise));
-      oe.Promise = To, oe.nativePromise || (oe.nativePromise = oe.Promise);
+      oe.Promise = Co, oe.nativePromise || (oe.nativePromise = oe.Promise);
     }
   }(n), n.Lib.asyncGetNavInfo = Li, function(ye) {
     var oe = ye.Lib, ae = ye.navInfoSync, ie = !1, _e = !1;
@@ -7030,7 +7031,7 @@ if (G.navInfoSync.bIE) {
       if (St) {
         if (L(jt))
           return _t = St.innerHTML, document.all ? (_t = _t.replace(/(\s+\w+)\s*=\s*([^<>"\s]+)(?=[^<>]*\/>)/gi, '$1="$2"').replace(/"'([^'"]*)'"/gi, '"$1"')).replace(/<(\/?)(\w+)([^>]*)>/g, function(sn, yn, Wn, Jn) {
-            return yn ? "</" + Wn.toLowerCase() + ">" : ("<" + Wn.toLowerCase() + Jn + ">").replace(/=(("[^"]*?")|('[^']*?')|([\w\-\.]+))([\s>])/g, function(pr, cr, Fi, Oi, Di, Wr, Ki, Ro) {
+            return yn ? "</" + Wn.toLowerCase() + ">" : ("<" + Wn.toLowerCase() + Jn + ">").replace(/=(("[^"]*?")|('[^']*?')|([\w\-\.]+))([\s>])/g, function(pr, cr, Fi, Oi, Di, Wr, Ki, Lo) {
               return Di ? '="' + Di + '"' + Wr : pr;
             });
           }).replace(/<\/?([^>]+)>/g, function(sn) {
@@ -7215,9 +7216,9 @@ if (G.navInfoSync.bIE) {
           var Ki = void 0;
           Wn ? Ki = ["display:block;position:", Jn, ";left:50%;top:50%;transform:translate(-50%,-50%)"] : (Ki = ["display:block;position:", Jn, ";left:", cr, ";top:", pr, ";width:", Fi, ";height:", Oi], Di && (Ki.push(";transform:"), Ki.push(Di))), yn.tagName == "DIALOG" ? Ki.push(";margin:0;border-radius:6px;box-shadow:2px 2px 0 0 rgba(0,0,0,.05);-webkit-box-sizing:border-box;box-sizing:border-box;") : Ki.push(";border:0;margin:0;-webkit-box-sizing:border-box;box-sizing:border-box;"), yn.setAttribute("style", Ki.join(""));
         }
-        ze(yn) && function(Ro) {
-          var Co, ro, di, Ga;
-          Ga = (((Co = de.body) === null || Co === void 0 ? void 0 : Co.scrollTop) || ((ro = de.documentElement) === null || ro === void 0 ? void 0 : ro.scrollTop) || 0) + ((_e.innerHeight ? _e.innerHeight : (di = de.documentElement) === null || di === void 0 ? void 0 : di.clientHeight) - Ro.offsetHeight) / 2, Ro.style.top = Ga + "px", Ro._dlgInfo.isTopOverridden = F;
+        ze(yn) && function(Lo) {
+          var Eo, ro, di, Ga;
+          Ga = (((Eo = de.body) === null || Eo === void 0 ? void 0 : Eo.scrollTop) || ((ro = de.documentElement) === null || ro === void 0 ? void 0 : ro.scrollTop) || 0) + ((_e.innerHeight ? _e.innerHeight : (di = de.documentElement) === null || di === void 0 ? void 0 : di.clientHeight) - Lo.offsetHeight) / 2, Lo.style.top = Ga + "px", Lo._dlgInfo.isTopOverridden = F;
         }(yn), _t && (yn._dlgInfo.modal = F, Jt.pushDialog(yn, St));
       }
     }
@@ -7316,9 +7317,9 @@ if (G.navInfoSync.bIE) {
       var lr, Vn, wr, rr, Dr = Sn.style;
       return (rr = (Cn = Cn || oe(Sn)) ? Cn[Kn] : void 0) == null && Dr && Dr[Kn] && (rr = Dr[Kn]), _n.test(rr) && !Ke.test(Kn) && (lr = Dr.left, (wr = (Vn = Sn.runtimeStyle) && Vn.left) && (Vn.left = Sn.currentStyle.left), Dr.left = Kn === "fontSize" ? "1em" : rr, rr = Dr.pixelLeft + "px", Dr.left = lr, wr && (Vn.left = wr)), rr === void 0 ? rr : rr + "" || "auto";
     });
-    var In, jt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:-]+)[^>]*)\/>/gi, _t = /<([\w:-]+)/, St = /^\s+/, sn = /<|&#?\w+;/, yn = /<tbody/i, Wn = /^-ms-/, Jn = /-([\da-z])/gi, pr = /^(none|table(?!-c[ea]).+)/, cr = /^<([\w-]+)\s*\/?>(?:<\/\1>|)$/, Fi = { position: "absolute", visibility: "hidden", display: "block" }, Oi = { letterSpacing: "0", fontWeight: "400" }, Di = ["Top", "Right", "Bottom", "Left"], Wr = { option: [1, "<select multiple='multiple'>", "</select>"], legend: [1, "<fieldset>", "</fieldset>"], area: [1, "<map>", "</map>"], param: [1, "<object>", "</object>"], thead: [1, "<table>", "</table>"], tr: [2, "<table><tbody>", "</tbody></table>"], col: [2, "<table><tbody></tbody><colgroup>", "</colgroup></table>"], td: [3, "<table><tbody><tr>", "</tr></tbody></table>"], _default: Se.htmlSerialize ? [0, "", ""] : [1, "X<div>", "</div>"] }, Ki = ["Webkit", "O", "Moz", "ms"], Ro = "abbr|article|aside|audio|bdi|canvas|data|datalist|details|dialog|figcaption|figure|footer|header|hgroup|main|mark|meter|nav|output|picture|progress|section|summary|template|time|video", Co = document.createElement("div");
-    if (Co.style) {
-      In = Co.style, Se.cssFloat = !!Co.style.cssFloat;
+    var In, jt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:-]+)[^>]*)\/>/gi, _t = /<([\w:-]+)/, St = /^\s+/, sn = /<|&#?\w+;/, yn = /<tbody/i, Wn = /^-ms-/, Jn = /-([\da-z])/gi, pr = /^(none|table(?!-c[ea]).+)/, cr = /^<([\w-]+)\s*\/?>(?:<\/\1>|)$/, Fi = { position: "absolute", visibility: "hidden", display: "block" }, Oi = { letterSpacing: "0", fontWeight: "400" }, Di = ["Top", "Right", "Bottom", "Left"], Wr = { option: [1, "<select multiple='multiple'>", "</select>"], legend: [1, "<fieldset>", "</fieldset>"], area: [1, "<map>", "</map>"], param: [1, "<object>", "</object>"], thead: [1, "<table>", "</table>"], tr: [2, "<table><tbody>", "</tbody></table>"], col: [2, "<table><tbody></tbody><colgroup>", "</colgroup></table>"], td: [3, "<table><tbody><tr>", "</tr></tbody></table>"], _default: Se.htmlSerialize ? [0, "", ""] : [1, "X<div>", "</div>"] }, Ki = ["Webkit", "O", "Moz", "ms"], Lo = "abbr|article|aside|audio|bdi|canvas|data|datalist|details|dialog|figcaption|figure|footer|header|hgroup|main|mark|meter|nav|output|picture|progress|section|summary|template|time|video", Eo = document.createElement("div");
+    if (Eo.style) {
+      In = Eo.style, Se.cssFloat = !!Eo.style.cssFloat;
       var ro = function(Sn, Kn) {
         return Kn.toUpperCase();
       }, di = { type: ie.type, cssHooks: {}, htmlPrefilter: function(Sn) {
@@ -7338,11 +7339,11 @@ if (G.navInfoSync.bIE) {
       di.cssProps[Ga] = Se.cssFloat ? "cssFloat" : "styleFloat", de(["height", "width"], function(Sn, Kn) {
         di.cssHooks[Sn] = { get: function(Cn, lr, Vn) {
           if (lr)
-            return pr.test(ie.css(Cn, "display")) && Cn.offsetWidth === 0 ? function(wr, rr, Dr, Eo) {
+            return pr.test(ie.css(Cn, "display")) && Cn.offsetWidth === 0 ? function(wr, rr, Dr, Do) {
               var Wi, Ir = {};
               return de(rr, function(ti, Pi) {
                 Ir[Pi] = wr.style[Pi], wr.style[Pi] = rr[Pi];
-              }), Wi = Dr.apply(wr, Eo || []), de(rr, function(ti, Pi) {
+              }), Wi = Dr.apply(wr, Do || []), de(rr, function(ti, Pi) {
                 wr.style[Pi] = Ir[Pi];
               }), Wi;
             }(Cn, Fi, function() {
@@ -7350,30 +7351,30 @@ if (G.navInfoSync.bIE) {
             }) : is(Cn, Sn, Vn);
         }, set: function(Cn, lr, Vn) {
           var wr = Vn && oe(Cn);
-          return function(rr, Dr, Eo) {
+          return function(rr, Dr, Do) {
             var Wi = Jt.exec(Dr);
-            return Wi ? Math.max(0, parseInt(Wi[1]) - (Eo || 0)) + (Wi[2] || "px") : Dr;
+            return Wi ? Math.max(0, parseInt(Wi[1]) - (Do || 0)) + (Wi[2] || "px") : Dr;
           }(0, lr, Vn ? rs(Cn, Sn, Vn, Se.boxSizing && ie.css(Cn, "boxSizing", !1, wr) === "border-box", wr) : 0);
         } };
       }), ie.style = function(Sn, Kn, Cn, lr) {
         if (Sn && Sn.nodeType !== 3 && Sn.nodeType !== 8 && Sn.style) {
-          var Vn, wr, rr, Dr = di.camelCase(Kn), Eo = Sn.style;
+          var Vn, wr, rr, Dr = di.camelCase(Kn), Do = Sn.style;
           if (Kn = di.cssProps[Dr] || (di.cssProps[Dr] = ts(Dr) || Dr), rr = di.cssHooks[Kn] || di.cssHooks[Dr], Cn === void 0)
-            return rr && "get" in rr && (Vn = rr.get(Sn, !1, lr)) !== void 0 ? Vn : Eo[Kn] + "";
+            return rr && "get" in rr && (Vn = rr.get(Sn, !1, lr)) !== void 0 ? Vn : Do[Kn] + "";
           (wr = typeof Cn) == "string" && (Vn = _a(Cn)) && Vn[1] && (Cn = function(Wi, Ir, ti, Pi) {
-            var co, ji = 1, lo = 20, _o = Pi ? function() {
+            var lo, ji = 1, ho = 20, vo = Pi ? function() {
               return Pi.cur();
             } : function() {
               return ie.css(Wi, Ir, "");
-            }, va = _o(), Qo = ti && ti[3] || (di.cssNumber[Ir] ? "" : "px"), vo = (di.cssNumber[Ir] || Qo !== "px" && +va) && _a(ie.css(Wi, Ir));
-            if (vo && vo[3] !== Qo) {
-              Qo = Qo || vo[3], ti = ti || [], vo = +va || 1;
+            }, va = vo(), Qo = ti && ti[3] || (di.cssNumber[Ir] ? "" : "px"), yo = (di.cssNumber[Ir] || Qo !== "px" && +va) && _a(ie.css(Wi, Ir));
+            if (yo && yo[3] !== Qo) {
+              Qo = Qo || yo[3], ti = ti || [], yo = +va || 1;
               do
-                vo /= ji = ji || ".5", ie.style(Wi, Ir, vo + Qo);
-              while (ji !== (ji = _o() / va) && ji !== 1 && --lo);
+                yo /= ji = ji || ".5", ie.style(Wi, Ir, yo + Qo);
+              while (ji !== (ji = vo() / va) && ji !== 1 && --ho);
             }
-            return ti && (vo = +vo || +va || 0, co = ti[1] ? vo + (ti[1] + 1) * ti[2] : +ti[2], Pi && (Pi.unit = Qo, Pi.start = vo, Pi.end = co)), co;
-          }(Sn, Kn, Vn), wr = "number"), Cn != null && Cn == Cn && (wr === "number" && (Cn += Vn && Vn[3] || (di.cssNumber[Dr] ? "" : "px")), Se.clearCloneStyle || Cn !== "" || Kn.indexOf("background") !== 0 || (Eo[Kn] = "inherit"), rr && "set" in rr && (Cn = rr.set(Sn, Cn, lr)) === void 0 || (Eo[Kn] = Cn));
+            return ti && (yo = +yo || +va || 0, lo = ti[1] ? yo + (ti[1] + 1) * ti[2] : +ti[2], Pi && (Pi.unit = Qo, Pi.start = yo, Pi.end = lo)), lo;
+          }(Sn, Kn, Vn), wr = "number"), Cn != null && Cn == Cn && (wr === "number" && (Cn += Vn && Vn[3] || (di.cssNumber[Dr] ? "" : "px")), Se.clearCloneStyle || Cn !== "" || Kn.indexOf("background") !== 0 || (Do[Kn] = "inherit"), rr && "set" in rr && (Cn = rr.set(Sn, Cn, lr)) === void 0 || (Do[Kn] = Cn));
         }
       }, ie.css = function(Sn, Kn, Cn, lr) {
         var Vn, wr, rr, Dr = di.camelCase(Kn);
@@ -7394,13 +7395,13 @@ if (G.navInfoSync.bIE) {
           return Sn;
     }
     function ns(Sn, Kn) {
-      for (var Cn, lr, Vn, wr, rr, Dr, Eo = Sn.length, Wi = function(co) {
-        var ji = Ro.split("|"), lo = co.createDocumentFragment();
-        if (lo.createElement)
+      for (var Cn, lr, Vn, wr, rr, Dr, Do = Sn.length, Wi = function(lo) {
+        var ji = Lo.split("|"), ho = lo.createDocumentFragment();
+        if (ho.createElement)
           for (; ji.length; )
-            lo.createElement(ji.pop());
-        return lo;
-      }(Kn), Ir = [], ti = 0; ti < Eo; ti++)
+            ho.createElement(ji.pop());
+        return ho;
+      }(Kn), Ir = [], ti = 0; ti < Do; ti++)
         if ((lr = Sn[ti]) || lr === 0)
           if (ie.type(lr) === "object")
             di.merge(Ir, lr.nodeType ? [lr] : lr);
@@ -7470,7 +7471,7 @@ if (G.navInfoSync.bIE) {
     let C = function(p) {
       return Object(p) === p;
     };
-    var x = Object.prototype.hasOwnProperty, re = Object.defineProperty && function() {
+    var k = Object.prototype.hasOwnProperty, re = Object.defineProperty && function() {
       try {
         return Object.defineProperty({}, "x", { value: 1 }).x === 1;
       } catch {
@@ -7508,7 +7509,7 @@ if (G.navInfoSync.bIE) {
         return F && F[0] === K ? (F[1] = Y, this) : (R(K, this._id, [K, Y]), this);
       });
       function N(K, Y) {
-        if (!C(K) || !x.call(K, "_id"))
+        if (!C(K) || !k.call(K, "_id"))
           throw new TypeError(Y + " method called on incompatible receiver " + typeof K);
       }
       function U(K) {
@@ -7526,7 +7527,7 @@ if (G.navInfoSync.bIE) {
   function L(o) {
     return Math.floor(o);
   }
-  var x = "18", re = "0", R = "1025", C = "127.0.0.1", p = "".concat(x, ",").concat(re, ",").concat("0", ",").concat(R), N = { JSVersion: p, ServerVersionInfo: p, ServerLinuxVersionInfo: p, ServerMacVersionInfo: p, ActiveXVersion: p, ActiveXPdfVersion: "11.4.1.1025", PdfVersion: "11.4.1.1025", ProductName: "Dynamic Web TWAIN " + [x, re].join("."), Containers: void 0, DynamicContainers: [], ContainerMap: {}, Trial: !1, ResourcesPath: "Resources", Debug: !1, IfUpdateService: !1, AutoLoad: !0, ReConnectToService: !0, OnWebTwainReady: !1, OnWebTwainNotFound: !1, OnWebTwainOldPluginNotAllowed: !1, OnWebTwainNeedUpgrade: !1, OnWebTwainNeedUpgradeWebJavascript: !1, OnWebTwainInitMessage: !1, ViewerJSIntegerited: !0, ActiveXInstallWithCAB: !1, IfUseActiveXForIE10Plus: !1, IfInstallDWTModuleWithZIP: !1, IfUseEmbeddedDownloadNoticeForActiveX: !1, IfCheckDCP: !1, IfDisableDefaultSettings: !1, OnWebTwainWillInit: !1, IfAddMD5InUploadHeader: !1, IfAlwaysFocusOnPopupWindow: !0, IfConfineMaskWithinTheViewer: !1, UseDefaultViewer: !0, fetchOptions: { mode: "cors", credentials: "same-origin" }, HideTrialMessage: !1, CheckCertExpired: !0, ConnectWithSocket: !1, SSLPort: 18623, Port: 18622, showLoadingMsgDialog: !0, licenseServer: void 0, sessionPassword: void 0, organizationID: void 0, handshakeCode: void 0, Host: C }, U = { URL: "", UpdateDaysBeforeExpired: 30 }, H = { loaderBarClassName: "ds-dwt-loaderBar", loaderBarBackgroundColor: "", loaderBarSource: l.navInfoSync.bIE ? l.Lib.loaderBarSourceIE : l.Lib.loaderBarSource, errorMessages: { ERR_MODULE_NOT_INSTALLED: "Error: The Dynamic Web TWAIN module is not installed.", ERR_BROWSER_NOT_SUPPORT: "Error: This browser is currently not supported.", ERR_CreateID_MustNotInContainers: "Error: Duplicate ContainerId detected for creating Dynamic Web TWAIN objects, please check and modify.", ERR_CreateID_WebTwainIdDuplicated: "Error: Duplicate id detected for creating Dynamic Web TWAIN objects, please check and modify.", ERR_CreateID_NotContainer: "Error: The ID of the DIV for creating the new DWT object is invalid.", ERR_CreateID_WasmEnvNotLoaded: "Error: The wasm env not loaded.", ERR_DWT_NOT_DOWNLOADED: "Error: Failed to download the Dynamic Web TWAIN module.", limitReachedForZoomIn: "Error: You have reached the limit for zooming in", limitReachedForZoomOut: "Error: You have reached the limit for zooming out", insufficientParas: "Error: Not enough parameters.", invalidAngle: "Error: The angle you entered is invalid.", invalidIndex: "Error: The index you entered is invalid.", invalidHeightOrWidth: "Error: The height or width you entered is invalid.", imageNotChanged: "Error: You have not changed the current image." }, generalMessages: { checkingDWTVersion: "Checking WebTwain version ...", updatingDService: "Dynamsoft Service is updating ...", downloadingDWTModule: "Downloading the Dynamic Web TWAIN module.", refreshNeeded: "Please REFRESH your browser.", downloadNeeded: "Please download and install the Dynamic Web TWAIN.", DWTmoduleLoaded: "The Dynamic Web TWAIN module is loaded." }, customProgressText: { upload: "Uploading...", download: "Downloading...", load: "Loading...", decode: "Processing...", decodeTIFF: "Processing tiff...", decodePDF: "Processing pdf...", encode: "Processing...", encodeTIFF: "Processing tiff...", encodePDF: "Processing pdf...", canvasLoading: "Loading ..." }, buttons: { titles: { previous: "Previous Image", next: "Next Image", print: "Print Image", scan: "Scan Documents", load: "Load Local Images", rotateleft: "Rotate Left", rotate: "Rotate", rotateright: "Rotate Right", deskew: "Deskew", crop: "Crop Selected Area", cut: "Cut Selected Area", changeimagesize: "Change Image Size", flip: "Flip Image", mirror: "Mirror Image", zoomin: "Zoom In", originalsize: "Show Original Size", zoomout: "Zoom Out", stretch: "Stretch Mode", fit: "Fit Window", fitw: "Fit Horizontally", fith: "Fit Vertically", hand: "Hand Mode", rectselect: "Select Mode", zoom: "Click to Zoom In", restore: "Restore Original Image", save: "Save Changes", close: "Close the Editor", removeall: "Remove All Images", removeselected: "Remove All Selected Images" }, bShowAllButtons: !0, visibility: { scan: !0, load: !0, print: !0, removeall: !0, removeselected: !0, rotateleft: !0, rotate: !0, rotateright: !0, deskew: !0, crop: !0, cut: !0, changeimagesize: !0, flip: !0, mirror: !0, zoomin: !0, originalsize: !0, zoomout: !0, stretch: !0, fit: !0, fitw: !0, fith: !0, hand: !0, rectselect: !0, zoom: !0, restore: !0, save: !0, close: !0 } }, dialogText: { dlgRotateAnyAngle: ["Angle :", "Interpolation:", "Keep size", "  OK  ", "Cancel"], dlgChangeImageSize: ["New Height :", "New Width :", "Interpolation method:", "  OK  ", "Cancel"], saveChangedImage: ["You have changed the image. Do you want to keep the change(s)?", "  Yes  ", "  No  "], selectSource: ["Select Source:", "Select", "Cancel", "There is no source available!"] } };
+  var k = "18", re = "0", R = "1025", C = "127.0.0.1", p = "".concat(k, ",").concat(re, ",").concat("0", ",").concat(R), N = { JSVersion: p, ServerVersionInfo: p, ServerLinuxVersionInfo: p, ServerMacVersionInfo: p, ActiveXVersion: p, ActiveXPdfVersion: "11.4.1.1025", PdfVersion: "11.4.1.1025", ProductName: "Dynamic Web TWAIN " + [k, re].join("."), Containers: void 0, DynamicContainers: [], ContainerMap: {}, Trial: !1, ResourcesPath: "Resources", Debug: !1, IfUpdateService: !1, AutoLoad: !0, ReConnectToService: !0, OnWebTwainReady: !1, OnWebTwainNotFound: !1, OnWebTwainOldPluginNotAllowed: !1, OnWebTwainNeedUpgrade: !1, OnWebTwainNeedUpgradeWebJavascript: !1, OnWebTwainInitMessage: !1, ViewerJSIntegerited: !0, ActiveXInstallWithCAB: !1, IfUseActiveXForIE10Plus: !1, IfInstallDWTModuleWithZIP: !1, IfUseEmbeddedDownloadNoticeForActiveX: !1, IfCheckDCP: !1, IfDisableDefaultSettings: !1, OnWebTwainWillInit: !1, IfAddMD5InUploadHeader: !1, IfAlwaysFocusOnPopupWindow: !0, IfConfineMaskWithinTheViewer: !1, UseDefaultViewer: !0, fetchOptions: { mode: "cors", credentials: "same-origin" }, HideTrialMessage: !1, CheckCertExpired: !0, ConnectWithSocket: !1, SSLPort: 18623, Port: 18622, showLoadingMsgDialog: !0, licenseServer: void 0, sessionPassword: void 0, organizationID: void 0, handshakeCode: void 0, Host: C }, U = { URL: "", UpdateDaysBeforeExpired: 30 }, H = { loaderBarClassName: "ds-dwt-loaderBar", loaderBarBackgroundColor: "", loaderBarSource: l.navInfoSync.bIE ? l.Lib.loaderBarSourceIE : l.Lib.loaderBarSource, errorMessages: { ERR_MODULE_NOT_INSTALLED: "Error: The Dynamic Web TWAIN module is not installed.", ERR_BROWSER_NOT_SUPPORT: "Error: This browser is currently not supported.", ERR_CreateID_MustNotInContainers: "Error: Duplicate ContainerId detected for creating Dynamic Web TWAIN objects, please check and modify.", ERR_CreateID_WebTwainIdDuplicated: "Error: Duplicate id detected for creating Dynamic Web TWAIN objects, please check and modify.", ERR_CreateID_NotContainer: "Error: The ID of the DIV for creating the new DWT object is invalid.", ERR_CreateID_WasmEnvNotLoaded: "Error: The wasm env not loaded.", ERR_DWT_NOT_DOWNLOADED: "Error: Failed to download the Dynamic Web TWAIN module.", limitReachedForZoomIn: "Error: You have reached the limit for zooming in", limitReachedForZoomOut: "Error: You have reached the limit for zooming out", insufficientParas: "Error: Not enough parameters.", invalidAngle: "Error: The angle you entered is invalid.", invalidIndex: "Error: The index you entered is invalid.", invalidHeightOrWidth: "Error: The height or width you entered is invalid.", imageNotChanged: "Error: You have not changed the current image." }, generalMessages: { checkingDWTVersion: "Checking WebTwain version ...", updatingDService: "Dynamsoft Service is updating ...", downloadingDWTModule: "Downloading the Dynamic Web TWAIN module.", refreshNeeded: "Please REFRESH your browser.", downloadNeeded: "Please download and install the Dynamic Web TWAIN.", DWTmoduleLoaded: "The Dynamic Web TWAIN module is loaded." }, customProgressText: { upload: "Uploading...", download: "Downloading...", load: "Loading...", decode: "Processing...", decodeTIFF: "Processing tiff...", decodePDF: "Processing pdf...", encode: "Processing...", encodeTIFF: "Processing tiff...", encodePDF: "Processing pdf...", canvasLoading: "Loading ..." }, buttons: { titles: { previous: "Previous Image", next: "Next Image", print: "Print Image", scan: "Scan Documents", load: "Load Local Images", rotateleft: "Rotate Left", rotate: "Rotate", rotateright: "Rotate Right", deskew: "Deskew", crop: "Crop Selected Area", cut: "Cut Selected Area", changeimagesize: "Change Image Size", flip: "Flip Image", mirror: "Mirror Image", zoomin: "Zoom In", originalsize: "Show Original Size", zoomout: "Zoom Out", stretch: "Stretch Mode", fit: "Fit Window", fitw: "Fit Horizontally", fith: "Fit Vertically", hand: "Hand Mode", rectselect: "Select Mode", zoom: "Click to Zoom In", restore: "Restore Original Image", save: "Save Changes", close: "Close the Editor", removeall: "Remove All Images", removeselected: "Remove All Selected Images" }, bShowAllButtons: !0, visibility: { scan: !0, load: !0, print: !0, removeall: !0, removeselected: !0, rotateleft: !0, rotate: !0, rotateright: !0, deskew: !0, crop: !0, cut: !0, changeimagesize: !0, flip: !0, mirror: !0, zoomin: !0, originalsize: !0, zoomout: !0, stretch: !0, fit: !0, fitw: !0, fith: !0, hand: !0, rectselect: !0, zoom: !0, restore: !0, save: !0, close: !0 } }, dialogText: { dlgRotateAnyAngle: ["Angle :", "Interpolation:", "Keep size", "  OK  ", "Cancel"], dlgChangeImageSize: ["New Height :", "New Width :", "Interpolation method:", "  OK  ", "Cancel"], saveChangedImage: ["You have changed the image. Do you want to keep the change(s)?", "  Yes  ", "  No  "], selectSource: ["Select Source:", "Select", "Cancel", "There is no source available!"] } };
   function K() {
     var o = l.DWT.Host;
     return n.isString(o) && o != "" || (l.DWT.Host = o = C), o;
@@ -7589,14 +7590,14 @@ if (G.navInfoSync.bIE) {
     }(o, "string");
     return gi(e) === "symbol" ? e : String(e);
   }
-  function Ao(o, e) {
+  function Ro(o, e) {
     for (var r = 0; r < e.length; r++) {
       var t = e[r];
       t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(o, ra(t.key), t);
     }
   }
   function zn(o, e, r) {
-    return e && Ao(o.prototype, e), r && Ao(o, r), Object.defineProperty(o, "prototype", { writable: !1 }), o;
+    return e && Ro(o.prototype, e), r && Ro(o, r), Object.defineProperty(o, "prototype", { writable: !1 }), o;
   }
   function Ur(o) {
     return l.Lib.isString(o) ? o : ("errorMessage" in o && (e = o.errorMessage), "message" in o && (e = o.message), l.Lib.isString(e) || (e = "message" in e ? e.message : ""), "errorCode" in o && e.indexOf("(") == -1 && (e += "(" + o.errorCode + ")"), "code" in o && e.indexOf("(") == -1 && (e += "(" + o.code + ")"), e);
@@ -7723,7 +7724,7 @@ if (G.navInfoSync.bIE) {
     } }, { key: "LicenseNoSafari", value: function(e) {
       pt(e, -2392, "The current product key does not support Safari. Please contact the site administrator."), l.Lib.Errors.SetLTSException(e);
     } }, { key: "LicenseNoCore", value: function(e, r, t) {
-      e._errorCode = -2333, l.Lib.License.isLTS() ? e._errorString = r ? t == 111 ? "The license for v" + x + " WebAssembly Core Module has expired." : "The license for v" + x + " WebAssembly Core Module is not found." : t == 111 ? "The license for v" + x + " Service Core Module has expired." : "The license for v" + x + " Service Core Module is not found." : e._errorString = r ? "The current product key is missing the WebAssembly Core license. Please contact the site administrator." : "The current product key is missing the Service Core license. Please contact the site administrator.", l.Lib.Errors.SetLTSException(e);
+      e._errorCode = -2333, l.Lib.License.isLTS() ? e._errorString = r ? t == 111 ? "The license for v" + k + " WebAssembly Core Module has expired." : "The license for v" + k + " WebAssembly Core Module is not found." : t == 111 ? "The license for v" + k + " Service Core Module has expired." : "The license for v" + k + " Service Core Module is not found." : e._errorString = r ? "The current product key is missing the WebAssembly Core license. Please contact the site administrator." : "The current product key is missing the Service Core license. Please contact the site administrator.", l.Lib.Errors.SetLTSException(e);
     } }, { key: "LicenseNoWebcam", value: function(e) {
       e._errorCode = -2338, l.Lib.License.isLTS() ? e._errorString = "The license for the module direct show is not found or has expired." : e._errorString = "The current product key does not support Webcam. Please contact the site administrator.", l.Lib.Errors.SetLTSException(e);
     } }, { key: "LicenseNoPDF", value: function(e) {
@@ -8094,7 +8095,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
     }
     t = null, o = null;
   }
-  function No(o, e) {
+  function Vo(o, e) {
     o && o.readyState != xt && o.readyState != He ? o.readyState == ge ? (o.onerror = function(r) {
       r && n.log("websocket error: " + r), o._reject && (o._reject(), o._reject = null), o.close();
     }, o.onclose = function(r) {
@@ -8103,7 +8104,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
       o.readyState == Wt ? (o.onopen = null, o.send(e)) : o.readyState == ge && (o.onopen ? setTimeout(o.onopen, 100) : o._reject && (o._reject(), o._reject = null));
     }) : o.readyState == Wt && (o.onopen = null, o.send(e)) : o._reject && (o._reject(), o._reject = null);
   }
-  function To(o, e, r) {
+  function Co(o, e, r) {
     var t = r;
     return t || (t = l.navInfoSync.bSSL ? "https://" : "http://"), [t, o, ":", e, "/"].join("");
   }
@@ -8120,7 +8121,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
           }, function() {
             i(), e.close(), e = null;
           });
-        }, e._reject = i, No(e, r);
+        }, e._reject = i, Vo(e, r);
       });
     } }, { key: "postStringDataByWSUrl", value: function(e, r) {
       var t = new n.Promise(function(i, a) {
@@ -8131,7 +8132,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
           }, function() {
             a(), u.close(), u = null;
           });
-        }, u._reject = a, No(u, r);
+        }, u._reject = a, Vo(u, r);
       });
       return l.navInfoSync.bEdge && t.catch(function() {
         return new n.Promise(function(i, a) {
@@ -8142,7 +8143,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
             }, function() {
               a(), u.close(), u = null;
             });
-          }, u._reject = a, No(u, r);
+          }, u._reject = a, Vo(u, r);
         });
       }), t;
     } }, { key: "newWebsocket", value: function(e, r) {
@@ -8165,13 +8166,13 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
       return t;
     } }, { key: "getWsUrl", value: function(e, r, t) {
       var i = t;
-      return i === void 0 && (i = l.navInfoSync.bSSL), To(e, r, i ? "wss://" : "ws://");
+      return i === void 0 && (i = l.navInfoSync.bSSL), Co(e, r, i ? "wss://" : "ws://");
     } }, { key: "getDDMUrl", value: function(e, r, t) {
       var i, a, u = "/";
       return n.startsWith(e, "https://") ? i = !0 : n.startsWith(e, "http://") ? i = !1 : e = (i = n.detect.ssl) ? "https://" + e : "http://" + e, a = i ? "18626/" : "18625/", n.endsWith(e, "/") && (u = ""), r ? [e, u, "ddm/", a, t].join("") : [e, u, t].join("");
     } }, { key: "getModuleUrl", value: function(e) {
       var r, t = l.dcp;
-      return r = To(K(), l.navInfoSync.bSSL ? t.SSLPort : t.Port), e ? r + e : r;
+      return r = Co(K(), l.navInfoSync.bSSL ? t.SSLPort : t.Port), e ? r + e : r;
     } }]), o;
   }();
   l.DWT.NetManager = oi;
@@ -8181,7 +8182,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
   function ar(o, e, r) {
     return (e = ra(e)) in o ? Object.defineProperty(o, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }) : o[e] = r, o;
   }
-  function po(o, e, r, t, i, a, u) {
+  function _o(o, e, r, t, i, a, u) {
     try {
       var c = o[a](u), d = c.value;
     } catch (_) {
@@ -8195,10 +8196,10 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
       return new Promise(function(t, i) {
         var a = o.apply(e, r);
         function u(d) {
-          po(a, t, i, u, c, "next", d);
+          _o(a, t, i, u, c, "next", d);
         }
         function c(d) {
-          po(a, t, i, u, c, "throw", d);
+          _o(a, t, i, u, c, "throw", d);
         }
         u(void 0);
       });
@@ -8811,12 +8812,12 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
   function Jn(o, e, r) {
     return e.has(o), r;
   }
-  var pr, cr = n.getLogger(), Fi = /* @__PURE__ */ new WeakSet(), Oi = /* @__PURE__ */ new WeakSet(), Di = /* @__PURE__ */ new WeakSet(), Wr = /* @__PURE__ */ new WeakSet(), Ki = /* @__PURE__ */ new WeakSet(), Ro = /* @__PURE__ */ new WeakSet(), Co = /* @__PURE__ */ new WeakSet(), ro = function(o) {
+  var pr, cr = n.getLogger(), Fi = /* @__PURE__ */ new WeakSet(), Oi = /* @__PURE__ */ new WeakSet(), Di = /* @__PURE__ */ new WeakSet(), Wr = /* @__PURE__ */ new WeakSet(), Ki = /* @__PURE__ */ new WeakSet(), Lo = /* @__PURE__ */ new WeakSet(), Eo = /* @__PURE__ */ new WeakSet(), ro = function(o) {
     Hr(u, o);
     var e, r, t, i, a = yn(u);
     function u(c) {
       var d;
-      return Gn(this, u), Wn(ln(d = a.call(this, c)), Co), Wn(ln(d), Ro), Wn(ln(d), Ki), Wn(ln(d), Wr), Wn(ln(d), Di), Wn(ln(d), Oi), Wn(ln(d), Fi), ar(ln(d), "_defaultRetries", 1), ar(ln(d), "_ws", pr), ar(ln(d), "_events", {}), ar(ln(d), "_bHeartBeatStarted", !1), ar(ln(d), "_heartBeatTicks", 6e4), d._ws = pr, d.bUseParentWS = !1, d._tasks = /* @__PURE__ */ Object.create(null), d;
+      return Gn(this, u), Wn(ln(d = a.call(this, c)), Eo), Wn(ln(d), Lo), Wn(ln(d), Ki), Wn(ln(d), Wr), Wn(ln(d), Di), Wn(ln(d), Oi), Wn(ln(d), Fi), ar(ln(d), "_defaultRetries", 1), ar(ln(d), "_ws", pr), ar(ln(d), "_events", {}), ar(ln(d), "_bHeartBeatStarted", !1), ar(ln(d), "_heartBeatTicks", 6e4), d._ws = pr, d.bUseParentWS = !1, d._tasks = /* @__PURE__ */ Object.create(null), d;
     }
     return zn(u, [{ key: "ws", get: function() {
       return this._ws;
@@ -8844,7 +8845,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
             case 11:
               return ne.next = 13, Jn(T, Ki, _a).call(T, !1);
             case 13:
-              return ne.next = 15, Jn(T, Ro, Kn).call(T, d, _, v, A);
+              return ne.next = 15, Jn(T, Lo, Kn).call(T, d, _, v, A);
             case 15:
               cr.debug("begin to send data " + M), T.disposed || T._ws.send(d), d = null, cr.debug("end to send data " + M), ne.next = 27;
               break;
@@ -8863,7 +8864,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
         for (; ; )
           switch (V.prev = V.next) {
             case 0:
-              return M = this._defaultRetries, A = _ ?? Jn(this, Wr, rs), S = v ?? { client: this, userData: this }, V.abrupt("return", Jn(this, Co, lr).call(this, d, A, S, M, !1, void 0, T));
+              return M = this._defaultRetries, A = _ ?? Jn(this, Wr, rs), S = v ?? { client: this, userData: this }, V.abrupt("return", Jn(this, Eo, lr).call(this, d, A, S, M, !1, void 0, T));
             case 2:
             case "end":
               return V.stop();
@@ -8885,7 +8886,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
         for (; ; )
           switch (A.prev = A.next) {
             case 0:
-              return d = this, _ = { client: null, userData: null, taskId: "0", eventTaskId: "0", lastEventTaskId: "0" }, v = new ArrayBuffer(14), (T = new DataView(v)).setUint8(0, 2), T.setUint8(8, 2), T.setUint8(12, 123), T.setUint8(13, 125), M = new Blob([v]), A.prev = 9, A.next = 12, Jn(d, Co, lr).call(d, M, null, _, 0, !0);
+              return d = this, _ = { client: null, userData: null, taskId: "0", eventTaskId: "0", lastEventTaskId: "0" }, v = new ArrayBuffer(14), (T = new DataView(v)).setUint8(0, 2), T.setUint8(8, 2), T.setUint8(12, 123), T.setUint8(13, 125), M = new Blob([v]), A.prev = 9, A.next = 12, Jn(d, Eo, lr).call(d, M, null, _, 0, !0);
             case 12:
               A.next = 16;
               break;
@@ -9180,7 +9181,7 @@ Please make sure Dynamsoft Service is running or the certificate is valid.` };
             case 16:
               return _ === void 0 && cr.debug("websocket send: task id is invalid."), (v = {}).promise = new n.Promise(function(A, S) {
                 v.resolve = A, v.reject = S;
-              }), T = { id: _, resolver: v, ctx: t, timedout: !1 }, d._tasks[_] = T, d._requestTaskId = _, M.next = 24, Jn(d, Ro, Kn).call(d, e, r, t, T);
+              }), T = { id: _, resolver: v, ctx: t, timedout: !1 }, d._tasks[_] = T, d._requestTaskId = _, M.next = 24, Jn(d, Lo, Kn).call(d, e, r, t, T);
             case 24:
               return d._cbToGetTaskId = r, c && (T.tmid = setTimeout(function() {
                 cr.debug("ws request time out."), T.timedout = !0, T.resolver.reject("request timed out.");
@@ -9257,7 +9258,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         throw new TypeError("Cannot initialize the same private elements twice on an object");
     })(o, e), e.add(o);
   }
-  function Eo(o, e, r) {
+  function Do(o, e, r) {
     return e.has(o), r;
   }
   var Wi = /* @__PURE__ */ new WeakSet(), Ir = /* @__PURE__ */ new WeakSet(), ti = function() {
@@ -9269,7 +9270,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return !e.disposed;
       });
     } }, { key: "getClient", value: function(e) {
-      return e.useWS ? Eo(this, Ir, co).call(this, e) : new _n(e);
+      return e.useWS ? Do(this, Ir, lo).call(this, e) : new _n(e);
     } }, { key: "terminate", value: function() {
       var e = this._wsClients.slice();
       this._wsClients = [], e.forEach(function(r) {
@@ -9295,8 +9296,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     return null;
   }
-  function co(o) {
-    var e = Eo(this, Wi, Pi).call(this, o);
+  function lo(o) {
+    var e = Do(this, Wi, Pi).call(this, o);
     return e || (this._wsClients.length < this._maxWebSocketCon ? ((e = new ro(o)).addEvent("disposed", "1", function() {
       ti.Instance.removeTerminatedWSClient();
     }), this._wsClients.push(e), e) : null);
@@ -9322,7 +9323,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } }]), o;
   }();
   n.ClientPool = ti;
-  var lo, _o = 3e3, va = parseInt(x), Qo = parseInt(re), vo = parseInt("0"), Ns = R, Vs = R, ps = 20220801, _s = function() {
+  var ho, vo = 3e3, va = parseInt(k), Qo = parseInt(re), yo = parseInt("0"), Vs = R, Us = R, ps = 20220801, _s = function() {
     if (l.dcp) {
       var o = l.dcp.dcpJSVer;
       if (n.isNumber(o))
@@ -9331,10 +9332,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return !1;
   };
   if (_s())
-    _s = lo, ps = lo;
+    _s = ho, ps = ho;
   else {
     var On, ya = n.win, br = { dcpStatus: 0, dwtPort: 0, bConnected: !1, connectedResult: "", IMAXCONNECTCOUNT: 5, EnumDCP_DetectStatus: { Init: 0, Connected: 1, DownloadingZip: 2, DownloadedZip: 3, DownloadFailed: 4, CheckingManagerVer: 15, CheckingServiceVer: 16, NotInstalled: 17, CheckedService: 5, VerifyingZip: 6, VerifiedZip: 7, UpdatingService: 8, UpdateSucceed: 9, UpdateFailed: 10, UpdateSkipped: 11 } };
-    l.dcp = On = { SSLPort: 18626, Port: 18625, bEnhancedMode: !1, dcpJSVer: ps, oldDWASMVerStr: "dwasm_13000404", oldDWASMVer: [13, 0, 0, "0404"], wsProtocol: "dwt_command", managerVersion: [va, Qo, vo, Ns], managerVersionMac: [va, Qo, vo, Ns], managerVersionLinux: [va, Qo, vo, Ns], serviceVersion: [1, 7, 3, Vs], serviceVersionMac: [1, 7, 3, Vs], serviceVersionLinux: [1, 7, 3, Vs], detect: br, strSID: "", b64bit: !0, getManagerVersion: function() {
+    l.dcp = On = { SSLPort: 18626, Port: 18625, bEnhancedMode: !1, dcpJSVer: ps, oldDWASMVerStr: "dwasm_13000404", oldDWASMVer: [13, 0, 0, "0404"], wsProtocol: "dwt_command", managerVersion: [va, Qo, yo, Vs], managerVersionMac: [va, Qo, yo, Vs], managerVersionLinux: [va, Qo, yo, Vs], serviceVersion: [1, 7, 3, Us], serviceVersionMac: [1, 7, 3, Us], serviceVersionLinux: [1, 7, 3, Us], detect: br, strSID: "", b64bit: !0, getManagerVersion: function() {
       var o = l.navInfoSync;
       if (!o.bWin) {
         if (o.bMac)
@@ -9355,14 +9356,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, _checkManagerVersion: function(o, e, r) {
       br.dcpStatus = br.EnumDCP_DetectStatus.CheckingManagerVer, this._postBase("VersionInfo", !1, o, e, r);
     }, _checkService: function(o, e) {
-      br.dcpStatus = br.EnumDCP_DetectStatus.CheckingServiceVer, this._postBase("DSVersion", !1, lo, o, e);
+      br.dcpStatus = br.EnumDCP_DetectStatus.CheckingServiceVer, this._postBase("DSVersion", !1, ho, o, e);
     }, _checkUpdateFile: function(o, e) {
-      this._postBase("CheckUpdateFile", !1, lo, o, e);
+      this._postBase("CheckUpdateFile", !1, ho, o, e);
     }, _updateService: function(o, e) {
-      this._postBase("UpdateService", !1, lo, o, e);
+      this._postBase("UpdateService", !1, ho, o, e);
     }, _postBase: function(o, e, r, t, i) {
       var a, u;
-      return a = e ? On.oldDWASMVerStr : "dwasm2_" + On._getModuleVer(), u = { id: (/* @__PURE__ */ new Date()).getTime().toString(), method: o, version: a, parameter: [] }, n.License.isLongKey(r) && (u.productKey = r), this._postBaseV2(o, e, u, _o, t, i), !0;
+      return a = e ? On.oldDWASMVerStr : "dwasm2_" + On._getModuleVer(), u = { id: (/* @__PURE__ */ new Date()).getTime().toString(), method: o, version: a, parameter: [] }, n.License.isLongKey(r) && (u.productKey = r), this._postBaseV2(o, e, u, vo, t, i), !0;
     }, _postBaseV2: function(o, e, r, t, i, a) {
       var u, c, d = n.stringify(r);
       if (n.isFunction(i) && n.isFunction(a))
@@ -9396,7 +9397,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return o = "Win", r.bMac ? o = "Mac" : r.bLinux && (o = "Linux"), e = r.bFileSystem ? "" : "?t=" + n.now(), r.bWin && On.b64bit && (t = "_x64"), [l.DWT.ResourcesPath, "/dist/serviceupdate/", o, "DSUpdate_", On.getManagerVersion().join("."), t, ".zip", e].join("");
     }, getPorts: function(o, e, r) {
       var t = "GetPorts", i = "dwasm2_" + On._getModuleVer(), a = { id: n.now(), method: t, version: i, parameter: [o] };
-      this._postBaseV2(t, !1, a, _o, e, r);
+      this._postBaseV2(t, !1, a, vo, e, r);
     }, _setDefaultValuesFromServer: function(o) {
       var e = "", r = !1, t = !1, i = {};
       if (o.length > 4 && (e = n.isString(o[2]) ? o[2] : "", r = n.isString(o[3]) && o[3] === "true", t = n.isString(o[4]) && o[4] === "64"), o.length > 5 && (i = o[5]), On.detect.connectedResult = o, On.strSID = e, On.bEnhancedMode = r, On.b64bit = t, On.objEnhancedPorts = i, r && i && i.dcp) {
@@ -9508,7 +9509,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
       var c = [On._getModuleName_Ver(), "/", r, "?type=1&dsver=", On.getServiceVersion().join(""), "&ts=", n.now()].join("");
       ji.getHttpClientForDcp().request(i, c, {}, 500).then(a, e);
-    } }, _s = lo, ps = lo;
+    } }, _s = ho, ps = ho;
   }
   var mu = function() {
     function o() {
@@ -9535,7 +9536,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this._exec = {};
     } }]), o;
   }(), vt = !1, Gt = !0;
-  function Us(o) {
+  function Gs(o) {
     var e = function() {
       if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
         return !1;
@@ -9567,12 +9568,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function zi(o, e, r) {
     return e.has(o), r;
   }
-  var vs = "[bio]: ", Gs = n.win, ys = Gs && Gs.FormData, js = /* @__PURE__ */ new WeakSet(), zs = /* @__PURE__ */ new WeakSet(), pu = /* @__PURE__ */ new WeakSet(), ni = /* @__PURE__ */ new WeakSet(), bs = /* @__PURE__ */ new WeakSet(), ba = /* @__PURE__ */ new WeakSet(), Aa = /* @__PURE__ */ new WeakSet(), os = /* @__PURE__ */ new WeakSet(), ws = /* @__PURE__ */ new WeakSet(), as = /* @__PURE__ */ new WeakSet(), io = function(o) {
+  var vs = "[bio]: ", js = n.win, ys = js && js.FormData, zs = /* @__PURE__ */ new WeakSet(), Hs = /* @__PURE__ */ new WeakSet(), pu = /* @__PURE__ */ new WeakSet(), ni = /* @__PURE__ */ new WeakSet(), bs = /* @__PURE__ */ new WeakSet(), ba = /* @__PURE__ */ new WeakSet(), Aa = /* @__PURE__ */ new WeakSet(), os = /* @__PURE__ */ new WeakSet(), ws = /* @__PURE__ */ new WeakSet(), as = /* @__PURE__ */ new WeakSet(), io = function(o) {
     Hr(r, o);
-    var e = Us(r);
+    var e = Gs(r);
     function r(t) {
       var i;
-      return Gn(this, r), Zo(ln(i = e.call(this)), as), Zo(ln(i), ws), Zo(ln(i), os), Zo(ln(i), Aa), Zo(ln(i), ba), Zo(ln(i), bs), Zo(ln(i), ni), Zo(ln(i), pu), Zo(ln(i), zs), Zo(ln(i), js), ar(ln(i), "_attrs", {}), n.mix(i._attrs, { action: "", data: {}, bChunkedSendData: Gt, blockSize: 0, ajaxConfig: { value: {}, type: "post", processData: vt, cache: vt, dataType: "text", async: Gt, contentType: vt, retry: 0, headers: { "X-Requested-With": vt } }, ajax: "", formData: "", CORS: vt, bOnlyEmptyIsOK: Gt }), n.mix(i._attrs, t), zi(ln(i), js, _u).call(ln(i)), i;
+      return Gn(this, r), Zo(ln(i = e.call(this)), as), Zo(ln(i), ws), Zo(ln(i), os), Zo(ln(i), Aa), Zo(ln(i), ba), Zo(ln(i), bs), Zo(ln(i), ni), Zo(ln(i), pu), Zo(ln(i), Hs), Zo(ln(i), zs), ar(ln(i), "_attrs", {}), n.mix(i._attrs, { action: "", data: {}, bChunkedSendData: Gt, blockSize: 0, ajaxConfig: { value: {}, type: "post", processData: vt, cache: vt, dataType: "text", async: Gt, contentType: vt, retry: 0, headers: { "X-Requested-With": vt } }, ajax: "", formData: "", CORS: vt, bOnlyEmptyIsOK: Gt }), n.mix(i._attrs, t), zi(ln(i), zs, _u).call(ln(i)), i;
     }
     return zn(r, [{ key: "get", value: function(t) {
       return t in this._attrs ? this._attrs[t] : "";
@@ -9580,9 +9581,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       t in this._attrs && (this._attrs[t] = i);
     } }, { key: "uploadToServer", value: function(t) {
       var i = this;
-      return i.get("blockSize") > 0 && t && t.size > 0 ? zi(i, ni, Ju).call(i, t) : zi(i, zs, vu).call(i, t);
+      return i.get("blockSize") > 0 && t && t.size > 0 ? zi(i, ni, Ju).call(i, t) : zi(i, Hs, vu).call(i, t);
     } }, { key: "uploadFilesToServer", value: function(t) {
-      return zi(this, pu, Hs).call(this, t);
+      return zi(this, pu, Ks).call(this, t);
     } }, { key: "abort", value: function() {
       var t = this, i = t.get("ajax");
       return n.isObject(i) ? (i.abort(), t.set("ajax", !1), t) : (n.log(vs + "abort(), the value of io invalid!"), t);
@@ -9598,7 +9599,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   function vu(o) {
     var e = this, r = e.get("ajaxConfig"), t = !0;
-    zi(e, bs, Bn).call(e), o && o.size > 0 && (zi(e, ba, ho).call(e, o), n.isString(o.name) && o.name != "" ? e.name = o.name : e.name = o.fileName), n.mix(r, { data: e.get("formData"), url: e.get("action"), beforeSend: function(a, u, c) {
+    zi(e, bs, Bn).call(e), o && o.size > 0 && (zi(e, ba, fo).call(e, o), n.isString(o.name) && o.name != "" ? e.name = o.name : e.name = o.fileName), n.mix(r, { data: e.get("formData"), url: e.get("action"), beforeSend: function(a, u, c) {
       a.upload.addEventListener("progress", function(d) {
         e.fire(io.event.PROGRESS, { loaded: d.loaded, total: d.total, name: e.name });
       }, !1);
@@ -9612,10 +9613,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var i = n.ajax(r);
     return e.set("formData", null), r.async ? (e.set("ajax", i), !0) : (e.set("ajax", !1), t);
   }
-  function Hs(o) {
+  function Ks(o) {
     var e = this, r = e.get("ajaxConfig"), t = !0, i = [];
     zi(e, bs, Bn).call(e), n.each(o, function(u) {
-      u && u.size > 0 ? (zi(e, ba, ho).call(e, u), n.isString(u.name) && u.name != "" ? i.push(u.name) : i.push(u.fileName)) : i.push("");
+      u && u.size > 0 ? (zi(e, ba, fo).call(e, u), n.isString(u.name) && u.name != "" ? i.push(u.name) : i.push(u.fileName)) : i.push("");
     }), n.mix(r, { data: e.get("formData"), url: e.get("action"), beforeSend: function(u, c, d) {
       u.upload.addEventListener("progress", function(_) {
         e.fire(io.event.PROGRESS, { loaded: _.loaded, total: _.total, name: "" });
@@ -9639,7 +9640,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var i = o.size, a = 0, u = e.get("blockSize") || i, c = o.slice || o.webkitSlice || o.mozSlice;
     (function d(_) {
       var v = c.call(o, a, a + u, o.type), T = v.size, M = o.name;
-      zi(e, ws, g).call(e, a, T, i), zi(e, bs, Bn).call(e), _ && e.set("data", []), n.isString(M) && M != "" || (M = o.fileName), v.name = M, e.name = M, zi(e, ba, ho).call(e, v), n.mix(r, { data: e.get("formData") }), n.mix(r, { method: "POST", onSuccess: function(A, S, V) {
+      zi(e, ws, g).call(e, a, T, i), zi(e, bs, Bn).call(e), _ && e.set("data", []), n.isString(M) && M != "" || (M = o.fileName), v.name = M, e.name = M, zi(e, ba, fo).call(e, v), n.mix(r, { data: e.get("formData") }), n.mix(r, { method: "POST", onSuccess: function(A, S, V) {
         var ne, z;
         a = zi(e, os, W).call(e, V) || a + T, e.fire(io.event.PROGRESS, { loaded: a, total: i, name: e.name }), a < i ? d(!1) : (z = "", (ne = A) && (ne && n.isArray(ne) && ne.length > 1 ? z = ne[0] : n.isString(ne) && (z = ne)), z = zi(e, as, f).call(e, z), e.fire(io.event.SUCCESS, z));
       }, onError: t }), n.ajax(r), e.set("formData", null);
@@ -9663,7 +9664,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     else
       n.log(vs + "the browser does not support ajax.");
   }
-  function ho(o) {
+  function fo(o) {
     if (!n.isObject(o))
       return n.log(vs + "_addFileData(), file parameter invalid!"), !1;
     var e = this.get("formData"), r = o.name, t = o.remoteFilename;
@@ -9746,12 +9747,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return e.has(o), r;
   }
   ar(io, "event", { SUCCESS: "success", ERROR: "error", PROGRESS: "progress" }), ar(io, "status", { SUCCESS: "success", ERROR: "error" });
-  var k = /* @__PURE__ */ new WeakSet(), D = /* @__PURE__ */ new WeakSet(), B = /* @__PURE__ */ new WeakSet(), X = /* @__PURE__ */ new WeakSet(), Q = function(o) {
+  var x = /* @__PURE__ */ new WeakSet(), D = /* @__PURE__ */ new WeakSet(), B = /* @__PURE__ */ new WeakSet(), X = /* @__PURE__ */ new WeakSet(), Q = function(o) {
     Hr(r, o);
     var e = b(r);
     function r(t) {
       var i;
-      return Gn(this, r), m(ln(i = e.call(this)), X), m(ln(i), B), m(ln(i), D), m(ln(i), k), i._attrs = { action: "", retry: 0, timeout: 0, CORS: vt, async: Gt, dataType: "text", fileStatus: "", uploadType: vt, data: {}, bOnlyEmptyIsOK: Gt }, n.mix(i._attrs, t), I(ln(i), D, ke).call(ln(i)), i;
+      return Gn(this, r), m(ln(i = e.call(this)), X), m(ln(i), B), m(ln(i), D), m(ln(i), x), i._attrs = { action: "", retry: 0, timeout: 0, CORS: vt, async: Gt, dataType: "text", fileStatus: "", uploadType: vt, data: {}, bOnlyEmptyIsOK: Gt }, n.mix(i._attrs, t), I(ln(i), D, ke).call(ln(i)), i;
     }
     return zn(r, [{ key: "get", value: function(t) {
       return t in this._attrs ? this._attrs[t] : "";
@@ -9766,7 +9767,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }
         if (n.isObject(t)) {
           var c = t;
-          return c.size ? (c.id || (c.id = n.guid("file-")), c.size && (c.textSize = I(i, k, ve).call(i, c.size))) : c.size = 0, a.uploadToServer(c);
+          return c.size ? (c.id || (c.id = n.guid("file-")), c.size && (c.textSize = I(i, x, ve).call(i, c.size))) : c.size = 0, a.uploadToServer(c);
         }
       }
       return a.uploadToServer(t);
@@ -9932,15 +9933,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         o && n.error(o.message);
       }
   }
-  var En = parseInt(x), Un = parseInt(re), Ai = parseInt("0"), Ar = "ddm/", Qr = "ddm_" + [En, Un, Ai, R].join("");
+  var En = parseInt(k), Un = parseInt(re), Ai = parseInt("0"), Ar = "ddm/", Qr = "ddm_" + [En, Un, Ai, R].join("");
   function qi() {
     return Ar + Qr;
   }
   function oo(o) {
-    return Do.apply(this, arguments);
+    return ko.apply(this, arguments);
   }
-  function Do() {
-    return (Do = Ln(he.mark(function o(e) {
+  function ko() {
+    return (ko = Ln(he.mark(function o(e) {
       var r, t, i;
       return he.wrap(function(a) {
         for (; ; )
@@ -9954,9 +9955,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, o);
     }))).apply(this, arguments);
   }
-  var ko = n.isString, wa = n.isArray, Ia = n.each;
+  var xo = n.isString, wa = n.isArray, Ia = n.each;
   function Ra(o, e) {
-    if (ko(e))
+    if (xo(e))
       o.push('"'), o.push(e), o.push('"');
     else if (wa(e)) {
       var r = Gt;
@@ -10329,7 +10330,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } }]), o;
   }(), qu = 3008, Qt = l.DWT;
   Qt.LTS = Qt.LTS || {}, Qt.licenseException = { code: 0, message: "", fromLTS: !1 }, Qt.bLTSOnline = !0, Qt.axInstance = void 0, Qt.lOnUpdateDWObj = [], Qt.EnumInstance = { dwt_desktop: 0, dwt_browser: 1, dbr: 2 };
-  var La, $u, ec, tc, yo = 0, aa = {}, Ks = !1, Ss = !1, Cu = {}, Ys = !1, nc = !1, Js = !1;
+  var La, $u, ec, tc, bo = 0, aa = {}, Ys = !1, Ss = !1, Cu = {}, Js = !1, nc = !1, Xs = !1;
   function gl() {
     var o = n.product.handshakeCode;
     return n.isString(o) || (o = ""), o;
@@ -10346,7 +10347,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return r === n.nil && (r = n.IsNeedLoadWasm() ? Qt.EnumInstance.dwt_browser : Qt.EnumInstance.dwt_desktop), r == Qt.EnumInstance.dwt_browser ? ($u || ($u = new Zu(r, "")), $u) : r == Qt.EnumInstance.dbr ? (tc || (tc = new Zu(r, "")), tc) : (ec || (ec = new Zu(r, "")), ec);
   }
   Qt.lupverfy = function() {
-    mi(Qt.EnumInstance.dwt_desktop).get_ltsInstance(Vo), mi(Qt.EnumInstance.dwt_browser).get_ltsInstance(Vo), mi(Qt.EnumInstance.dbr).get_ltsInstance(Vo);
+    mi(Qt.EnumInstance.dwt_desktop).get_ltsInstance(Uo), mi(Qt.EnumInstance.dwt_browser).get_ltsInstance(Uo), mi(Qt.EnumInstance.dbr).get_ltsInstance(Uo);
   }, Qt.lsmid = function(o, e) {
     mi(Qt.EnumInstance.dwt_desktop).set_cu(o);
   }, Qt.lsar = function(o, e) {
@@ -10387,7 +10388,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return o.bChrome ? e.push("Chrome") : o.bFirefox ? e.push("Firefox") : o.bEdge ? e.push("Edge") : o.bIE ? e.push("IE") : o.bSafari ? e.push("Safari") : o.bOpera ? e.push("Opera") : o.b360SE ? e.push("360SE") : o.bTencentTraveler ? e.push("TencentTraveler") : o.bMaxthon ? e.push("Maxthon") : o.bMetaSr ? e.push("MetaSr") : o.bTheWorld ? e.push("TheWorld") : o.bUC ? e.push("UC") : o.bHuaWeiBrowser && e.push("HuaWeiBrowser"), e.push(o.strBrowserVersion), o.bWin ? e.push("Windows") : o.bMac ? e.push("Mac") : o.bLinux ? e.push("Linux") : o.bAndroid ? e.push("Android") : o.bChromeOS ? e.push("ChromeOS") : o.bHarmonyOS ? e.push("HarmonyOS") : n.env.bMobile ? e.push("Mobile OS") : l.navInfo.bEmbed && e.push("Embed OS"), e.join(" ");
   };
   var If = -2440, Sf = -2441, Tf = -2443, Cf = -2445, pl = -2446, Ef = -2447;
-  function Vo(o) {
+  function Uo(o) {
     var e, r, t = n.product.licenseServer;
     if (t && t.length > 0)
       for (e = 0; e < t.length; e++)
@@ -10413,12 +10414,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, fol: Qt.OnFirstOffline };
     return a.dt = t.get_deploymentType(), i == Qt.EnumInstance.dwt_desktop ? a.lsu = t.get_cu() : i == Qt.EnumInstance.dbr || (a.dwt = !0, t.get_cu() != "" && (a.lsu = t.get_cu()), a.updateLicense = function(u) {
       t.set_ar(u.ar), t.get_cu() || t.set_cu(u.cu), Qt.lsendUpdateEvt(i, r);
-    }), t.get_ltsInstance(Vo).i(a).then(function(u) {
+    }), t.get_ltsInstance(Uo).i(a).then(function(u) {
       return t.get_ar() || t.set_ar(u.ar), t.get_cu() || t.set_cu(u.cu), u;
     });
   }
   function _l() {
-    return mi(Qt.EnumInstance.dwt_browser).get_ltsInstance(Vo).u();
+    return mi(Qt.EnumInstance.dwt_browser).get_ltsInstance(Uo).u();
   }
   function Ha() {
     return Date.now();
@@ -10485,7 +10486,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   Qt.lgpd = function(o) {
     return l.navInfoSync.bWin && o == Qt.EnumInstance.dwt_desktop ? "dwt|dbr" : "dwt";
   }, Qt.lglic = Fa, Qt.lgbuuid = _l, Qt.lshow = function() {
-    return { t: La, t2: yo, m: JSON.stringify(aa) };
+    return { t: La, t2: bo, m: JSON.stringify(aa) };
   }, Qt.lgct = function(o) {
     switch (o) {
       case 0:
@@ -10538,17 +10539,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var r, t = Qt.DeviceFriendlyName || "", i = Qt.lgcb(), a = mi(e), u = { hs: gl(), og: ml(), cu: a.get_cu(), fn: t, cw: "", os: i, v: rc(), dt: a.get_deploymentType(), ed: "js" }, c = function(T, M) {
       var A, S, V = l.Lib, ne = 0;
       if (V.isString(T) && T != "" && T != "{}" && M && V.isArray(M) && !(M.length < 1)) {
-        if (S = mi(M[0]), A = V.parse(T), Qt.lclex(), yo == 0) {
+        if (S = mi(M[0]), A = V.parse(T), Qt.lclex(), bo == 0) {
           var z = Ha(), ue = "";
-          yo = z, La = ss(z), aa = {}, ne = 0, V.each(A, function(xe, Fe) {
+          bo = z, La = ss(z), aa = {}, ne = 0, V.each(A, function(xe, Fe) {
             (Fe < ne || ne == 0) && (ne = Fe, ue = xe);
-          }), ne > 0 && S.get_ltsInstance(Vo).s(V.product.licenseServer, ue, ne, !0).then(function() {
+          }), ne > 0 && S.get_ltsInstance(Uo).s(V.product.licenseServer, ue, ne, !0).then(function() {
           }, function(xe) {
           });
         }
         V.each(A, function(xe, Fe) {
           var Qe = !1, Ze = parseInt(Fe);
-          Ze > 0 && Ze != ne && (Ze + 18e4 < Ha() && (Qe = !0), S.get_ltsInstance(Vo).s(V.product.licenseServer, xe, Fe, Qe).then(function() {
+          Ze > 0 && Ze != ne && (Ze + 18e4 < Ha() && (Qe = !0), S.get_ltsInstance(Uo).s(V.product.licenseServer, xe, Fe, Qe).then(function() {
           }, function(Ct) {
           }));
         });
@@ -10565,15 +10566,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     if (o != "") {
       e > 1 && (i = e);
       var a = Ha();
-      if (yo > 0 && yo + 18e4 < a) {
+      if (bo > 0 && bo + 18e4 < a) {
         Ss ? (aa = {}, Qt.lavrf__unload()) : Qt.lavrf__(!0, r, t);
         var u = Ha() + 1;
-        yo = u, La = ss(u), aa = {};
+        bo = u, La = ss(u), aa = {};
       }
-      Ks = !0, Ss = !1, aa[o] ? aa[o] += i : aa[o] = i, yo == 0 && Qt.lavrf__(!0, r, t);
+      Ys = !0, Ss = !1, aa[o] ? aa[o] += i : aa[o] = i, bo == 0 && Qt.lavrf__(!0, r, t);
     }
   }, Qt.lavrf_ = function(o, e, r) {
-    if (Ks) {
+    if (Ys) {
       var t = 1;
       o && (t = o), setTimeout(function() {
         Qt.lavrf__(!1, e, r);
@@ -10581,7 +10582,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
   }, Qt.lavrf__ = function(o, e, r) {
     var t, i, a, u = Ha(), c = !1, d = !!o, _ = 0, v = e;
-    n.isUndefined(v) && (v = Qt.EnumInstance.dwt_browser), a = mi(v), Ks = !1, yo == 0 && (c = !0, yo = u, La = ss(u)), t = yo, i = La;
+    n.isUndefined(v) && (v = Qt.EnumInstance.dwt_browser), a = mi(v), Ys = !1, bo == 0 && (c = !0, bo = u, La = ss(u)), t = bo, i = La;
     var T = {};
     T.ut = i;
     var M = {};
@@ -10590,7 +10591,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }), T.cts = M, d || t + 18e4 < u) {
       d = !0;
       var A = Ha() + 1;
-      if (yo = A, La = ss(A), aa = {}, Ss = !1, _ == 0)
+      if (bo = A, La = ss(A), aa = {}, Ss = !1, _ == 0)
         return;
     } else {
       if (_ == 0)
@@ -10599,23 +10600,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     T.dur = c ? 1 : 180;
     var S, V = Qt.DeviceFriendlyName || "", ne = Qt.lgcb(), z = { hs: gl(), og: ml(), cu: a.get_cu(), fn: V, cw: "", os: ne, v: rc(), dt: a.get_deploymentType(), ed: "js", rcs: [T] };
-    z.product = Qt.lgpd(e), S = JSON.stringify(z), n.product.ltsDebug && ss(), Qt.lclex(), a.get_ltsInstance(Vo).s(n.product.licenseServer, S, "" + t, d).then(function() {
+    z.product = Qt.lgpd(e), S = JSON.stringify(z), n.product.ltsDebug && ss(), Qt.lclex(), a.get_ltsInstance(Uo).s(n.product.licenseServer, S, "" + t, d).then(function() {
     }, function(ue) {
     });
   }, Qt.lavrf__unload = function() {
     var o, e = Ha(), r = !0, t = !1, i = mi(Qt.EnumInstance.dwt_desktop), a = mi(Qt.EnumInstance.dwt_browser), u = mi(Qt.EnumInstance.dbr);
-    Ks = !1, yo == 0 && (yo = e, La = ss(e)), o = yo;
+    Ys = !1, bo == 0 && (bo = e, La = ss(e)), o = bo;
     var c = Ha() + 1;
-    yo = c, La = ss(c), aa = {}, Ss = !1, o += 1, Qt.lclex(), i.inited_ltsInstance() && i.get_ltsInstance(Vo).s(n.product.licenseServer, t, "" + o, r).then(function() {
+    bo = c, La = ss(c), aa = {}, Ss = !1, o += 1, Qt.lclex(), i.inited_ltsInstance() && i.get_ltsInstance(Uo).s(n.product.licenseServer, t, "" + o, r).then(function() {
     }, function(v) {
-    }), a.inited_ltsInstance() && a.get_ltsInstance(Vo).s(n.product.licenseServer, t, "" + o, r).then(function() {
+    }), a.inited_ltsInstance() && a.get_ltsInstance(Uo).s(n.product.licenseServer, t, "" + o, r).then(function() {
     }, function(v) {
-    }), u.inited_ltsInstance() && u.get_ltsInstance(Vo).s(n.product.licenseServer, t, "" + o, r).then(function() {
+    }), u.inited_ltsInstance() && u.get_ltsInstance(Uo).s(n.product.licenseServer, t, "" + o, r).then(function() {
     }, function(v) {
     });
     var d, _ = Object.keys(Cu);
     n.each(_, function(v) {
-      (d = Cu[v]).inited_ltsInstance() && d.get_ltsInstance(Vo).s(n.product.licenseServer, t, "" + o, r).then(function() {
+      (d = Cu[v]).inited_ltsInstance() && d.get_ltsInstance(Uo).s(n.product.licenseServer, t, "" + o, r).then(function() {
       }, function(T) {
       });
     });
@@ -10666,9 +10667,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var t = Object.keys(Cu);
     n.each(t, function(i) {
       Cu[i].clearData();
-    }), yo = 0, La = n.nil, aa = {}, Ss = !1, Ks = !1, Ys = !1, nc = !1, Js = !1, Qt.lclex(), Qt.bLTSOnline = !0, Qt.axInstance = n.nil, Qt.lOnUpdateDWObj = [];
+    }), bo = 0, La = n.nil, aa = {}, Ss = !1, Ys = !1, Js = !1, nc = !1, Xs = !1, Qt.lclex(), Qt.bLTSOnline = !0, Qt.axInstance = n.nil, Qt.lOnUpdateDWObj = [];
   }, Qt.lcexp = function(o, e) {
-    return mi(o).get_ltsInstance(Vo).caret().then(function() {
+    return mi(o).get_ltsInstance(Uo).caret().then(function() {
       return !1;
     }, function(r) {
       var t = Qt.licenseException, i = "";
@@ -10695,8 +10696,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }, Qt.lpubdlg = function(o, e) {
     if (n.isString(o) && o != "") {
       if (o = n.atob(o), e == 1)
-        return Ys || (Ys = !0, l.OnLTSPublicLicenseMessage && l.OnLTSPublicLicenseMessage(n.License.getPublicLicenseContent(o))), !0;
-      e == 2 && (Ys || (Ys = !0));
+        return Js || (Js = !0, l.OnLTSPublicLicenseMessage && l.OnLTSPublicLicenseMessage(n.License.getPublicLicenseContent(o))), !0;
+      e == 2 && (Js || (Js = !0));
     }
     return !1;
   }, Qt.lcheckLic = function(o, e, r) {
@@ -10706,12 +10707,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var i = e.Detail[0].ExpireDate;
         return Qt.lsexp(o, i, r), Qt.lcexp(o, r).then(function(a) {
           var u = !1;
-          a ? u = !0 : e.Trial != 1 && e.Trial != 2 || (u = Qt.lpubdlg(e.Message, e.Trial)), u || Qt.bLTSOnline || Js || (Js = !0, l.OnLTSConnectionWarning && l.OnLTSConnectionWarning());
+          a ? u = !0 : e.Trial != 1 && e.Trial != 2 || (u = Qt.lpubdlg(e.Message, e.Trial)), u || Qt.bLTSOnline || Xs || (Xs = !0, l.OnLTSConnectionWarning && l.OnLTSConnectionWarning());
         });
       }
       e.Trial != 1 && e.Trial != 2 || (t = Qt.lpubdlg(e.Message, e.Trial));
     }
-    t || Qt.bLTSOnline || Js || (Js = !0, l.OnLTSConnectionWarning && l.OnLTSConnectionWarning());
+    t || Qt.bLTSOnline || Xs || (Xs = !0, l.OnLTSConnectionWarning && l.OnLTSConnectionWarning());
   }, Qt.lisValidID = function(o) {
     if (n.isString(o) && o != "")
       return !0;
@@ -10800,7 +10801,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function Tl() {
     n.detect.scriptLoaded ? new n.Promise(Sl).then(yl, bl) : setTimeout(Tl, 100);
   }
-  function Xs() {
+  function Qs() {
     return n.detect.scriptLoaded ? new n.Promise(Sl) : new n.Promise(function(o, e) {
       yl = o, bl = e, setTimeout(Tl, 100);
     });
@@ -10809,7 +10810,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var o = l.navInfoSync;
     return o.bAndroid ? le : o.bMac ? Oe : o.bChromeOS ? Ve : o.bHarmonyOS ? We : l.navInfo.bEmbed ? Re : o.bLinux ? Te : o.biPhone || o.biPad ? je : Le;
   }
-  function Qs(o, e, r, t, i) {
+  function Zs(o, e, r, t, i) {
     var a, u = n.product, c = l.navInfoSync, d = l.dcp.getDSPath();
     if (o && (n.one(o).before(n.install._strNonInstallDIV), (a = n.get(n.install._divDWTNonInstallContainerID)) && (a.style.width = e, a.style.height = r), n.show(n.install._divDWTNonInstallContainerID)), n.install._divDWTemessageContainer != "" && n.hide(n.install._divDWTemessageContainer), c.bMac)
       t ? n.isFunction(l.OnWebTwainNeedUpgradeCallback) && l.OnWebTwainNeedUpgradeCallback(u.name, { default: d }, u.bHTML5Edition, Oe, c.bIE, c.bSafari, n.detect.ssl, n.env.strIEVersion) : n.isFunction(l.OnWebTwainNotFoundOnMacCallback) && l.OnWebTwainNotFoundOnMacCallback(u.name, d, u.bHTML5Edition, c.bIE, c.bSafari, n.detect.ssl, n.env.strIEVersion, i);
@@ -10831,7 +10832,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       } else
         n.isFunction(l.OnWebTwainNotFoundOnWindowsCallback) && l.OnWebTwainNotFoundOnWindowsCallback(u.name, d, u.bHTML5Edition, c.bIE, c.bSafari, n.detect.ssl, n.env.strIEVersion, i);
   }
-  function Lo(o, e) {
+  function Fo(o, e) {
     (function(r, t) {
       if (t.has(r))
         throw new TypeError("Cannot initialize the same private elements twice on an object");
@@ -10840,13 +10841,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function Nr(o, e, r) {
     return e.has(o), r;
   }
-  var El = x + ".", kf = parseInt(x), xf = 0, Mf = 1, Pf = 2, Af = 3, Rf = 4, Lf = 7, Ff = 8, Of = 9, Wf = 10, Bf = 50, Nf = 51, Vf = 52, Eu = n.getLogger();
+  var El = k + ".", kf = parseInt(k), xf = 0, Mf = 1, Pf = 2, Af = 3, Rf = 4, Lf = 7, Ff = 8, Of = 9, Wf = 10, Bf = 50, Nf = 51, Vf = 52, Eu = n.getLogger();
   function Ts(o) {
     return n.isString(o) ? n.trim(o) : o;
   }
-  var oc = /* @__PURE__ */ new WeakSet(), Dl = /* @__PURE__ */ new WeakSet(), ac = /* @__PURE__ */ new WeakSet(), kl = /* @__PURE__ */ new WeakSet(), Du = /* @__PURE__ */ new WeakSet(), Uo = /* @__PURE__ */ new WeakSet(), xl = /* @__PURE__ */ new WeakSet(), Zs = /* @__PURE__ */ new WeakSet(), sc = /* @__PURE__ */ new WeakSet(), Ml = /* @__PURE__ */ new WeakSet(), Pl = /* @__PURE__ */ new WeakSet(), ku = /* @__PURE__ */ new WeakSet(), Al = /* @__PURE__ */ new WeakSet(), uc = /* @__PURE__ */ new WeakSet(), Uf = function() {
+  var oc = /* @__PURE__ */ new WeakSet(), Dl = /* @__PURE__ */ new WeakSet(), ac = /* @__PURE__ */ new WeakSet(), kl = /* @__PURE__ */ new WeakSet(), Du = /* @__PURE__ */ new WeakSet(), Go = /* @__PURE__ */ new WeakSet(), xl = /* @__PURE__ */ new WeakSet(), qs = /* @__PURE__ */ new WeakSet(), sc = /* @__PURE__ */ new WeakSet(), Ml = /* @__PURE__ */ new WeakSet(), Pl = /* @__PURE__ */ new WeakSet(), ku = /* @__PURE__ */ new WeakSet(), Al = /* @__PURE__ */ new WeakSet(), uc = /* @__PURE__ */ new WeakSet(), Uf = function() {
     function o() {
-      Gn(this, o), Lo(this, uc), Lo(this, Al), Lo(this, ku), Lo(this, Pl), Lo(this, Ml), Lo(this, sc), Lo(this, Zs), Lo(this, xl), Lo(this, Uo), Lo(this, Du), Lo(this, kl), Lo(this, ac), Lo(this, Dl), Lo(this, oc);
+      Gn(this, o), Fo(this, uc), Fo(this, Al), Fo(this, ku), Fo(this, Pl), Fo(this, Ml), Fo(this, sc), Fo(this, qs), Fo(this, xl), Fo(this, Go), Fo(this, Du), Fo(this, kl), Fo(this, ac), Fo(this, Dl), Fo(this, oc);
     }
     return zn(o, [{ key: "isLTS", value: function() {
       return n.isString(l.Lib.product.handshakeCode) || n.isString(l.Lib.product.organizationID) || l.Lib.product.bPublicLTS || n.isString(l.DWT.ProductKey) && n.startsWith(l.DWT.ProductKey, "DLS2");
@@ -10926,7 +10927,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return n.isFunction(e._isWasmWithScan) && e._isWasmWithScan() && (a = Nr(this, Du, cc).call(this, e, e.__anlic, !1, { Core: !0 }, r, t)), a || (i.code = e._errorCode, i.message = e._getErrorString(), i.fromLTS = !1), a;
     } }, { key: "showLicenseErrorDialog", value: function(e) {
       var r = e.code;
-      r != 0 && (r == Nr(this, xl, zf).call(this) ? Nr(this, Ml, Hf).call(this) : Nr(this, Uo, qo).call(this, e));
+      r != 0 && (r == Nr(this, xl, zf).call(this) ? Nr(this, Ml, Hf).call(this) : Nr(this, Go, qo).call(this, e));
     } }, { key: "isBindDomainOK", value: function(e) {
       if (n.isUndefined(e) || e == null || e == "" || e == "*" || e == "*.*")
         return Gt;
@@ -11057,15 +11058,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var u, c = a;
     if (e && e.LTS) {
       if (!e || !n.isArray(e.Detail) || e.Detail.length == 0)
-        return this.isLTS() ? n.Errors.LicenseNoCore(o, r) : n.Errors.LicenseEmptyOrInvalid(o), Nr(this, Zs, xu).call(this, "", !0), vt;
+        return this.isLTS() ? n.Errors.LicenseNoCore(o, r) : n.Errors.LicenseEmptyOrInvalid(o), Nr(this, qs, xu).call(this, "", !0), vt;
     } else if (!e || !n.isArray(e.Detail) || e.Detail.length == 0)
-      return this.isLTS() ? n.Errors.LicenseNoCore(o, r) : n.Errors.LicenseEmptyOrInvalid(o), Nr(this, Zs, xu).call(this, "", !0), vt;
+      return this.isLTS() ? n.Errors.LicenseNoCore(o, r) : n.Errors.LicenseEmptyOrInvalid(o), Nr(this, qs, xu).call(this, "", !0), vt;
     var d, _, v, T, M = 0, A = 0, S = [], V = [], ne = vt, z = vt, ue = vt, xe = vt, Fe = vt;
     if (!this.isBindDomainOK(e.Domain))
-      return n.Errors.LicenseBadDomain(o), c && Nr(this, Uo, qo).call(this, yr(o)), vt;
+      return n.Errors.LicenseBadDomain(o), c && Nr(this, Go, qo).call(this, yr(o)), vt;
     for (e.Detail.length > 0 && (u = (v = e.Detail[0]).Trial != "FALSE"), _ = 1; _ < e.Detail.length; _++)
       if ((v = e.Detail[_]).Trial == "FALSE" && u || v.Trial == "TRUE" && !u)
-        return n.Errors.LicenseTrialFullMixed(o), c && Nr(this, Uo, qo).call(this, yr(o)), vt;
+        return n.Errors.LicenseTrialFullMixed(o), c && Nr(this, Go, qo).call(this, yr(o)), vt;
     if (t.Core || t.Webcam) {
       var Qe, Ze = [], Ct = !1;
       for (_ = 0; _ < e.Detail.length; _++)
@@ -11090,7 +11091,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           Ct = !0;
         }
       if (!Ct && Ze.length > 0)
-        return Ze.splice(0), Qe = [x, re].join("."), n.Errors.LicenseVersionNotCurrent(o, Qe), c && Nr(this, Uo, qo).call(this, yr(o)), !1;
+        return Ze.splice(0), Qe = [k, re].join("."), n.Errors.LicenseVersionNotCurrent(o, Qe), c && Nr(this, Go, qo).call(this, yr(o)), !1;
       Ze.splice(0);
     } else
       V = e.Detail;
@@ -11122,17 +11123,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     if (M > 0)
       return Gt;
     if (A == 0)
-      return this.setNoAllowedLicenseTypeError(o, r, t), c && Nr(this, Uo, qo).call(this, yr(o)), vt;
+      return this.setNoAllowedLicenseTypeError(o, r, t), c && Nr(this, Go, qo).call(this, yr(o)), vt;
     if (S.length > 0) {
       var st, nt = 0, ft = 1e20, Pt = "", Ot = (/* @__PURE__ */ new Date()).getTime();
       for (d = "", _ = 0; _ < S.length; _++)
         (st = this.parseDateFromString(S[_])).getTime() < Ot && st.getTime() > nt ? (nt = st.getTime(), d = S[_]) : st.getTime() > Ot && st.getTime() < ft && (ft = st.getTime(), Pt = S[_]);
-      return d != "" ? (st = this.parseDateFromString(d), d = this.getLicenseDateString(st), n.Errors.LicenseExpired(o, d), this.isLTS() || Nr(this, Zs, xu).call(this, d, u), c = !1) : Pt != "" ? (st = this.parseDateFromString(Pt), Pt = this.getLicenseDateString(st), n.Errors.LicenseIsFuture(o, Pt)) : (n.Errors.LicenseExpired(o, ""), c = !1, Nr(this, Zs, xu).call(this)), c && Nr(this, Uo, qo).call(this, yr(o)), vt;
+      return d != "" ? (st = this.parseDateFromString(d), d = this.getLicenseDateString(st), n.Errors.LicenseExpired(o, d), this.isLTS() || Nr(this, qs, xu).call(this, d, u), c = !1) : Pt != "" ? (st = this.parseDateFromString(Pt), Pt = this.getLicenseDateString(st), n.Errors.LicenseIsFuture(o, Pt)) : (n.Errors.LicenseExpired(o, ""), c = !1, Nr(this, qs, xu).call(this)), c && Nr(this, Go, qo).call(this, yr(o)), vt;
     }
     if (ue)
-      return n.Errors.LicenseLower(o), c && Nr(this, Uo, qo).call(this, yr(o)), vt;
+      return n.Errors.LicenseLower(o), c && Nr(this, Go, qo).call(this, yr(o)), vt;
     var pn = l.navInfoSync;
-    return z ? (pn.bEdge ? n.Errors.LicenseNoEdge(o) : pn.bChrome ? n.Errors.LicenseNoChrome(o) : pn.bFirefox ? n.Errors.LicenseNoFirefox(o) : pn.bIE ? n.Errors.LicenseNoIE(o) : pn.bSafari ? n.Errors.LicenseNoSafari(o) : n.Errors.LicenseNotSupportBorwser(o), c && Nr(this, Uo, qo).call(this, yr(o)), vt) : ne ? (this.setNoAllowedLicenseTypeError(o, r, { Core: !0 }), c && Nr(this, Uo, qo).call(this, yr(o)), vt) : xe ? (this.setNoAllowedLicenseTypeError(o, r, { PDFRasterizer: !0 }), c && Nr(this, Uo, qo).call(this, yr(o)), vt) : Fe ? (this.setNoAllowedLicenseTypeError(o, r, { Webcam: !0 }), c && Nr(this, Uo, qo).call(this, yr(o)), vt) : (n.Errors.LicenseEmptyOrInvalid(o), c && Nr(this, Uo, qo).call(this, yr(o)), vt);
+    return z ? (pn.bEdge ? n.Errors.LicenseNoEdge(o) : pn.bChrome ? n.Errors.LicenseNoChrome(o) : pn.bFirefox ? n.Errors.LicenseNoFirefox(o) : pn.bIE ? n.Errors.LicenseNoIE(o) : pn.bSafari ? n.Errors.LicenseNoSafari(o) : n.Errors.LicenseNotSupportBorwser(o), c && Nr(this, Go, qo).call(this, yr(o)), vt) : ne ? (this.setNoAllowedLicenseTypeError(o, r, { Core: !0 }), c && Nr(this, Go, qo).call(this, yr(o)), vt) : xe ? (this.setNoAllowedLicenseTypeError(o, r, { PDFRasterizer: !0 }), c && Nr(this, Go, qo).call(this, yr(o)), vt) : Fe ? (this.setNoAllowedLicenseTypeError(o, r, { Webcam: !0 }), c && Nr(this, Go, qo).call(this, yr(o)), vt) : (n.Errors.LicenseEmptyOrInvalid(o), c && Nr(this, Go, qo).call(this, yr(o)), vt);
   }
   function qo(o) {
     var e = 0, r = o.message;
@@ -11205,7 +11206,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               a.next = 27;
               break;
             case 5:
-              return l.DWT.UseCameraAddonWasm = !0, n.detect.bNeedWasm = !0, a.next = 9, Xs();
+              return l.DWT.UseCameraAddonWasm = !0, n.detect.bNeedWasm = !0, a.next = 9, Qs();
             case 9:
               if (!n.detect.wasmScriptLoaded) {
                 a.next = 27;
@@ -11403,8 +11404,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   n.License = new Uf(), l.DWT.isPublicLicense = function() {
     return l.Lib.product.bPublicLTS;
   };
-  var fc, Ta = l.navInfoSync, gc = !0, mc = !1, qs = Ta.bHTML5Edition, pc = 0, _c = mc;
-  Ta.bIE && ((pc = Ta.IEVersion) === "" || pc >= 10 ? l.DWT.IfUseActiveXForIE10Plus == 0 ? qs = gc : (qs = mc, _c = gc, Ta.bHTML5Edition = qs) : (qs = mc, pc >= 9 && (_c = gc))), (fc = { name: "Dynamic Web TWAIN", bHTML5Edition: qs, bActiveXEdition: _c, _iImageCaptureDriverType: 3, _iBrokerProcessType: 1, getChromeEditionPath: l.dcp.getDSPath, getPKGPath: function() {
+  var fc, Ta = l.navInfoSync, gc = !0, mc = !1, $s = Ta.bHTML5Edition, pc = 0, _c = mc;
+  Ta.bIE && ((pc = Ta.IEVersion) === "" || pc >= 10 ? l.DWT.IfUseActiveXForIE10Plus == 0 ? $s = gc : ($s = mc, _c = gc, Ta.bHTML5Edition = $s) : ($s = mc, pc >= 9 && (_c = gc))), (fc = { name: "Dynamic Web TWAIN", bHTML5Edition: $s, bActiveXEdition: _c, _iImageCaptureDriverType: 3, _iBrokerProcessType: 1, getChromeEditionPath: l.dcp.getDSPath, getPKGPath: function() {
     return l.DWT.ResourcesPath + "/dist/mac/DynamicWebTWAINMacEdition.pkg";
   }, getMSIPath: function() {
     return l.DWT.ResourcesPath + "/dist/win/DynamicWebTWAINPlugIn.msi";
@@ -11487,21 +11488,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return !!(n.win.ShadowRoot && o instanceof n.win.ShadowRoot);
   } };
   n.mix(n, Ca), n.Addon_Events = [], n.Addon_Sendback_Events = [], n.install = { _divDWTNonInstallContainerID: "dwt-NonInstallContainerID", _divDWTemessageContainer: "", _dlgInstall: !1 }, n.install._strNonInstallDIV = ['<div style="text-align:center;" id="', n.install._divDWTNonInstallContainerID, '"></div>'].join("");
-  var Fo = l.DWT;
-  Fo.CloseDialog = function() {
+  var Oo = l.DWT;
+  Oo.CloseDialog = function() {
     var o = n.install._dlgInstall;
     if (o) {
       var e = n.all(".dynamsoft-dialog-close");
       n.each(e, function(r, t) {
-        n.removeEventListener(r, "click", Fo.CloseDialog);
+        n.removeEventListener(r, "click", Oo.CloseDialog);
       }), o.open && o.close(), document.body.removeChild(o), n.install._dlgInstall = !1;
     }
-  }, Fo.ShowDialog = function(o, e, r, t, i) {
+  }, Oo.ShowDialog = function(o, e, r, t, i) {
     if (r !== !1) {
       var a, u = { width: o, height: e, position: "absolute" };
-      t ? (a = ['<div class="dynamsoft-dwt-dialog-body">', r, "</div>"].join(""), u.closeButton = !1) : a = ['<div class="ds-dwt-ui-showdlg">', '<div class="dynamsoft-dwt-dialog-body">', '<div class="dynamsoft-dwt-dlg-header">', i ? "" : '<div class="dynamsoft-dialog-close"></div>', "</div>", r, "</div>", "</div>"].join(""), i && (u.closeButton = !1), Fo.ShowMessage(a, u);
+      t ? (a = ['<div class="dynamsoft-dwt-dialog-body">', r, "</div>"].join(""), u.closeButton = !1) : a = ['<div class="ds-dwt-ui-showdlg">', '<div class="dynamsoft-dwt-dialog-body">', '<div class="dynamsoft-dwt-dlg-header">', i ? "" : '<div class="dynamsoft-dialog-close"></div>', "</div>", r, "</div>", "</div>"].join(""), i && (u.closeButton = !1), Oo.ShowMessage(a, u);
     }
-  }, Fo.ShowMessage = function(o, e) {
+  }, Oo.ShowMessage = function(o, e) {
     var r, t, i, a, u, c = n.install, d = "ds-dwt-ui-dlg", _ = "ds-dwt-ui-dlg-wrap", v = screen.width, T = !0, M = 0, A = !0, S = !0, V = 0, ne = "fixed", z = "Error", ue = n.product.bActiveXEdition, xe = !1, Fe = null;
     if (e && (r = e.width, t = e.height, e.seconds && (M = e.seconds), e.headerStyle && (V = e.headerStyle), e.backgroundStyle == 1 && (xe = !0), e.closeButton === !1 && (A = !1), e.bAutoClose && (i = e.bAutoClose, A = !0), e.bReadyClosed == 0 && (T = !1), e.position && (ne = e.position), e.caption && (z = e.caption), n.isFunction(e.onClose) && (Fe = e.onClose)), r ? r > v - 10 && (r = v - 10) : r = v > 600 ? 600 : v - 10, t || (t = "100%"), V == 1 ? o = ['<div class="dynamsoft-dialog">', '<div class="dynamsoft-dwt-dialog-body">', '<div class="dynamsoft-dwt-dlg-header">', A ? '<div class="dynamsoft-dialog-close"></div>' : "", "</div>", o, "</div></div>"].join("") : V == 2 && (o = ['<div class="dynamsoft-dialog">', '<div class="dynamsoft-dwt-ltsdlg-header"><span style="color:#FFF;line-height:35px;margin-left:15px">', z, "</span>", A ? '<div class="dynamsoft-dialog-close"></div>' : "", "</div>", '<div class="dynamsoft-dwt-ltsdlg-body" style="padding:25px 50px 20px 50px;">', o, "</div></div>"].join("")), n.one("." + d).length == 0) {
       var Qe = document.createElement("div"), Ze = document.createElement("div"), Ct = document.createElement("div");
@@ -11530,17 +11531,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     if (c._dlgInstall.open && c._dlgInstall.close(), c._dlgInstall.showModal({ position: ne }), c._dlgInstall.bReadyClosed = T, xe && n.setBackOpacity({}), A) {
       var st = n.all(".dynamsoft-dialog-close");
       n.each(st, function(nt, ft) {
-        n.addEventListener(nt, "click", Fo.CloseDialog);
+        n.addEventListener(nt, "click", Oo.CloseDialog);
       }), st.length > 0 && i && M > 0 && setTimeout(n._zdgb_xkz_dhk, 100);
     }
-  }, Fo.OnWebTwainPreExecute || (Fo.OnWebTwainPreExecute = function(o, e) {
+  }, Oo.OnWebTwainPreExecute || (Oo.OnWebTwainPreExecute = function(o, e) {
     l.Lib.detect.OnWebTwainPreExecute(l.DWT.IfConfineMaskWithinTheViewer, o, e);
-  }), Fo.OnWebTwainPostExecute || (Fo.OnWebTwainPostExecute = function() {
+  }), Oo.OnWebTwainPostExecute || (Oo.OnWebTwainPostExecute = function() {
     l.Lib.detect.OnWebTwainPostExecute();
   }), l.OnWebTwainPreExecuteCallback || (l.OnWebTwainPreExecuteCallback = function(o, e) {
-    n.isFunction(Fo.OnWebTwainPreExecute) && Fo.OnWebTwainPreExecute(o, e);
+    n.isFunction(Oo.OnWebTwainPreExecute) && Oo.OnWebTwainPreExecute(o, e);
   }), l.OnWebTwainPostExecuteCallback || (l.OnWebTwainPostExecuteCallback = function() {
-    n.isFunction(Fo.OnWebTwainPostExecute) && Fo.OnWebTwainPostExecute();
+    n.isFunction(Oo.OnWebTwainPostExecute) && Oo.OnWebTwainPostExecute();
   });
   function Yl() {
     var o = H, e = l.DWT && l.DWT.CustomizableDisplayInfo;
@@ -11621,12 +11622,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   n._funsAfterConfigLoaded = [], n._safePromptCustomMsg = function(o) {
     n.product.loadResourcePath ? (Xl(), o && o()) : o && n._funsAfterConfigLoaded.push(o);
   };
-  var $s = l.navInfoSync, Es = n.win, Ql = Es.document;
+  var eu = l.navInfoSync, Es = n.win, Ql = Es.document;
   function Zl() {
     if (n.detect.cssLoaded)
       return n.Promise.resolve();
     var o = l.DWT.ResourcesPath, e = "";
-    $s.bFileSystem || (e = n.timestamp);
+    eu.bFileSystem || (e = n.timestamp);
     var r = [[o, "/src/dynamsoft.webtwain.css", e].join("")];
     return n.product.bHTML5Edition && l.DWT.UseDefaultViewer && r.push([o, "/src/dynamsoft.viewer.css", e].join("")), new n.Promise(function(t) {
       l.navInfoSync.bSafari ? (n.addAllCss(r, !1, function() {
@@ -11656,9 +11657,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var e = n.one(".dynamsoft_waiting").getEL();
     e && e.parentNode && e.parentNode.removeChild(e);
     var r = l.DWT.ResourcesPath, t = "";
-    $s.bFileSystem || (t = n.timestamp);
+    eu.bFileSystem || (t = n.timestamp);
     var i = Gt, a = [];
-    $s.bSafari && (i = vt), a.push([r, "/dynamsoft.webtwain.install.js", t].join("")), l.DWT.bNpm && (a = []), n.product.bHTML5Edition && l.DWT.UseDefaultViewer && a.push([r, "/src/dynamsoft.viewer.js", t].join(""));
+    eu.bSafari && (i = vt), a.push([r, "/dynamsoft.webtwain.install.js", t].join("")), l.DWT.bNpm && (a = []), n.product.bHTML5Edition && l.DWT.UseDefaultViewer && a.push([r, "/src/dynamsoft.viewer.js", t].join(""));
     var u = !1;
     return l.navInfoSync.bIE && (u = l.navInfoSync.strBrowserVersion <= 7), !u && n.License.isLTS() && a.push([r, "/src/dynamsoft.lts.js", t].join("")), a.length > 0 && n.showLoadingMsg(-1, "", l.MSG.Init_LoadingViewerJs), Zl().then(function() {
       return new n.Promise(function(c, d) {
@@ -11698,7 +11699,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (n.product.dwtConfigLoaded || n.product.dwtConfigLoading)
         return;
       n.product.dwtConfigLoading = !0;
-      var o = $s.bFileSystem, e = n.env.basePath, r = l.DWT.ResourcesPath, t = "";
+      var o = eu.bFileSystem, e = n.env.basePath, r = l.DWT.ResourcesPath, t = "";
       n.isArray(l.DWT.Containers) || (l.DWT.Containers = []), !o && (r !== void 0 && r != "" || (r = e), r.length > 0 && r.charAt(r.length - 1) == "/" && (r = r.substr(0, r.length - 1)), t = n.timestamp, l.DWT.ResourcesPath = r), n.product.bActiveXEdition ? n.addScript([r, "/src/dynamsoft.webtwain.activex.js", t].join(""), !0, !1, function() {
         n.product.dwtConfigLoaded = !0, n.product.dwtConfigLoading = !1, ql();
       }) : (n.product.dwtConfigLoaded = !0, n.product.dwtConfigLoading = !1, ql());
@@ -11713,7 +11714,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     });
   }
   n.domReady(function() {
-    $s.bIE && Es.addEventListener && Es.addEventListener("unload", l.DWT.Unload, !1), Es && (n.addEventListener(Es, "focus", function() {
+    eu.bIE && Es.addEventListener && Es.addEventListener("unload", l.DWT.Unload, !1), Es && (n.addEventListener(Es, "focus", function() {
       var o = l.DWT.ContainerMap;
       o && n.each(o, function(e, r) {
         e && e._OnPageFocus && e._OnPageFocus();
@@ -11737,7 +11738,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }).then(function(o) {
       if (o)
         return n.product.bDWTLoading ? void 0 : (n.product.bDWTLoading = Gt, us().then(function() {
-          return n.openLoadingMsg(), Xs().then(l.DWT._innerLoad).then(function() {
+          return n.openLoadingMsg(), Qs().then(l.DWT._innerLoad).then(function() {
             n.product.bDWTLoading = !1, n.closeLoadingMsg();
           }, function() {
             n.product.bDWTLoading = !1, n.closeLoadingMsg();
@@ -12273,7 +12274,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       };
     }
-    var en = Oa(757), Ft = Oa.n(en), st = (en = typeof window < "u") && window, nt = "prev", ft = "next", Pt = "mousedown", Ot = "mousemove", pn = "mouseup", un = "pageAreaSelected", An = "pageAreaUnselected", Mr = "_canvasVisibilityChanged", tr = "_updateErrorMessage", Qn = "_updateLogMessage", wi = "_DirectoryChanged", Xr = "_canvasRightClick", Mn = "_afterRender", ci = "_currentChanged", Da = "_updateThbItem", xo = "_setScrollerSizeUI", kr = "_changeCanvasCursorUI", qr = "_updateForViewer", hi = "_loadToViewer", fo = "_openToViewer", ha = "_loadPage", Yr = "_removeViewerUid", ri = "_changePage", pi = "_reorderPage", Yo = "_removePage", Bi = "_editPage", Mo = "_loadToTag", to = "_removePageTag", Ii = "_addPageTag", $a = "_emptyTag", Ri = "_renameTag", Hi = "_tagChanged", xi = "_appendSync", ka = "_updateSync", xa = "_loadToFile", Ma = "_removeFile", Sr = "_renameFile", cn = { code: 0, message: "ok." }, rn = { code: 80001, message: "The parameter type is wrong." }, ii = { code: 80002, message: "The parameter is out of range." }, dr = { code: 80003, message: "The image does not exist." }, es = { code: 80006, message: "The file does not exist." }, ai = { code: 80009, message: "Tag does not exist." }, Tr = { code: 80010, message: "The tag already exists." }, Pr = { code: 80011, message: "Element does not exist." }, ur = { code: 80012, message: "Page does not exist." }, gr = { code: 80013, message: "The parameter is invalid." }, fi = { code: 80016, message: "The color is invalid." }, Yi = { code: 80017, message: "Failed to save image to database." }, gs = { code: 80018, message: "Failed to remove image from database by uid." }, Wo = { code: 80020, message: "Your browser does not support full screen." }, Ws = { code: 80021, message: "The size is invalid." }, Rm = { code: 80022, message: "The operation mode is error." }, Pa = { code: 80023, message: "The border is invalid." }, Lm = { code: 80026, message: "The constructor of view ui is required." }, rf = { code: 80032, message: "The file already exists." }, of = function() {
+    var en = Oa(757), Ft = Oa.n(en), st = (en = typeof window < "u") && window, nt = "prev", ft = "next", Pt = "mousedown", Ot = "mousemove", pn = "mouseup", un = "pageAreaSelected", An = "pageAreaUnselected", Mr = "_canvasVisibilityChanged", tr = "_updateErrorMessage", Qn = "_updateLogMessage", wi = "_DirectoryChanged", Xr = "_canvasRightClick", Mn = "_afterRender", ci = "_currentChanged", Da = "_updateThbItem", Mo = "_setScrollerSizeUI", kr = "_changeCanvasCursorUI", qr = "_updateForViewer", hi = "_loadToViewer", go = "_openToViewer", ha = "_loadPage", Yr = "_removeViewerUid", ri = "_changePage", pi = "_reorderPage", Jo = "_removePage", Bi = "_editPage", Po = "_loadToTag", to = "_removePageTag", Ii = "_addPageTag", $a = "_emptyTag", Ri = "_renameTag", Hi = "_tagChanged", xi = "_appendSync", ka = "_updateSync", xa = "_loadToFile", Ma = "_removeFile", Sr = "_renameFile", cn = { code: 0, message: "ok." }, rn = { code: 80001, message: "The parameter type is wrong." }, ii = { code: 80002, message: "The parameter is out of range." }, dr = { code: 80003, message: "The image does not exist." }, es = { code: 80006, message: "The file does not exist." }, ai = { code: 80009, message: "Tag does not exist." }, Tr = { code: 80010, message: "The tag already exists." }, Pr = { code: 80011, message: "Element does not exist." }, ur = { code: 80012, message: "Page does not exist." }, gr = { code: 80013, message: "The parameter is invalid." }, fi = { code: 80016, message: "The color is invalid." }, Yi = { code: 80017, message: "Failed to save image to database." }, gs = { code: 80018, message: "Failed to remove image from database by uid." }, Bo = { code: 80020, message: "Your browser does not support full screen." }, Ws = { code: 80021, message: "The size is invalid." }, Rm = { code: 80022, message: "The operation mode is error." }, Pa = { code: 80023, message: "The border is invalid." }, Lm = { code: 80026, message: "The constructor of view ui is required." }, rf = { code: 80032, message: "The file already exists." }, of = function() {
       function be() {
         this.matrix = [], this.all = [], this.result = [], this._flipNum = 0, this._flipNumX = 0, this._flipNumY = 0, this._tAngle = 0, this._curMode = null;
       }
@@ -12389,7 +12390,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var s = this;
         this._on(ka, function(h, w, P) {
           s.updateSync(h, w, P);
-        }), this._on(Yo, function(h, w) {
+        }), this._on(Jo, function(h, w) {
           w.forEach(function(P) {
             var j, ee = s._db.getMid(P);
             ee && (a(ee.oriData) && Ze.revokeObjectURL(ee.oriData), a(ee.minData) && Ze.revokeObjectURL(ee.minData), (j = ee.img) && (j.src = "", j.onload = null, j.onerror = null, ee.img = null)), s._db.removeMid(P), s._db.getDataAsync(P).then(function(we) {
@@ -12454,7 +12455,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, Ce = 0; Ce < we; Ce++)
           De(Ce);
         return this._emit(xa, s, ee, w), ee.slice().forEach(function(Xe) {
-          P._emit(Mo, Xe);
+          P._emit(Po, Xe);
         }), j;
       }, y._convertData = function(s) {
         return new Promise(function(h, w) {
@@ -12794,16 +12795,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           j <= nn || (ut = nn + Ce - 1, ut = Math.min(ut, j - 1), tn = Math.min(Ce, j - nn), De[Rt] = {}, De[Rt].source = we.getImageData(0, nn, P, Ce), De[Rt].target = !0, De[Rt].start_y = Math.ceil(nn / ee), De[Rt].height = tn, nn = { width_source: P, height_source: De[Rt].height, width: s, height: Math.ceil(De[Rt].height / ee), core: Rt, source: De[Rt].source.data.buffer || De[Rt].source.data }, Xe[Rt] = nn);
         }
         for (var xn = Xe.length, or = [], qn = 0; qn < xn; qn++) {
-          for (var Cr = (Mi = Xe[qn]).core, si = Mi.width_source, zr = Mi.height_source, Br = Mi.width, $r = Mi.height, Si = si / Br, go = zr / $r, Ui = Math.ceil(Si / 2), Ji = Math.ceil(go / 2), Ti = new Uint8ClampedArray(Mi.source), Mi = (Ti.length, Br * $r * 4), na = new ArrayBuffer(Mi), Po = new Uint8ClampedArray(na, 0, Mi), mo = 0; mo < $r; mo++)
-            for (var So = 0; So < Br; So++) {
-              for (var Ba = 4 * (So + mo * Br), Jo = 0, Na = 0, ms = 0, uo = 0, fa = 0, Va = 0, Bs = 0, Gu = mo * go, ap = Math.floor(So * Si), hl = Math.ceil((So + 1) * Si), sp = Math.floor(mo * go), fl = Math.ceil((mo + 1) * go), ju = (hl = Math.min(hl, si), fl = Math.min(fl, zr), sp); ju < fl; ju++)
-                for (var gf = Math.abs(Gu - ju) / Ji, up = So * Si, cp = gf * gf, zu = ap; zu < hl; zu++) {
-                  var Bo = Math.abs(up - zu) / Ui;
-                  1 <= (Bo = Math.sqrt(cp + Bo * Bo)) || (Bs += (Jo = 2 * Bo * Bo * Bo - 3 * Bo * Bo + 1) * Ti[3 + (Bo = 4 * (zu + ju * si))], ms += Jo, uo += (Jo = Ti[3 + Bo] < 255 ? Jo * Ti[3 + Bo] / 250 : Jo) * Ti[Bo], fa += Jo * Ti[1 + Bo], Va += Jo * Ti[2 + Bo], Na += Jo);
+          for (var Cr = (Mi = Xe[qn]).core, si = Mi.width_source, zr = Mi.height_source, Br = Mi.width, $r = Mi.height, Si = si / Br, mo = zr / $r, Ui = Math.ceil(Si / 2), Ji = Math.ceil(mo / 2), Ti = new Uint8ClampedArray(Mi.source), Mi = (Ti.length, Br * $r * 4), na = new ArrayBuffer(Mi), Ao = new Uint8ClampedArray(na, 0, Mi), po = 0; po < $r; po++)
+            for (var To = 0; To < Br; To++) {
+              for (var Ba = 4 * (To + po * Br), Xo = 0, Na = 0, ms = 0, uo = 0, fa = 0, Va = 0, Bs = 0, Gu = po * mo, ap = Math.floor(To * Si), hl = Math.ceil((To + 1) * Si), sp = Math.floor(po * mo), fl = Math.ceil((po + 1) * mo), ju = (hl = Math.min(hl, si), fl = Math.min(fl, zr), sp); ju < fl; ju++)
+                for (var gf = Math.abs(Gu - ju) / Ji, up = To * Si, cp = gf * gf, zu = ap; zu < hl; zu++) {
+                  var No = Math.abs(up - zu) / Ui;
+                  1 <= (No = Math.sqrt(cp + No * No)) || (Bs += (Xo = 2 * No * No * No - 3 * No * No + 1) * Ti[3 + (No = 4 * (zu + ju * si))], ms += Xo, uo += (Xo = Ti[3 + No] < 255 ? Xo * Ti[3 + No] / 250 : Xo) * Ti[No], fa += Xo * Ti[1 + No], Va += Xo * Ti[2 + No], Na += Xo);
                 }
-              Po[Ba] = uo / Na, Po[1 + Ba] = fa / Na, Po[2 + Ba] = Va / Na, Po[3 + Ba] = Bs / ms;
+              Ao[Ba] = uo / Na, Ao[1 + Ba] = fa / Na, Ao[2 + Ba] = Va / Na, Ao[3 + Ba] = Bs / ms;
             }
-          or.push({ core: Cr, target: Po });
+          or.push({ core: Cr, target: Ao });
         }
         for (var Ua = 0; Ua < xn; Ua++) {
           var mf = or[Ua], lp = Math.ceil(De[Ua].height / ee);
@@ -12823,16 +12824,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         for (var Cr = [], si = function(Br) {
           if (ut[Br] == null)
             return "continue";
-          var $r = new Worker(ee.workerBlobURL), Si = new Promise(function(go, Ui) {
+          var $r = new Worker(ee.workerBlobURL), Si = new Promise(function(mo, Ui) {
             $r.onmessage = function(Ji) {
               $r.terminate(), $r.onmessage = null, $r.onerror = null, $r = null, Ji.data.taskUid !== ee.taskUid && Ui(!1);
               var Ti = Ji.data.core, Mi = ut[Ti].heightPart;
               if (c(Mi) || (Mi = 1), c(w) || (w = 1), ut[Ti].target = document.createElement("canvas").getContext("2d").createImageData(w, Mi || 1), ut[Ti].target.data.set)
                 ut[Ti].target.data.set(Ji.data.target);
               else
-                for (var na = ut[Ti].target.data.length, Po = 0; Po < na; Po++)
-                  ut[Ti].target.data[Po] = Ji.data.target[Po];
-              go(Ti);
+                for (var na = ut[Ti].target.data.length, Ao = 0; Ao < na; Ao++)
+                  ut[Ti].target.data[Ao] = Ji.data.target[Ao];
+              mo(Ti);
             }, $r.onerror = function(Ji) {
               $r.terminate(), $r.onmessage = null, $r.onerror = null, $r = null, Ui(Ji);
             };
@@ -12908,8 +12909,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           } catch {
           }
           w.fillStyle = xn, w.lineWidth = Rt, qn && !P.isConvex ? w.strokeStyle = tn : w.strokeStyle = ut, w.beginPath(), w.moveTo(Cr[0], Cr[1]), w.lineTo(Cr[2], Cr[3]), w.lineTo(Cr[4], Cr[5]), w.lineTo(Cr[6], Cr[7]), w.closePath(), w.stroke(), w.restore(), w.lineWidth = j, w.fillStyle = ee, qn && !P.isConvex ? w.strokeStyle = nn : w.strokeStyle = we;
-          for (var Si = Math.min(De, Ce / 2), go = Math.min(De, Xe / 2), Ui = 0; Ui < 4; Ui++)
-            h.drawRoundedRectangle(w, { x: Cr[2 * Ui], y: Cr[2 * Ui + 1], width: Ce, height: Xe, radiusX: Si, radiusY: go }), w.stroke(), ee !== "" && w.fill(), h.drawRoundedRectangle(w, { x: si[2 * Ui], y: si[2 * Ui + 1], width: Ce, height: Xe, radiusX: Si, radiusY: go }), w.stroke(), ee !== "" && w.fill();
+          for (var Si = Math.min(De, Ce / 2), mo = Math.min(De, Xe / 2), Ui = 0; Ui < 4; Ui++)
+            h.drawRoundedRectangle(w, { x: Cr[2 * Ui], y: Cr[2 * Ui + 1], width: Ce, height: Xe, radiusX: Si, radiusY: mo }), w.stroke(), ee !== "" && w.fill(), h.drawRoundedRectangle(w, { x: si[2 * Ui], y: si[2 * Ui + 1], width: Ce, height: Xe, radiusX: Si, radiusY: mo }), w.stroke(), ee !== "" && w.fill();
         }), w.restore()));
       }, y.drawRoundedRectangle = function(s, h) {
         var w = h.width, P = h.height, j = h.radiusX, ee = h.radiusY, we = h.x, De = [{ x: we - w / 2 + j, y: (h = h.y) - P / 2 + ee, start: Math.PI, end: 3 * Math.PI / 2 }, { x: we + w / 2 - j, y: h - P / 2 + ee, start: 3 * Math.PI / 2, end: 2 * Math.PI }, { x: we + w / 2 - j, y: h + P / 2 - ee, start: 0, end: Math.PI / 2 }, { x: we - w / 2 + j, y: h + P / 2 - ee, start: Math.PI / 2, end: Math.PI }];
@@ -12929,7 +12930,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         xn && (Rt = this._db.getMetadata(xn.uid), Xe = this._db.getMid(xn.uid)), xn && Rt && Xe ? (Xe = Xe.edt.all, P = Rt.width, j = Rt.height, ee = Rt.width, we = Rt.height, Ce = De = null, Xe.forEach(function(or) {
           var qn, Cr;
           or.type === "rotate" ? (or.mode === 0 && (Ce = xe(0, 0, ee, we, or.calcAngle)), De !== null && De !== or.mode && (ee = P, we = j), De = or.mode, Ce && (qn = (Cr = Ce).width, Cr = Cr.height, P = qn, j = Cr)) : or.type !== "crop" && or.type !== "changeSize" || (qn = or.width, Cr = or.height, ee = P = qn, we = j = Cr);
-        }), xn != null && xn.setNaturalSize(P, j), Xe = (Rt = this._calcZoom(s, P || 0, j || 0.1)).zoom, tn = Rt.canvasWidth, nn = Rt.canvasHeight, ut = Rt.virW, Rt = Rt.virH, this.setCanvasSize(tn, nn), xn.cropMng.setZoom(Xe = Xe || 1), this.virW = ut, this.virH = Rt, w || be.prototype._emit.call(this, xo, { width: this.virW, height: this.virH, x: this.scrL, y: this.scrT }), tn = (this.cvsCltW - ut) / 2, nn = (this.cvsCltH - Rt) / 2, tn < 0 && (h && (this._srL = Math.abs(tn)), tn = 0), nn < 0 && (h && (this._srT = Math.abs(nn)), nn = 0), xn.setBorder(s.pageBorderWidth), xn.setSize(ut, Rt), xn.setPosition(tn, nn), s.virW = ut, s.virH = Rt, this._zoomTo(Xe, !1, h), this.setVirtualSize(ut, Rt), this._zoomTo(Xe, !1, h), this.zoom !== Xe && (this.zoom = Xe), w || be.prototype._emit.call(this, xo, { width: ut, height: Rt, x: this.scrL, y: this.scrT })) : be.prototype._emit.call(this, xo, { width: 1, height: 1, x: 0, y: 0 });
+        }), xn != null && xn.setNaturalSize(P, j), Xe = (Rt = this._calcZoom(s, P || 0, j || 0.1)).zoom, tn = Rt.canvasWidth, nn = Rt.canvasHeight, ut = Rt.virW, Rt = Rt.virH, this.setCanvasSize(tn, nn), xn.cropMng.setZoom(Xe = Xe || 1), this.virW = ut, this.virH = Rt, w || be.prototype._emit.call(this, Mo, { width: this.virW, height: this.virH, x: this.scrL, y: this.scrT }), tn = (this.cvsCltW - ut) / 2, nn = (this.cvsCltH - Rt) / 2, tn < 0 && (h && (this._srL = Math.abs(tn)), tn = 0), nn < 0 && (h && (this._srT = Math.abs(nn)), nn = 0), xn.setBorder(s.pageBorderWidth), xn.setSize(ut, Rt), xn.setPosition(tn, nn), s.virW = ut, s.virH = Rt, this._zoomTo(Xe, !1, h), this.setVirtualSize(ut, Rt), this._zoomTo(Xe, !1, h), this.zoom !== Xe && (this.zoom = Xe), w || be.prototype._emit.call(this, Mo, { width: ut, height: Rt, x: this.scrL, y: this.scrT })) : be.prototype._emit.call(this, Mo, { width: 1, height: 1, x: 0, y: 0 });
       }, y._calcZoom = function(s, h, w) {
         return s.fitType === "window" ? this._calFitWindow(h, w) : s.fitType === "width" ? this._calcFitWidth(h, w) : s.fitType === "height" ? this._calcFitHeight(h, w) : this.keepZoom && s.fitType === "none" ? this._calcKeepZoom(h, w) : this._calFitWindow(h, w);
       }, y.calcZoomForSlide = function(s, h) {
@@ -13881,7 +13882,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             we.remove(ee);
           });
         }), this.getCurTab());
-        return j ? (h && this._emitM(Yo, this.uid, j, s), w && w !== j.uid || (this.showTab(j, "remove", s), j.chs.length === 0 && (this._gpc.slide.targetIndexes = [-1, -1, -1], this._setSlidePages(-1), this._gpc.clearCanvas(), be.prototype._emit.call(this, xo, { width: 1, height: 1, x: 1, y: 1 }))), this._ok(), !0) : void 0;
+        return j ? (h && this._emitM(Jo, this.uid, j, s), w && w !== j.uid || (this.showTab(j, "remove", s), j.chs.length === 0 && (this._gpc.slide.targetIndexes = [-1, -1, -1], this._setSlidePages(-1), this._gpc.clearCanvas(), be.prototype._emit.call(this, Mo, { width: 1, height: 1, x: 1, y: 1 }))), this._ok(), !0) : void 0;
       }, y.rmAll = function(s) {
         s === void 0 && (s = !0);
         var h = [], w = this.getCurTab();
@@ -14337,7 +14338,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           s._gpc.cvsMng.unbind(h);
         }), be.prototype._on.call(this, "_setCanvasSize", function(h) {
           var w = h.width, P = h.height;
-          h.isChange, s._gpc.updateDpr(), h = s._gpc.setCanvasOffsetSize(w, P), (w = s.getCurTab()) && w.total !== 0 || be.prototype._emit.call(s, xo, { width: 0, height: 0, x: 0, y: 0 }), s._gpc.disMode !== "single" || h || (s.render(!1, !1), s.drawSltBox(), s.getSlidePages());
+          h.isChange, s._gpc.updateDpr(), h = s._gpc.setCanvasOffsetSize(w, P), (w = s.getCurTab()) && w.total !== 0 || be.prototype._emit.call(s, Mo, { width: 0, height: 0, x: 0, y: 0 }), s._gpc.disMode !== "single" || h || (s.render(!1, !1), s.drawSltBox(), s.getSlidePages());
         }), be.prototype._on.call(this, "_displayedImageChanged", function(h) {
           h.forEach(function(w) {
             var P = s._db.getMid(w);
@@ -14536,7 +14537,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return (s = this.ui) != null && s.unbindContent() ? (this._e(cn), !0) : (this._e(Pr), !1);
       }, y.fullScreen = function() {
         var s;
-        return (s = this.ui) != null && s.fullScreen() ? (this._e(cn), !0) : (this.ui ? this._e(Wo) : this._e(Pr), !1);
+        return (s = this.ui) != null && s.fullScreen() ? (this._e(cn), !0) : (this.ui ? this._e(Bo) : this._e(Pr), !1);
       }, y.cancelFullScreen = function() {
         var s;
         return this._e(cn), (s = this.ui) == null ? void 0 : s.cancelFullScreen();
@@ -15071,7 +15072,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var s = this;
         this.on(hi, function(h, w, P, j) {
           s._load(h, w, P, j);
-        }), this.on(fo, function(h, w, P) {
+        }), this.on(go, function(h, w, P) {
           s._open(h, w, P);
         }), this.on(Ri, function(h, w, P, j) {
           var ee = s._tabMng.getTab(j);
@@ -15099,7 +15100,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             (we = s.uidViewer(we)) && we.vm.renameFile(h, w, j);
           });
         }), this.on(Ma, function(h) {
-          s.emit(Yo, {}, h.chs.slice());
+          s.emit(Jo, {}, h.chs.slice());
           var w = s._tabMng.getTab(h.uid);
           w && (w.vws.forEach(function(P) {
             (P = s.uidViewer(P)) && P.closeTab(h.uid);
@@ -15178,8 +15179,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
             }
           }), De[P](j, ee), s.emit(pi, w, P, j, ee));
-        }), this.onM(Yo, function(h, w, P) {
-          s.emit(Yo, w, P), P.forEach(function(j) {
+        }), this.onM(Jo, function(h, w, P) {
+          s.emit(Jo, w, P), P.forEach(function(j) {
             s._tabMng.tabs.forEach(function(ee) {
               ee.remove(j);
             });
@@ -15410,24 +15411,24 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             }
             for (var ut = 0; ut < ee; ut++)
               for (var Rt, tn = ut * P / ee, nn = 1 - (tn - (Rt = Math.floor(tn))), xn = Rt, or = (ut + 1) * P / ee, qn = or - (Rt = Math.floor(or - 1e-5)), Cr = Rt, si = ut * j * 4, zr = 0; zr < j; zr++) {
-                var Br = 1 - ((Va = zr * w / j) - (fa = Math.floor(Va))), $r = fa, Si = (fa = (zr + 1) * w / j) - (uo = Math.floor(fa - 1e-5)), go = uo, Ui = 0, Ji = 0, Ti = 0, Mi = 0, na = 255, Po = (xn + 1) * w * 4 + 4 * $r, mo = void 0, So = void 0;
-                for (mo = xn + 1; mo < Cr; ++mo)
-                  Ui += we[Po + 2] * Br * 255, Ji += we[Po + 1] * Br * 255, Ti += we[Po] * Br * 255, Mi += na * Br, Po += 4 * w;
-                var Ba = (xn + 1) * w * 4 + 4 * go;
-                for (mo = xn + 1; mo < Cr; ++mo)
+                var Br = 1 - ((Va = zr * w / j) - (fa = Math.floor(Va))), $r = fa, Si = (fa = (zr + 1) * w / j) - (uo = Math.floor(fa - 1e-5)), mo = uo, Ui = 0, Ji = 0, Ti = 0, Mi = 0, na = 255, Ao = (xn + 1) * w * 4 + 4 * $r, po = void 0, To = void 0;
+                for (po = xn + 1; po < Cr; ++po)
+                  Ui += we[Ao + 2] * Br * 255, Ji += we[Ao + 1] * Br * 255, Ti += we[Ao] * Br * 255, Mi += na * Br, Ao += 4 * w;
+                var Ba = (xn + 1) * w * 4 + 4 * mo;
+                for (po = xn + 1; po < Cr; ++po)
                   Ui += we[Ba + 2] * Si * 255, Ji += we[Ba + 1] * Si * 255, Ti += we[Ba] * Si * 255, Mi += na * Si, Ba += 4 * w;
-                var Jo = xn * w * 4 + 4 * ($r + 1);
-                for (So = $r + 1; So < go; ++So)
-                  Ui += we[Jo + 2] * nn * 255, Ji += we[Jo + 1] * nn * 255, Ti += we[Jo] * nn * 255, Mi += na * nn, Jo += 4;
+                var Xo = xn * w * 4 + 4 * ($r + 1);
+                for (To = $r + 1; To < mo; ++To)
+                  Ui += we[Xo + 2] * nn * 255, Ji += we[Xo + 1] * nn * 255, Ti += we[Xo] * nn * 255, Mi += na * nn, Xo += 4;
                 var Na = Cr * w * 4 + 4 * ($r + 1);
-                for (So = $r + 1; So < go; ++So)
+                for (To = $r + 1; To < mo; ++To)
                   Ui += we[Na + 2] * qn * 255, Ji += we[Na + 1] * qn * 255, Ti += we[Na] * qn * 255, Mi += na * qn, Na += 4;
-                for (mo = xn + 1; mo < Cr; ++mo) {
-                  var ms = mo * w * 4 + 4 * ($r + 1);
-                  for (So = $r + 1; So < go; ++So)
+                for (po = xn + 1; po < Cr; ++po) {
+                  var ms = po * w * 4 + 4 * ($r + 1);
+                  for (To = $r + 1; To < mo; ++To)
                     Ui += 255 * we[ms + 2], Ji += 255 * we[ms + 1], Ti += 255 * we[ms], Mi += 255, ms += 4;
                 }
-                Ui += we[2 + (uo = xn * w * 4 + 4 * $r)] * (nn * Br) * 255, Ji += we[1 + uo] * (nn * Br) * 255, Ti += we[uo] * (nn * Br) * 255, Mi += nn * Br * na, Ui += we[2 + (uo = xn * w * 4 + 4 * go)] * (nn * Si) * 255, Ji += we[1 + uo] * (nn * Si) * 255, Ti += we[uo] * (nn * Si) * 255, Mi += nn * Si * na, Ui += we[2 + (uo = Cr * w * 4 + 4 * $r)] * (qn * Br) * 255, Ji += we[1 + uo] * (qn * Br) * 255, Ti += we[uo] * (qn * Br) * 255, Mi += qn * Br * na, Ui += we[2 + (uo = Cr * w * 4 + 4 * go)] * (qn * Si) * 255, Ji += we[1 + uo] * (qn * Si) * 255, Ti += we[uo] * (qn * Si) * 255;
+                Ui += we[2 + (uo = xn * w * 4 + 4 * $r)] * (nn * Br) * 255, Ji += we[1 + uo] * (nn * Br) * 255, Ti += we[uo] * (nn * Br) * 255, Mi += nn * Br * na, Ui += we[2 + (uo = xn * w * 4 + 4 * mo)] * (nn * Si) * 255, Ji += we[1 + uo] * (nn * Si) * 255, Ti += we[uo] * (nn * Si) * 255, Mi += nn * Si * na, Ui += we[2 + (uo = Cr * w * 4 + 4 * $r)] * (qn * Br) * 255, Ji += we[1 + uo] * (qn * Br) * 255, Ti += we[uo] * (qn * Br) * 255, Mi += qn * Br * na, Ui += we[2 + (uo = Cr * w * 4 + 4 * mo)] * (qn * Si) * 255, Ji += we[1 + uo] * (qn * Si) * 255, Ti += we[uo] * (qn * Si) * 255;
                 var uo = (Mi += qn * Si * na) / ((fa - Va) * (or - tn)), fa = 0, Va = 0, Bs = 0;
                 uo != 0 && (fa = Ui / Mi, Va = Ji / Mi, Bs = Ti / Mi), fa += 0.5, Va += 0.5, Bs += 0.5, Xe[si] = Math.floor(Bs), Xe[++si] = Math.floor(Va), Xe[++si] = Math.floor(fa), Xe[++si] = 255, si++;
               }
@@ -15528,7 +15529,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             ee = s.all;
           }
           ee[{ switch: "switch", move: "move", reorder: "reorder" }[w]](P, j);
-        }), be.prototype._on.call(this, Yo, function(h, w) {
+        }), be.prototype._on.call(this, Jo, function(h, w) {
           w.forEach(function(P) {
             s.all.remove(P), s._rmPage(P, s.root);
           });
@@ -15543,9 +15544,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var h = (h = this.dfNode) || this.root, w = this.findChild(h, s);
         return w && w.type === "file" ? be.prototype._emit.call(this, tr, rf) : (w = new dl({ uid: V(11), name: s, type: "file", parent: h, chs: [] }), this.curNode.chs.push(w), be.prototype._emit.call(this, tr, cn)), w;
       }, y.openAll = function(s) {
-        return be.prototype._emit.call(this, fo, this.all, "all", s), this.all.chs.slice();
+        return be.prototype._emit.call(this, go, this.all, "all", s), this.all.chs.slice();
       }, y.openFile = function(s, h) {
-        return (s = this.findChild(this.dfNode, s)) && s.type === "file" ? (be.prototype._emit.call(this, fo, s, "file", h), be.prototype._emit.call(this, tr, cn), s.chs.slice()) : (be.prototype._emit.call(this, tr, es), !1);
+        return (s = this.findChild(this.dfNode, s)) && s.type === "file" ? (be.prototype._emit.call(this, go, s, "file", h), be.prototype._emit.call(this, tr, cn), s.chs.slice()) : (be.prototype._emit.call(this, tr, es), !1);
       }, y.removeFile = function(s) {
         for (var h = this.dfNode.chs, w = h.length - 1; 0 <= w; w--)
           if (h[w].name === s)
@@ -15621,14 +15622,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         be.prototype.dispose.call(this), this.tags = [];
       }, y._initEvent = function() {
         var s = this;
-        be.prototype._on.call(this, Mo, function(h) {
+        be.prototype._on.call(this, Po, function(h) {
           var w = !1, P = h.data;
           P.tags || (P.tags = []), s.dfName && P.tags.indexOf(s.dfName) === -1 && P.tags.push(s.dfName), P.tags.forEach(function(j) {
             s.addTag(j) && (w = !0), (j = s.getTag(j)).append(h.uid), be.prototype._emit.call(s, hi, j, "tag", null, null, !1);
           }), w && be.prototype._emit.call(s, Hi, s.getTagList());
         }), be.prototype._on.call(this, pi, function(h, w, P, j) {
           h.type === "tag" && (h = s.uidTag(h.uid)) && h[{ switch: "switch", move: "move", reorder: "reorder" }[w]](P, j);
-        }), be.prototype._on.call(this, Yo, function(h, w) {
+        }), be.prototype._on.call(this, Jo, function(h, w) {
           s.getTagList().forEach(function(P) {
             w.forEach(function(j) {
               P.remove(j);
@@ -15637,7 +15638,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       }, y.openTag = function(s, h) {
         var w = this.getTag(s);
-        return w || (this._err(ai), w = this.emptyItem), this.setDefaultTag(s), this.sltUid = w.uid, be.prototype._emit.call(this, fo, w, "tag", h), this._ok(), w.chs.slice();
+        return w || (this._err(ai), w = this.emptyItem), this.setDefaultTag(s), this.sltUid = w.uid, be.prototype._emit.call(this, go, w, "tag", h), this._ok(), w.chs.slice();
       }, y.getCurTag = function() {
         return this.uidTag(this.sltUid);
       }, y.addTag = function(s, h) {
@@ -16227,7 +16228,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } });
   }
   n.UI.DWTViewer = bc;
-  var Ni = "dynamsoft-default-document", ks = "rgb(255, 255, 255)", cs = "transparent", wc = "1px solid rgb(238, 238, 238)", Ic = "rgb(239, 246, 253)", Sc = "1px solid rgb(238, 238, 238)", Tc = "rgb(251, 236, 136)", ad = "1px solid rgb(125,162,206)", sd = "rgb(199, 222, 252)", la = { visibility: "hidden", width: "24px", height: "24px", background: "#ffffff", borderWidth: "2px", borderColor: "#000000", checkMarkColor: "#000000", checkMarkLineWidth: "2px", borderRadius: 0, opacity: 0.5, left: 0, top: 0, right: "", bottom: "", translateX: "", translateY: "" }, Oo = { visibility: "hidden", width: "24px", height: "24px", background: "#ffffff", borderWidth: "1px", borderColor: "#a79898", borderRadius: "50%", opacity: 0.5, color: "#000000", fontFamily: "sans-serif", fontSize: 12, left: "", top: "", right: 0, bottom: 0, translateX: "", translateY: "" }, Cc = "url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAzMDAgMzAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMDAgMzAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0NDQ0NDQzt9Cgkuc3Qxe2ZpbGw6I0YwRUZGNDt9Cjwvc3R5bGU+CjxnIGlkPSJHcm91cF8xMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMyOS42NjggLTE3OC41ODkpIj4KCTxnIGlkPSJSZWN0YW5nbGVfMTciPgoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01OTgsMzQ3LjloLTQuMnYtMmgyLjJ2LTEuOGgyVjM0Ny45eiBNNTg3LjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTU3NS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE01NjMuOSwzNDcuOQoJCQloLTZ2LTJoNlYzNDcuOXogTTU1MS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE01MzkuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNTI3LjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTUxNS45LDM0Ny45aC02di0yaDYKCQkJVjM0Ny45eiBNNTAzLjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTQ5MS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE00NzkuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNDY3LjksMzQ3LjloLTZ2LTJoNlYzNDcuOXoKCQkJIE00NTUuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNDQzLjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTQzMS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE00MTkuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNDA3LjksMzQ3LjkKCQkJaC02di0yaDZWMzQ3Ljl6IE0zOTUuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNMzgzLjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTM3OC42LDM0MS4xaC0ydi02aDJWMzQxLjF6IE01OTgsMzM4LjFoLTJ2LTZoMlYzMzguMXoKCQkJIE0zNzguNiwzMjkuMWgtMnYtNmgyVjMyOS4xeiBNNTk4LDMyNi4xaC0ydi02aDJWMzI2LjF6IE0zNzguNiwzMTcuMWgtMnYtNmgyVjMxNy4xeiBNNTk4LDMxNC4xaC0ydi02aDJWMzE0LjF6IE0zNzguNiwzMDUuMWgtMgoJCQl2LTZoMlYzMDUuMXogTTU5OCwzMDIuMWgtMnYtNmgyVjMwMi4xeiBNMzc4LjYsMjkzLjFoLTJ2LTZoMlYyOTMuMXogTTU5OCwyOTAuMWgtMnYtNmgyVjI5MC4xeiBNMzc4LjYsMjgxLjFoLTJ2LTZoMlYyODEuMXoKCQkJIE01OTgsMjc4LjFoLTJ2LTZoMlYyNzguMXogTTM3OC42LDI2OS4xaC0ydi02aDJWMjY5LjF6IE01OTgsMjY2LjFoLTJ2LTZoMlYyNjYuMXogTTM3OC42LDI1Ny4xaC0ydi02aDJWMjU3LjF6IE01OTgsMjU0LjFoLTJ2LTYKCQkJaDJWMjU0LjF6IE0zNzguNiwyNDUuMWgtMnYtNmgyVjI0NS4xeiBNNTk4LDI0Mi4xaC0ydi02aDJWMjQyLjF6IE0zNzguNiwyMzMuMWgtMnYtNmgyVjIzMy4xeiBNNTk4LDIzMC4xaC0ydi02aDJWMjMwLjF6CgkJCSBNMzc4LjYsMjIxLjFoLTJ2LTYuN2g3djJoLTVWMjIxLjF6IE01OTgsMjE4LjFoLTJ2LTEuNmgtMi40di0yaDQuNFYyMTguMXogTTU4Ny42LDIxNi41aC02di0yaDZWMjE2LjV6IE01NzUuNiwyMTYuNWgtNnYtMmg2CgkJCVYyMTYuNXogTTU2My42LDIxNi41aC02di0yaDZWMjE2LjV6IE01NTEuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNNTM5LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTUyNy42LDIxNi41aC02di0yaDZWMjE2LjV6CgkJCSBNNTE1LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTUwMy42LDIxNi41aC02di0yaDZWMjE2LjV6IE00OTEuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNNDc5LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTQ2Ny42LDIxNi41CgkJCWgtNnYtMmg2VjIxNi41eiBNNDU1LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTQ0My42LDIxNi41aC02di0yaDZWMjE2LjV6IE00MzEuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNNDE5LjYsMjE2LjVoLTZ2LTJoNgoJCQlWMjE2LjV6IE00MDcuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNMzk1LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXoiLz4KCTwvZz4KCTxnIGlkPSJGaWxlcy1Gb2xkZXJzX0NvbW1vbi1GaWxlc19jb21tb24tZmlsZS10ZXh0LWFkZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4zNjIgMi4xMzkpIj4KCQk8ZyBpZD0iR3JvdXBfNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM5Ny44MDYgMjAxLjk1KSI+CgkJCTxnIGlkPSJjb21tb24tZmlsZS10ZXh0LWFkZCI+CgkJCQk8ZyBpZD0iT3ZhbF8xOCI+CgkJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTEwNy4yLDExOC40TDEwNy4yLDExOC40TDEwNy4yLDExOC40Yy0xMi4zLDAtMjIuMy0xMC0yMi4zLTIyLjNjMC0xMi4zLDEwLTIyLjMsMjIuMy0yMi4zYzAsMCwwLDAsMCwwCgkJCQkJCWMxMi4zLDAsMjIuMywxMCwyMi4zLDIyLjNjMCw1LjktMi4zLDExLjUtNi41LDE1LjdDMTE4LjgsMTE2LjEsMTEzLjIsMTE4LjQsMTA3LjIsMTE4LjR6IE0xMDcuMiw3NS45CgkJCQkJCUMxMDcuMiw3NS45LDEwNy4yLDc1LjksMTA3LjIsNzUuOUM5Ni4xLDc1LjksODcsODUsODcsOTYuMmMwLDExLjIsOS4xLDIwLjMsMjAuMywyMC4zbDAsMXYtMWM1LjQsMCwxMC41LTIuMSwxNC4zLTUuOQoJCQkJCQljMy44LTMuOCw1LjktOC45LDUuOS0xNC4zQzEyNy41LDg1LDExOC40LDc1LjksMTA3LjIsNzUuOXoiLz4KCQkJCTwvZz4KCQkJCTxnIGlkPSJTaGFwZV8xMzMiPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMDcuMiwxMDcuOGMtMC42LDAtMS0wLjQtMS0xVjg1LjVjMC0wLjYsMC40LTEsMS0xczEsMC40LDEsMXYyMS4zQzEwOC4yLDEwNy4zLDEwNy44LDEwNy44LDEwNy4yLDEwNy44egoJCQkJCQkiLz4KCQkJCTwvZz4KCQkJCTxnIGlkPSJTaGFwZV8xMzQiPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMTcuOSw5Ny4ySDk2LjZjLTAuNiwwLTEtMC40LTEtMXMwLjQtMSwxLTFoMjEuM2MwLjYsMCwxLDAuNCwxLDFTMTE4LjQsOTcuMiwxMTcuOSw5Ny4yeiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzEzNSI+CgkJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTk0LjgsNjUuM0g2MS4xYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xaDMzLjdjMC42LDAsMSwwLjQsMSwxUzk1LjQsNjUuMyw5NC44LDY1LjN6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfMTM2Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODIuNCw3NS45SDYxLjFjLTAuNiwwLTEtMC40LTEtMXMwLjQtMSwxLTFoMjEuM2MwLjYsMCwxLDAuNCwxLDFTODMsNzUuOSw4Mi40LDc1Ljl6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfMTM3Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODYsNTQuNkg2MS4xYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xSDg2YzAuNiwwLDEsMC40LDEsMVM4Ni41LDU0LjYsODYsNTQuNnoiLz4KCQkJCTwvZz4KCQkJCTxnIGlkPSJTaGFwZV8xMzgiPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik03NS4zLDg2LjVINjEuMWMtMC42LDAtMS0wLjQtMS0xczAuNC0xLDEtMWgxNC4yYzAuNiwwLDEsMC40LDEsMVM3NS45LDg2LjUsNzUuMyw4Ni41eiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzEzOSI+CgkJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTc1LjMsOTcuMkg2MS4xYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xaDE0LjJjMC42LDAsMSwwLjQsMSwxUzc1LjksOTcuMiw3NS4zLDk3LjJ6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfMTQwIj4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODIuNCwxMTguNEg1MC41Yy0yLjUsMC00LjUtMi00LjUtNC41VjM5LjRjMC0yLjUsMi00LjUsNC41LTQuNWg0Ny4xYzEuMiwwLDIuNCwwLjUsMy4yLDEuM0wxMTQsNDkuNAoJCQkJCQljMC45LDAuOSwxLjMsMiwxLjMsMy4ydjExLjdjMCwwLjYtMC40LDEtMSwxcy0xLTAuNC0xLTFWNTIuNmMwLTAuNy0wLjMtMS4zLTAuNy0xLjhMOTkuNCwzNy42Yy0wLjUtMC41LTEuMS0wLjctMS44LTAuN0g1MC41CgkJCQkJCWMtMS40LDAtMi41LDEuMS0yLjUsMi41djc0LjRjMCwxLjQsMS4xLDIuNSwyLjUsMi41aDMxLjljMC42LDAsMSwwLjQsMSwxUzgzLDExOC40LDgyLjQsMTE4LjR6Ii8+CgkJCQk8L2c+CgkJCTwvZz4KCQk8L2c+Cgk8L2c+Cgk8ZyBpZD0iQXJyb3dzLURpYWdyYW1zX0RpYWdyYW1zX2RpYWdyYW0tZGFzaC1kb3duLWZhc3QiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yIDQpIj4KCQk8ZyBpZD0iR3JvdXBfMTY1Ij4KCQkJPGcgaWQ9IkxpZ2h0XzE2NSI+CgkJCQk8ZyBpZD0iU2hhcGVfNTM5Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDg0LjEsNDQzbC00LjItNC4ybDEuNC0xLjRsNC4yLDQuMkw0ODQuMSw0NDN6IE00ODkuNyw0NDIuN2wtMS40LTEuNGw0LjItNC4ybDEuNCwxLjRMNDg5LjcsNDQyLjd6CgkJCQkJCSBNNDc1LjYsNDM0LjVsLTQuMi00LjJsMS40LTEuNGw0LjIsNC4yTDQ3NS42LDQzNC41eiBNNDk4LjIsNDM0LjJsLTEuNC0xLjRsMy45LTMuOWwxLjQsMS40TDQ5OC4yLDQzNC4yeiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzU0MCI+CgkJCQkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQwMi43LDM0Ny42djQuMiIvPgoJCQkJCTxyZWN0IHg9IjQwMS43IiB5PSIzNDcuNiIgY2xhc3M9InN0MCIgd2lkdGg9IjIiIGhlaWdodD0iNC4yIi8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQxIj4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDAyLjcsMzYwLjN2OC42Ii8+CgkJCQkJPHJlY3QgeD0iNDAxLjciIHk9IjM2MC4zIiBjbGFzcz0ic3QwIiB3aWR0aD0iMiIgaGVpZ2h0PSI2Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQyIj4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDAzLjMsMzc3LjRjMC44LDIuOCwyLjIsNS4zLDQuMyw3LjMiLz4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDA1LjEsMzgzLjNjLTEuMy0xLjctMi4yLTMuNi0yLjgtNS43bDEuOS0wLjVjMC41LDEuOCwxLjMsMy41LDIuNSw1TDQwNS4xLDM4My4zeiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzU0MyI+CgkJCQkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQxNC44LDM4OWMyLjgsMC42LDUuNywwLjksOC41LDAuNyIvPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjAuNywzOTAuN2MtMi4xLDAtNC4xLTAuMy02LjItMC43bDAuNC0xLjljMS45LDAuNCwzLjgsMC43LDUuNywwLjdMNDIwLjcsMzkwLjd6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ0Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDMxLjgsMzg5LjZoOC42Ii8+CgkJCQkJPHJlY3QgeD0iNDMxLjgiIHk9IjM4OC42IiBjbGFzcz0ic3QwIiB3aWR0aD0iNiIgaGVpZ2h0PSIyIi8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ1Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDQ4LjksMzg5LjZoOC42Ii8+CgkJCQkJPHJlY3QgeD0iNDQ4LjkiIHk9IjM4OC42IiBjbGFzcz0ic3QwIiB3aWR0aD0iNiIgaGVpZ2h0PSIyIi8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ2Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDY2LDM4OS42YzIuOS0wLjIsNS43LDAsOC41LDAuNiIvPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00NzEuOCwzOTAuOGMtMS45LTAuMy0zLjgtMC4zLTUuOC0wLjJsLTAuMS0yYzIuMS0wLjEsNC4yLTAuMSw2LjIsMC4yTDQ3MS44LDM5MC44eiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzU0NyI+CgkJCQkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQ4MS43LDM5NC41YzIsMiwzLjUsNC41LDQuMyw3LjMiLz4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDg0LjIsMzk5LjljLTAuOC0xLjctMS45LTMuMy0zLjItNC42bDEuNC0xLjRjMS41LDEuNSwyLjcsMy4zLDMuNiw1LjJMNDg0LjIsMzk5Ljl6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ4Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDg2LjcsNDEwLjN2OC42Ii8+CgkJCQkJPHJlY3QgeD0iNDg1LjciIHk9IjQxMC4zIiBjbGFzcz0ic3QwIiB3aWR0aD0iMiIgaGVpZ2h0PSI2Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ5Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDg2LjcsNDI3LjR2NC4yIi8+CgkJCQkJPHJlY3QgeD0iNDg1LjciIHk9IjQyNy40IiBjbGFzcz0ic3QwIiB3aWR0aD0iMiIgaGVpZ2h0PSI0LjIiLz4KCQkJCTwvZz4KCQkJPC9nPgoJCTwvZz4KCTwvZz4KPC9nPgo8L3N2Zz4K) center /auto no-repeat,#F0EFF4", ud = ["click", "onExitFunc", "onMultiSelectionFunc", "onAddDocumentFunc", "onMultiSelectionCencelFunc", "onAllSelectionFunc", "onCancelAllSelectionFunc", "onSaveFunc", "onUploadFunc", "bufferChanged", "onRemoveSelectedFunc"], ug = { toolbars: { topMenu: !0, bottomMenu: !0 }, groups: { viewMenu: !1, global: !1, viewChange: !1, viewerCorner: !1, pager: !1, myMainTopGroup: { visibility: !0, location: "topMenu", sequence: 1 }, myMainBottomGroup: { visibility: !0, location: "bottomMenu", sequence: 1 }, myMultiSelectionTopGroup: { visibility: !0, location: "topMenu", sequence: 2 }, myMultiSelectionBottomGroup: { visibility: !0, location: "bottomMenu", sequence: 2 }, myGroup3: { visibility: !0, location: "header", sequence: 1 } }, cropStyle: { cropMask: !1, cropBar: !1 }, buttonResize: { ifResize: !0, maxSize: 18, minSize: 12 }, buttons: { exit: { visibility: !0, location: "myMainTopGroup", iconClass: "ds-dvs-ui-pagePre ds-dwt-ui-icon-color ds-dwt-ui-icon-left", sequence: 1, onButtonClick: "onExitFunc" }, fileName: { visibility: !0, location: "myMainTopGroup", iconClass: "ds-dvs-ui-pagePre1 ds-dwt-ui-icon-color", sequence: 2, text: "" }, addDocument: { visibility: !0, location: "myMainBottomGroup", iconClass: "ds-dwt-ui-icon-addImageFromCamera  ds-dwt-ui-icon-color", sequence: 1, onButtonClick: "onAddDocumentFunc" }, multiSelection: { visibility: !0, location: "myMainTopGroup", iconClass: "ds-dwt-ui-icon-selectAll ds-dwt-ui-icon-color ds-dwt-ui-icon-right", sequence: 3, onButtonClick: "onMultiSelectionFunc" }, cancel: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dvs-ui-pagePre ds-dwt-ui-icon-color ds-dwt-ui-icon-left", sequence: 1, onButtonClick: "onMultiSelectionCencelFunc" }, selectCount: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dvs-ui-pagePre2 ds-dwt-ui-icon-color", sequence: 2, text: "selected count: " }, selectAll: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dwt-ui-mobile-icon-unselected ds-dwt-ui-icon-color dynamsoft-dwt-selectColor ds-dwt-ui-icon-right", sequence: 2, onButtonClick: "onAllSelectionFunc" }, cancelAllSelect: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dwt-ui-mobile-icon-a-allselected ds-dwt-ui-icon-color dynamsoft-dwt-selectColor ds-dwt-ui-icon-right", sequence: 3, onButtonClick: "onCancelAllSelectionFunc" }, save: { visibility: !0, location: "myMultiSelectionBottomGroup", iconClass: "ds-dwt-ui-icon-saveImage ds-dwt-ui-icon-color", sequence: 2, onButtonClick: "onSaveFunc" }, upload: { visibility: !0, location: "myMultiSelectionBottomGroup", iconClass: "ds-dwt-ui-mobile-icon-a-uploadfromserver ds-dwt-ui-icon-color", sequence: 2, onButtonClick: "onUploadFunc" }, removeSelected: { visibility: !0, location: "myMultiSelectionBottomGroup", iconClass: "ds-dwt-ui-mobile-icon-delete ds-dwt-ui-icon-color", sequence: 2, onButtonClick: "onRemoveSelectedFunc" } }, content: { besides: { visibility: !1, sequence: 4 }, thumbnail: { backgroundColor: "#fff" } }, canvasConfig: { columns: 2, rows: 2, background: ks, pageBackground: "rgb(255,255,255)", allowPageDragging: !0, checkbox: { visibility: la.visibility, width: "30px", height: "30px", background: la.background, borderWidth: "3px", borderColor: "#FE8E14", checkMarkColor: "#FE8E14", checkMarkLineWidth: "3px", borderRadius: la.borderRadius, opacity: 1, left: la.left, top: la.top, right: la.right, bottom: la.bottom, translateX: la.translateX, translateY: la.translateY }, pageNumber: { visibility: "visible", width: "36px", height: "36px", background: Oo.background, borderWidth: Oo.borderWidth, borderColor: Oo.borderColor, borderRadius: Oo.borderRadius, opacity: 1, color: Oo.color, fontFamily: Oo.fontFamily, fontSize: 18, left: Oo.left, top: Oo.top, right: Oo.right, bottom: Oo.bottom, translateX: Oo.translateX, translateY: Oo.translateY } }, thumbnail: { showThumbnailControl: !1, selectedBorderColor: "#7DA2CE", selectedBackgroundColor: "rgb(199, 222, 252)", imageBackgroundColor: "transparent", imageBorderColor: "rgb(238, 238, 238)", hoverBackgroundColor: "rgb(239, 246, 253)", hoverBorderColor: "rgb(238, 238, 238)", placeholderBackgroundColor: "rgb(251, 236, 136)" } }, cd = function() {
+  var Ni = "dynamsoft-default-document", ks = "rgb(255, 255, 255)", cs = "transparent", wc = "1px solid rgb(238, 238, 238)", Ic = "rgb(239, 246, 253)", Sc = "1px solid rgb(238, 238, 238)", Tc = "rgb(251, 236, 136)", ad = "1px solid rgb(125,162,206)", sd = "rgb(199, 222, 252)", la = { visibility: "hidden", width: "24px", height: "24px", background: "#ffffff", borderWidth: "2px", borderColor: "#000000", checkMarkColor: "#000000", checkMarkLineWidth: "2px", borderRadius: 0, opacity: 0.5, left: 0, top: 0, right: "", bottom: "", translateX: "", translateY: "" }, Wo = { visibility: "hidden", width: "24px", height: "24px", background: "#ffffff", borderWidth: "1px", borderColor: "#a79898", borderRadius: "50%", opacity: 0.5, color: "#000000", fontFamily: "sans-serif", fontSize: 12, left: "", top: "", right: 0, bottom: 0, translateX: "", translateY: "" }, Cc = "url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjQuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAzMDAgMzAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMDAgMzAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0NDQ0NDQzt9Cgkuc3Qxe2ZpbGw6I0YwRUZGNDt9Cjwvc3R5bGU+CjxnIGlkPSJHcm91cF8xMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMyOS42NjggLTE3OC41ODkpIj4KCTxnIGlkPSJSZWN0YW5nbGVfMTciPgoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01OTgsMzQ3LjloLTQuMnYtMmgyLjJ2LTEuOGgyVjM0Ny45eiBNNTg3LjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTU3NS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE01NjMuOSwzNDcuOQoJCQloLTZ2LTJoNlYzNDcuOXogTTU1MS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE01MzkuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNTI3LjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTUxNS45LDM0Ny45aC02di0yaDYKCQkJVjM0Ny45eiBNNTAzLjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTQ5MS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE00NzkuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNDY3LjksMzQ3LjloLTZ2LTJoNlYzNDcuOXoKCQkJIE00NTUuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNDQzLjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTQzMS45LDM0Ny45aC02di0yaDZWMzQ3Ljl6IE00MTkuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNNDA3LjksMzQ3LjkKCQkJaC02di0yaDZWMzQ3Ljl6IE0zOTUuOSwzNDcuOWgtNnYtMmg2VjM0Ny45eiBNMzgzLjksMzQ3LjloLTZ2LTJoNlYzNDcuOXogTTM3OC42LDM0MS4xaC0ydi02aDJWMzQxLjF6IE01OTgsMzM4LjFoLTJ2LTZoMlYzMzguMXoKCQkJIE0zNzguNiwzMjkuMWgtMnYtNmgyVjMyOS4xeiBNNTk4LDMyNi4xaC0ydi02aDJWMzI2LjF6IE0zNzguNiwzMTcuMWgtMnYtNmgyVjMxNy4xeiBNNTk4LDMxNC4xaC0ydi02aDJWMzE0LjF6IE0zNzguNiwzMDUuMWgtMgoJCQl2LTZoMlYzMDUuMXogTTU5OCwzMDIuMWgtMnYtNmgyVjMwMi4xeiBNMzc4LjYsMjkzLjFoLTJ2LTZoMlYyOTMuMXogTTU5OCwyOTAuMWgtMnYtNmgyVjI5MC4xeiBNMzc4LjYsMjgxLjFoLTJ2LTZoMlYyODEuMXoKCQkJIE01OTgsMjc4LjFoLTJ2LTZoMlYyNzguMXogTTM3OC42LDI2OS4xaC0ydi02aDJWMjY5LjF6IE01OTgsMjY2LjFoLTJ2LTZoMlYyNjYuMXogTTM3OC42LDI1Ny4xaC0ydi02aDJWMjU3LjF6IE01OTgsMjU0LjFoLTJ2LTYKCQkJaDJWMjU0LjF6IE0zNzguNiwyNDUuMWgtMnYtNmgyVjI0NS4xeiBNNTk4LDI0Mi4xaC0ydi02aDJWMjQyLjF6IE0zNzguNiwyMzMuMWgtMnYtNmgyVjIzMy4xeiBNNTk4LDIzMC4xaC0ydi02aDJWMjMwLjF6CgkJCSBNMzc4LjYsMjIxLjFoLTJ2LTYuN2g3djJoLTVWMjIxLjF6IE01OTgsMjE4LjFoLTJ2LTEuNmgtMi40di0yaDQuNFYyMTguMXogTTU4Ny42LDIxNi41aC02di0yaDZWMjE2LjV6IE01NzUuNiwyMTYuNWgtNnYtMmg2CgkJCVYyMTYuNXogTTU2My42LDIxNi41aC02di0yaDZWMjE2LjV6IE01NTEuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNNTM5LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTUyNy42LDIxNi41aC02di0yaDZWMjE2LjV6CgkJCSBNNTE1LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTUwMy42LDIxNi41aC02di0yaDZWMjE2LjV6IE00OTEuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNNDc5LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTQ2Ny42LDIxNi41CgkJCWgtNnYtMmg2VjIxNi41eiBNNDU1LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXogTTQ0My42LDIxNi41aC02di0yaDZWMjE2LjV6IE00MzEuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNNDE5LjYsMjE2LjVoLTZ2LTJoNgoJCQlWMjE2LjV6IE00MDcuNiwyMTYuNWgtNnYtMmg2VjIxNi41eiBNMzk1LjYsMjE2LjVoLTZ2LTJoNlYyMTYuNXoiLz4KCTwvZz4KCTxnIGlkPSJGaWxlcy1Gb2xkZXJzX0NvbW1vbi1GaWxlc19jb21tb24tZmlsZS10ZXh0LWFkZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4zNjIgMi4xMzkpIj4KCQk8ZyBpZD0iR3JvdXBfNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM5Ny44MDYgMjAxLjk1KSI+CgkJCTxnIGlkPSJjb21tb24tZmlsZS10ZXh0LWFkZCI+CgkJCQk8ZyBpZD0iT3ZhbF8xOCI+CgkJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTEwNy4yLDExOC40TDEwNy4yLDExOC40TDEwNy4yLDExOC40Yy0xMi4zLDAtMjIuMy0xMC0yMi4zLTIyLjNjMC0xMi4zLDEwLTIyLjMsMjIuMy0yMi4zYzAsMCwwLDAsMCwwCgkJCQkJCWMxMi4zLDAsMjIuMywxMCwyMi4zLDIyLjNjMCw1LjktMi4zLDExLjUtNi41LDE1LjdDMTE4LjgsMTE2LjEsMTEzLjIsMTE4LjQsMTA3LjIsMTE4LjR6IE0xMDcuMiw3NS45CgkJCQkJCUMxMDcuMiw3NS45LDEwNy4yLDc1LjksMTA3LjIsNzUuOUM5Ni4xLDc1LjksODcsODUsODcsOTYuMmMwLDExLjIsOS4xLDIwLjMsMjAuMywyMC4zbDAsMXYtMWM1LjQsMCwxMC41LTIuMSwxNC4zLTUuOQoJCQkJCQljMy44LTMuOCw1LjktOC45LDUuOS0xNC4zQzEyNy41LDg1LDExOC40LDc1LjksMTA3LjIsNzUuOXoiLz4KCQkJCTwvZz4KCQkJCTxnIGlkPSJTaGFwZV8xMzMiPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMDcuMiwxMDcuOGMtMC42LDAtMS0wLjQtMS0xVjg1LjVjMC0wLjYsMC40LTEsMS0xczEsMC40LDEsMXYyMS4zQzEwOC4yLDEwNy4zLDEwNy44LDEwNy44LDEwNy4yLDEwNy44egoJCQkJCQkiLz4KCQkJCTwvZz4KCQkJCTxnIGlkPSJTaGFwZV8xMzQiPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMTcuOSw5Ny4ySDk2LjZjLTAuNiwwLTEtMC40LTEtMXMwLjQtMSwxLTFoMjEuM2MwLjYsMCwxLDAuNCwxLDFTMTE4LjQsOTcuMiwxMTcuOSw5Ny4yeiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzEzNSI+CgkJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTk0LjgsNjUuM0g2MS4xYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xaDMzLjdjMC42LDAsMSwwLjQsMSwxUzk1LjQsNjUuMyw5NC44LDY1LjN6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfMTM2Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODIuNCw3NS45SDYxLjFjLTAuNiwwLTEtMC40LTEtMXMwLjQtMSwxLTFoMjEuM2MwLjYsMCwxLDAuNCwxLDFTODMsNzUuOSw4Mi40LDc1Ljl6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfMTM3Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODYsNTQuNkg2MS4xYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xSDg2YzAuNiwwLDEsMC40LDEsMVM4Ni41LDU0LjYsODYsNTQuNnoiLz4KCQkJCTwvZz4KCQkJCTxnIGlkPSJTaGFwZV8xMzgiPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik03NS4zLDg2LjVINjEuMWMtMC42LDAtMS0wLjQtMS0xczAuNC0xLDEtMWgxNC4yYzAuNiwwLDEsMC40LDEsMVM3NS45LDg2LjUsNzUuMyw4Ni41eiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzEzOSI+CgkJCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTc1LjMsOTcuMkg2MS4xYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xaDE0LjJjMC42LDAsMSwwLjQsMSwxUzc1LjksOTcuMiw3NS4zLDk3LjJ6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfMTQwIj4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODIuNCwxMTguNEg1MC41Yy0yLjUsMC00LjUtMi00LjUtNC41VjM5LjRjMC0yLjUsMi00LjUsNC41LTQuNWg0Ny4xYzEuMiwwLDIuNCwwLjUsMy4yLDEuM0wxMTQsNDkuNAoJCQkJCQljMC45LDAuOSwxLjMsMiwxLjMsMy4ydjExLjdjMCwwLjYtMC40LDEtMSwxcy0xLTAuNC0xLTFWNTIuNmMwLTAuNy0wLjMtMS4zLTAuNy0xLjhMOTkuNCwzNy42Yy0wLjUtMC41LTEuMS0wLjctMS44LTAuN0g1MC41CgkJCQkJCWMtMS40LDAtMi41LDEuMS0yLjUsMi41djc0LjRjMCwxLjQsMS4xLDIuNSwyLjUsMi41aDMxLjljMC42LDAsMSwwLjQsMSwxUzgzLDExOC40LDgyLjQsMTE4LjR6Ii8+CgkJCQk8L2c+CgkJCTwvZz4KCQk8L2c+Cgk8L2c+Cgk8ZyBpZD0iQXJyb3dzLURpYWdyYW1zX0RpYWdyYW1zX2RpYWdyYW0tZGFzaC1kb3duLWZhc3QiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yIDQpIj4KCQk8ZyBpZD0iR3JvdXBfMTY1Ij4KCQkJPGcgaWQ9IkxpZ2h0XzE2NSI+CgkJCQk8ZyBpZD0iU2hhcGVfNTM5Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDg0LjEsNDQzbC00LjItNC4ybDEuNC0xLjRsNC4yLDQuMkw0ODQuMSw0NDN6IE00ODkuNyw0NDIuN2wtMS40LTEuNGw0LjItNC4ybDEuNCwxLjRMNDg5LjcsNDQyLjd6CgkJCQkJCSBNNDc1LjYsNDM0LjVsLTQuMi00LjJsMS40LTEuNGw0LjIsNC4yTDQ3NS42LDQzNC41eiBNNDk4LjIsNDM0LjJsLTEuNC0xLjRsMy45LTMuOWwxLjQsMS40TDQ5OC4yLDQzNC4yeiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzU0MCI+CgkJCQkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQwMi43LDM0Ny42djQuMiIvPgoJCQkJCTxyZWN0IHg9IjQwMS43IiB5PSIzNDcuNiIgY2xhc3M9InN0MCIgd2lkdGg9IjIiIGhlaWdodD0iNC4yIi8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQxIj4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDAyLjcsMzYwLjN2OC42Ii8+CgkJCQkJPHJlY3QgeD0iNDAxLjciIHk9IjM2MC4zIiBjbGFzcz0ic3QwIiB3aWR0aD0iMiIgaGVpZ2h0PSI2Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQyIj4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDAzLjMsMzc3LjRjMC44LDIuOCwyLjIsNS4zLDQuMyw3LjMiLz4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDA1LjEsMzgzLjNjLTEuMy0xLjctMi4yLTMuNi0yLjgtNS43bDEuOS0wLjVjMC41LDEuOCwxLjMsMy41LDIuNSw1TDQwNS4xLDM4My4zeiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzU0MyI+CgkJCQkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQxNC44LDM4OWMyLjgsMC42LDUuNywwLjksOC41LDAuNyIvPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjAuNywzOTAuN2MtMi4xLDAtNC4xLTAuMy02LjItMC43bDAuNC0xLjljMS45LDAuNCwzLjgsMC43LDUuNywwLjdMNDIwLjcsMzkwLjd6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ0Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDMxLjgsMzg5LjZoOC42Ii8+CgkJCQkJPHJlY3QgeD0iNDMxLjgiIHk9IjM4OC42IiBjbGFzcz0ic3QwIiB3aWR0aD0iNiIgaGVpZ2h0PSIyIi8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ1Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDQ4LjksMzg5LjZoOC42Ii8+CgkJCQkJPHJlY3QgeD0iNDQ4LjkiIHk9IjM4OC42IiBjbGFzcz0ic3QwIiB3aWR0aD0iNiIgaGVpZ2h0PSIyIi8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ2Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDY2LDM4OS42YzIuOS0wLjIsNS43LDAsOC41LDAuNiIvPgoJCQkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00NzEuOCwzOTAuOGMtMS45LTAuMy0zLjgtMC4zLTUuOC0wLjJsLTAuMS0yYzIuMS0wLjEsNC4yLTAuMSw2LjIsMC4yTDQ3MS44LDM5MC44eiIvPgoJCQkJPC9nPgoJCQkJPGcgaWQ9IlNoYXBlXzU0NyI+CgkJCQkJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQ4MS43LDM5NC41YzIsMiwzLjUsNC41LDQuMyw3LjMiLz4KCQkJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDg0LjIsMzk5LjljLTAuOC0xLjctMS45LTMuMy0zLjItNC42bDEuNC0xLjRjMS41LDEuNSwyLjcsMy4zLDMuNiw1LjJMNDg0LjIsMzk5Ljl6Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ4Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDg2LjcsNDEwLjN2OC42Ii8+CgkJCQkJPHJlY3QgeD0iNDg1LjciIHk9IjQxMC4zIiBjbGFzcz0ic3QwIiB3aWR0aD0iMiIgaGVpZ2h0PSI2Ii8+CgkJCQk8L2c+CgkJCQk8ZyBpZD0iU2hhcGVfNTQ5Ij4KCQkJCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDg2LjcsNDI3LjR2NC4yIi8+CgkJCQkJPHJlY3QgeD0iNDg1LjciIHk9IjQyNy40IiBjbGFzcz0ic3QwIiB3aWR0aD0iMiIgaGVpZ2h0PSI0LjIiLz4KCQkJCTwvZz4KCQkJPC9nPgoJCTwvZz4KCTwvZz4KPC9nPgo8L3N2Zz4K) center /auto no-repeat,#F0EFF4", ud = ["click", "onExitFunc", "onMultiSelectionFunc", "onAddDocumentFunc", "onMultiSelectionCencelFunc", "onAllSelectionFunc", "onCancelAllSelectionFunc", "onSaveFunc", "onUploadFunc", "bufferChanged", "onRemoveSelectedFunc"], ug = { toolbars: { topMenu: !0, bottomMenu: !0 }, groups: { viewMenu: !1, global: !1, viewChange: !1, viewerCorner: !1, pager: !1, myMainTopGroup: { visibility: !0, location: "topMenu", sequence: 1 }, myMainBottomGroup: { visibility: !0, location: "bottomMenu", sequence: 1 }, myMultiSelectionTopGroup: { visibility: !0, location: "topMenu", sequence: 2 }, myMultiSelectionBottomGroup: { visibility: !0, location: "bottomMenu", sequence: 2 }, myGroup3: { visibility: !0, location: "header", sequence: 1 } }, cropStyle: { cropMask: !1, cropBar: !1 }, buttonResize: { ifResize: !0, maxSize: 18, minSize: 12 }, buttons: { exit: { visibility: !0, location: "myMainTopGroup", iconClass: "ds-dvs-ui-pagePre ds-dwt-ui-icon-color ds-dwt-ui-icon-left", sequence: 1, onButtonClick: "onExitFunc" }, fileName: { visibility: !0, location: "myMainTopGroup", iconClass: "ds-dvs-ui-pagePre1 ds-dwt-ui-icon-color", sequence: 2, text: "" }, addDocument: { visibility: !0, location: "myMainBottomGroup", iconClass: "ds-dwt-ui-icon-addImageFromCamera  ds-dwt-ui-icon-color", sequence: 1, onButtonClick: "onAddDocumentFunc" }, multiSelection: { visibility: !0, location: "myMainTopGroup", iconClass: "ds-dwt-ui-icon-selectAll ds-dwt-ui-icon-color ds-dwt-ui-icon-right", sequence: 3, onButtonClick: "onMultiSelectionFunc" }, cancel: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dvs-ui-pagePre ds-dwt-ui-icon-color ds-dwt-ui-icon-left", sequence: 1, onButtonClick: "onMultiSelectionCencelFunc" }, selectCount: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dvs-ui-pagePre2 ds-dwt-ui-icon-color", sequence: 2, text: "selected count: " }, selectAll: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dwt-ui-mobile-icon-unselected ds-dwt-ui-icon-color dynamsoft-dwt-selectColor ds-dwt-ui-icon-right", sequence: 2, onButtonClick: "onAllSelectionFunc" }, cancelAllSelect: { visibility: !0, location: "myMultiSelectionTopGroup", iconClass: "ds-dwt-ui-mobile-icon-a-allselected ds-dwt-ui-icon-color dynamsoft-dwt-selectColor ds-dwt-ui-icon-right", sequence: 3, onButtonClick: "onCancelAllSelectionFunc" }, save: { visibility: !0, location: "myMultiSelectionBottomGroup", iconClass: "ds-dwt-ui-icon-saveImage ds-dwt-ui-icon-color", sequence: 2, onButtonClick: "onSaveFunc" }, upload: { visibility: !0, location: "myMultiSelectionBottomGroup", iconClass: "ds-dwt-ui-mobile-icon-a-uploadfromserver ds-dwt-ui-icon-color", sequence: 2, onButtonClick: "onUploadFunc" }, removeSelected: { visibility: !0, location: "myMultiSelectionBottomGroup", iconClass: "ds-dwt-ui-mobile-icon-delete ds-dwt-ui-icon-color", sequence: 2, onButtonClick: "onRemoveSelectedFunc" } }, content: { besides: { visibility: !1, sequence: 4 }, thumbnail: { backgroundColor: "#fff" } }, canvasConfig: { columns: 2, rows: 2, background: ks, pageBackground: "rgb(255,255,255)", allowPageDragging: !0, checkbox: { visibility: la.visibility, width: "30px", height: "30px", background: la.background, borderWidth: "3px", borderColor: "#FE8E14", checkMarkColor: "#FE8E14", checkMarkLineWidth: "3px", borderRadius: la.borderRadius, opacity: 1, left: la.left, top: la.top, right: la.right, bottom: la.bottom, translateX: la.translateX, translateY: la.translateY }, pageNumber: { visibility: "visible", width: "36px", height: "36px", background: Wo.background, borderWidth: Wo.borderWidth, borderColor: Wo.borderColor, borderRadius: Wo.borderRadius, opacity: 1, color: Wo.color, fontFamily: Wo.fontFamily, fontSize: 18, left: Wo.left, top: Wo.top, right: Wo.right, bottom: Wo.bottom, translateX: Wo.translateX, translateY: Wo.translateY } }, thumbnail: { showThumbnailControl: !1, selectedBorderColor: "#7DA2CE", selectedBackgroundColor: "rgb(199, 222, 252)", imageBackgroundColor: "transparent", imageBorderColor: "rgb(238, 238, 238)", hoverBackgroundColor: "rgb(239, 246, 253)", hoverBorderColor: "rgb(238, 238, 238)", placeholderBackgroundColor: "rgb(251, 236, 136)" } }, cd = function() {
     function o(e, r, t, i) {
       Gn(this, o);
       var a = this;
@@ -16407,7 +16408,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   n.UI.DocumentEditor = fd;
   var Lu = document, Fu = n.win;
   l.DWT;
-  var gd, md, qt = l.Lib.product.CustomizableDisplayInfo.buttons, bo = l.Lib.product.CustomizableDisplayInfo.dialogText, Ec = ca, jr = { isFunction: function(o) {
+  var gd, md, qt = l.Lib.product.CustomizableDisplayInfo.buttons, wo = l.Lib.product.CustomizableDisplayInfo.dialogText, Ec = ca, jr = { isFunction: function(o) {
     return o && typeof o == "function";
   }, addClass: function(o, e) {
     var r = n.one(o);
@@ -16425,7 +16426,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return o.offsetParent != null && (e += jr.getLeft(o.offsetParent)), e;
   } };
   n._safePromptCustomMsg(function() {
-    qt = l.Lib.product.CustomizableDisplayInfo.buttons, bo = l.Lib.product.CustomizableDisplayInfo.dialogText, gd = { toolbars: { bottomMenu: !1, header: !1, topMenu: !0, asideMenu: !1 }, groups: { viewMenu: { visibility: !1 }, myGroup: { visibility: !0, location: "topMenu", sequence: 1 } }, buttonResize: { ifResize: !0, maxSize: 22, minSize: 16 }, buttons: { loadImage: { visibility: !1 }, readDirection: { visibility: !1 }, panelChange: { visibility: !1 }, previousImage: { visibility: !0, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-preImage", sequence: 1, onButtonClick: "OnPreviousImage" }, nextImage: { visibility: !0, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-nextImage", sequence: 2, onButtonClick: "OnNextImage" }, blank1: { visibility: !0, location: "myGroup", sequence: 3 }, acquire: { visibility: qt.visibility.scan == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-acquire", sequence: 4, onButtonClick: "OnAcquire" }, loadImages: { visibility: qt.visibility.load == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-load", sequence: 5, onButtonClick: "OnLoadImage" }, print: { visibility: qt.visibility.print == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-printImage", sequence: 6, onButtonClick: "OnPrint" }, blank2: { visibility: !!(qt.visibility.scan || qt.visibility.load || qt.visibility.print), location: "myGroup", sequence: 7 }, removeAll: { visibility: qt.visibility.removeall == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-removeall", sequence: 8, onButtonClick: "OnRemoveAll" }, remove: { visibility: qt.visibility.removeselected == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-removeImage", sequence: 9, onButtonClick: "OnRemove" }, blank3: { visibility: !(!qt.visibility.removeall && !qt.visibility.removeselected), location: "myGroup", sequence: 10 }, rotateLeft: { visibility: qt.visibility.rotateleft == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateLeftImage", sequence: 11, onButtonClick: "OnRotateLeft" }, rotate: { visibility: qt.visibility.rotate == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotate", sequence: 12, onButtonClick: "OnRotate" }, rotateRight: { visibility: qt.visibility.rotateright == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateRightImage", sequence: 13, onButtonClick: "OnRotateRight" }, deskew: { visibility: qt.visibility.deskew == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-deskew", sequence: 14, onButtonClick: "OnDeskew" }, blank4: { visibility: !!(qt.visibility.rotateleft || qt.visibility.rotate || qt.visibility.rotateright || qt.visibility.deskew), location: "myGroup", sequence: 15 }, crop: { visibility: qt.visibility.crop == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-cropImage-grey", sequence: 16, onButtonClick: "OnCrop" }, cut: { visibility: qt.visibility.cut == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-erase-grey", sequence: 17, onButtonClick: "OnErase" }, changeImageSize: { visibility: qt.visibility.changeimagesize == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-changeImageSize", sequence: 18, onButtonClick: "OnChangeImageSize" }, flip: { visibility: qt.visibility.flip == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-flipImage", sequence: 19, onButtonClick: "OnFlip" }, mirror: { visibility: qt.visibility.mirror == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-mirrorImage", sequence: 20, onButtonClick: "OnMirror" }, blank5: { visibility: !!(qt.visibility.crop || qt.visibility.cut || qt.visibility.changeimagesize || qt.visibility.flip || qt.visibility.mirror), location: "myGroup", sequence: 21 }, zoomin: { visibility: qt.visibility.zoomin == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-zoomin", sequence: 22, onButtonClick: "OnZoomin" }, originalsize: { visibility: qt.visibility.originalsize == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-originalsize", sequence: 23, onButtonClick: "OnOriginalsize" }, zoomout: { visibility: qt.visibility.zoomout == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-zoomout", sequence: 24, onButtonClick: "OnZoomout" }, blank6: { visibility: !!(qt.visibility.zoomin || qt.visibility.originalsize || qt.visibility.zoomout || qt.visibility.stretch), location: "myGroup", sequence: 26 }, fitPage: { visibility: qt.visibility.fit == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-fullWebType", sequence: 27, onButtonClick: "OnFitPage" }, fitWidth: { visibility: qt.visibility.fitw == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-fitWidthType", sequence: 28, onButtonClick: "OnFitWidth" }, fitHeight: { visibility: qt.visibility.fith == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-fitHeightType", sequence: 29, onButtonClick: "OnFitHeight" }, blank7: { visibility: !!(qt.visibility.fit || qt.visibility.fitw || qt.visibility.fith), location: "myGroup", sequence: 30 }, hand: { visibility: qt.visibility.hand == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-hand", sequence: 31, onButtonClick: "OnHand" }, select: { visibility: qt.visibility.rectselect == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-select", sequence: 32, onButtonClick: "OnSelect" }, clicktozoomin: { visibility: qt.visibility.zoom == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-clicktozoomin", sequence: 33, onButtonClick: "OnClicktozoomin" }, blank8: { visibility: !!(qt.visibility.hand || qt.visibility.rectselect || qt.visibility.zoom), location: "myGroup", sequence: 34 }, restore: { visibility: qt.visibility.restore == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-restore", sequence: 35, onButtonClick: "OnRestore" }, save: { visibility: qt.visibility.save == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-saveImage", sequence: 36, onButtonClick: "OnSave" }, close: { visibility: qt.visibility.close == 1, location: "topMenuRight", iconClass: "d-icon-font ds-dwt-ui-icon-close", sequence: 1, onButtonClick: "OnClose" } }, thumbnail: { visibility: !1, showThumbnailControl: !1, hoverBackgroundColor: "rgb(239, 246, 253)", hoverBorderColor: "rgb(238, 238, 238)", imageBackgroundColor: "transparent", imageBorderColor: "rgb(238, 238, 238)", placeholderBackgroundColor: "rgb(251, 236, 136)", selectedBorderColor: "rgb(125,162,206)" }, tipsConfig: { previousImage: qt.titles.previous, nextImage: qt.titles.next, acquire: qt.titles.scan, loadImages: qt.titles.load, print: qt.titles.print, removeAll: qt.titles.removeall, remove: qt.titles.removeselected, rotateLeft: qt.titles.rotateleft, rotate: qt.titles.rotate, rotateRight: qt.titles.rotateright, deskew: qt.titles.deskew, crop: qt.titles.crop, cut: qt.titles.cut, changeImageSize: qt.titles.changeimagesize, flip: qt.titles.flip, mirror: qt.titles.mirror, zoomin: qt.titles.zoomin, originalsize: qt.titles.originalsize, zoomout: qt.titles.zoomout, stretch: qt.titles.stretch, fitPage: qt.titles.fit, fitWidth: qt.titles.fitw, fitHeight: qt.titles.fith, hand: qt.titles.hand, select: qt.titles.rectselect, clicktozoomin: qt.titles.zoom, restore: qt.titles.restore, save: qt.titles.save, close: qt.titles.close }, canvasConfig: { selectedPageBackground: cs, selectedPageBorder: "", hoverPageBackground: cs, canvasBorder: "", canvasBackground: "#434246" }, outerBorder: "", topMenuBorder: "" }, md = { toolbars: { header: !0, bottomMenu: !0, topMenu: !0, asideMenu: !1 }, groups: { viewMenu: { visibility: !1 }, global: { visibility: !1 }, viewChange: { visibility: !1 }, viewerCorner: { visibility: !1 }, pager: { visibility: !1 }, myGroup: { visibility: !0, location: "topMenu", sequence: 1 }, myGroup2: { visibility: !0, location: "bottomMenu", sequence: 1 }, myGroup3: { visibility: !0, location: "header", sequence: 1 }, myGroup4: { visibility: !0, location: "bottomMenu", sequence: 2 } }, buttonResize: { ifResize: !0, maxSize: 32, minSize: 26 }, buttons: { loadImage: { visibility: !1 }, readDirection: { visibility: !1 }, panelChange: { visibility: !1 }, print: { visibility: !1 }, loadImages: { visibility: qt.visibility.load == 1, location: "myGroup3", iconClass: "d-icon-font ds-dwt-ui-icon-load", sequence: 1, onButtonClick: "OnLoadImage" }, close: { visibility: qt.visibility.close == 1, location: "myGroup3", iconClass: "d-icon-font ds-dwt-ui-icon-close ds-dwt-ui-icon-close-right", sequence: 2, onButtonClick: "OnClose" }, rotateLeft: { visibility: qt.visibility.rotateleft == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateLeftImage", sequence: 1, onButtonClick: "OnRotateLeft" }, rotateRight: { visibility: qt.visibility.rotateright == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateRightImage", sequence: 2, onButtonClick: "OnRotateRight" }, flip: { visibility: qt.visibility.flip == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-flipImage", sequence: 3, onButtonClick: "OnFlip" }, mirror: { visibility: qt.visibility.mirror == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-mirrorImage", sequence: 4, onButtonClick: "OnMirror" }, crop: { visibility: qt.visibility.crop == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-cropImage-grey", sequence: 5, onButtonClick: "OnCrop" }, cut: { visibility: qt.visibility.cut == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-erase-grey", sequence: 6, onButtonClick: "OnErase" }, hand: { visibility: qt.visibility.hand == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-hand", sequence: 7, onButtonClick: "OnHand" }, select: { visibility: qt.visibility.rectselect == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-select", sequence: 8, onButtonClick: "OnSelect" }, firstPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pageStart", sequence: 1, onButtonClick: "OnFirstImage" }, previousPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pagePre", sequence: 2, onButtonClick: "OnPreviousImage" }, pagination: { visibility: !0, location: "myGroup2", sequence: 3 }, nextPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pageNext", sequence: 4, onButtonClick: "OnNextImage" }, lastPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pageEnd", sequence: 5, onButtonClick: "OnLastImage" }, removeAll: { visibility: qt.visibility.removeall == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-removeall", sequence: 7, onButtonClick: "OnRemoveAll" }, remove: { visibility: qt.visibility.removeselected == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-removeImage", sequence: 8, onButtonClick: "OnRemove" }, restore: { visibility: qt.visibility.restore == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-restore", sequence: 10, onButtonClick: "OnRestore" }, save: { visibility: qt.visibility.save == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-saveImage", sequence: 11, onButtonClick: "OnSave" } }, thumbnail: { visibility: !1, showThumbnailControl: !1, hoverBackgroundColor: "rgb(239, 246, 253)", hoverBorderColor: "rgb(238, 238, 238)", imageBackgroundColor: "transparent", imageBorderColor: "rgb(238, 238, 238)", placeholderBackgroundColor: "rgb(251, 236, 136)", selectedBorderColor: "rgb(125,162,206)", pageBorderColor: "rgb(204, 204, 204)" }, tipsConfig: { previousImage: qt.titles.previous, nextImage: qt.titles.next, acquire: qt.titles.scan, loadImages: qt.titles.load, print: qt.titles.print, removeAll: qt.titles.removeall, remove: qt.titles.removeselected, rotateLeft: qt.titles.rotateleft, rotate: qt.titles.rotate, rotateRight: qt.titles.rotateright, deskew: qt.titles.deskew, crop: qt.titles.crop, cut: qt.titles.cut, changeImageSize: qt.titles.changeimagesize, flip: qt.titles.flip, mirror: qt.titles.mirror, zoomin: qt.titles.zoomin, originalsize: qt.titles.originalsize, zoomout: qt.titles.zoomout, stretch: qt.titles.stretch, fitPage: qt.titles.fit, fitWidth: qt.titles.fitw, fitHeight: qt.titles.fith, hand: qt.titles.hand, select: qt.titles.rectselect, clicktozoomin: qt.titles.zoom, restore: qt.titles.restore, save: qt.titles.save, close: qt.titles.close }, canvasConfig: { selectedPageBackground: cs, selectedPageBorder: "", hoverPageBackground: cs, canvasBorder: "", canvasBackground: "#434246" }, outerBorder: "", topMenuBorder: "" };
+    qt = l.Lib.product.CustomizableDisplayInfo.buttons, wo = l.Lib.product.CustomizableDisplayInfo.dialogText, gd = { toolbars: { bottomMenu: !1, header: !1, topMenu: !0, asideMenu: !1 }, groups: { viewMenu: { visibility: !1 }, myGroup: { visibility: !0, location: "topMenu", sequence: 1 } }, buttonResize: { ifResize: !0, maxSize: 22, minSize: 16 }, buttons: { loadImage: { visibility: !1 }, readDirection: { visibility: !1 }, panelChange: { visibility: !1 }, previousImage: { visibility: !0, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-preImage", sequence: 1, onButtonClick: "OnPreviousImage" }, nextImage: { visibility: !0, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-nextImage", sequence: 2, onButtonClick: "OnNextImage" }, blank1: { visibility: !0, location: "myGroup", sequence: 3 }, acquire: { visibility: qt.visibility.scan == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-acquire", sequence: 4, onButtonClick: "OnAcquire" }, loadImages: { visibility: qt.visibility.load == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-load", sequence: 5, onButtonClick: "OnLoadImage" }, print: { visibility: qt.visibility.print == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-printImage", sequence: 6, onButtonClick: "OnPrint" }, blank2: { visibility: !!(qt.visibility.scan || qt.visibility.load || qt.visibility.print), location: "myGroup", sequence: 7 }, removeAll: { visibility: qt.visibility.removeall == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-removeall", sequence: 8, onButtonClick: "OnRemoveAll" }, remove: { visibility: qt.visibility.removeselected == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-removeImage", sequence: 9, onButtonClick: "OnRemove" }, blank3: { visibility: !(!qt.visibility.removeall && !qt.visibility.removeselected), location: "myGroup", sequence: 10 }, rotateLeft: { visibility: qt.visibility.rotateleft == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateLeftImage", sequence: 11, onButtonClick: "OnRotateLeft" }, rotate: { visibility: qt.visibility.rotate == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotate", sequence: 12, onButtonClick: "OnRotate" }, rotateRight: { visibility: qt.visibility.rotateright == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateRightImage", sequence: 13, onButtonClick: "OnRotateRight" }, deskew: { visibility: qt.visibility.deskew == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-deskew", sequence: 14, onButtonClick: "OnDeskew" }, blank4: { visibility: !!(qt.visibility.rotateleft || qt.visibility.rotate || qt.visibility.rotateright || qt.visibility.deskew), location: "myGroup", sequence: 15 }, crop: { visibility: qt.visibility.crop == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-cropImage-grey", sequence: 16, onButtonClick: "OnCrop" }, cut: { visibility: qt.visibility.cut == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-erase-grey", sequence: 17, onButtonClick: "OnErase" }, changeImageSize: { visibility: qt.visibility.changeimagesize == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-changeImageSize", sequence: 18, onButtonClick: "OnChangeImageSize" }, flip: { visibility: qt.visibility.flip == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-flipImage", sequence: 19, onButtonClick: "OnFlip" }, mirror: { visibility: qt.visibility.mirror == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-mirrorImage", sequence: 20, onButtonClick: "OnMirror" }, blank5: { visibility: !!(qt.visibility.crop || qt.visibility.cut || qt.visibility.changeimagesize || qt.visibility.flip || qt.visibility.mirror), location: "myGroup", sequence: 21 }, zoomin: { visibility: qt.visibility.zoomin == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-zoomin", sequence: 22, onButtonClick: "OnZoomin" }, originalsize: { visibility: qt.visibility.originalsize == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-originalsize", sequence: 23, onButtonClick: "OnOriginalsize" }, zoomout: { visibility: qt.visibility.zoomout == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-zoomout", sequence: 24, onButtonClick: "OnZoomout" }, blank6: { visibility: !!(qt.visibility.zoomin || qt.visibility.originalsize || qt.visibility.zoomout || qt.visibility.stretch), location: "myGroup", sequence: 26 }, fitPage: { visibility: qt.visibility.fit == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-fullWebType", sequence: 27, onButtonClick: "OnFitPage" }, fitWidth: { visibility: qt.visibility.fitw == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-fitWidthType", sequence: 28, onButtonClick: "OnFitWidth" }, fitHeight: { visibility: qt.visibility.fith == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-fitHeightType", sequence: 29, onButtonClick: "OnFitHeight" }, blank7: { visibility: !!(qt.visibility.fit || qt.visibility.fitw || qt.visibility.fith), location: "myGroup", sequence: 30 }, hand: { visibility: qt.visibility.hand == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-hand", sequence: 31, onButtonClick: "OnHand" }, select: { visibility: qt.visibility.rectselect == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-select", sequence: 32, onButtonClick: "OnSelect" }, clicktozoomin: { visibility: qt.visibility.zoom == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-clicktozoomin", sequence: 33, onButtonClick: "OnClicktozoomin" }, blank8: { visibility: !!(qt.visibility.hand || qt.visibility.rectselect || qt.visibility.zoom), location: "myGroup", sequence: 34 }, restore: { visibility: qt.visibility.restore == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-restore", sequence: 35, onButtonClick: "OnRestore" }, save: { visibility: qt.visibility.save == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-saveImage", sequence: 36, onButtonClick: "OnSave" }, close: { visibility: qt.visibility.close == 1, location: "topMenuRight", iconClass: "d-icon-font ds-dwt-ui-icon-close", sequence: 1, onButtonClick: "OnClose" } }, thumbnail: { visibility: !1, showThumbnailControl: !1, hoverBackgroundColor: "rgb(239, 246, 253)", hoverBorderColor: "rgb(238, 238, 238)", imageBackgroundColor: "transparent", imageBorderColor: "rgb(238, 238, 238)", placeholderBackgroundColor: "rgb(251, 236, 136)", selectedBorderColor: "rgb(125,162,206)" }, tipsConfig: { previousImage: qt.titles.previous, nextImage: qt.titles.next, acquire: qt.titles.scan, loadImages: qt.titles.load, print: qt.titles.print, removeAll: qt.titles.removeall, remove: qt.titles.removeselected, rotateLeft: qt.titles.rotateleft, rotate: qt.titles.rotate, rotateRight: qt.titles.rotateright, deskew: qt.titles.deskew, crop: qt.titles.crop, cut: qt.titles.cut, changeImageSize: qt.titles.changeimagesize, flip: qt.titles.flip, mirror: qt.titles.mirror, zoomin: qt.titles.zoomin, originalsize: qt.titles.originalsize, zoomout: qt.titles.zoomout, stretch: qt.titles.stretch, fitPage: qt.titles.fit, fitWidth: qt.titles.fitw, fitHeight: qt.titles.fith, hand: qt.titles.hand, select: qt.titles.rectselect, clicktozoomin: qt.titles.zoom, restore: qt.titles.restore, save: qt.titles.save, close: qt.titles.close }, canvasConfig: { selectedPageBackground: cs, selectedPageBorder: "", hoverPageBackground: cs, canvasBorder: "", canvasBackground: "#434246" }, outerBorder: "", topMenuBorder: "" }, md = { toolbars: { header: !0, bottomMenu: !0, topMenu: !0, asideMenu: !1 }, groups: { viewMenu: { visibility: !1 }, global: { visibility: !1 }, viewChange: { visibility: !1 }, viewerCorner: { visibility: !1 }, pager: { visibility: !1 }, myGroup: { visibility: !0, location: "topMenu", sequence: 1 }, myGroup2: { visibility: !0, location: "bottomMenu", sequence: 1 }, myGroup3: { visibility: !0, location: "header", sequence: 1 }, myGroup4: { visibility: !0, location: "bottomMenu", sequence: 2 } }, buttonResize: { ifResize: !0, maxSize: 32, minSize: 26 }, buttons: { loadImage: { visibility: !1 }, readDirection: { visibility: !1 }, panelChange: { visibility: !1 }, print: { visibility: !1 }, loadImages: { visibility: qt.visibility.load == 1, location: "myGroup3", iconClass: "d-icon-font ds-dwt-ui-icon-load", sequence: 1, onButtonClick: "OnLoadImage" }, close: { visibility: qt.visibility.close == 1, location: "myGroup3", iconClass: "d-icon-font ds-dwt-ui-icon-close ds-dwt-ui-icon-close-right", sequence: 2, onButtonClick: "OnClose" }, rotateLeft: { visibility: qt.visibility.rotateleft == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateLeftImage", sequence: 1, onButtonClick: "OnRotateLeft" }, rotateRight: { visibility: qt.visibility.rotateright == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-rotateRightImage", sequence: 2, onButtonClick: "OnRotateRight" }, flip: { visibility: qt.visibility.flip == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-flipImage", sequence: 3, onButtonClick: "OnFlip" }, mirror: { visibility: qt.visibility.mirror == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-mirrorImage", sequence: 4, onButtonClick: "OnMirror" }, crop: { visibility: qt.visibility.crop == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-cropImage-grey", sequence: 5, onButtonClick: "OnCrop" }, cut: { visibility: qt.visibility.cut == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-erase-grey", sequence: 6, onButtonClick: "OnErase" }, hand: { visibility: qt.visibility.hand == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-hand", sequence: 7, onButtonClick: "OnHand" }, select: { visibility: qt.visibility.rectselect == 1, location: "myGroup", iconClass: "d-icon-font ds-dwt-ui-icon-select", sequence: 8, onButtonClick: "OnSelect" }, firstPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pageStart", sequence: 1, onButtonClick: "OnFirstImage" }, previousPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pagePre", sequence: 2, onButtonClick: "OnPreviousImage" }, pagination: { visibility: !0, location: "myGroup2", sequence: 3 }, nextPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pageNext", sequence: 4, onButtonClick: "OnNextImage" }, lastPage: { visibility: !0, location: "myGroup2", iconClass: "ds-dvs-ui-pageEnd", sequence: 5, onButtonClick: "OnLastImage" }, removeAll: { visibility: qt.visibility.removeall == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-removeall", sequence: 7, onButtonClick: "OnRemoveAll" }, remove: { visibility: qt.visibility.removeselected == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-removeImage", sequence: 8, onButtonClick: "OnRemove" }, restore: { visibility: qt.visibility.restore == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-restore", sequence: 10, onButtonClick: "OnRestore" }, save: { visibility: qt.visibility.save == 1, location: "myGroup4", iconClass: "d-icon-font ds-dwt-ui-icon-saveImage", sequence: 11, onButtonClick: "OnSave" } }, thumbnail: { visibility: !1, showThumbnailControl: !1, hoverBackgroundColor: "rgb(239, 246, 253)", hoverBorderColor: "rgb(238, 238, 238)", imageBackgroundColor: "transparent", imageBorderColor: "rgb(238, 238, 238)", placeholderBackgroundColor: "rgb(251, 236, 136)", selectedBorderColor: "rgb(125,162,206)", pageBorderColor: "rgb(204, 204, 204)" }, tipsConfig: { previousImage: qt.titles.previous, nextImage: qt.titles.next, acquire: qt.titles.scan, loadImages: qt.titles.load, print: qt.titles.print, removeAll: qt.titles.removeall, remove: qt.titles.removeselected, rotateLeft: qt.titles.rotateleft, rotate: qt.titles.rotate, rotateRight: qt.titles.rotateright, deskew: qt.titles.deskew, crop: qt.titles.crop, cut: qt.titles.cut, changeImageSize: qt.titles.changeimagesize, flip: qt.titles.flip, mirror: qt.titles.mirror, zoomin: qt.titles.zoomin, originalsize: qt.titles.originalsize, zoomout: qt.titles.zoomout, stretch: qt.titles.stretch, fitPage: qt.titles.fit, fitWidth: qt.titles.fitw, fitHeight: qt.titles.fith, hand: qt.titles.hand, select: qt.titles.rectselect, clicktozoomin: qt.titles.zoom, restore: qt.titles.restore, save: qt.titles.save, close: qt.titles.close }, canvasConfig: { selectedPageBackground: cs, selectedPageBorder: "", hoverPageBackground: cs, canvasBorder: "", canvasBackground: "#434246" }, outerBorder: "", topMenuBorder: "" };
   });
   var pd = function() {
     function o(e, r) {
@@ -16439,7 +16440,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     return zn(o, [{ key: "updateWebviewerConfig", value: function(e, r, t) {
       var i = e;
-      return r && (this.editorSettings = r, n.isUndefined(r.buttons) || (n.isUndefined(r.buttons.titles) || (n.isUndefined(r.buttons.titles.previous) || (i.tipsConfig.previousImage = r.buttons.titles.previous), n.isUndefined(r.buttons.titles.next) || (i.tipsConfig.nextImage = r.buttons.titles.next), n.isUndefined(r.buttons.titles.print) || (i.tipsConfig.print = r.buttons.titles.print), n.isUndefined(r.buttons.titles.scan) || (i.tipsConfig.acquire = r.buttons.titles.scan), n.isUndefined(r.buttons.titles.load) || (i.tipsConfig.loadImages = r.buttons.titles.load), n.isUndefined(r.buttons.titles.rotateleft) || (i.tipsConfig.rotateLeft = r.buttons.titles.rotateleft), n.isUndefined(r.buttons.titles.rotate) || (i.tipsConfig.rotate = r.buttons.titles.rotate), n.isUndefined(r.buttons.titles.rotateright) || (i.tipsConfig.rotateRight = r.buttons.titles.rotateright), n.isUndefined(r.buttons.titles.deskew) || (i.tipsConfig.deskew = r.buttons.titles.deskew), n.isUndefined(r.buttons.titles.crop) || (i.tipsConfig.crop = r.buttons.titles.crop), n.isUndefined(r.buttons.titles.cut) || (i.tipsConfig.cut = r.buttons.titles.cut), n.isUndefined(r.buttons.titles.changeimagesize) || (i.tipsConfig.changeImageSize = r.buttons.titles.changeimagesize), n.isUndefined(r.buttons.titles.flip) || (i.tipsConfig.flip = r.buttons.titles.flip), n.isUndefined(r.buttons.titles.mirror) || (i.tipsConfig.mirror = r.buttons.titles.mirror), n.isUndefined(r.buttons.titles.zoomin) || (i.tipsConfig.zoomin = r.buttons.titles.zoomin), n.isUndefined(r.buttons.titles.originalsize) || (i.tipsConfig.originalsize = r.buttons.titles.originalsize), n.isUndefined(r.buttons.titles.zoomout) || (i.tipsConfig.zoomout = r.buttons.titles.zoomout), n.isUndefined(r.buttons.titles.stretch) || (i.tipsConfig.stretch = r.buttons.titles.stretch), n.isUndefined(r.buttons.titles.fit) || (i.tipsConfig.fitPage = r.buttons.titles.fit), n.isUndefined(r.buttons.titles.fitw) || (i.tipsConfig.fitWidth = r.buttons.titles.fitw), n.isUndefined(r.buttons.titles.fith) || (i.tipsConfig.fitHeight = r.buttons.titles.fith), n.isUndefined(r.buttons.titles.hand) || (i.tipsConfig.hand = r.buttons.titles.hand), n.isUndefined(r.buttons.titles.rectselect) || (i.tipsConfig.select = r.buttons.titles.rectselect), n.isUndefined(r.buttons.titles.zoom) || (i.tipsConfig.clicktozoomin = r.buttons.titles.zoom), n.isUndefined(r.buttons.titles.restore) || (i.tipsConfig.restore = r.buttons.titles.restore), n.isUndefined(r.buttons.titles.save) || (i.tipsConfig.save = r.buttons.titles.save), n.isUndefined(r.buttons.titles.close) || (i.tipsConfig.close = r.buttons.titles.close), n.isUndefined(r.buttons.titles.removeall) || (i.tipsConfig.removeAll = r.buttons.titles.removeall), n.isUndefined(r.buttons.titles.removeselected) || (i.tipsConfig.remove = r.buttons.titles.removeselected)), n.isUndefined(r.buttons.visibility) || (t ? (n.isUndefined(r.buttons.visibility.load) ? i.buttons.loadImages.visibility = !0 : i.buttons.loadImages.visibility = r.buttons.visibility.load == 1, n.isUndefined(r.buttons.visibility.close) ? i.buttons.close.visibility = !0 : i.buttons.close.visibility = r.buttons.visibility.close == 1, n.isUndefined(r.buttons.visibility.rotateleft) ? i.buttons.rotateLeft.visibility = !0 : i.buttons.rotateLeft.visibility = r.buttons.visibility.rotateleft == 1, n.isUndefined(r.buttons.visibility.rotateright) ? i.buttons.rotateRight.visibility = !0 : i.buttons.rotateRight.visibility = r.buttons.visibility.rotateright == 1, n.isUndefined(r.buttons.visibility.flip) ? i.buttons.flip.visibility = !0 : i.buttons.flip.visibility = r.buttons.visibility.flip == 1, n.isUndefined(r.buttons.visibility.mirror) ? i.buttons.mirror.visibility = !0 : i.buttons.mirror.visibility = r.buttons.visibility.mirror == 1, n.isUndefined(r.buttons.visibility.crop) ? i.buttons.crop.visibility = !0 : i.buttons.crop.visibility = r.buttons.visibility.crop == 1, n.isUndefined(r.buttons.visibility.cut) ? i.buttons.cut.visibility = !0 : i.buttons.cut.visibility = r.buttons.visibility.cut == 1, n.isUndefined(r.buttons.visibility.hand) ? i.buttons.hand.visibility = !0 : i.buttons.hand.visibility = r.buttons.visibility.hand == 1, n.isUndefined(r.buttons.visibility.rectselect) ? i.buttons.select.visibility = !0 : i.buttons.select.visibility = r.buttons.visibility.rectselect == 1, n.isUndefined(r.buttons.visibility.removeall) ? i.buttons.removeAll.visibility = !0 : i.buttons.removeAll.visibility = r.buttons.visibility.removeall == 1, n.isUndefined(r.buttons.visibility.removeselected) ? i.buttons.remove.visibility = !0 : i.buttons.remove.visibility = r.buttons.visibility.removeselected == 1, n.isUndefined(r.buttons.visibility.restore) ? i.buttons.restore.visibility = !0 : i.buttons.restore.visibility = r.buttons.visibility.restore == 1, n.isUndefined(r.buttons.visibility.save) ? i.buttons.save.visibility = !0 : i.buttons.save.visibility = r.buttons.visibility.save == 1) : (n.isUndefined(r.buttons.visibility.scan) ? i.buttons.acquire.visibility = !0 : i.buttons.acquire.visibility = r.buttons.visibility.scan == 1, n.isUndefined(r.buttons.visibility.load) ? i.buttons.loadImages.visibility = !0 : i.buttons.loadImages.visibility = r.buttons.visibility.load == 1, n.isUndefined(r.buttons.visibility.print) ? i.buttons.print.visibility = !0 : i.buttons.print.visibility = r.buttons.visibility.print == 1, i.buttons.blank2.visibility = !!(i.buttons.acquire.visibility || i.buttons.loadImages.visibility || i.buttons.print.visibility), n.isUndefined(r.buttons.visibility.removeall) ? i.buttons.removeAll.visibility = !0 : i.buttons.removeAll.visibility = r.buttons.visibility.removeall == 1, n.isUndefined(r.buttons.visibility.removeselected) ? i.buttons.remove.visibility = !0 : i.buttons.remove.visibility = r.buttons.visibility.removeselected == 1, i.buttons.blank3.visibility = !(!i.buttons.removeAll.visibility && !i.buttons.remove.visibility), n.isUndefined(r.buttons.visibility.rotateleft) ? i.buttons.rotateLeft.visibility = !0 : i.buttons.rotateLeft.visibility = r.buttons.visibility.rotateleft == 1, n.isUndefined(r.buttons.visibility.rotate) ? i.buttons.rotate.visibility = !0 : i.buttons.rotate.visibility = r.buttons.visibility.rotate == 1, n.isUndefined(r.buttons.visibility.rotateright) ? i.buttons.rotateRight.visibility = !0 : i.buttons.rotateRight.visibility = r.buttons.visibility.rotateright == 1, n.isUndefined(r.buttons.visibility.deskew) ? i.buttons.deskew.visibility = !0 : i.buttons.deskew.visibility = r.buttons.visibility.deskew == 1, i.buttons.blank4.visibility = !!(i.buttons.rotateLeft.visibility || i.buttons.rotate.visibility || i.buttons.rotateRight.visibility || i.buttons.deskew.visibility), n.isUndefined(r.buttons.visibility.crop) ? i.buttons.crop.visibility = !0 : i.buttons.crop.visibility = r.buttons.visibility.crop == 1, n.isUndefined(r.buttons.visibility.cut) ? i.buttons.cut.visibility = !0 : i.buttons.cut.visibility = r.buttons.visibility.cut == 1, n.isUndefined(r.buttons.visibility.changeimagesize) ? i.buttons.changeImageSize.visibility = !0 : i.buttons.changeImageSize.visibility = r.buttons.visibility.changeimagesize == 1, n.isUndefined(r.buttons.visibility.flip) ? i.buttons.flip.visibility = !0 : i.buttons.flip.visibility = r.buttons.visibility.flip == 1, n.isUndefined(r.buttons.visibility.mirror) ? i.buttons.mirror.visibility = !0 : i.buttons.mirror.visibility = r.buttons.visibility.mirror == 1, i.buttons.blank5.visibility = !!(i.buttons.crop.visibility || i.buttons.cut.visibility || i.buttons.changeImageSize.visibility || i.buttons.flip.visibility || i.buttons.mirror.visibility), n.isUndefined(r.buttons.visibility.zoomin) ? i.buttons.zoomin.visibility = !0 : i.buttons.zoomin.visibility = r.buttons.visibility.zoomin == 1, n.isUndefined(r.buttons.visibility.originalsize) ? i.buttons.originalsize.visibility = !0 : i.buttons.originalsize.visibility = r.buttons.visibility.originalsize == 1, n.isUndefined(r.buttons.visibility.zoomout) ? i.buttons.zoomout.visibility = !0 : i.buttons.zoomout.visibility = r.buttons.visibility.zoomout == 1, i.buttons.blank6.visibility = !!(i.buttons.zoomin.visibility || i.buttons.originalsize.visibility || i.buttons.zoomout.visibility), n.isUndefined(r.buttons.visibility.fit) ? i.buttons.fitPage.visibility = !0 : i.buttons.fitPage.visibility = r.buttons.visibility.fit == 1, n.isUndefined(r.buttons.visibility.fitw) ? i.buttons.fitWidth.visibility = !0 : i.buttons.fitWidth.visibility = r.buttons.visibility.fitw == 1, n.isUndefined(r.buttons.visibility.fith) ? i.buttons.fitHeight.visibility = !0 : i.buttons.fitHeight.visibility = r.buttons.visibility.fith == 1, i.buttons.blank7.visibility = !!(i.buttons.fitPage.visibility || i.buttons.fitWidth.visibility || i.buttons.fitHeight.visibility), n.isUndefined(r.buttons.visibility.hand) ? i.buttons.hand.visibility = !0 : i.buttons.hand.visibility = r.buttons.visibility.hand == 1, n.isUndefined(r.buttons.visibility.rectselect) ? i.buttons.select.visibility = !0 : i.buttons.select.visibility = r.buttons.visibility.rectselect == 1, n.isUndefined(r.buttons.visibility.zoom) ? i.buttons.clicktozoomin.visibility = !0 : i.buttons.clicktozoomin.visibility = r.buttons.visibility.zoom == 1, i.buttons.blank7.visibility = !!(i.buttons.hand.visibility || i.buttons.select.visibility || i.buttons.clicktozoomin.visibility), n.isUndefined(r.buttons.visibility.restore) ? i.buttons.restore.visibility = !0 : i.buttons.restore.visibility = r.buttons.visibility.restore == 1, n.isUndefined(r.buttons.visibility.save) ? i.buttons.save.visibility = !0 : i.buttons.save.visibility = r.buttons.visibility.save == 1, n.isUndefined(r.buttons.visibility.close) ? i.buttons.close.visibility = !0 : i.buttons.close.visibility = r.buttons.visibility.close == 1))), n.isUndefined(r.dialogText) || (bo = r.dialogText, l.Lib.product.CustomizableDisplayInfo.dialogText = bo), n.isUndefined(r.promptToSaveChange) || (this.promptToSaveChange = r.promptToSaveChange), n.isUndefined(r.border) || (i.outerBorder = r.border), n.isUndefined(r.topMenuBorder) || (i.topMenuBorder = r.topMenuBorder), n.isUndefined(r.innerBorder) || (i.canvasConfig.canvasBorder = r.innerBorder), n.isUndefined(r.background) || (i.canvasConfig.canvasBackground = r.background)), i;
+      return r && (this.editorSettings = r, n.isUndefined(r.buttons) || (n.isUndefined(r.buttons.titles) || (n.isUndefined(r.buttons.titles.previous) || (i.tipsConfig.previousImage = r.buttons.titles.previous), n.isUndefined(r.buttons.titles.next) || (i.tipsConfig.nextImage = r.buttons.titles.next), n.isUndefined(r.buttons.titles.print) || (i.tipsConfig.print = r.buttons.titles.print), n.isUndefined(r.buttons.titles.scan) || (i.tipsConfig.acquire = r.buttons.titles.scan), n.isUndefined(r.buttons.titles.load) || (i.tipsConfig.loadImages = r.buttons.titles.load), n.isUndefined(r.buttons.titles.rotateleft) || (i.tipsConfig.rotateLeft = r.buttons.titles.rotateleft), n.isUndefined(r.buttons.titles.rotate) || (i.tipsConfig.rotate = r.buttons.titles.rotate), n.isUndefined(r.buttons.titles.rotateright) || (i.tipsConfig.rotateRight = r.buttons.titles.rotateright), n.isUndefined(r.buttons.titles.deskew) || (i.tipsConfig.deskew = r.buttons.titles.deskew), n.isUndefined(r.buttons.titles.crop) || (i.tipsConfig.crop = r.buttons.titles.crop), n.isUndefined(r.buttons.titles.cut) || (i.tipsConfig.cut = r.buttons.titles.cut), n.isUndefined(r.buttons.titles.changeimagesize) || (i.tipsConfig.changeImageSize = r.buttons.titles.changeimagesize), n.isUndefined(r.buttons.titles.flip) || (i.tipsConfig.flip = r.buttons.titles.flip), n.isUndefined(r.buttons.titles.mirror) || (i.tipsConfig.mirror = r.buttons.titles.mirror), n.isUndefined(r.buttons.titles.zoomin) || (i.tipsConfig.zoomin = r.buttons.titles.zoomin), n.isUndefined(r.buttons.titles.originalsize) || (i.tipsConfig.originalsize = r.buttons.titles.originalsize), n.isUndefined(r.buttons.titles.zoomout) || (i.tipsConfig.zoomout = r.buttons.titles.zoomout), n.isUndefined(r.buttons.titles.stretch) || (i.tipsConfig.stretch = r.buttons.titles.stretch), n.isUndefined(r.buttons.titles.fit) || (i.tipsConfig.fitPage = r.buttons.titles.fit), n.isUndefined(r.buttons.titles.fitw) || (i.tipsConfig.fitWidth = r.buttons.titles.fitw), n.isUndefined(r.buttons.titles.fith) || (i.tipsConfig.fitHeight = r.buttons.titles.fith), n.isUndefined(r.buttons.titles.hand) || (i.tipsConfig.hand = r.buttons.titles.hand), n.isUndefined(r.buttons.titles.rectselect) || (i.tipsConfig.select = r.buttons.titles.rectselect), n.isUndefined(r.buttons.titles.zoom) || (i.tipsConfig.clicktozoomin = r.buttons.titles.zoom), n.isUndefined(r.buttons.titles.restore) || (i.tipsConfig.restore = r.buttons.titles.restore), n.isUndefined(r.buttons.titles.save) || (i.tipsConfig.save = r.buttons.titles.save), n.isUndefined(r.buttons.titles.close) || (i.tipsConfig.close = r.buttons.titles.close), n.isUndefined(r.buttons.titles.removeall) || (i.tipsConfig.removeAll = r.buttons.titles.removeall), n.isUndefined(r.buttons.titles.removeselected) || (i.tipsConfig.remove = r.buttons.titles.removeselected)), n.isUndefined(r.buttons.visibility) || (t ? (n.isUndefined(r.buttons.visibility.load) ? i.buttons.loadImages.visibility = !0 : i.buttons.loadImages.visibility = r.buttons.visibility.load == 1, n.isUndefined(r.buttons.visibility.close) ? i.buttons.close.visibility = !0 : i.buttons.close.visibility = r.buttons.visibility.close == 1, n.isUndefined(r.buttons.visibility.rotateleft) ? i.buttons.rotateLeft.visibility = !0 : i.buttons.rotateLeft.visibility = r.buttons.visibility.rotateleft == 1, n.isUndefined(r.buttons.visibility.rotateright) ? i.buttons.rotateRight.visibility = !0 : i.buttons.rotateRight.visibility = r.buttons.visibility.rotateright == 1, n.isUndefined(r.buttons.visibility.flip) ? i.buttons.flip.visibility = !0 : i.buttons.flip.visibility = r.buttons.visibility.flip == 1, n.isUndefined(r.buttons.visibility.mirror) ? i.buttons.mirror.visibility = !0 : i.buttons.mirror.visibility = r.buttons.visibility.mirror == 1, n.isUndefined(r.buttons.visibility.crop) ? i.buttons.crop.visibility = !0 : i.buttons.crop.visibility = r.buttons.visibility.crop == 1, n.isUndefined(r.buttons.visibility.cut) ? i.buttons.cut.visibility = !0 : i.buttons.cut.visibility = r.buttons.visibility.cut == 1, n.isUndefined(r.buttons.visibility.hand) ? i.buttons.hand.visibility = !0 : i.buttons.hand.visibility = r.buttons.visibility.hand == 1, n.isUndefined(r.buttons.visibility.rectselect) ? i.buttons.select.visibility = !0 : i.buttons.select.visibility = r.buttons.visibility.rectselect == 1, n.isUndefined(r.buttons.visibility.removeall) ? i.buttons.removeAll.visibility = !0 : i.buttons.removeAll.visibility = r.buttons.visibility.removeall == 1, n.isUndefined(r.buttons.visibility.removeselected) ? i.buttons.remove.visibility = !0 : i.buttons.remove.visibility = r.buttons.visibility.removeselected == 1, n.isUndefined(r.buttons.visibility.restore) ? i.buttons.restore.visibility = !0 : i.buttons.restore.visibility = r.buttons.visibility.restore == 1, n.isUndefined(r.buttons.visibility.save) ? i.buttons.save.visibility = !0 : i.buttons.save.visibility = r.buttons.visibility.save == 1) : (n.isUndefined(r.buttons.visibility.scan) ? i.buttons.acquire.visibility = !0 : i.buttons.acquire.visibility = r.buttons.visibility.scan == 1, n.isUndefined(r.buttons.visibility.load) ? i.buttons.loadImages.visibility = !0 : i.buttons.loadImages.visibility = r.buttons.visibility.load == 1, n.isUndefined(r.buttons.visibility.print) ? i.buttons.print.visibility = !0 : i.buttons.print.visibility = r.buttons.visibility.print == 1, i.buttons.blank2.visibility = !!(i.buttons.acquire.visibility || i.buttons.loadImages.visibility || i.buttons.print.visibility), n.isUndefined(r.buttons.visibility.removeall) ? i.buttons.removeAll.visibility = !0 : i.buttons.removeAll.visibility = r.buttons.visibility.removeall == 1, n.isUndefined(r.buttons.visibility.removeselected) ? i.buttons.remove.visibility = !0 : i.buttons.remove.visibility = r.buttons.visibility.removeselected == 1, i.buttons.blank3.visibility = !(!i.buttons.removeAll.visibility && !i.buttons.remove.visibility), n.isUndefined(r.buttons.visibility.rotateleft) ? i.buttons.rotateLeft.visibility = !0 : i.buttons.rotateLeft.visibility = r.buttons.visibility.rotateleft == 1, n.isUndefined(r.buttons.visibility.rotate) ? i.buttons.rotate.visibility = !0 : i.buttons.rotate.visibility = r.buttons.visibility.rotate == 1, n.isUndefined(r.buttons.visibility.rotateright) ? i.buttons.rotateRight.visibility = !0 : i.buttons.rotateRight.visibility = r.buttons.visibility.rotateright == 1, n.isUndefined(r.buttons.visibility.deskew) ? i.buttons.deskew.visibility = !0 : i.buttons.deskew.visibility = r.buttons.visibility.deskew == 1, i.buttons.blank4.visibility = !!(i.buttons.rotateLeft.visibility || i.buttons.rotate.visibility || i.buttons.rotateRight.visibility || i.buttons.deskew.visibility), n.isUndefined(r.buttons.visibility.crop) ? i.buttons.crop.visibility = !0 : i.buttons.crop.visibility = r.buttons.visibility.crop == 1, n.isUndefined(r.buttons.visibility.cut) ? i.buttons.cut.visibility = !0 : i.buttons.cut.visibility = r.buttons.visibility.cut == 1, n.isUndefined(r.buttons.visibility.changeimagesize) ? i.buttons.changeImageSize.visibility = !0 : i.buttons.changeImageSize.visibility = r.buttons.visibility.changeimagesize == 1, n.isUndefined(r.buttons.visibility.flip) ? i.buttons.flip.visibility = !0 : i.buttons.flip.visibility = r.buttons.visibility.flip == 1, n.isUndefined(r.buttons.visibility.mirror) ? i.buttons.mirror.visibility = !0 : i.buttons.mirror.visibility = r.buttons.visibility.mirror == 1, i.buttons.blank5.visibility = !!(i.buttons.crop.visibility || i.buttons.cut.visibility || i.buttons.changeImageSize.visibility || i.buttons.flip.visibility || i.buttons.mirror.visibility), n.isUndefined(r.buttons.visibility.zoomin) ? i.buttons.zoomin.visibility = !0 : i.buttons.zoomin.visibility = r.buttons.visibility.zoomin == 1, n.isUndefined(r.buttons.visibility.originalsize) ? i.buttons.originalsize.visibility = !0 : i.buttons.originalsize.visibility = r.buttons.visibility.originalsize == 1, n.isUndefined(r.buttons.visibility.zoomout) ? i.buttons.zoomout.visibility = !0 : i.buttons.zoomout.visibility = r.buttons.visibility.zoomout == 1, i.buttons.blank6.visibility = !!(i.buttons.zoomin.visibility || i.buttons.originalsize.visibility || i.buttons.zoomout.visibility), n.isUndefined(r.buttons.visibility.fit) ? i.buttons.fitPage.visibility = !0 : i.buttons.fitPage.visibility = r.buttons.visibility.fit == 1, n.isUndefined(r.buttons.visibility.fitw) ? i.buttons.fitWidth.visibility = !0 : i.buttons.fitWidth.visibility = r.buttons.visibility.fitw == 1, n.isUndefined(r.buttons.visibility.fith) ? i.buttons.fitHeight.visibility = !0 : i.buttons.fitHeight.visibility = r.buttons.visibility.fith == 1, i.buttons.blank7.visibility = !!(i.buttons.fitPage.visibility || i.buttons.fitWidth.visibility || i.buttons.fitHeight.visibility), n.isUndefined(r.buttons.visibility.hand) ? i.buttons.hand.visibility = !0 : i.buttons.hand.visibility = r.buttons.visibility.hand == 1, n.isUndefined(r.buttons.visibility.rectselect) ? i.buttons.select.visibility = !0 : i.buttons.select.visibility = r.buttons.visibility.rectselect == 1, n.isUndefined(r.buttons.visibility.zoom) ? i.buttons.clicktozoomin.visibility = !0 : i.buttons.clicktozoomin.visibility = r.buttons.visibility.zoom == 1, i.buttons.blank7.visibility = !!(i.buttons.hand.visibility || i.buttons.select.visibility || i.buttons.clicktozoomin.visibility), n.isUndefined(r.buttons.visibility.restore) ? i.buttons.restore.visibility = !0 : i.buttons.restore.visibility = r.buttons.visibility.restore == 1, n.isUndefined(r.buttons.visibility.save) ? i.buttons.save.visibility = !0 : i.buttons.save.visibility = r.buttons.visibility.save == 1, n.isUndefined(r.buttons.visibility.close) ? i.buttons.close.visibility = !0 : i.buttons.close.visibility = r.buttons.visibility.close == 1))), n.isUndefined(r.dialogText) || (wo = r.dialogText, l.Lib.product.CustomizableDisplayInfo.dialogText = wo), n.isUndefined(r.promptToSaveChange) || (this.promptToSaveChange = r.promptToSaveChange), n.isUndefined(r.border) || (i.outerBorder = r.border), n.isUndefined(r.topMenuBorder) || (i.topMenuBorder = r.topMenuBorder), n.isUndefined(r.innerBorder) || (i.canvasConfig.canvasBorder = r.innerBorder), n.isUndefined(r.background) || (i.canvasConfig.canvasBackground = r.background)), i;
     } }, { key: "_bindView", value: function() {
       var e = this;
       if (e.bShowImageEdit)
@@ -16722,7 +16723,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       };
       if (a.promptToSaveChange) {
-        var c = ['<div class="dynamsoft-dwt-dlg-tips">', "<div>", bo.saveChangedImage[0], "</div>", '<div style="width: 200px;white-space:nowrap;margin-left: auto;margin-right: auto;">', '<input class="dynamsoft_btnSave" style="width: 100px; height:30px; margin-right: 10px; margin-top: 10px;"  type="button" value="', bo.saveChangedImage[1], '" /><input class="dynamsoft_btnCancel" style="width: 100px; height:30px; margin-top: 10px;"  type="button" value="', bo.saveChangedImage[2], '" /></div>', "</div>"];
+        var c = ['<div class="dynamsoft-dwt-dlg-tips">', "<div>", wo.saveChangedImage[0], "</div>", '<div style="width: 200px;white-space:nowrap;margin-left: auto;margin-right: auto;">', '<input class="dynamsoft_btnSave" style="width: 100px; height:30px; margin-right: 10px; margin-top: 10px;"  type="button" value="', wo.saveChangedImage[1], '" /><input class="dynamsoft_btnCancel" style="width: 100px; height:30px; margin-top: 10px;"  type="button" value="', wo.saveChangedImage[2], '" /></div>', "</div>"];
         a.bMobile ? l.DWT.ShowMessage(c.join(""), { width: 300, headerStyle: 1 }) : l.DWT.ShowMessage(c.join(""), { width: 420, headerStyle: 1 });
         var d = n.one(".dynamsoft_btnSave").getEL();
         d && (d.onclick = function() {
@@ -16834,7 +16835,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         jr.output(r, "No image in Buffer");
       else {
         if (n.hide("dynamsoft_ImgSizeEditor"), !n.get("dynamsoft_RotateAnyAngle")) {
-          var t = ['<div id="dynamsoft_RotateAnyAngle" class="dynamsoft-dwt-imgSizeEditor" style="display:none; z-index: 99999;">', "<ul>", '<li><label for="dynamsoft_Angle"><b>', bo.dlgRotateAnyAngle[0], '</b><input type="text" id="dynamsoft_Angle" style="width:50%;" size="10"/></label></li>', '<li><label for="dynamsoft_Angle_InterpolationMethod"><b>', bo.dlgRotateAnyAngle[1], '</b>&nbsp;<select size="1" id="dynamsoft_Angle_InterpolationMethod"><option value = ""></option></select></li>', '<li><label for="dynamsoft_KeepSize"><b></b>', '<input type="checkbox" id="dynamsoft_KeepSize"/>', bo.dlgRotateAnyAngle[2], "</label></li></ul>", "<div>", '<input id="dynamsoft_btnRotateAnyAngleOK" type="button" value="', bo.dlgRotateAnyAngle[3], '"/><span><input id= "dynamsoft_btnCancelRotateAnyAngle" type="button" value="', bo.dlgRotateAnyAngle[4], '" /></span></div>', "</div>"];
+          var t = ['<div id="dynamsoft_RotateAnyAngle" class="dynamsoft-dwt-imgSizeEditor" style="display:none; z-index: 99999;">', "<ul>", '<li><label for="dynamsoft_Angle"><b>', wo.dlgRotateAnyAngle[0], '</b><input type="text" id="dynamsoft_Angle" style="width:50%;" size="10"/></label></li>', '<li><label for="dynamsoft_Angle_InterpolationMethod"><b>', wo.dlgRotateAnyAngle[1], '</b>&nbsp;<select size="1" id="dynamsoft_Angle_InterpolationMethod"><option value = ""></option></select></li>', '<li><label for="dynamsoft_KeepSize"><b></b>', '<input type="checkbox" id="dynamsoft_KeepSize"/>', wo.dlgRotateAnyAngle[2], "</label></li></ul>", "<div>", '<input id="dynamsoft_btnRotateAnyAngleOK" type="button" value="', wo.dlgRotateAnyAngle[3], '"/><span><input id= "dynamsoft_btnCancelRotateAnyAngle" type="button" value="', wo.dlgRotateAnyAngle[4], '" /></span></div>', "</div>"];
           n.one("body").append(t.join(""));
         }
         var i = n.get("dynamsoft_Angle_InterpolationMethod");
@@ -16948,7 +16949,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var r = this;
       if (n.Errors.ClearErrorInfo(r._stwain), r.hideImgEditorDilag(), !(r._webViewer.GetHowManyImagesInBuffer() <= 0 || r._webViewer.GetCurrentIndex() < 0)) {
         if (n.hide("dynamsoft_RotateAnyAngle"), !n.get("dynamsoft_ImgSizeEditor")) {
-          var t = ['<div id="dynamsoft_ImgSizeEditor" class="dynamsoft-dwt-imgSizeEditor" style="display:none;z-index: 99999;">', "<ul>", '<li><label for="dynamsoft_img_height"><b>', bo.dlgChangeImageSize[0], '</b><input type="text" id="dynamsoft_img_height" style="width:50%;" size="10"/>pixel</label></li>', '<li><label for="dynamsoft_img_width"><b>', bo.dlgChangeImageSize[1], '</b>&nbsp;<input type="text" id="dynamsoft_img_width" style="width:50%;" size="10"/>pixel</label></li>', "<li>", bo.dlgChangeImageSize[2], '<select size="1" id="dynamsoft_InterpolationMethod"><option value = ""></option></select></li>', "</ul>", "<div>", '<input id="dynamsoft_btnChangeImageSizeOK" type="button" value="', bo.dlgChangeImageSize[3], '"/><span><input id= "dynamsoft_btnCancelChange" type="button" value="', bo.dlgChangeImageSize[4], '"/></span></div>', "</div>"];
+          var t = ['<div id="dynamsoft_ImgSizeEditor" class="dynamsoft-dwt-imgSizeEditor" style="display:none;z-index: 99999;">', "<ul>", '<li><label for="dynamsoft_img_height"><b>', wo.dlgChangeImageSize[0], '</b><input type="text" id="dynamsoft_img_height" style="width:50%;" size="10"/>pixel</label></li>', '<li><label for="dynamsoft_img_width"><b>', wo.dlgChangeImageSize[1], '</b>&nbsp;<input type="text" id="dynamsoft_img_width" style="width:50%;" size="10"/>pixel</label></li>', "<li>", wo.dlgChangeImageSize[2], '<select size="1" id="dynamsoft_InterpolationMethod"><option value = ""></option></select></li>', "</ul>", "<div>", '<input id="dynamsoft_btnChangeImageSizeOK" type="button" value="', wo.dlgChangeImageSize[3], '"/><span><input id= "dynamsoft_btnCancelChange" type="button" value="', wo.dlgChangeImageSize[4], '"/></span></div>', "</div>"];
           n.one("body").append(t.join(""));
         }
         var i = n.get("dynamsoft_InterpolationMethod");
@@ -17338,13 +17339,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } });
   }
   n.UI.ThumbnailViewer = yd;
-  var eu = "dvsDb", Dc = "dvsDoc", dg = function() {
+  var tu = "dvsDb", Dc = "dvsDoc", dg = function() {
     function o(e, r) {
       if (Gn(this, o), this._db = e.DataControl._db, r)
         this.syncDb = {};
       else {
         var t = this._db.DBMng._d;
-        t[eu] || (t[eu] = {}), t[eu][Dc] || (t[eu][Dc] = {}), this.syncDb = t[eu][Dc];
+        t[tu] || (t[tu] = {}), t[tu][Dc] || (t[tu][Dc] = {}), this.syncDb = t[tu][Dc];
       }
     }
     return zn(o, [{ key: "setCustomDataSync", value: function(e, r) {
@@ -17401,7 +17402,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } }]), o;
   }(), xs = function() {
     return new l.ImageProc();
-  }, tu = l.navInfoSync.bMac || l.navInfoSync.biPhone || l.navInfoSync.biPad;
+  }, nu = l.navInfoSync.bMac || l.navInfoSync.biPhone || l.navInfoSync.biPad;
   function fg(o, e, r, t, i) {
     var a;
     return a = xs(), n.log("[Wasm]camera callback: area detect"), a.initImage(o.imageData, o.rgba, o.imageWidth, o.imageHeight, o.bgra).then(function(u) {
@@ -17426,7 +17427,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       n.log("[Wasm]camera callback: perspective successfully");
       var i = void 0, a = o.imageXResolution, u = o.imageYResolution, c = l.Enum_ImageType.IT_JPG;
       o.imageBitDepth <= 8 && (i = o.imageBitDepth, c = l.Enum_ImageType.IT_PNG);
-      var d = tu;
+      var d = nu;
       return r.getImage(85, !0, !1, i, a, u, !0, c, d);
     }).then(function(i) {
       n.log("[Wasm]camera callback: filter process successfully");
@@ -17447,7 +17448,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       n.log("[Wasm]camera callback: gray scale successfully");
       var t = void 0, i = o.imageXResolution, a = o.imageYResolution, u = l.Enum_ImageType.IT_JPG;
       o.imageBitDepth <= 8 && (t = o.imageBitDepth, u = l.Enum_ImageType.IT_PNG);
-      var c = tu;
+      var c = nu;
       return r.getImage(85, !0, !1, t, i, a, !0, u, c);
     }).then(function(t) {
       n.log("[Wasm]camera callback: filter process successfully");
@@ -17469,7 +17470,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var a, u = !!r;
       return e && (a = e.level), t.toBinary(u, a);
     }).then(function() {
-      var i = o.imageXResolution, a = o.imageYResolution, u = tu;
+      var i = o.imageXResolution, a = o.imageYResolution, u = nu;
       return t.getImage(85, !0, !1, 1, i, a, !0, l.Enum_ImageType.IT_PNG, u);
     }).then(function(i) {
       n.log("[Wasm]camera callback: filter process successfully");
@@ -17489,7 +17490,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }).then(function() {
       var t = void 0, i = o.imageXResolution, a = o.imageYResolution, u = l.Enum_ImageType.IT_JPG;
       o.imageBitDepth <= 8 && (t = o.imageBitDepth, u = l.Enum_ImageType.IT_PNG);
-      var c = tu;
+      var c = nu;
       return r.getImage(85, !0, !1, t, i, a, !0, u, c);
     }).then(function(t) {
       n.log("[Wasm]camera callback: remove shadow successfully");
@@ -17509,7 +17510,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }).then(function() {
       var t = void 0, i = o.imageXResolution, a = o.imageYResolution, u = l.Enum_ImageType.IT_JPG;
       o.imageBitDepth <= 8 && (t = o.imageBitDepth, u = l.Enum_ImageType.IT_PNG);
-      var c = tu;
+      var c = nu;
       return r.getImage(85, !0, !1, t, i, a, !0, u, c);
     }).then(function(t) {
       n.log("[Wasm]camera callback: brighten successfully");
@@ -17525,7 +17526,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   var bg = document;
   l.DWT;
-  var nu = ["topPageChanged", "click", "rightclick", "dblclick", "mousemove", "pageAreaSelected", "pageAreaUnselected", "dragdone", "onDrop", "bufferChanged", "pageChange"], wd = { toolbars: { header: !1, topMenu: !1, asideMenu: !1, bottomMenu: !1 }, groups: {}, buttons: {}, thumbnail: { showThumbnailControl: !1, size: "30%", columns: 1, rows: 3, scrollDirection: "vertical", pageMargin: 10, allowKeyboardControl: !0, allowPageDragging: !0, allowResizing: !1, border: "", background: ks, pageBackground: cs, pageBorder: wc, hoverPageBackground: Ic, hoverPageBorder: Sc, placeholderBackground: Tc, selectedPageBorder: ad, selectedPageBackground: sd, autoChangeIndex: !1, checkbox: la, pageNumber: Oo }, canvasConfig: { canvasMouseShape: "crosshair", canvasBackground: ks, canvasBorder: "", selectedPageBorder: ad, pageBorder: wc, pageMargin: 10, pageBackground: cs, selectedPageBackground: sd, hoverPageBorder: Sc, hoverPageBackground: Ic, placeholderBackground: Tc, autoChangeIndex: !1, allowPageDragging: !0, columns: 1, rows: 1, scrollDirection: "vertical", checkbox: la, pageNumber: Oo }, showSidebar: !1, showMain: !0, showViewer: !0, sidebarWidth: "180", outerBorder: "1px solid rgb(204, 204, 204)", topMenuBorder: "", selectedAreaBorderColor: "rgb(42, 29, 43)", selectionRectAspectRatio: 0, ifAutoScroll: !0, useOuterDrop: !0, allowSlide: !0 }, eo = { background: "#434246", topMenuBorder: "", innerBorder: "", promptToSaveChange: !0, buttons: l.Lib.product.CustomizableDisplayInfo.buttons, dialogText: l.Lib.product.CustomizableDisplayInfo.dialogText };
+  var ru = ["topPageChanged", "click", "rightclick", "dblclick", "mousemove", "pageAreaSelected", "pageAreaUnselected", "dragdone", "onDrop", "bufferChanged", "pageChange"], wd = { toolbars: { header: !1, topMenu: !1, asideMenu: !1, bottomMenu: !1 }, groups: {}, buttons: {}, thumbnail: { showThumbnailControl: !1, size: "30%", columns: 1, rows: 3, scrollDirection: "vertical", pageMargin: 10, allowKeyboardControl: !0, allowPageDragging: !0, allowResizing: !1, border: "", background: ks, pageBackground: cs, pageBorder: wc, hoverPageBackground: Ic, hoverPageBorder: Sc, placeholderBackground: Tc, selectedPageBorder: ad, selectedPageBackground: sd, autoChangeIndex: !1, checkbox: la, pageNumber: Wo }, canvasConfig: { canvasMouseShape: "crosshair", canvasBackground: ks, canvasBorder: "", selectedPageBorder: ad, pageBorder: wc, pageMargin: 10, pageBackground: cs, selectedPageBackground: sd, hoverPageBorder: Sc, hoverPageBackground: Ic, placeholderBackground: Tc, autoChangeIndex: !1, allowPageDragging: !0, columns: 1, rows: 1, scrollDirection: "vertical", checkbox: la, pageNumber: Wo }, showSidebar: !1, showMain: !0, showViewer: !0, sidebarWidth: "180", outerBorder: "1px solid rgb(204, 204, 204)", topMenuBorder: "", selectedAreaBorderColor: "rgb(42, 29, 43)", selectionRectAspectRatio: 0, ifAutoScroll: !0, useOuterDrop: !0, allowSlide: !0 }, eo = { background: "#434246", topMenuBorder: "", innerBorder: "", promptToSaveChange: !0, buttons: l.Lib.product.CustomizableDisplayInfo.buttons, dialogText: l.Lib.product.CustomizableDisplayInfo.dialogText };
   l.Lib.product.CustomizableDisplayInfo.buttons, l.Lib.product.CustomizableDisplayInfo.dialogText;
   var $o = { scannerViewer: { headerStyle: { background: "#000000", color: "#ffffff", selectedColor: "#fe8e14" }, bodyStyle: { background: "#ffffff ", loaderBarSource: "" }, footerStyle: { background: "#000000", color: "#ffffff", selectedColor: "#fe8e14" }, fullScreen: !1, enableBorderDetection: !0, polygonStyle: { stroke: "#fe8e14", strokeWidth: "2px", dash: "solid " }, scanButtonStyle: { background: "#fe8e14", color: "#ffffff" }, resolution: { visibility: "visible", valueList: [{ label: "720P", value: { width: 1280, height: 720 } }, { label: "1080P", value: { width: 1920, height: 1080 } }, { label: "2K", value: { width: 2560, height: 1440 } }, { label: "4K", value: { width: 3840, height: 2160 } }], defaultValue: { width: 1280, height: 720 } }, autoScan: { visibility: "visible", enableAutoScan: !1 }, autoDetect: { visibility: "visible", enableAutoDetect: !1, acceptedPolygonConfidence: 80, fpsLimit: 3, acceptedBlurryScore: 0, autoCaptureDelay: 1e3 }, continuousScan: !0, switchCamera: { visibility: "visible" }, loadLocalFile: { visibility: "visible" }, funcConfirmExit: l.funcConfirmExit }, documentEditorSettings: { visibility: "visible", defaultViewerName: "CropViewer", headerStyle: { background: "#000000", color: "#ffffff", selectedColor: "#fe8e14", disabledColor: "#808080" }, bodyStyle: { background: "#ffffff ", loaderBarSource: "" }, footerStyle: { background: "#000000", color: "#ffffff", selectedColor: "#fe8e14" }, insert: { visibility: "visible", position: "before" }, remove: { visibility: "visible", funcConfirmRemove: l.funcConfirmRemove }, rotateLeft: { visibility: "visible" }, filter: { visibility: "visible", valueList: [{ label: "Original", value: "original", option: { level: 1 } }, { label: "B&W", value: "blackAndWhite", option: { level: 1 } }, { label: "Grayscale", value: "grayscale", option: { level: 1 } }, { label: "Clean", value: "clean", option: { level: 1 } }, { label: "Brightening", value: "brightening", option: { level: 1 } }, { label: "Save Toner", value: "saveToner", option: { level: 1 } }], defaultValue: "original", applyToAll: { visibility: "visible", enableApplyToAll: !1, label: "Apply to all" } }, crop: { visibility: "visible" }, cropViewer: { visibility: "visible", polygonStyle: { stroke: "#fe8e14", strokeWidth: "2px", dash: "solid " }, rotateLeft: { visibility: "visible" }, rotateRight: { visibility: "visible" }, autoDetectBorder: { visibility: "visible" }, funcConfirmExit: l.funcConfirmCropViewerExit }, funcConfirmExit: l.funcConfirmMainViewerExit, funcConfirmExitAfterSave: l.funcConfirmExitAfterSave } }, Ya = { isFunction: function(o) {
     return o && typeof o == "function";
@@ -17621,14 +17622,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       this._UIView = r;
     } }, { key: "_BindViewerEvents", value: function() {
       var r = this;
-      r.myViewer && (r.myViewer.off("bufferChanged"), n.each(nu, function(t) {
+      r.myViewer && (r.myViewer.off("bufferChanged"), n.each(ru, function(t) {
         r.myViewer.on(t, function(i, a) {
           r[t](i, a);
         });
       }));
     } }, { key: "_UnbindViewerEvents", value: function() {
       var r = this;
-      n.each(nu, function(t) {
+      n.each(ru, function(t) {
         t != "bufferChanged" && r.myViewer.off(t);
       });
     } }, { key: "_InitDVS", value: function() {
@@ -18531,7 +18532,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var i = this;
       if (i.myccvs && r)
         if (n.isUndefined(t))
-          i.myccvs.off(r), nu.indexOf(r) >= 0 && i.myccvs.on(r, function(a, u) {
+          i.myccvs.off(r), ru.indexOf(r) >= 0 && i.myccvs.on(r, function(a, u) {
             n.isFunction(i[r]) && i[r](a, u);
           });
         else {
@@ -18541,7 +18542,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }
       if (i.mydocEditManager && r)
         if (n.isUndefined(t))
-          i.mydocEditManager.off(r), nu.indexOf(r) >= 0 && i.mydocEditManager.on(r, function(a, u) {
+          i.mydocEditManager.off(r), ru.indexOf(r) >= 0 && i.mydocEditManager.on(r, function(a, u) {
             n.isFunction(i[r]) && i[r](a, u);
           });
         else {
@@ -18815,7 +18816,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var i = this;
       if (r)
         if (n.isUndefined(t))
-          i.myViewer.off(r), nu.indexOf(r) >= 0 && i.myViewer.on(r, function(a, u) {
+          i.myViewer.off(r), ru.indexOf(r) >= 0 && i.myViewer.on(r, function(a, u) {
             n.isFunction(i[r]) && i[r](a, u);
           });
         else {
@@ -19832,7 +19833,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function Ms(o, e, r) {
     return e.has(o), r;
   }
-  function ru(o) {
+  function iu(o) {
     var e = _r;
     return o == Xt ? e = Fr : o == dn ? e = Or : Su(o) && (e = vr), e;
   }
@@ -19896,23 +19897,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }) }]), o;
   }();
   ar(Mc, "logLevel", -1);
-  var Pc, iu, Ac = 0;
+  var Pc, ou, Ac = 0;
   function Sg() {
     return Ac = 0, n.asyncQueue.pushToDo(null, l.Lib.product._setAndroidConnected), new n.Promise(function(o, e) {
-      Pc = o, iu = e, l.Lib.product._doCheckAndroidConnected();
+      Pc = o, ou = e, l.Lib.product._doCheckAndroidConnected();
     });
   }
   l.Lib.product._setAndroidConnected = function() {
     l.Lib.product.bAndroidConnected = !0;
   }, l.Lib.product._doCheckAndroidConnected = function() {
-    if (Ac++, l.DWT.bConnectCanceled && iu) {
+    if (Ac++, l.DWT.bConnectCanceled && ou) {
       n.asyncQueue.stop();
       var o = {};
-      return n.Errors.UserCanceled(o), void iu({ code: o._errorCode, message: o._errorString });
+      return n.Errors.UserCanceled(o), void ou({ code: o._errorCode, message: o._errorString });
     }
-    if (Ac > 1e4 && iu) {
+    if (Ac > 1e4 && ou) {
       var e = {};
-      return n.Errors.DynamsoftServiceStopped(e), void iu({ code: e._errorCode, message: e._errorString });
+      return n.Errors.DynamsoftServiceStopped(e), void ou({ code: e._errorCode, message: e._errorString });
     }
     l.Lib.product.bAndroidConnected && Pc ? Pc() : setTimeout(l.Lib.product._doCheckAndroidConnected, 1e3);
   };
@@ -19932,7 +19933,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return this.parseResultDefault(c);
     } }, { key: "getCapabilities", value: function(t) {
       this.checkSource(t), (t.deviceType & Xt) == Xt || t.deviceType;
-      var i = ru(t.deviceType), a = { id: this.clientId, cmdId: n.guid(), method: "SendRequestToScanner", parameter: ["getCapabilities", JSON.stringify({ UUID: t.serviceInfo.attrs.UUID, service_type: i, ty: t.name })], version: Qr }, u = Ms(this, Ou, Rc).call(this, a, 0);
+      var i = iu(t.deviceType), a = { id: this.clientId, cmdId: n.guid(), method: "SendRequestToScanner", parameter: ["getCapabilities", JSON.stringify({ UUID: t.serviceInfo.attrs.UUID, service_type: i, ty: t.name })], version: Qr }, u = Ms(this, Ou, Rc).call(this, a, 0);
       return this.parseResultDefault(u);
     } }, { key: "selectSource", value: function(t) {
       var i = this.getCapabilities(t);
@@ -20095,7 +20096,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         for (; ; )
           switch (z.prev = z.next) {
             case 0:
-              return this.checkSource(A), (A.deviceType & Xt) != Xt && (A.deviceType & dn) != dn || (this._currentDevice = A), S = ru(A.deviceType), V = { id: this.clientId, cmdId: n.guid(), method: "SendRequestToScanner", parameter: ["getCapabilities", JSON.stringify({ UUID: A.serviceInfo.attrs.UUID, service_type: S, ty: A.name })], version: Qr }, z.next = 6, this._requestAsync(V, 0);
+              return this.checkSource(A), (A.deviceType & Xt) != Xt && (A.deviceType & dn) != dn || (this._currentDevice = A), S = iu(A.deviceType), V = { id: this.clientId, cmdId: n.guid(), method: "SendRequestToScanner", parameter: ["getCapabilities", JSON.stringify({ UUID: A.serviceInfo.attrs.UUID, service_type: S, ty: A.name })], version: Qr }, z.next = 6, this._requestAsync(V, 0);
             case 6:
               return ne = z.sent, z.abrupt("return", this.parseResultDefault(ne));
             case 8:
@@ -20175,7 +20176,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         for (; ; )
           switch (it.prev = it.next) {
             case 0:
-              A = (ne = A) !== null && ne !== void 0 ? ne : this._currentDevice, this.checkSource(A), this._currentDevice = A, z = ru(A.deviceType), ue = ["scan", JSON.stringify({ UUID: A.serviceInfo.attrs.UUID, service_type: z })], xe = Ms(this, Pd, Cg).call(this, S), ue[2] = JSON.stringify(xe), Fe = { id: this.clientId, cmdId: n.guid(), method: "SendRequestToScanner", parameter: ue, version: Qr }, Qe = 0;
+              A = (ne = A) !== null && ne !== void 0 ? ne : this._currentDevice, this.checkSource(A), this._currentDevice = A, z = iu(A.deviceType), ue = ["scan", JSON.stringify({ UUID: A.serviceInfo.attrs.UUID, service_type: z })], xe = Ms(this, Pd, Cg).call(this, S), ue[2] = JSON.stringify(xe), Fe = { id: this.clientId, cmdId: n.guid(), method: "SendRequestToScanner", parameter: ue, version: Qr }, Qe = 0;
             case 10:
               if (!(Qe < 5)) {
                 it.next = 33;
@@ -20591,7 +20592,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function Ps() {
     return new l.Imagecore();
   }
-  function wo() {
+  function Io() {
     return new l.ImageProc();
   }
   function Gd() {
@@ -20721,7 +20722,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     })) : (n.Errors.LoadImageFailed(o, "invalid image type."), n.Promise.reject({ code: o._errorCode, message: o._getErrorString() }));
   }
   function zd(o, e, r) {
-    var t = wo(), i = o._ImgManager.convertClientIndexToServerId(e);
+    var t = Io(), i = o._ImgManager.convertClientIndexToServerId(e);
     return t.context = {}, fr("", o), o._ImgManager.getWebViewer().GetImageData(o._ImgManager.getUidByIndex(e)).then(function(a) {
       return t.context.metadata = a && a.metadata ? a.metadata : {}, t.initImage(a.oriData);
     }).then(function() {
@@ -20772,7 +20773,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     if (i != "pdf") {
       if (i == "tiff") {
         var S, V = t.length;
-        n.log("[Wasm]Save Image: save tiff"), (d = Ps()).context = {}, d.context.bSaveAsBinary = u, o._scaleDownThreshold > 0 && ((c = wo()).context = {}), a && (d.context.bShowPercentProgress = !0, n.showProgress(o), a == 2 ? o._OnPercentDone([0, -1, l.MSG.ConvertingToBlob, ""]) : a == 3 ? o._OnPercentDone([0, -1, l.MSG.ConvertingToBase64, ""]) : a == 4 ? o._OnPercentDone([0, -1, l.MSG.Encoding, ""]) : o._OnPercentDone([0, -1, l.MSG.SavingTiff, ""]));
+        n.log("[Wasm]Save Image: save tiff"), (d = Ps()).context = {}, d.context.bSaveAsBinary = u, o._scaleDownThreshold > 0 && ((c = Io()).context = {}), a && (d.context.bShowPercentProgress = !0, n.showProgress(o), a == 2 ? o._OnPercentDone([0, -1, l.MSG.ConvertingToBlob, ""]) : a == 3 ? o._OnPercentDone([0, -1, l.MSG.ConvertingToBase64, ""]) : a == 4 ? o._OnPercentDone([0, -1, l.MSG.Encoding, ""]) : o._OnPercentDone([0, -1, l.MSG.SavingTiff, ""]));
         var ne, z = d.createTiff(), ue = l.DWT.EnumDWT_TIFFCompressionType;
         for (d.context.cIndex = 0, S = Ud, o._tiffCompressionType == ue.TIFF_AUTO ? S = Ud : o._tiffCompressionType == ue.TIFF_FAX3 || o._tiffCompressionType == ue.TIFF_T4 ? S = Dg : o._tiffCompressionType == ue.TIFF_FAX4 || o._tiffCompressionType == ue.TIFF_T6 ? S = kg : o._tiffCompressionType == ue.TIFF_LZW ? S = xg : o._tiffCompressionType == ue.TIFF_JPEG ? S = Pg : o._tiffCompressionType == ue.TIFF_PACKBITS && (S = Mg), d.context.tiffFormat = S, d.context.aryIndex = t, ne = 0; ne < V; ne++)
           z = n.MobileFuns.appendTiffPage(o, z, d, c);
@@ -20792,7 +20793,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var Fe, Qe = new l.PdfWriter(), Ze = t.length;
       Qe.context = {}, n.log("[Wasm]Save Image: save pdf"), a && (n.showProgress(o), a == 2 ? o._OnPercentDone([0, -1, l.MSG.ConvertingToBlob, ""]) : a == 3 ? o._OnPercentDone([0, -1, l.MSG.ConvertingToBase64, ""]) : a == 4 ? o._OnPercentDone([0, -1, l.MSG.Encoding, ""]) : o._OnPercentDone([0, -1, l.MSG.SavingPdf, ""]));
       var Ct = Qe.initPdfSetting(o._pdfWriteSetting);
-      for (o._scaleDownThreshold > 0 && ((c = wo()).context = {}), Qe.context.cIndex = 0, Qe.context.aryIndex = t, Qe.context.bSaveAsBinary = u, Fe = 0; Fe < Ze; Fe++)
+      for (o._scaleDownThreshold > 0 && ((c = Io()).context = {}), Qe.context.cIndex = 0, Qe.context.aryIndex = t, Qe.context.bSaveAsBinary = u, Fe = 0; Fe < Ze; Fe++)
         Ct = Ct.then(function() {
           var it = Qe.context.cIndex, Bt = Qe.context.aryIndex;
           return n.log("[Wasm]Save Image: page " + Qe.context.cIndex + " start process."), o._ImgManager.getWebViewer().GetImageData(o._ImgManager.getUidByIndex(Bt[it]));
@@ -20835,7 +20836,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       throw n.Errors.GetLicenseInfoFailed(o, u), o.__productKey = "", { code: o._errorCode, message: o._getErrorString() };
     })) : o._serviceNotSupportAsync("GetLicenseInfo") : (n.Errors.GetLicenseInfoFailed(o, "wasm not load."), n.Promise.reject({ code: o._errorCode, message: o._getErrorString() }));
   }
-  function Go(o) {
+  function jo(o) {
     var e = o.__httpHeaderMap;
     return o.__httpHeaderMap = {}, e || (e = o.__httpHeaderMap), e;
   }
@@ -20844,7 +20845,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return e.length > 0 && (r = e[0]), e.length > 1 && (t = e[1]), e.length > 2 && (i = e[2]), n.isUndefined(r) ? (n.Errors.InvalidParameter(o), n.isFunction(i) && i(o._errorCode, o._getErrorString()), !1) : (u = !!n.isFunction(t) && function() {
       t(o.__HTTPPostResponseString, r, e);
     }, a = { bOnlyUploadForm: Gt, _this: o, url: r, asyncSuccessFunc: u, asyncFailureFunc: function() {
-      n.isFunction(i) && Io(i, o, o.__HTTPPostResponseString, r, e);
+      n.isFunction(i) && So(i, o, o.__HTTPPostResponseString, r, e);
     } }, n._asyncUploadCmd(a), !0);
   }
   function Lg(o, e) {
@@ -20855,7 +20856,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     if (e.length > 4 && (n.isFunction(e[4]) ? (T = "RemoteFile", _ = e[4], e.length > 5 && (v = e[5])) : (e.length > 5 && (_ = e[5]), e.length > 6 && (v = e[6]), T = n.isString(e[4]) ? e[4] : "RemoteFile")), t = !!n.isFunction(_) && function(A, S) {
       Vi(_, o.__HTTPPostResponseString, S, e);
     }, i = function(A) {
-      n.isFunction(v) && Io(v, o, o.__HTTPPostResponseString, A, e);
+      n.isFunction(v) && So(v, o, o.__HTTPPostResponseString, A, e);
     }, !o._checkIndices(u))
       return i(u), !1;
     if (n.isArray(u) && n.each(u, function(A) {
@@ -20886,7 +20887,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     e = r = null;
   }
-  function Io(o, e, r, t, i, a) {
+  function So(o, e, r, t, i, a) {
     try {
       o(e._errorCode, e._getErrorString(), r, t, i, a);
     } catch {
@@ -20944,7 +20945,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (o._errorCode != 0)
           return Ze();
         if (Fe > 0 && it.size > Fe) {
-          var Ft = Go(o);
+          var Ft = jo(o);
           l.DWT.IfAddMD5InUploadHeader && Bt && Bt != "" && (Ft["dwt-md5"] = Bt), o._OnPercentDone([0, -1, l.MSG.Uploading, "http", V]), ue = Yd(o, z, A, it, V, Ft, 0, xe, M, c, d, _, Qe, Ze);
         } else
           ue = o.__innnerHTTPUploadBinaryFull(z, Bt, it, A, V, c, d, _, Qe, Ze);
@@ -20957,14 +20958,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (Qe = function() {
           return n.needShowTwiceShowDialog = !1, n.closeProgress(o, ne), n.isFunction(v) && Vi(v, it), !0;
         }, Fe > 0 && it.getLength() > Fe) {
-          var Bt = Go(o);
+          var Bt = jo(o);
           Ct = it.getMD5(), l.DWT.IfAddMD5InUploadHeader && (Bt["dwt-md5"] = Ct), o._OnPercentDone([0, -1, l.MSG.Uploading, "http"]), Jd(o, z, A, it, V, Bt, 0, xe, M, Qe, Ze);
         } else {
           var yt;
           if (Ct = it.getMD5(), !(yt = it.getData(0, it.getLength())) || yt == "")
             return n.Errors.UploadFileCannotEmpty(o), Ze();
           (function(en, Ft, st, nt, ft, Pt, Ot, pn, un, An) {
-            var Mr = Go(en), tr = Pt, Qn = Ft;
+            var Mr = jo(en), tr = Pt, Qn = Ft;
             n.dlgRef > 0 || en.__IfShowCancelDialogWhenImageTransfer == 0 ? (l.DWT.IfAddMD5InUploadHeader && Mr && st && st != "" && (Mr["dwt-md5"] = st), da(en, !0), on.httpPostUploadString(en, Qn, nt, tr, 0, Mr, !0, Ot, pn, function(wi) {
               n.isFunction(un) && Vi(un, wi);
             }, An)) : (n.Errors.UploadError(en, !0), An());
@@ -21217,7 +21218,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       if (!a && z)
         return n.Errors.ThrowString_FailedToCreateDWTObject(S), !1;
-      if (a && (ne = !0, V = "fa/"), M = { method: "POST", url: v = [S._httpUrl, V, t].join(""), data: T = ou(S._clientId, t, i, 0), async: ne, onSuccess: function(xe, Fe, Qe) {
+      if (a && (ne = !0, V = "fa/"), M = { method: "POST", url: v = [S._httpUrl, V, t].join(""), data: T = au(S._clientId, t, i, 0), async: ne, onSuccess: function(xe, Fe, Qe) {
         var Ze = !1;
         try {
           Ze = n.isString(xe) && Qe.getResponseHeader("content-type") === "text/json" ? n.parse(xe) : xe;
@@ -21307,7 +21308,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           var ne = { cmd: t, cmdId: S, sFun: v, fFun: _, currentFileName: V };
           A = d._innerSendByWS(t, i, ne, null, M);
         } else {
-          var z = ou(d._clientId, t, i, S);
+          var z = au(d._clientId, t, i, S);
           d._innerFunRaw(t, z, !0, !0, !0, v, _), A = n.Promise.resolve(!0);
         }
         return A;
@@ -21321,7 +21322,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var c, d = this;
       return d._resetErr(), d._isValid() ? on.isServerInvalid(d) ? u ? n.Promise.reject({ code: d._errorCode, message: d._errorString }) : d._waitForConnect().then(function() {
         return d._innerFunRawV2(t, i, a);
-      }) : (c = { method: "post", body: ou(d._clientId, t, i, 0), dataType: a }, l.DWT.ConnectWithSocket ? new n.Promise(function(_, v) {
+      }) : (c = { method: "post", body: au(d._clientId, t, i, 0), dataType: a }, l.DWT.ConnectWithSocket ? new n.Promise(function(_, v) {
         d._innerSend(t, i, !1, function(T) {
           var M = !1;
           try {
@@ -21371,7 +21372,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } }, { key: "_innerSendByWS", value: function(t, i, a, u, c) {
       var d, _, v, T, M = this, A = Vg;
       a ? (d = a.cmdId, v = Oc(M._clientId, d), T = Oc(M._clientId, "")) : (d = 0, v = 0, T = 0);
-      var S, V, ne, z, ue, xe, Fe, Qe, Ze, Ct = ou(M._clientId, t, i, d), it = M._wsClient;
+      var S, V, ne, z, ue, xe, Fe, Qe, Ze, Ct = au(M._clientId, t, i, d), it = M._wsClient;
       if (_ = { client: it, userData: { stwain: M, command: a }, taskId: d, eventTaskId: v, lastEventTaskId: T }, !c) {
         try {
           it.request(Ct, A, _);
@@ -21395,7 +21396,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       });
     } }]), r;
   }(Wg);
-  function ou(o, e, r, t) {
+  function au(o, e, r, t) {
     var i = [];
     i.push("{"), i.push('"id":"'), i.push(o), i.push('"'), t && (i.push(',"cmdId":"'), i.push(t), i.push('"')), i.push(',"method":"'), i.push(e), i.push('"'), i.push(',"module":"dwt","version":"');
     var a = [n.product.getDWTPrefix(), n.product.getServerVersionInfo()].join("");
@@ -22028,7 +22029,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       if (n.isFunction(_) && (T = _), !u) {
         var M, A, S, V, ne = [], z = "";
-        return v._resetErr(), v._isValid() ? (A = [v._httpUrl, "f/", t].join(""), S = ou(v._clientId, t, i, 0), S += `\r
+        return v._resetErr(), v._isValid() ? (A = [v._httpUrl, "f/", t].join(""), S = au(v._clientId, t, i, 0), S += `\r
 \r
 `, V = { method: "POST", url: A, processData: !1, data: S += l.Lib.base64.encodeArray(a), async: !1, onSuccess: function(Fe, Qe, Ze) {
           var Ct = !1, it = !1;
@@ -22137,7 +22138,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return Rr(this, r);
     };
   }
-  function jo(o, e) {
+  function zo(o, e) {
     (function(r, t) {
       if (t.has(r))
         throw new TypeError("Cannot initialize the same private elements twice on an object");
@@ -22192,7 +22193,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       Gn(this, M);
       for (var S = arguments.length, V = new Array(S), ne = 0; ne < S; ne++)
         V[ne] = arguments[ne];
-      return jo(ln(A = T.call.apply(T, [this].concat(V))), Uc), jo(ln(A), Jg), jo(ln(A), ih), jo(ln(A), rh), jo(ln(A), Vc), jo(ln(A), nh), jo(ln(A), Nc), jo(ln(A), As), jo(ln(A), th), jo(ln(A), eh), A;
+      return zo(ln(A = T.call.apply(T, [this].concat(V))), Uc), zo(ln(A), Jg), zo(ln(A), ih), zo(ln(A), rh), zo(ln(A), Vc), zo(ln(A), nh), zo(ln(A), Nc), zo(ln(A), As), zo(ln(A), th), zo(ln(A), eh), A;
     }
     return zn(M, [{ key: "dispose", value: function() {
       return this.__unload();
@@ -22203,7 +22204,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var xe = parseInt(S), Fe = arguments, Qe = function(Bt, yt) {
         return n.isFunction(V) && Vi(V, Bt, yt, S, Fe), Bt = yt = null, !0;
       }, Ze = function(Bt) {
-        return n.isFunction(ne) && Io(ne, ue, Bt, S, Fe), Bt = null, !1;
+        return n.isFunction(ne) && So(ne, ue, Bt, S, Fe), Bt = null, !1;
       }, Ct = !1;
       if (!n.License.checkProductKey(ue, { Core: !0 }))
         return n.isFunction(ne) && ne(ue._errorCode, ue._getErrorString()), !1;
@@ -22723,7 +22724,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
               return Ft.abrupt("return", ue._mobileNotSupportAsync(S));
             case 11:
-              return fr(S, ue), Ft.prev = 12, ue._dm && (ue._dm.bLicenseOK = !1), Ft.next = 16, bi(ue, As, au).call(ue, !1);
+              return fr(S, ue), Ft.prev = 12, ue._dm && (ue._dm.bLicenseOK = !1), Ft.next = 16, bi(ue, As, su).call(ue, !1);
             case 16:
               if (Ze = Ft.sent, Ct = (Qe & Xt) == Xt, it = (Qe & dn) == dn, !((Qe & an) > 0)) {
                 Ft.next = 23;
@@ -22823,7 +22824,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 yt.next = 43;
                 break;
               }
-              return ue._dm && (ue._dm.bLicenseOK = !1), yt.next = 37, bi(this, As, au).call(this, !1);
+              return ue._dm && (ue._dm.bLicenseOK = !1), yt.next = 37, bi(this, As, su).call(this, !1);
             case 37:
               return Bt = yt.sent, yt.next = 40, Bt.selectSourceAsync(V);
             case 40:
@@ -22900,7 +22901,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
               throw n.Errors.SystemBusy(z), { code: z._errorCode, message: z._getErrorString() };
             case 24:
-              return z.__bAcquireImageNow = !0, fr(S, Fe), Ze = n.cancelFrom, Ct = z.__IfShowProgressBar, n.cancelFrom = Li, z.__IfShowProgressBar = !1, Bt = !0, yt = n.Promise.resolve(), en = l.DWT.RemoteScanConfig, Ft = hn(), ft.prev = 31, nm(ue), en && Tt(en.keepAwake), z._dm && (z._dm.bLicenseOK = !1), ft.next = 37, bi(z, As, au).call(z, !0);
+              return z.__bAcquireImageNow = !0, fr(S, Fe), Ze = n.cancelFrom, Ct = z.__IfShowProgressBar, n.cancelFrom = Li, z.__IfShowProgressBar = !1, Bt = !0, yt = n.Promise.resolve(), en = l.DWT.RemoteScanConfig, Ft = hn(), ft.prev = 31, nm(ue), en && Tt(en.keepAwake), z._dm && (z._dm.bLicenseOK = !1), ft.next = 37, bi(z, As, su).call(z, !0);
             case 37:
               if (st = ft.sent, !n.isNumber(ue.SelectSourceByIndex)) {
                 ft.next = 45;
@@ -22975,7 +22976,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                       case 0:
                         return Qn.next = 2, st.acquireImage(z._curDevice, ue, z._bRemoteMode);
                       case 2:
-                        Ot = Qn.sent, n.isFunction(z._OnPreAllTransfers) && z._OnPreAllTransfers([]), un = { _ver: [l.Lib.product.getDWTPrefix(), l.Lib.product.getServerVersionInfo()].join(""), _clientId: z._clientId }, xe && (un._clientId = xe._clientId), An = 0, Mr = ru(Qe);
+                        Ot = Qn.sent, n.isFunction(z._OnPreAllTransfers) && z._OnPreAllTransfers([]), un = { _ver: [l.Lib.product.getDWTPrefix(), l.Lib.product.getServerVersionInfo()].join(""), _clientId: z._clientId }, xe && (un._clientId = xe._clientId), An = 0, Mr = iu(Qe);
                       case 8:
                         return Qn.prev = 8, Qn.next = 11, st.getImageToDWT(Ot, Mr, un);
                       case 11:
@@ -22995,11 +22996,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                           xe && (wi = xe), yt = yt.then(function() {
                             return new n.Promise(function(Xr, Mn) {
                               var ci = qu;
-                              l.navInfoSync.bAndroid && (ci = 0), wi._innerLoadImageFromBinary(pn, ci, !1, function(Da, xo) {
+                              l.navInfoSync.bAndroid && (ci = 0), wi._innerLoadImageFromBinary(pn, ci, !1, function(Da, Mo) {
                                 var kr, qr;
-                                n.log("LoadImageFromBinary success"), kr = n.isArray(xo.metaData) && xo.metaData.length > 0 ? xo.metaData[0] : { id: xo.ids }, qr = { imageId: parseInt(kr.id) }, ue.IfGetImageInfo !== !1 && (qr.imageInfo = { XResolution: kr.resolutionX, YResolution: kr.resolutionY, ImageWidth: kr.width, ImageLength: kr.height, BitsPerPixel: kr.bitDepth }), n.isFunction(wi._OnPostTransferAsync) && wi._OnPostTransferAsync([!0, n.stringify(qr)]), Xr();
-                              }, function(Da, xo) {
-                                n.log(xo), Mn({ code: Da, message: xo });
+                                n.log("LoadImageFromBinary success"), kr = n.isArray(Mo.metaData) && Mo.metaData.length > 0 ? Mo.metaData[0] : { id: Mo.ids }, qr = { imageId: parseInt(kr.id) }, ue.IfGetImageInfo !== !1 && (qr.imageInfo = { XResolution: kr.resolutionX, YResolution: kr.resolutionY, ImageWidth: kr.width, ImageLength: kr.height, BitsPerPixel: kr.bitDepth }), n.isFunction(wi._OnPostTransferAsync) && wi._OnPostTransferAsync([!0, n.stringify(qr)]), Xr();
+                              }, function(Da, Mo) {
+                                n.log(Mo), Mn({ code: Da, message: Mo });
                               });
                             });
                           });
@@ -23204,7 +23205,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 u.next = 14;
                 break;
               }
-              return r._dm && (r._dm.bLicenseOK = !1), u.next = 10, bi(r, As, au).call(r, !0);
+              return r._dm && (r._dm.bLicenseOK = !1), u.next = 10, bi(r, As, su).call(r, !0);
             case 10:
               return a = u.sent, u.next = 13, a.getCapabilitiesAsync(e);
             case 13:
@@ -23235,7 +23236,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       });
     });
   }
-  function au(o) {
+  function su(o) {
     return sh.apply(this, arguments);
   }
   function sh() {
@@ -23266,7 +23267,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
               throw n.asyncQueue.stop(), M = {}, n.Errors.UserCanceled(M), l.DWT.bConnectCanceled = !1, { code: M._errorCode, message: M._errorString };
             case 24:
-              return r._dm && (r._dm.bLicenseOK = !1), A.next = 27, bi(r, As, au).call(r, !1);
+              return r._dm && (r._dm.bLicenseOK = !1), A.next = 27, bi(r, As, su).call(r, !1);
             case 27:
               return A.abrupt("return", A.sent);
             case 28:
@@ -23314,7 +23315,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         n.isArray(o) && n.each(o, function(M) {
           var A = a._ImgManager.convertServerIdToClientIndex(M);
           A > -1 && T.push(A);
-        }), Io(i, a, T, e, d);
+        }), So(i, a, T, e, d);
       }
       return !1;
     }, v = 2;
@@ -23385,7 +23386,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       Gn(this, u);
       for (var d = arguments.length, _ = new Array(d), v = 0; v < d; v++)
         _[v] = arguments[v];
-      return jo(ln(c = a.call.apply(a, [this].concat(_))), jc), jo(ln(c), Gc), jo(ln(c), ds), c;
+      return zo(ln(c = a.call.apply(a, [this].concat(_))), jc), zo(ln(c), Gc), zo(ln(c), ds), c;
     }
     return zn(u, [{ key: "LoadImage", value: function(c, d, _) {
       var v = this, T = "LoadImage";
@@ -23555,7 +23556,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (S._isMobileMode())
         return S._mobileNotSupport("HTTPUploadThroughPost", M);
       var V = on.getImageType(v), ne = arguments, z = !1, ue = function(xe) {
-        return n.isFunction(M) && Io(M, S, S.__HTTPPostResponseString, xe, ne), !1;
+        return n.isFunction(M) && So(M, S, S.__HTTPPostResponseString, xe, ne), !1;
       };
       return n.isString(v) && v != "" ? (T && n.isFunction(T) && (z = function(xe, Fe) {
         return Vi(T, S.__HTTPPostResponseString, Fe, ne), !0;
@@ -23567,7 +23568,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (V._isMobileMode())
         return V._mobileNotSupport("HTTPUploadThroughPostEx", A);
       var ne = arguments, z = !1, ue = function(xe) {
-        return n.isFunction(A) && Io(A, V, V.__HTTPPostResponseString, xe, ne), !1;
+        return n.isFunction(A) && So(A, V, V.__HTTPPostResponseString, xe, ne), !1;
       };
       return n.isString(v) && v != "" ? (M && n.isFunction(M) && (z = function(xe, Fe) {
         return Vi(M, V.__HTTPPostResponseString, Fe, ne), !0;
@@ -23579,7 +23580,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (A._isMobileMode())
         return A._mobileNotSupport("HTTPUploadAllThroughPostAsMultiPageTIFF", T);
       var S = -1, V = 2, ne = arguments, z = !1, ue = function(xe) {
-        return n.isFunction(T) && Io(T, A, A.__HTTPPostResponseString, xe, ne), !1;
+        return n.isFunction(T) && So(T, A, A.__HTTPPostResponseString, xe, ne), !1;
       };
       return n.isString(_) && _ != "" ? (v && n.isFunction(v) && (z = function(xe, Fe) {
         return Vi(v, A.__HTTPPostResponseString, Fe, ne), !0;
@@ -23591,7 +23592,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (A._isMobileMode())
         return A._mobileNotSupport("HTTPUploadAllThroughPostAsPDF", T);
       var S = -1, V = 4, ne = arguments, z = !1, ue = function(xe) {
-        return n.isFunction(T) && Io(T, A, A.__HTTPPostResponseString, xe, ne), !1;
+        return n.isFunction(T) && So(T, A, A.__HTTPPostResponseString, xe, ne), !1;
       };
       return n.isString(_) && _ != "" ? (v && n.isFunction(v) && (z = function(xe, Fe) {
         return Vi(v, A.__HTTPPostResponseString, Fe, ne), !0;
@@ -23603,7 +23604,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (A._isMobileMode())
         return A._mobileNotSupport("HTTPUploadThroughPostAsMultiPagePDF", T);
       var S = -2, V = 4, ne = arguments, z = !1, ue = function(xe) {
-        return n.isFunction(T) && Io(T, A, A.__HTTPPostResponseString, xe, ne), !1;
+        return n.isFunction(T) && So(T, A, A.__HTTPPostResponseString, xe, ne), !1;
       };
       return n.isString(_) && _ != "" ? (v && n.isFunction(v) && (z = function(xe, Fe) {
         return Vi(v, A.__HTTPPostResponseString, Fe, ne), !0;
@@ -23615,7 +23616,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (A._isMobileMode())
         return A._mobileNotSupport("HTTPUploadThroughPostAsMultiPageTIFF", T);
       var S = -2, V = 2, ne = arguments, z = !1, ue = function(xe) {
-        return n.isFunction(T) && Io(T, A, A.__HTTPPostResponseString, xe, ne), !1;
+        return n.isFunction(T) && So(T, A, A.__HTTPPostResponseString, xe, ne), !1;
       };
       return n.isString(_) && _ != "" ? (v && n.isFunction(v) && (z = function(xe, Fe) {
         return Vi(v, A.__HTTPPostResponseString, Fe, ne), !0;
@@ -23757,7 +23758,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var d = this;
       return d._isMobileMode() ? d._mobileNotSupport("GetSourceNames") : (d._getSourceCountSync(), c ? bi(d, Gc, dh).call(d) : bi(d, jc, hh).call(d));
     } }, { key: "_innerHTTPDownloadThroughGet", value: function(c, d, _, v, T) {
-      var M = this, A = Go(M), S = on.combineUrl(M, c, d);
+      var M = this, A = jo(M), S = on.combineUrl(M, c, d);
       if (S === void 0)
         return n.Errors.ParameterCannotEmpty(M), n.isFunction(T) && Zr(T, M), vt;
       if (M._isMobileMode()) {
@@ -23861,7 +23862,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return n.needShowTwiceShowDialog = !1, n.closeProgress(v, T), ne(V), !1;
     };
     n.needShowTwiceShowDialog = !0, n.showProgress(v, T, !1);
-    var xe = Go(v);
+    var xe = jo(v);
     return v._OnPercentDone([0, -1, l.MSG.Encoding, "http"]), v.__innerConvertToBlob(i, z, !1, A, 4, function(Fe, Qe, Ze) {
       if (n.needShowTwiceShowDialog = !1, Fe && (n.dlgRef > 0 || v.__IfShowCancelDialogWhenImageTransfer == 0 || A == 0)) {
         var Ct = v.__maxUploadImageSize;
@@ -23981,7 +23982,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return a._isMobileMode() ? t == "GetLicenseInfo" || t == "SetLTSLicense" ? Kd(a, i) : n.License.checkProductKey(a, { Core: !0 }, !0) ? t == "LoadImageFromBinary" ? jd(a, i) : t == "RotateEx" ? function(u, c) {
         var d = c[0], _ = c[1], v = c[2], T = c[3], M = c[4];
         n.isUndefined(_) && (_ = 0), n.isUndefined(v) && (v = !0), (n.isUndefined(T) || T < 1 || T > 3) && (T = 3), n.isUndefined(M) && (M = "FFFFFF"), _ < 0 ? _ = _ % 360 + 360 : _ >= 360 && (_ %= 360), fr("", u);
-        var A = wo(), S = u._ImgManager.convertClientIndexToServerId(d);
+        var A = Io(), S = u._ImgManager.convertClientIndexToServerId(d);
         return A.context = {}, u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(V) {
           return A.context.metadata = V && V.metadata ? V.metadata : {}, A.initImage(V.oriData);
         }).then(function() {
@@ -24014,7 +24015,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }(a, i) : t == "Mirror" ? function(u, c) {
         return zd(u, c[0], -1);
       }(a, i) : t == "Invert" ? function(u, c) {
-        var d = c[0], _ = wo(), v = u._ImgManager.convertClientIndexToServerId(d);
+        var d = c[0], _ = Io(), v = u._ImgManager.convertClientIndexToServerId(d);
         return _.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(T) {
           return _.context.metadata = T && T.metadata ? T.metadata : {}, _.initImage(T.oriData);
         }).then(function() {
@@ -24037,7 +24038,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var d = c[0], _ = c[1], v = c[2], T = c[3], M = c[4];
         if (!(n.isNumber(_) && n.isNumber(v) && n.isNumber(T) && n.isNumber(M)))
           return n.Errors.MobileServer_InvalidLeftOrTopOrRightOrBottom(u), n.Promise.reject({ code: u._errorCode, message: u._getErrorString() });
-        var A = wo(), S = u._ImgManager.convertClientIndexToServerId(d);
+        var A = Io(), S = u._ImgManager.convertClientIndexToServerId(d);
         return A.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(V) {
           return A.context.metadata = V && V.metadata ? V.metadata : {}, A.initImage(V.oriData);
         }).then(function() {
@@ -24061,7 +24062,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (!(n.isNumber(_) && n.isNumber(v) && n.isNumber(T) && n.isNumber(M)))
           return n.Errors.MobileServer_InvalidLeftOrTopOrRightOrBottom(u), n.Promise.reject({ code: u._errorCode, message: u._getErrorString() });
         n.isUndefined(A) && (A = "FFFFFF");
-        var S = wo(), V = u._ImgManager.convertClientIndexToServerId(d);
+        var S = Io(), V = u._ImgManager.convertClientIndexToServerId(d);
         return S.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(ne) {
           return S.context.metadata = ne && ne.metadata ? ne.metadata : {}, S.initImage(ne.oriData);
         }).then(function() {
@@ -24087,7 +24088,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (!n.isNumber(v))
           return n.Errors.MobileServer_InvalidHeight(u), n.Promise.reject({ code: u._errorCode, message: u._getErrorString() });
         n.isUndefined(T) && (T = 5);
-        var M = wo(), A = u._ImgManager.convertClientIndexToServerId(d);
+        var M = Io(), A = u._ImgManager.convertClientIndexToServerId(d);
         return M.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(S) {
           return M.context.metadata = S && S.metadata ? S.metadata : {}, M.initImage(S.oriData);
         }).then(function() {
@@ -24108,7 +24109,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           throw Yn(""), S && n.Errors.ChangeImageSizeFailed(u, S), M.terminate(), { code: u._errorCode, message: u._getErrorString() };
         });
       }(a, i) : t == "GetSkewAngleOnly" ? function(u, c) {
-        var d = c[0], _ = wo();
+        var d = c[0], _ = Io();
         u._ImgManager.convertClientIndexToServerId(d), _.context = {}, fr("", u);
         var v = u._ImgManager.getWebViewer().GetMinPageData();
         if (v)
@@ -24120,7 +24121,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             throw Yn(""), n.Errors.SkewAngleFailed(u, T), _.terminate(), { code: u._errorCode, message: u._getErrorString() };
           });
       }(a, i) : t == "GetSkewAngle" ? function(u, c) {
-        var d = c[0], _ = wo();
+        var d = c[0], _ = Io();
         return u._ImgManager.convertClientIndexToServerId(d), _.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(v) {
           return _.context.metadata = v && v.metadata ? v.metadata : {}, _.initImage(v.oriData);
         }).then(function() {
@@ -24131,7 +24132,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           throw Yn(""), n.Errors.SkewAngleFailed(u, v), _.terminate(), { code: u._errorCode, message: u._getErrorString() };
         });
       }(a, i) : t == "ConvertToGrayScale" ? function(u, c) {
-        var d = c[0], _ = wo(), v = u._ImgManager.convertClientIndexToServerId(d);
+        var d = c[0], _ = Io(), v = u._ImgManager.convertClientIndexToServerId(d);
         return _.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(T) {
           return _.context.metadata = T && T.metadata ? T.metadata : {}, _.initImage(T.oriData);
         }).then(function() {
@@ -24151,7 +24152,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           throw Yn(""), T && n.Errors.ConvertToGrayScaleFailed(u, T), _.terminate(), { code: u._errorCode, message: u._getErrorString() };
         });
       }(a, i) : t == "ConvertToBWScale" ? function(u, c) {
-        var d = c[0], _ = wo(), v = u._ImgManager.convertClientIndexToServerId(d);
+        var d = c[0], _ = Io(), v = u._ImgManager.convertClientIndexToServerId(d);
         return _.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(T) {
           return _.context.metadata = T && T.metadata ? T.metadata : {}, _.initImage(T.oriData);
         }).then(function() {
@@ -24177,7 +24178,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (!n.isNumber(v))
           return n.Errors.MobileServer_InvalidYResolution(u), n.Promise.reject({ code: u._errorCode, message: u._getErrorString() });
         n.isUndefined(M) && (M = l.DWT.EnumDWT_InterpolationMethod.IM_BICUBIC);
-        var A, S, V, ne = wo(), z = u._ImgManager.convertClientIndexToServerId(d);
+        var A, S, V, ne = Io(), z = u._ImgManager.convertClientIndexToServerId(d);
         return ne.context = {}, A = u._ImgManager._UIView.GetMetaDataByIndex(d), S = A.resolutionX, V = A.resolutionY, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(ue) {
           return ne.context.metadata = ue && ue.metadata ? ue.metadata : {}, ne.initImage(ue.oriData);
         }).then(function() {
@@ -24200,7 +24201,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var d = c[0], _ = c[1];
         if (!n.isNumber(_))
           return n.Errors.MobileServer_InvalidWidth(u), n.Promise.reject({ code: u._errorCode, message: u._getErrorString() });
-        var v = wo(), T = u._ImgManager.convertClientIndexToServerId(d);
+        var v = Io(), T = u._ImgManager.convertClientIndexToServerId(d);
         return v.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(M) {
           return v.context.metadata = M && M.metadata ? M.metadata : {}, v.initImage(M.oriData);
         }).then(function() {
@@ -24240,7 +24241,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           throw n.Errors.GetMD5Failed(u, T), v.terminate(), { code: u._errorCode, message: u._getErrorString() };
         });
       }(a, i) : t == "ChangeBrightness" ? function(u, c) {
-        var d = c[0], _ = c[1], v = wo(), T = u._ImgManager.convertClientIndexToServerId(d);
+        var d = c[0], _ = c[1], v = Io(), T = u._ImgManager.convertClientIndexToServerId(d);
         return v.context = {}, fr("", u), n.log("[Wasm]Change Brightness: value " + _), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(M) {
           return n.log("[Wasm]Change Brightness: get original image data"), v.context.metadata = M && M.metadata ? M.metadata : {}, v.initImage(M.oriData);
         }).then(function() {
@@ -24261,7 +24262,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           throw Yn(""), M && n.Errors.ChangeBrightnessFailed(u, M), v.terminate(), { code: u._errorCode, message: u._getErrorString() };
         });
       }(a, i) : t == "ChangeContrast" ? function(u, c) {
-        var d = c[0], _ = c[1], v = wo(), T = u._ImgManager.convertClientIndexToServerId(d);
+        var d = c[0], _ = c[1], v = Io(), T = u._ImgManager.convertClientIndexToServerId(d);
         return v.context = {}, fr("", u), u._ImgManager.getWebViewer().GetImageData(u._ImgManager.getUidByIndex(d)).then(function(M) {
           return v.context.metadata = M && M.metadata ? M.metadata : {}, v.initImage(M.oriData);
         }).then(function() {
@@ -24414,7 +24415,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         throw new TypeError("Cannot initialize the same private elements twice on an object");
     })(o, e), e.add(o);
   }
-  function zo(o, e, r) {
+  function Ho(o, e, r) {
     return e.has(o), r;
   }
   var gh = /* @__PURE__ */ new WeakSet(), mh = /* @__PURE__ */ new WeakSet(), Kc = /* @__PURE__ */ new WeakSet(), Yc = /* @__PURE__ */ new WeakSet(), Jc = /* @__PURE__ */ new WeakSet(), Xc = /* @__PURE__ */ new WeakSet(), ph = /* @__PURE__ */ new WeakSet(), Qc = /* @__PURE__ */ new WeakSet(), am = function(o) {
@@ -24448,7 +24449,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (i._isMobileMode())
         return i._mobileNotSupport("CopyToClipboard");
       var a = parseInt(t);
-      return !!$i(i, a) && su(i, "CopyToClipboard", a, null, null, !1, !1);
+      return !!$i(i, a) && uu(i, "CopyToClipboard", a, null, null, !1, !1);
     } }, { key: "CopyToClipboardAsync", value: function(t) {
       var i = this;
       if (i._resetErr(), !i._isValid())
@@ -24465,7 +24466,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!$i(T, M, _))
         return !1;
       if (T._isMobileMode())
-        return T._ImgManager.getView().GetWebViewer().clearSelectedAreas(), zo(T, gh, sm).call(T, M, i, a, u, c, d, _);
+        return T._ImgManager.getView().GetWebViewer().clearSelectedAreas(), Ho(T, gh, sm).call(T, M, i, a, u, c, d, _);
       var A = T._ImgManager.convertClientIndexToServerId(M);
       return A == -1 ? (n.Errors.IndexOutOfRange(T), n.isFunction(_) && _(T._errorCode, T._getErrorString()), !1) : (T._ImgManager.getView().GetWebViewer().clearSelectedAreas(), (v = T._innerFun("Erase", zt(A, i, a, u, c)) == 1) ? n.isFunction(d) && d() : n.isFunction(_) && _(T._errorCode, T._getErrorString()), v);
     } }, { key: "GetImageBitDepth", value: function(t) {
@@ -24575,7 +24576,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       });
     } }, { key: "GetSkewAngle", value: function(t, i, a) {
       var u, c = this, d = parseInt(t);
-      return !!$i(c, d, a) && (c._isMobileMode() ? zo(c, mh, um).call(c, d, i, a) : (u = su(c, "GetSkewAngle", d, i, a, !0, !1), c._errorCode == 0 ? (on.refreshImageAfterInvokeFun(c, d), n.isFunction(i) && i(u), u) : (n.isFunction(a) && a(c._errorCode, c._errorString), 0)));
+      return !!$i(c, d, a) && (c._isMobileMode() ? Ho(c, mh, um).call(c, d, i, a) : (u = uu(c, "GetSkewAngle", d, i, a, !0, !1), c._errorCode == 0 ? (on.refreshImageAfterInvokeFun(c, d), n.isFunction(i) && i(u), u) : (n.isFunction(a) && a(c._errorCode, c._errorString), 0)));
     } }, { key: "GetSkewAngleAsync", value: function(t) {
       var i = this;
       if (i._resetErr(), !i._isValid())
@@ -24636,7 +24637,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         on.refreshImageAfterInvokeFun(u, c), u._ImgManager._UIView.GetWebViewer().clearSelectedAreas(), i && i();
       }, function() {
         n.isFunction(a) && a(u._errorCode, u._getErrorString());
-      }), !0) : su(u, "Mirror", c, i, a, !1, !0));
+      }), !0) : uu(u, "Mirror", c, i, a, !1, !0));
     } }, { key: "_innerRemoveImage", value: function(t, i) {
       var a = this, u = a._ImgManager.convertClientIndexToServerIdInFile(t, i);
       a._OnBitmapChanged(["10", "" + u, 3, a._ImgManager.getCurrentImageIndex(), a._ImgManager.count()], null, t);
@@ -24697,7 +24698,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (T < 0 || T >= _._ImgManager.count())
         return n.Errors.IndexOutOfRange(_), n.isFunction(d) && d(_._errorCode, _._getErrorString()), !1;
       if (_._isMobileMode())
-        return zo(_, Kc, _h).call(_, T, i, a, u).then(c, function() {
+        return Ho(_, Kc, _h).call(_, T, i, a, u).then(c, function() {
           n.isFunction(d) && d(_._errorCode, _._getErrorString());
         }), !0;
       var M = _._ImgManager.convertClientIndexToServerId(T);
@@ -24718,7 +24719,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (d < 0 || d >= c._ImgManager.count())
         return n.Errors.IndexOutOfRange(c), n.Promise.reject({ code: c._errorCode, message: c._errorString });
       if (c._isMobileMode())
-        return zo(c, Kc, _h).call(c, d, i, a, u);
+        return Ho(c, Kc, _h).call(c, d, i, a, u);
       var _ = c._ImgManager.convertClientIndexToServerId(d);
       return _ == -1 ? (n.Errors.IndexOutOfRange(c), n.Promise.reject({ code: c._errorCode, message: c._errorString })) : c._innerFunV2("RotateEx", zt(_, i, a, u)).then(function(v) {
         if (v != 1)
@@ -24736,7 +24737,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (M <= 0 || A <= 0)
         return n.Errors.InvalidWidthOrHeight(v), n.isFunction(d) && d(v._errorCode, v._getErrorString()), !1;
       if (v._isMobileMode())
-        return zo(v, Yc, vh).call(v, T, i, a, u).then(c, function() {
+        return Ho(v, Yc, vh).call(v, T, i, a, u).then(c, function() {
           n.isFunction(d) && d(v._errorCode, v._getErrorString());
         }), !0;
       var S = v._ImgManager.convertClientIndexToServerId(T);
@@ -24752,7 +24753,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (_ <= 0 || v <= 0)
         return n.Errors.InvalidWidthOrHeight(c), n.Promise.reject({ code: c._errorCode, message: c._errorString });
       if (c._isMobileMode())
-        return zo(c, Yc, vh).call(c, d, i, a, u);
+        return Ho(c, Yc, vh).call(c, d, i, a, u);
       var T = c._ImgManager.convertClientIndexToServerId(d);
       return T == -1 ? (n.Errors.IndexOutOfRange(c), n.Promise.reject({ code: c._errorCode, message: c._errorString })) : c._innerFunV2("ChangeImageSize", zt(T, _, v, u)).then(function(M) {
         if (M != 1)
@@ -24761,9 +24762,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       });
     } }, { key: "Flip", value: function(t, i, a) {
       var u = this, c = parseInt(t);
-      return !!$i(u, c, a) && (u._isMobileMode() ? (zo(u, Jc, yh).call(u, c).then(i, function() {
+      return !!$i(u, c, a) && (u._isMobileMode() ? (Ho(u, Jc, yh).call(u, c).then(i, function() {
         n.isFunction(a) && a(u._errorCode, u._getErrorString());
-      }), !0) : su(u, "Flip", c, i, a, !1, !0));
+      }), !0) : uu(u, "Flip", c, i, a, !1, !0));
     } }, { key: "FlipAsync", value: function(t) {
       var i = this;
       if (i._resetErr(), !i._isValid())
@@ -24774,7 +24775,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (a < 0 || a >= i._ImgManager.count())
         return n.Errors.IndexOutOfRange(i), n.Promise.reject({ code: i._errorCode, message: i._errorString });
       if (i._isMobileMode())
-        return zo(i, Jc, yh).call(i, a);
+        return Ho(i, Jc, yh).call(i, a);
       var u = i._ImgManager.convertClientIndexToServerId(a);
       return u == -1 ? (n.Errors.IndexOutOfRange(i), n.Promise.reject({ code: i._errorCode, message: i._errorString })) : i._innerFunV2("Flip", zt(u)).then(function(c) {
         if (c != 1)
@@ -24786,7 +24787,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!$i(T, M, _))
         return !1;
       if (T._isMobileMode())
-        return zo(T, Xc, bh).call(T, M, i, a, u, c).then(d, function() {
+        return Ho(T, Xc, bh).call(T, M, i, a, u, c).then(d, function() {
           n.isFunction(_) && _(T._errorCode, T._getErrorString());
         }), !0;
       var A, S, V = T._ImgManager.convertClientIndexToServerId(M);
@@ -24801,7 +24802,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (_ < 0 || _ >= d._ImgManager.count())
         return n.Errors.IndexOutOfRange(d), n.Promise.reject({ code: d._errorCode, message: d._errorString });
       if (d._isMobileMode())
-        return zo(d, Xc, bh).call(d, _, i, a, u, c);
+        return Ho(d, Xc, bh).call(d, _, i, a, u, c);
       var v = d._ImgManager.convertClientIndexToServerId(_);
       return v == -1 ? (n.Errors.IndexOutOfRange(d), n.Promise.reject({ code: d._errorCode, message: d._errorString })) : d._innerFunV2("Crop", zt(v, i, a, u, c)).then(function(T) {
         var M, A;
@@ -24895,7 +24896,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!$i(T, M, _))
         return !1;
       var A = T._ImgManager.convertClientIndexToServerId(M);
-      return A == -1 ? (n.Errors.IndexOutOfRange(T), n.isFunction(_) && _(T._errorCode, T._getErrorString()), !1) : T._isMobileMode() ? zo(T, ph, cm).call(T, M, A, i, a, u, c, d, _) : ((v = T._innerFun("SetDPI", zt(A, i, a, u, c)) == 1) ? n.isFunction(d) && d() : n.isFunction(_) && _(T._errorCode, T._getErrorString()), v);
+      return A == -1 ? (n.Errors.IndexOutOfRange(T), n.isFunction(_) && _(T._errorCode, T._getErrorString()), !1) : T._isMobileMode() ? Ho(T, ph, cm).call(T, M, A, i, a, u, c, d, _) : ((v = T._innerFun("SetDPI", zt(A, i, a, u, c)) == 1) ? n.isFunction(d) && d() : n.isFunction(_) && _(T._errorCode, T._getErrorString()), v);
     } }, { key: "MoveImage", value: function(t, i) {
       var a = this;
       if (a._resetErr(), !a._isValid())
@@ -24993,9 +24994,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return t._resetErr(), !!t._isValid() && t._ImgManager.GetFileInfoList();
     } }, { key: "Invert", value: function(t, i, a) {
       var u = this, c = parseInt(t);
-      return !!$i(u, c, a) && (u._isMobileMode() ? (zo(u, Qc, wh).call(u, c).then(i, function() {
+      return !!$i(u, c, a) && (u._isMobileMode() ? (Ho(u, Qc, wh).call(u, c).then(i, function() {
         n.isFunction(a) && a(u._errorCode, u._getErrorString());
-      }), !0) : su(u, "Invert", c, i, a, !1, !0));
+      }), !0) : uu(u, "Invert", c, i, a, !1, !0));
     } }, { key: "InvertAsync", value: function(t) {
       var i = this, a = parseInt(t);
       if (i._resetErr(), !i._isValid())
@@ -25005,7 +25006,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (a < 0 || a >= i._ImgManager.count())
         return n.Errors.IndexOutOfRange(i), n.Promise.reject({ code: i._errorCode, message: i._errorString });
       if (i._isMobileMode())
-        return zo(i, Qc, wh).call(i, a);
+        return Ho(i, Qc, wh).call(i, a);
       var u = i._ImgManager.convertClientIndexToServerId(a);
       return u == -1 ? (n.Errors.IndexOutOfRange(i), n.Promise.reject({ code: i._errorCode, message: i._errorString })) : i._innerFunV2("Invert", zt(u)).then(function(c) {
         var d = c == 1;
@@ -25262,7 +25263,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       on.refreshImageAfterInvokeFun(e, o);
     });
   }
-  function su(o, e, r, t, i, a, u) {
+  function uu(o, e, r, t, i, a, u) {
     var c, d = o._ImgManager.convertClientIndexToServerId(r);
     if (d == -1)
       return n.Errors.IndexOutOfRange(o), n.isFunction(i) && i(o._errorCode, o._errorString), !1;
@@ -25775,7 +25776,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return n.isFunction(c) && c(d._errorCode, d._getErrorString()), !1;
       if (d._isMobileMode())
         return d._mobileNotSupport("HTTPDownloadDirectly", c);
-      var _, v, T = Go(d), M = on.combineUrl(d, t, i);
+      var _, v, T = jo(d), M = on.combineUrl(d, t, i);
       if (M === void 0)
         return n.Errors.ParameterCannotEmpty(d), !1;
       if (!a || a == "")
@@ -25805,7 +25806,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       };
       return _.__HTTPPostResponseString = "", t === "" ? (n.Errors.HttpServerCannotEmpty(_), T(), !1) : _._innerUploadDirectly(v, i, u, !0, !1, 0, !0, !1, c, T);
     } }, { key: "_innerUploadDirectly", value: function(t, i, a, u, c, d, _, v, T, M) {
-      var A, S = this, V = Go(S), ne = "HTTPUploadThroughPostDirectly", z = !0;
+      var A, S = this, V = jo(S), ne = "HTTPUploadThroughPostDirectly", z = !0;
       if (t === !1 || t === "")
         return n.Errors.ParameterCannotEmpty(S), n.isFunction(M) && M(S._errorCode, S._getErrorString()), !1;
       if (n.isFunction(T) || (z = !1), !n.License.checkProductKey(S, { Core: !0 }))
@@ -25820,7 +25821,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, ue)) : (ue(), !1);
       }, ue) : (n.Errors.InvalidFile(S), ue(), !1);
     } }, { key: "_innerUploadFilesDirectly", value: function(t, i, a, u, c, d, _, v, T) {
-      var M, A = this, S = Go(A), V = "HTTPUploadThroughPostDirectly", ne = !0, z = [];
+      var M, A = this, S = jo(A), V = "HTTPUploadThroughPostDirectly", ne = !0, z = [];
       if (t === !1 || t === "")
         return n.Errors.ParameterCannotEmpty(A), n.isFunction(T) && T(A._errorCode, A._getErrorString(), i), !1;
       if (n.isFunction(v) || (ne = !1), !n.License.checkProductKey(A, { Core: !0 }))
@@ -25862,12 +25863,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!n.isString(_))
         return n.Errors.InvalidUrl(c), u();
       _.indexOf("http://") != 0 && _.indexOf("https://") != 0 && (_ = n.detect.ssl ? "https://" + _ : "http://" + _), c.__HTTPPostResponseString = "", n.cancelFrom = ei, n.showProgress(c, d, !1), n.needShowTwiceShowDialog = !0;
-      var v = Go(c);
+      var v = jo(c);
       return c._OnPercentDone([0, -1, l.MSG.Uploading, "http"]), on.httpUploadByBIO(c, _, vt, 0, !0, v, !0, 0, !0, !1, function(T) {
         n.needShowTwiceShowDialog = !1, n.closeProgress(c, d), n.isFunction(i) && Vi(i, T);
       }, u);
     } }, { key: "__innnerHTTPUploadBinaryFull", value: function(t, i, a, u, c, d, _, v, T, M) {
-      var A = this, S = Go(A), V = c, ne = t;
+      var A = this, S = jo(A), V = c, ne = t;
       return l.DWT.IfAddMD5InUploadHeader && i && i != "" && (S["dwt-md5"] = i), n.dlgRef > 0 || A.__IfShowCancelDialogWhenImageTransfer == 0 ? (a instanceof File ? a.fileName = V : a.name = V, da(A, !0), on.httpPostUpload(A, ne, a, !0, 0, S, !0, d, _, v, function(z) {
         n.isFunction(T) && Vi(T, z);
       }, M)) : (n.Errors.UploadError(A, !0), M());
@@ -25879,12 +25880,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!n.License.checkProductKey(c, { Core: !0 }))
         return n.isFunction(u) && u(c._errorCode, c._getErrorString()), !1;
       if (!c._checkIndices(t))
-        return n.isFunction(u) && Io(u, c, t, i, _), !1;
+        return n.isFunction(u) && So(u, c, t, i, _), !1;
       if (v == l.DWT.EnumDWT_ImageType.IT_BMP || v == l.DWT.EnumDWT_ImageType.IT_JPG || v == l.DWT.EnumDWT_ImageType.IT_PNG) {
         if (t.length > 1)
-          return n.Errors.ConvertBase64IndexMoreThanOne(c), n.isFunction(u) && Io(u, c, t, i, _), !1;
+          return n.Errors.ConvertBase64IndexMoreThanOne(c), n.isFunction(u) && So(u, c, t, i, _), !1;
       } else if (v != l.DWT.EnumDWT_ImageType.IT_TIF && v != l.DWT.EnumDWT_ImageType.IT_PDF)
-        return n.Errors.InvalidImageType(c), n.isFunction(u) && Io(u, c, t, i, _), !1;
+        return n.Errors.InvalidImageType(c), n.isFunction(u) && So(u, c, t, i, _), !1;
       n.isArray(t) && n.each(t, function(V) {
         var ne = c._ImgManager.convertClientIndexToServerId(V);
         ne != -1 && d.push(ne);
@@ -25900,7 +25901,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return n.isArray(d) && n.each(d, function(ne) {
           var z = c._ImgManager.convertServerIdToClientIndex(ne);
           z > -1 && V.push(z);
-        }), n.isFunction(u) && Io(u, c, V, i, _), !1;
+        }), n.isFunction(u) && So(u, c, V, i, _), !1;
       }, S = 3;
       return c._convertToBase64ByServerIds(d, v, T, S, M, A);
     } }, { key: "ClearAllHTTPFormField", value: function() {
@@ -25913,7 +25914,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var c = t;
       return n.isString(c) || (c = "" + c), i instanceof Blob && (i.name = a), u.httpFormFields[c] = i, !0;
     } }, { key: "HTTPDownloadThroughPost", value: function(t, i, a, u, c, d) {
-      var _, v = this, T = Go(v), M = arguments, A = on.combineUrl(v, t, i);
+      var _, v = this, T = jo(v), M = arguments, A = on.combineUrl(v, t, i);
       if (A === void 0)
         return n.Errors.ParameterCannotEmpty(v), vt;
       if (!n.License.checkProductKey(v, { Core: !0 }) || !n.License.checkPDFProductKeyWhenNeeds(v, a))
@@ -25938,12 +25939,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var d = on.getImageType(a);
       return this.HTTPUploadThroughPutEx(t, i, a, d, u, c);
     } }, { key: "HTTPUploadThroughPutEx", value: function(t, i, a, u, c, d) {
-      var _ = this, v = Go(_), T = "HTTPUploadThroughPutEx", M = on.combineUrl(_, t, a), A = !0, S = [];
+      var _ = this, v = jo(_), T = "HTTPUploadThroughPutEx", M = on.combineUrl(_, t, a), A = !0, S = [];
       if (M === void 0)
-        return n.Errors.ParameterCannotEmpty(_), n.isFunction(d) && Io(d, _, "", [i], a, u), !1;
+        return n.Errors.ParameterCannotEmpty(_), n.isFunction(d) && So(d, _, "", [i], a, u), !1;
       n.isFunction(c) || (A = !1), n.cancelFrom = ei;
       var V, ne = function() {
-        return n.needShowTwiceShowDialog = !1, n.closeProgress(_, T), n.isFunction(d) && Io(d, _, _.__HTTPPostResponseString, S, a, u), !1;
+        return n.needShowTwiceShowDialog = !1, n.closeProgress(_, T), n.isFunction(d) && So(d, _, _.__HTTPPostResponseString, S, a, u), !1;
       };
       switch (n.needShowTwiceShowDialog = !0, n.showProgress(_, T, !1), i) {
         case -1:
@@ -26039,7 +26040,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             return n.Errors.UploadExceededMaxSize(A), xe();
           var nt = on.cformat(u, Bt + 1);
           if (Ze = (Qe + 1) / Fe * 100, Ct = [Qe + 1, "/", Fe].join(""), A._OnPercentDone([0, Ze, Ct, "http", nt]), Ft[0], Ft[1], yt.name = nt, ue.push(yt), ++Qe >= Fe) {
-            var ft = Go(A);
+            var ft = jo(A);
             l.DWT.IfAddMD5InUploadHeader && en && en != "" && (ft["dwt-md5"] = en), z = on.httpPostUploadFiles(A, ne, ue, !0, 0, ft, d, _, v, function(Pt) {
               (function(Ot) {
                 if (A._bServerPercentDone = !0, n.needShowTwiceShowDialog = !1, d && n.closeProgress(A, V), ue = null, n.isFunction(T)) {
@@ -26512,7 +26513,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         throw new TypeError("Cannot initialize the same private elements twice on an object");
     })(o, e), e.add(o);
   }
-  function Ho(o, e, r) {
+  function Ko(o, e, r) {
     return e.has(o), r;
   }
   var xh = 12, Mh = 13, Ph = 14, ym = function o(e, r) {
@@ -26521,7 +26522,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         e.hasOwnProperty(t) ? gi(e[t]) === "object" && o(e[t], r[t]) : e[t] = r[t];
       return e;
     }
-  }, Ah = /* @__PURE__ */ new WeakSet(), Ko = /* @__PURE__ */ new WeakSet(), bm = function(o) {
+  }, Ah = /* @__PURE__ */ new WeakSet(), Yo = /* @__PURE__ */ new WeakSet(), bm = function(o) {
     Hr(r, o);
     var e = vm(r);
     function r() {
@@ -26529,7 +26530,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       Gn(this, r);
       for (var i = arguments.length, a = new Array(i), u = 0; u < i; u++)
         a[u] = arguments[u];
-      return kh(ln(t = e.call.apply(e, [this].concat(a))), Ko), kh(ln(t), Ah), t;
+      return kh(ln(t = e.call.apply(e, [this].concat(a))), Yo), kh(ln(t), Ah), t;
     }
     return zn(r, [{ key: "checkStartScanParams", value: function(t, i) {
       var a = this;
@@ -26581,7 +26582,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var Bt, yt, en, Ft, st, nt = i.HttpFieldNameOfUploadedImage, ft = i.MaxUploadImageSize, Pt = i.IfShowProgressBar, Ot = i.__IfShowCancelDialogWhenImageTransfer, pn = i.__OnPostTransferAsync, un = i.__OnPostAllTransfers, An = i.__OnHttpUploadStatus, Mr = i.__insertingIndex, tr = i.__IfAppendImage, Qn = i.httpFormFields, wi = i._tiffCompressionType, Xr = !1, Mn = c.showProgressBar;
       if (Bt = function(kr) {
         var qr = !0;
-        n.each(Fe, function(hi, fo) {
+        n.each(Fe, function(hi, go) {
           hi.st == -1 && (qr = !1);
         }), qr ? yt(kr) : setTimeout(function() {
           Bt(kr);
@@ -26594,10 +26595,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, 200);
       }, Ft = function(kr, qr) {
         Xr = !0, T && (T = !1, M || i._innerSendCmd("CancelAllPendingTransfers"), en(i, kr, qr));
-      }, st = function(kr, qr, hi, fo) {
+      }, st = function(kr, qr, hi, go) {
         if (n.isFunction(S)) {
           var ha, Yr = qr, ri = 0;
-          n.isNumber(fo) && fo > 0 && (ri = fo), ha = { fileName: Yr, percentage: hi, statusCode: ri, responseString: kr.__HTTPPostResponseString }, setTimeout(function() {
+          n.isNumber(go) && go > 0 && (ri = go), ha = { fileName: Yr, percentage: hi, statusCode: ri, responseString: kr.__HTTPPostResponseString }, setTimeout(function() {
             S(ha);
           }, 10);
         }
@@ -26610,8 +26611,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (u = c.reTries, c.useUploader) {
         var ci = c.httpParams.url;
         if (!n.startsWith(ci, "http://") && !n.startsWith(ci, "https://")) {
-          var Da = window.location.href, xo = Da.lastIndexOf("/");
-          Da = Da.substring(0, xo + 1), c.httpParams.url = Da + ci;
+          var Da = window.location.href, Mo = Da.lastIndexOf("/");
+          Da = Da.substring(0, Mo + 1), c.httpParams.url = Da + ci;
         }
       } else
         n.each(c.httpParams.headers, function(kr, qr) {
@@ -26622,20 +26623,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return c.httpParams.remoteName !== "" && (i.HttpFieldNameOfUploadedImage = c.httpParams.remoteName), new n.Promise(function(kr, qr) {
         c.useUploader ? l.FileUploader.Init(0, function(hi) {
           kr({ uploadManager: hi });
-        }, function(hi, fo) {
-          i._errorCode = hi, i._errorString = fo;
-          var ha = { code: hi, message: fo, response: i.__HTTPPostResponseString };
+        }, function(hi, go) {
+          i._errorCode = hi, i._errorString = go;
+          var ha = { code: hi, message: go, response: i.__HTTPPostResponseString };
           M = !0, Ft(qr, ha);
         }) : kr({});
       }).then(function(kr) {
         return new n.Promise(function(qr, hi) {
-          var fo = function Yr() {
+          var go = function Yr() {
             (Ze.transferMode == l.DWT.EnumDWT_TransferMode.TWSX_FILE ? ue == z.length : ue == ne.length) ? (n.closeProgress(i, "Scan Upload"), Xr = !0, qr(Ct), yt(i)) : setTimeout(Yr, 100);
           };
           d && n.isFunction(d) && (i.__OnPreAllTransfersAsync = function(Yr) {
             d(Yr);
           }), i._innerRegisterEvent("OnPostTransferAsync", function(Yr) {
-            var ri, pi, Yo, Bi, Mo, to = c.httpParams.url, Ii = i._objImageIndexManager.convertGuidToServerId(Yr.imageId), $a = c.singlePost, Ri = Ze.transferMode == l.DWT.EnumDWT_TransferMode.TWSX_FILE, Hi = c.removeAfterOutput, xi = 0;
+            var ri, pi, Jo, Bi, Po, to = c.httpParams.url, Ii = i._objImageIndexManager.convertGuidToServerId(Yr.imageId), $a = c.singlePost, Ri = Ze.transferMode == l.DWT.EnumDWT_TransferMode.TWSX_FILE, Hi = c.removeAfterOutput, xi = 0;
             if (A && (M = !1, A = !1), Ri ? (xi = z.length, z.push(Yr.path)) : (xi = ne.length, ne.push(Ii)), d && n.isFunction(d)) {
               var ka = { event: "postTransfer", bScanCompleted: !1, result: { currentPageNum: xi + 1 } };
               setTimeout(function() {
@@ -26645,12 +26646,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             if (Xr)
               return !1;
             if (c.type == "http")
-              if (pi = on.cformat(c.httpParams.fileName, xi + 1), Yo = on.cformat(c.httpParams.remoteName, xi + 1), $a || c.type != "http")
+              if (pi = on.cformat(c.httpParams.fileName, xi + 1), Jo = on.cformat(c.httpParams.remoteName, xi + 1), $a || c.type != "http")
                 !$a && c.type;
               else if (n.isNumber(c.httpParams.maxSizeLimit) && (i.__maxUploadImageSize = c.httpParams.maxSizeLimit), c.useUploader) {
                 Mn && (l.FileUploader.nextLoopTime = 300, n.showProgress(i, "Scan Upload", !0)), Bi = function(ai, Tr) {
                   return i.__HTTPPostResponseString = Tr, st(i, ai._fileName, 100, 200), i._OnPercentDone([0, 100, "", "http", ai._fileName]), Mn && n.closeProgress(i, "Scan Upload"), !Ri && c.removeAfterOutput ? setTimeout(function() {
-                    i._ImgManager.convertServerIdToClientIndex(Ii) > -1 ? Ho(i, Ko, ta).call(i, Ii, function() {
+                    i._ImgManager.convertServerIdToClientIndex(Ii) > -1 ? Ko(i, Yo, ta).call(i, Ii, function() {
                       ue++;
                     }, function() {
                       ue++;
@@ -26665,15 +26666,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                       n.closeProgress(i, "Scan Upload");
                   }
                   !Ri && c.removeAfterOutput && setTimeout(function() {
-                    i._ImgManager.convertServerIdToClientIndex(Ii) > -1 && Ho(i, Ko, ta).call(i, Ii);
+                    i._ImgManager.convertServerIdToClientIndex(Ii) > -1 && Ko(i, Yo, ta).call(i, Ii);
                   }, 100), Sr.CancelAllUpload();
                   var Pr = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
                   return Ft(hi, Pr), !1;
-                }, Mo = function(ai, Tr, Pr, ur) {
+                }, Po = function(ai, Tr, Pr, ur) {
                   var gr = 303;
                   Tr == xh ? gr = 404 : Tr == Mh ? gr = 500 : Tr == Ph && (gr = 503), i._errorCode = Tr, i._errorString = Pr, i.__HTTPPostResponseString = ur, st(i, pi, 100, gr), xa();
                 }, i.__OnCancel = function() {
-                  Mo(null, l.DWT.EnumDWT_Error.UserCancelled, "User cancelled the operation.", "");
+                  Po(null, l.DWT.EnumDWT_Error.UserCancelled, "User cancelled the operation.", "");
                 }, Ma = function() {
                   i.__HTTPPostResponseString = "", st(i, pi, 100, 303), xa();
                 }, Ri) {
@@ -26682,7 +26683,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     cn.HttpHeader[Tr] = ai;
                   }), n.each(c.httpParams.formFields, function(ai, Tr) {
                     rn.Add(Tr, ai);
-                  }), cn.ServerUrl = to, cn.bDeleteFile = Hi, cn.reTries = u, n.isNumber(c.httpParams.maxSizeLimit) && (cn.maxSizeLimit = c.httpParams.maxSizeLimit), cn._fileName = pi, cn.SourceValue.Add(Yr.path, pi, Yo), cn.ImageType = Ze.fileXfer.fileFormat, cn.ThreadNum = xe, cn.OnRunSuccess = Bi, cn.OnRunFailure = Mo, (Mn || n.isFunction(S)) && (cn.OnUploadTransferPercentage = function(ai, Tr) {
+                  }), cn.ServerUrl = to, cn.bDeleteFile = Hi, cn.reTries = u, n.isNumber(c.httpParams.maxSizeLimit) && (cn.maxSizeLimit = c.httpParams.maxSizeLimit), cn._fileName = pi, cn.SourceValue.Add(Yr.path, pi, Jo), cn.ImageType = Ze.fileXfer.fileFormat, cn.ThreadNum = xe, cn.OnRunSuccess = Bi, cn.OnRunFailure = Po, (Mn || n.isFunction(S)) && (cn.OnUploadTransferPercentage = function(ai, Tr) {
                     Tr > 0 && Tr <= 100 && (Tr == 100 && (Tr = 99), Mn && i._OnPercentDone([0, Tr, "", "http", ai._fileName]), n.isFunction(S) && st(i, ai._fileName, Tr, 0));
                   }, n.cancelFrom = Gi, Mn && i._OnPercentDone([0, -1, l.MSG.Uploading, "http", pi]), st(i, pi, 0, 0)), Sr.Run(cn);
                 } else
@@ -26692,7 +26693,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                       Tr.HttpHeader[gr] = ur;
                     }), n.each(c.httpParams.formFields, function(ur, gr) {
                       Pr.Add(gr, ur);
-                    }), Tr.ServerUrl = to, Tr.bDeleteFile = Hi, Tr.reTries = u, n.isNumber(c.httpParams.maxSizeLimit) && (Tr.maxSizeLimit = c.httpParams.maxSizeLimit), Tr._fileName = pi, Tr.SourceValue.Add(ai, pi, Yo), Tr.ImageType = ri, Tr.ThreadNum = xe, Tr.OnRunSuccess = Bi, Tr.OnRunFailure = Mo, (Mn || n.isFunction(S)) && (Tr.OnUploadTransferPercentage = function(ur, gr) {
+                    }), Tr.ServerUrl = to, Tr.bDeleteFile = Hi, Tr.reTries = u, n.isNumber(c.httpParams.maxSizeLimit) && (Tr.maxSizeLimit = c.httpParams.maxSizeLimit), Tr._fileName = pi, Tr.SourceValue.Add(ai, pi, Jo), Tr.ImageType = ri, Tr.ThreadNum = xe, Tr.OnRunSuccess = Bi, Tr.OnRunFailure = Po, (Mn || n.isFunction(S)) && (Tr.OnUploadTransferPercentage = function(ur, gr) {
                       gr > 0 && gr <= 100 && (gr == 100 && (gr = 99), Mn && i._OnPercentDone([0, gr, "", "http", ur._fileName]), n.isFunction(S) && st(i, ur._fileName, gr, 0));
                     }, n.cancelFrom = Gi, Mn && i._OnPercentDone([0, -1, l.MSG.Uploading, "http", pi]), st(i, pi, 0, 0)), Sr.Run(Tr);
                   }, Ma);
@@ -26701,33 +26702,33 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 if (Fe.push(ii), xi == 0 && n.showProgress(i, "Scan Upload", !0), Ri)
                   Bi = function(ai) {
                     return ii.st = 0, !Ri && c.removeAfterOutput ? setTimeout(function() {
-                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 ? Ho(i, Ko, ta).call(i, Ii, function() {
+                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 ? Ko(i, Yo, ta).call(i, Ii, function() {
                         ue++;
                       }, function() {
                         ue++;
                       }) : ue++;
                     }, 100) : ue++, !0;
-                  }, Mo = function() {
+                  }, Po = function() {
                     !Ri && c.removeAfterOutput && setTimeout(function() {
-                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 && Ho(i, Ko, ta).call(i, Ii);
+                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 && Ko(i, Yo, ta).call(i, Ii);
                     }, 100);
                     var ai = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
                     return n.closeProgress(i, "Scan Upload"), ii.st == 2 || (ii.st = 1, n.each(Fe, function(Tr, Pr) {
                       Tr.st == -1 && (Tr.bCancel = !0);
                     }), Ft(hi, ai)), !1;
-                  }, i._innerUploadDirectly(to, Yr.path, pi, Mn, Hi, u, !1, ii, Bi, Mo);
+                  }, i._innerUploadDirectly(to, Yr.path, pi, Mn, Hi, u, !1, ii, Bi, Po);
                 else {
                   if (Bi = function(ai, Tr) {
                     return ii.st = 0, !Ri && c.removeAfterOutput ? setTimeout(function() {
-                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 ? Ho(i, Ko, ta).call(i, Ii, function() {
+                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 ? Ko(i, Yo, ta).call(i, Ii, function() {
                         ue++;
                       }, function() {
                         ue++;
                       }) : ue++;
                     }, 100) : ue++, !0;
-                  }, Mo = function(ai) {
+                  }, Po = function(ai) {
                     !Ri && c.removeAfterOutput && setTimeout(function() {
-                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 && Ho(i, Ko, ta).call(i, Ii);
+                      i._ImgManager.convertServerIdToClientIndex(Ii) > -1 && Ko(i, Yo, ta).call(i, Ii);
                     }, 100);
                     var Tr = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
                     return n.closeProgress(i, "Scan Upload"), ii.st == 2 || (ii.st = 1, n.each(Fe, function(Pr, ur) {
@@ -26735,15 +26736,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     }), Ft(hi, Tr)), !1;
                   }, ri = c.format, n.isUndefined(ri)) {
                     var dr = i._ImgManager.convertServerIdToClientIndex(Ii);
-                    return n.Errors.InvalidImageType(i), Mo([dr]), !1;
+                    return n.Errors.InvalidImageType(i), Po([dr]), !1;
                   }
                   ri == l.DWT.EnumDWT_ImageType.IT_MULTIPAGE_PDF ? ri = l.DWT.EnumDWT_ImageType.IT_PDF : ri == l.DWT.EnumDWT_ImageType.IT_MULTIPAGE_TIF && (ri = l.DWT.EnumDWT_ImageType.IT_TIF);
-                  var es = { bOnlyUploadForm: !1, method: "startScan", _this: i, url: to, serverIds: [Ii], enumImageType: ri, saveSetup: _, fileName: pi, dataFormat: l.DWT.EnumDWT_UploadDataFormat.Binary, retry: u, bOnlyEmptyIsOK: !1, objUploadFileStatus: ii, asyncSuccessFunc: Bi, asyncFailureFunc: Mo };
+                  var es = { bOnlyUploadForm: !1, method: "startScan", _this: i, url: to, serverIds: [Ii], enumImageType: ri, saveSetup: _, fileName: pi, dataFormat: l.DWT.EnumDWT_UploadDataFormat.Binary, retry: u, bOnlyEmptyIsOK: !1, objUploadFileStatus: ii, asyncSuccessFunc: Bi, asyncFailureFunc: Po };
                   n._asyncUploadCmd(es);
                 }
               }
           }), i.__OnPostAllTransfers = function() {
-            var Yr, ri, pi = -1, Yo = l.DWT.EnumDWT_UploadDataFormat.Binary, Bi = c.httpParams.url, Mo = c.singlePost, to = Ze.transferMode == l.DWT.EnumDWT_TransferMode.TWSX_FILE, Ii = c.removeAfterOutput;
+            var Yr, ri, pi = -1, Jo = l.DWT.EnumDWT_UploadDataFormat.Binary, Bi = c.httpParams.url, Po = c.singlePost, to = Ze.transferMode == l.DWT.EnumDWT_TransferMode.TWSX_FILE, Ii = c.removeAfterOutput;
             if (d && n.isFunction(d) && (pi = to ? z.length : ne.length, ri = { event: "postTransfer", bScanCompleted: !0, result: { currentPageNum: pi } }, setTimeout(function() {
               d(ri);
             }, 10)), pi == 0)
@@ -26760,7 +26761,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               return void Ft(hi, $a);
             }
             if (c.type == "http") {
-              if (Mo && c.type == "http") {
+              if (Po && c.type == "http") {
                 var Ri, Hi, xi = ne;
                 if (n.isNumber(c.httpParams.maxSizeLimit) && (i.__maxUploadImageSize = c.httpParams.maxSizeLimit), c.useUploader) {
                   var ka, xa, Ma = kr.uploadManager, Sr = Ma.CreateJob(), cn = Sr.FormField;
@@ -26768,19 +26769,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     var gr = Pr._fileName;
                     return gr || (gr = ""), i._bServerPercentDone = !0, i.__HTTPPostResponseString = ur, st(i, gr, 100, 200), i._OnPercentDone([0, 100, "", "http"]), Mn && n.closeProgress(i, "Scan Upload"), !to && c.removeAfterOutput ? setTimeout(function() {
                       ue = 0, n.each(xi, function(fi) {
-                        i._ImgManager.convertServerIdToClientIndex(fi) > -1 ? Ho(i, Ko, ta).call(i, fi, function() {
+                        i._ImgManager.convertServerIdToClientIndex(fi) > -1 ? Ko(i, Yo, ta).call(i, fi, function() {
                           ue++;
                         }, function() {
                           ue++;
                         }) : ue++;
-                      }), setTimeout(fo, 100);
+                      }), setTimeout(go, 100);
                     }, 100) : (Xr = !0, qr(Ct), yt(i)), !0;
                   }, ka = function() {
                     i._OnPercentDone([0, 100, "", "http"]), Mn && n.closeProgress(i, "Scan Upload"), i._bServerPercentDone = !0;
                     var Pr = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
                     return Ft(hi, Pr), !to && c.removeAfterOutput && setTimeout(function() {
                       n.each(xi, function(ur) {
-                        i._ImgManager.convertServerIdToClientIndex(ur) > -1 && Ho(i, Ko, ta).call(i, ur);
+                        i._ImgManager.convertServerIdToClientIndex(ur) > -1 && Ko(i, Yo, ta).call(i, ur);
                       });
                     }, 100), !1;
                   }, Hi = function(Pr, ur, gr, fi) {
@@ -26818,12 +26819,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     Mn && (i._bServerPercentDone = !1, i._OnPercentDone([0, -1, l.MSG.Encoding, "http"])), n.each(xi, function(Pr, ur) {
                       var gr = on.cformat(c.httpParams.fileName, ur + 1), fi = on.cformat(c.httpParams.remoteName, ur + 1);
                       i._asyncGenerateURLForUploadData([Pr], Yr, _, function(Yi) {
-                        dr = (ii + 1) / rn * 100, es = [ii + 1, "/", rn].join(""), i._OnPercentDone([0, dr, es, "http"]), Sr.SourceValue.Add(Yi, gr, fi), ++ii >= rn && (Mn && (i._bServerPercentDone = !0), n.each(c.httpParams.headers, function(gs, Wo) {
-                          Sr.HttpHeader[Wo] = gs;
-                        }), n.each(c.httpParams.formFields, function(gs, Wo) {
-                          cn.Add(Wo, gs);
-                        }), Sr.ServerUrl = Bi, Sr.bDeleteFile = Ii, Sr.reTries = u, n.isNumber(c.httpParams.maxSizeLimit) && (Sr.maxSizeLimit = c.httpParams.maxSizeLimit), Sr.ImageType = Yr, Sr.ThreadNum = xe, Sr.OnRunSuccess = Ri, Sr.OnRunFailure = Hi, (Mn || n.isFunction(S)) && (Sr.OnUploadTransferPercentage = function(gs, Wo) {
-                          Wo > 0 && Wo <= 100 && (Wo == 100 && (Wo = 99), Mn && i._OnPercentDone([0, Wo, "", "http"]), n.isFunction(S) && (Wo > 99 && (Wo = 99), st(i, "", Wo, 0)));
+                        dr = (ii + 1) / rn * 100, es = [ii + 1, "/", rn].join(""), i._OnPercentDone([0, dr, es, "http"]), Sr.SourceValue.Add(Yi, gr, fi), ++ii >= rn && (Mn && (i._bServerPercentDone = !0), n.each(c.httpParams.headers, function(gs, Bo) {
+                          Sr.HttpHeader[Bo] = gs;
+                        }), n.each(c.httpParams.formFields, function(gs, Bo) {
+                          cn.Add(Bo, gs);
+                        }), Sr.ServerUrl = Bi, Sr.bDeleteFile = Ii, Sr.reTries = u, n.isNumber(c.httpParams.maxSizeLimit) && (Sr.maxSizeLimit = c.httpParams.maxSizeLimit), Sr.ImageType = Yr, Sr.ThreadNum = xe, Sr.OnRunSuccess = Ri, Sr.OnRunFailure = Hi, (Mn || n.isFunction(S)) && (Sr.OnUploadTransferPercentage = function(gs, Bo) {
+                          Bo > 0 && Bo <= 100 && (Bo == 100 && (Bo = 99), Mn && i._OnPercentDone([0, Bo, "", "http"]), n.isFunction(S) && (Bo > 99 && (Bo = 99), st(i, "", Bo, 0)));
                         }, Mn && i._OnPercentDone([0, -1, l.MSG.Uploading, "http"])), Ma.Run(Sr));
                       }, xa);
                     });
@@ -26832,57 +26833,57 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Ri = function(Pr) {
                     return i._bServerPercentDone = !0, !to && c.removeAfterOutput ? setTimeout(function() {
                       ue = 0, n.each(xi, function(ur) {
-                        i._ImgManager.convertServerIdToClientIndex(ur) > -1 ? Ho(i, Ko, ta).call(i, ur, function() {
+                        i._ImgManager.convertServerIdToClientIndex(ur) > -1 ? Ko(i, Yo, ta).call(i, ur, function() {
                           ue++;
                         }, function() {
                           ue++;
                         }) : ue++;
-                      }), setTimeout(fo, 100);
+                      }), setTimeout(go, 100);
                     }, 100) : (Xr = !0, qr(Ct), yt(i)), !0;
                   }, Hi = function(Pr) {
                     i._bServerPercentDone = !0;
                     var ur = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
                     return Ft(hi, ur), !to && c.removeAfterOutput && setTimeout(function() {
                       n.each(xi, function(gr) {
-                        i._ImgManager.convertServerIdToClientIndex(gr) > -1 && Ho(i, Ko, ta).call(i, gr);
+                        i._ImgManager.convertServerIdToClientIndex(gr) > -1 && Ko(i, Yo, ta).call(i, gr);
                       });
                     }, 100), !1;
                   }, i._innerUploadFilesDirectly(Bi, z, c.httpParams.fileName, Mn, Ii, u, !1, Ri, Hi);
                 else if (Ri = function(Pr, ur) {
                   return i._bServerPercentDone = !0, !to && c.removeAfterOutput ? setTimeout(function() {
                     ue = 0, n.each(xi, function(gr) {
-                      i._ImgManager.convertServerIdToClientIndex(gr) > -1 ? Ho(i, Ko, ta).call(i, gr, function() {
+                      i._ImgManager.convertServerIdToClientIndex(gr) > -1 ? Ko(i, Yo, ta).call(i, gr, function() {
                         ue++;
                       }, function() {
                         ue++;
                       }) : ue++;
-                    }), setTimeout(fo, 100);
+                    }), setTimeout(go, 100);
                   }, 100) : (Xr = !0, qr(Ct), yt(i)), !0;
                 }, Hi = function(Pr) {
                   i._bServerPercentDone = !0;
                   var ur = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
                   return Ft(hi, ur), !to && c.removeAfterOutput && setTimeout(function() {
                     n.each(xi, function(gr) {
-                      i._ImgManager.convertServerIdToClientIndex(gr) > -1 && Ho(i, Ko, ta).call(i, gr);
+                      i._ImgManager.convertServerIdToClientIndex(gr) > -1 && Ko(i, Yo, ta).call(i, gr);
                     });
                   }, 100), !1;
                 }, (Yr = c.format) == l.DWT.EnumDWT_ImageType.IT_MULTIPAGE_PDF || Yr == l.DWT.EnumDWT_ImageType.IT_MULTIPAGE_TIF) {
                   Yr == l.DWT.EnumDWT_ImageType.IT_MULTIPAGE_PDF ? Yr = l.DWT.EnumDWT_ImageType.IT_PDF : Yr == l.DWT.EnumDWT_ImageType.IT_MULTIPAGE_TIF && (Yr = l.DWT.EnumDWT_ImageType.IT_TIF);
                   var ai = on.cformat(c.httpParams.fileName, 1);
                   on.cformat(c.httpParams.remoteName, 1);
-                  var Tr = { bOnlyUploadForm: !1, method: "startScan", _this: i, url: Bi, serverIds: xi, enumImageType: Yr, saveSetup: _, fileName: ai, dataFormat: Yo, retry: u, bOnlyEmptyIsOK: !1, objUploadFileStatus: !1, asyncSuccessFunc: Ri, asyncFailureFunc: Hi };
+                  var Tr = { bOnlyUploadForm: !1, method: "startScan", _this: i, url: Bi, serverIds: xi, enumImageType: Yr, saveSetup: _, fileName: ai, dataFormat: Jo, retry: u, bOnlyEmptyIsOK: !1, objUploadFileStatus: !1, asyncSuccessFunc: Ri, asyncFailureFunc: Hi };
                   n._asyncUploadCmd(Tr);
                 } else
                   xi.length > 0 && i._asyncUploadFilesCmd(Bi, xi, Yr, c.httpParams.fileName, _, Mn, u, !1, Ri, Hi);
               }
-              Mo && c.type;
+              Po && c.type;
             }
             M = !0, V && n.isFunction(V) && V();
           };
           var ha = function() {
-            c.type != "http" ? (Xr = !0, qr(Ct), yt(i)) : c.singlePost || setTimeout(fo, 100);
+            c.type != "http" ? (Xr = !0, qr(Ct), yt(i)) : c.singlePost || setTimeout(go, 100);
           };
-          Ho(i, Ah, wm).call(i, Ze, ha, function(Yr) {
+          Ko(i, Ah, wm).call(i, Ze, ha, function(Yr) {
             if (i._errorCode == -1029 && (Ze.transferMode == l.DWT.EnumDWT_TransferMode.TWSX_FILE ? z.length > 0 : ne.length > 0))
               return i._errorCode = 0, ha();
             var ri = { code: i._errorCode, message: i._getErrorString(), response: i.__HTTPPostResponseString };
@@ -27016,7 +27017,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       t.__OnReady = i.onReady || null, t.__OnWSReconnect = i.onWSReconnect || null, t.__OnWSClose = i.onWSClose || null, t.__OnWSMessage = i.onWSMessage || null, t.__OnWSError = i.onWSError || null, t.__OnCreateError = i.onCreateError || null, t.__OnPercentDone = i.onPercentDone || "", t.__OnPrintMsg = i.onPrintMsg || "", t.__OnResult = i.onResult || "", t.__OnAfterOperate = i.onAfterOperate || "", t.__OnBeforeOperate = i.onBeforeOperate || "", t.__OnOperateStatus = i.onOperateStatus || "", t.__OnBitmapChanged = i.onBitmapChanged || "", t.__OnGetFilePath = i.onGetFilePath || "", t.__OnPreAllTransfers = i.onPreAllTransfers || "", t.__OnPreTransfer = i.onPreTransfer || "", t.__OnPostLoad = i.onPostLoad || "", t.__OnPostTransfer = i.onPostTransfer || "", t.__OnPostAllTransfers = i.onPostAllTransfers || "", t.__OnSourceUIClose = i.onSourceUIClose || "", t.__OnTransferCancelled = i.onTransferCancelled || "", t.__OnTransferError = i.onTransferError || "", t.__OnInternetTransferPercentage = i.onInternetTransferPercentage || "", t.__OnInternetTransferPercentageEx = i.onInternetTransferPercentageEx || "", t.__OnRemoteScanStatusAsync = i.onRemoteScanStatusAsync || "", t.__OnPostTransferAsync = {};
     }(o, r);
   }
-  var uu, Fh = function(o) {
+  var cu, Fh = function(o) {
     Hr(r, o);
     var e = Rh(r);
     function r(t) {
@@ -27145,9 +27146,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return o.bNoMask || n.closeLoadingMsg(), n.isFunction(r) && r(l.Lib.product.CustomizableDisplayInfo.errorMessages.ERR_CreateID_WebTwainIdDuplicated, M), !1;
       var A = {};
       return A.WebTwainId = M._id, M._containerElement && M._containerElement.id && (A.ContainerId = M._containerElement.id), l.DWT.DynamicContainers.push(A), l.DWT.ContainerMap[M._id] = M, l.DWT.IfDisableDefaultSettings || !M._isTwainServiceType() && !M._isDMServiceType() ? (o.bNoMask || n.closeLoadingMsg(), n.isFunction(e) && e(M)) : Bh(M).then(function() {
-        o.bNoMask || n.closeLoadingMsg(), n.isFunction(e) && e(M), cu(M);
+        o.bNoMask || n.closeLoadingMsg(), n.isFunction(e) && e(M), lu(M);
       }, function() {
-        o.bNoMask || n.closeLoadingMsg(), M._errorCode == -2207 && (n.detect.bPromptJSOrServerOutdated || (n.detect.bPromptJSOrServerOutdated = Gt)), cu(M);
+        o.bNoMask || n.closeLoadingMsg(), M._errorCode == -2207 && (n.detect.bPromptJSOrServerOutdated || (n.detect.bPromptJSOrServerOutdated = Gt)), lu(M);
       }), !0;
     }, o.onCreateError = function(M) {
       if (Oh.DCP_DWT_OnClickCloseInstall(!1, !0), n.isFunction(r)) {
@@ -27196,7 +27197,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       _ && _.getEL() && (_.getEL().style.display = "none"), n.detect.needUpgrade = Gt, l.OnWebTwainNeedUpgradeCallback(n.product.name, c, n.product.bHTML5Edition, t, r.bIE, r.bSafari, n.detect.ssl, n.env.strIEVersion, n.detect.bPromptJSOrServerOutdated, o, e);
     }
   }
-  function cu(o) {
+  function lu(o) {
     return Wh.apply(this, arguments);
   }
   function Wh() {
@@ -27270,7 +27271,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
               return t.abrupt("return");
             case 4:
-              return e.__bConnecting = !0, t.prev = 5, t.next = 8, Xs();
+              return e.__bConnecting = !0, t.prev = 5, t.next = 8, Qs();
             case 8:
               return t.next = 10, Uh(e);
             case 10:
@@ -27340,9 +27341,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }))).apply(this, arguments);
   }
   function jh() {
-    Qs(null, 0, 0, !1, !1);
+    Zs(null, 0, 0, !1, !1);
   }
-  var lu, Fs, Dm = l.DWT, fs = l.navInfoSync, il = n.each;
+  var du, Fs, Dm = l.DWT, fs = l.navInfoSync, il = n.each;
   function Os() {
     var o, e = n.detect, r = 5;
     if (!n.product.bHTML5Edition)
@@ -27354,22 +27355,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       e.bNoControlEvent || Yn(""), zh(t);
     }
     if (e.cUrlIndex >= e.urls.length && (e.cUrlIndex = 0, e.tryTimes++), !(e.arySTwains.length > 0))
-      return e.bOK = !0, void lu();
+      return e.bOK = !0, void du();
     var i = (o = e.arySTwains[0])._getWebTwainId();
     if (l.DWT.ContainerMap[i] && o._OnReady(), o._bReady || o._destroy)
-      return e.arySTwains.splice(0, 1), void (e.arySTwains.length <= 0 ? (e.bOK = !0, lu()) : setTimeout(Os, 100));
+      return e.arySTwains.splice(0, 1), void (e.arySTwains.length <= 0 ? (e.bOK = !0, du()) : setTimeout(Os, 100));
     if (e.bNoControlEvent || fr("", o), !o.__bConnecting) {
       if (o.__bConnecting = !0, o._isTwainServiceType() || o._isDMServiceType()) {
         var a = ti.Instance.getClient(o._serverInfo);
         return a.testConnection().then(function() {
-          o.__bConnecting = !1, o._wsClient = a, o._bReady || (o._bReady = !0, o._OnReady()), e.arySTwains.splice(0, 1), e.arySTwains.length <= 0 ? (Yn(""), e.bOK = !0, lu()) : setTimeout(Os, 100);
+          o.__bConnecting = !1, o._wsClient = a, o._bReady || (o._bReady = !0, o._OnReady()), e.arySTwains.splice(0, 1), e.arySTwains.length <= 0 ? (Yn(""), e.bOK = !0, du()) : setTimeout(Os, 100);
         }, function(u) {
           var c;
           u && u.message && (c = u.message, n.error(c)), o.__bConnecting = !1, o._bReady ? (Yn(""), Fs(c)) : (e.cUrlIndex++, setTimeout(Os, 100));
         });
       }
       return o._isWasmWithScan() ? Uh(o).then(function() {
-        e.arySTwains.splice(0, 1), e.arySTwains.length <= 0 ? (Yn(""), e.bOK = !0, lu()) : setTimeout(Os, 100);
+        e.arySTwains.splice(0, 1), e.arySTwains.length <= 0 ? (Yn(""), e.bOK = !0, du()) : setTimeout(Os, 100);
       }, function(u) {
         o._bReady ? (Yn(""), Fs(u)) : (e.cUrlIndex++, setTimeout(Os, 100));
       }) : void 0;
@@ -27390,20 +27391,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var e, r = l.Lib, t = l.dcp, i = r.LS.item("DWT_port"), a = r.LS.item("DWT_ssl");
     if (t.bEnhancedMode)
       return !0;
-    r.detect.urls.splice(0), r.detect.cUrlIndex = 0, i !== uu && a !== uu && (e = { port: i, ssl: a == "true" });
+    r.detect.urls.splice(0), r.detect.cUrlIndex = 0, i !== cu && a !== cu && (e = { port: i, ssl: a == "true" });
     var u = function(c) {
       return !e || !(!c || c.port == e.port && c.ssl == e.ssl);
     };
-    r.detect.detectType === 1 ? (e !== uu && e.ssl && r.detect.urls.push(e), il(r.detect.ports, function(c) {
+    r.detect.detectType === 1 ? (e !== cu && e.ssl && r.detect.urls.push(e), il(r.detect.ports, function(c) {
       c.ssl && u(c) && r.detect.urls.push(c);
-    })) : r.detect.detectType === 0 ? (e === uu || e.ssl || r.detect.urls.push(e), il(r.detect.ports, function(c) {
+    })) : r.detect.detectType === 0 ? (e === cu || e.ssl || r.detect.urls.push(e), il(r.detect.ports, function(c) {
       c.ssl === !1 && u(c) && r.detect.urls.push(c);
-    })) : (e !== uu && r.detect.urls.push(e), il(r.detect.ports, function(c) {
+    })) : (e !== cu && r.detect.urls.push(e), il(r.detect.ports, function(c) {
       u(c) && r.detect.urls.push(c);
     }));
   }, n.startCheckWS = function() {
     return n.detect.tryTimes = 0, new n.Promise(function(o, e) {
-      lu = o, Fs = e, setTimeout(Os, 200);
+      du = o, Fs = e, setTimeout(Os, 200);
     });
   }, n.html5.closeAll = function() {
     var o, e, r, t, i, a, u, c;
@@ -27551,7 +27552,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var _ = "fa/VersionInfo?ts=" + c;
     ji.getHttpClient(o, e, n.detect.ssl).request(d, _, {}, r).then(i, a);
   }
-  function du(o, e, r) {
+  function hu(o, e, r) {
     var t, i = o.host, a = o.port;
     return o.iServiceType === hr ? (n.showLoadingMsg(-1, "", l.MSG.Init_CreatingDWT), n.detect.dcpStatus = 2, al("", 0), void Ka(!1).then(function() {
       n.isFunction(o.wasmModeCallback) && o.wasmModeCallback();
@@ -27559,7 +27560,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       n.isFunction(o.serviceModeCallback) && o.serviceModeCallback();
     })) : (n.showLoadingMsg(-1, "", l.MSG.Init_CheckDWT), t = r > 0 ? r + 1 : 1, a || n.each(n.detect.ports, function(u) {
       qa.bSSL ? u.ssl && (a = u.port) : u.ssl || (a = u.port);
-    }), n.showLoadingMsg(-1, "", l.MSG.Init_CheckDWTVersion), void Kh(i, a, _o, function(u, c, d, _) {
+    }), n.showLoadingMsg(-1, "", l.MSG.Init_CheckDWTVersion), void Kh(i, a, vo, function(u, c, d, _) {
       if (u === ol && _ && _.length > 0 && ed(_, n.product.getServerVersionInfo(!0)))
         return n.detect.dcpStatus = 2, al(c, d), n.showLoadingMsg(-1, "", l.MSG.Init_CreatingDWT), void Ka(!1).then(function() {
           n.isFunction(o.serviceModeCallback) && o.serviceModeCallback(c, d);
@@ -27568,13 +27569,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (t > 3)
           return n.closeLoadingMsg(), n.detect.dcpStatus = 3, void (n.isFunction(o.dwtFailedCallback) && o.dwtFailedCallback({ code: u, message: c }));
         setTimeout(function() {
-          du(o, Gt, t);
+          hu(o, Gt, t);
         }, 1e3);
       } else {
         if (!l.DWT.IfInstallDWTModuleWithZIP)
           return n.closeLoadingMsg(), n.detect.dcpStatus = 3, void (n.isFunction(o.dwtFailedCallback) && o.dwtFailedCallback({ code: u, message: c }));
         sl(o, function() {
-          du(o, Gt, t);
+          hu(o, Gt, t);
         });
       }
     }));
@@ -27597,7 +27598,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     };
     if (!l.DWT.IfCheckDCP || o.iServiceType === hr || o.iServiceType === Zn)
-      return o.dwtFailedCallback || (o.dwtFailedCallback = e), void du(o, vt, 0);
+      return o.dwtFailedCallback || (o.dwtFailedCallback = e), void hu(o, vt, 0);
     var r = function(t) {
       var i = 1, a = l.navInfoSync;
       if (l.navInfoSync.bWin && (i = t > 0 ? t + 1 : 1) > 3)
@@ -27616,7 +27617,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 Ea.getPorts(Ea.strSID, u, c);
               }, 800), !0) : ++d > 5 ? (r(i), !1) : (setTimeout(function() {
                 Ea.getPorts(Ea.strSID, u, c);
-              }, 300), !0) : (o.port = a.bSSL ? T : v, A = o.port, n.detect.urls.splice(0), n.detect.urls.push({ port: A, ssl: qa.bSSL }), n.detect.ports = [{ port: A, ssl: qa.bSSL }], n.detect.cUrlIndex = 0, qa.bSSL ? l.DWT.SSLPort = A : l.DWT.Port = A, du(o, vt, 0), !0);
+              }, 300), !0) : (o.port = a.bSSL ? T : v, A = o.port, n.detect.urls.splice(0), n.detect.urls.push({ port: A, ssl: qa.bSSL }), n.detect.ports = [{ port: A, ssl: qa.bSSL }], n.detect.cUrlIndex = 0, qa.bSSL ? l.DWT.SSLPort = A : l.DWT.Port = A, hu(o, vt, 0), !0);
           }
           var A;
           return l.DWT.IfInstallDWTModuleWithZIP ? (sl(o, function() {
@@ -27628,7 +27629,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }), !0) : (n.detect.dcpStatus = 3, void (n.isFunction(o.dwtFailedCallback) && o.dwtFailedCallback()));
         }, Ea.getPorts(Ea.strSID, u, c), !0;
       }
-      return r = null, du(o, vt, 0), !0;
+      return r = null, hu(o, vt, 0), !0;
     };
     Jh(r, e);
   }
@@ -27654,7 +27655,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     c.bConnected = !1, l.DWT.ConnectWithSocket && l.navInfoSync.bHTML5Edition ? u._checkManagerVersionWS(t, d, _) : u._checkManagerVersion(t, d, _);
   }
   if (n.LS = km, l.DWT.NetManager.checkModuleManager = Jh, n.product.bHTML5Edition) {
-    var hu, Xh = function() {
+    var fu, Xh = function() {
       try {
         if ((typeof WebAssembly > "u" ? "undefined" : gi(WebAssembly)) === "object" && typeof WebAssembly.instantiate == "function") {
           var o = new WebAssembly.Module(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0]));
@@ -27709,16 +27710,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             M && M.error(v.message);
           }
           if (d && d.length > 0) {
-            if (T || fu.DCP_DWT_OnClickCloseInstall(!1, !0), n.isUndefined(t))
+            if (T || gu.DCP_DWT_OnClickCloseInstall(!1, !0), n.isUndefined(t))
               for (a = 0; a < d.length && !(n.product.bHTML5Edition && Xn(u = d[a].WebTwainId) && (c = l.DWT.ContainerMap[u])); a++)
                 ;
             else
               c = t;
             c && (n.product.bHTML5Edition ? (c._isTwainServiceType() || c._isDMServiceType()) && (_ = c._innerFunRawV2("LogLevel").then(function() {
-              cu(c);
+              lu(c);
             }, function() {
-              c._errorCode == -2207 && (n.isFunction(l.DWT.OnWebTwainNeedUpgradeWebJavascript) ? l.DWT.OnWebTwainNeedUpgradeWebJavascript(c.ErrorString) : n.detect.bPromptJSOrServerOutdated || (n.detect.bPromptJSOrServerOutdated = Gt)), cu(c);
-            })) : cu(c));
+              c._errorCode == -2207 && (n.isFunction(l.DWT.OnWebTwainNeedUpgradeWebJavascript) ? l.DWT.OnWebTwainNeedUpgradeWebJavascript(c.ErrorString) : n.detect.bPromptJSOrServerOutdated || (n.detect.bPromptJSOrServerOutdated = Gt)), lu(c);
+            })) : lu(c));
           }
           var A = [], S = !1;
           for (n.License.isLTS() && n.isNumber(v.code) && v.code !== 0 && v.fromLTS === !0 && (S = !0), a = 0; a < d.length; a++)
@@ -27726,7 +27727,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           A.length > 0 && (_ = _.then(function() {
             return l.Lib.Promise.all(A);
           })), d = null, S ? (l.DWT.ContainerMap = {}, n.detect.arySTwains.splice(0)) : _ = _.then(function() {
-            n.isFunction(l.DWT.OnWebTwainReady) ? l.DWT.OnWebTwainReady() : n.isFunction(fu.Dynamsoft_OnReady) && fu.Dynamsoft_OnReady();
+            n.isFunction(l.DWT.OnWebTwainReady) ? l.DWT.OnWebTwainReady() : n.isFunction(gu.Dynamsoft_OnReady) && gu.Dynamsoft_OnReady();
           }, function(V) {
             n.error(V);
           });
@@ -27751,7 +27752,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (o.UseLocalService === !1 && !Xh())
         return n.closeLoadingMsg(), Zh(), r && r(l.MSG.Err_BrowserNotSupportWasm), vt;
       var a, u, c = {}, d = o.WebTwainId, _ = o.Host, v = o.Port, T = o.PortSSL;
-      return !n.product._srcUseLocalService && o.UseLocalService && (n.detect.dcpStatus = 0, n.product._srcUseLocalService = !0), o.Container ? (a = o.Container, c.container = o.Container, c.bNoViewer = !1, (u = c.container.id) !== hu && u !== null && u !== "" || (c.container.id = ["dwt_", n.getRandom()].join("")), c.containerId = c.container.id, c.id = d === hu || d === null || d === "" ? c.container.id : d) : d === hu || d === null || d === "" ? (c.id = ["dwt_", n.getRandom()].join(""), c.bNoViewer = !0) : n.isString(d) && n.get(d) ? (c.id = d, c.containerId = d, a = n.get(d), c.bNoViewer = !1) : (c.id = d, c.bNoViewer = !0), c.bNoViewer ? (c.width = 0, c.height = 0) : (n.isUndefined(o.Width) ? a && a.style.width ? c.width = a.style.width : c.width = 300 : c.width = o.Width, n.isUndefined(o.Height) ? a && a.style.height ? c.height = a.style.height : c.height = 300 : c.height = o.Height), o.UseLocalService ? (l.navInfoSync.bAndroid ? (c.iServiceType = Zn, n.detect.bNeedWasm = !0) : c.iServiceType = Vr, c.dmService = o.dmService) : (c.iServiceType = hr, n.detect.bNeedWasm = !0), c.iServiceType != Vr && c.iServiceType != Zn || (n.isString(_) && _ != "" || (_ = K()), c.host = _, $h.bSSL ? (T || (T = l.DWT.SSLPort), c.port = T) : (v || (v = l.DWT.Port), c.port = v)), us().then(Xs).then(function() {
+      return !n.product._srcUseLocalService && o.UseLocalService && (n.detect.dcpStatus = 0, n.product._srcUseLocalService = !0), o.Container ? (a = o.Container, c.container = o.Container, c.bNoViewer = !1, (u = c.container.id) !== fu && u !== null && u !== "" || (c.container.id = ["dwt_", n.getRandom()].join("")), c.containerId = c.container.id, c.id = d === fu || d === null || d === "" ? c.container.id : d) : d === fu || d === null || d === "" ? (c.id = ["dwt_", n.getRandom()].join(""), c.bNoViewer = !0) : n.isString(d) && n.get(d) ? (c.id = d, c.containerId = d, a = n.get(d), c.bNoViewer = !1) : (c.id = d, c.bNoViewer = !0), c.bNoViewer ? (c.width = 0, c.height = 0) : (n.isUndefined(o.Width) ? a && a.style.width ? c.width = a.style.width : c.width = 300 : c.width = o.Width, n.isUndefined(o.Height) ? a && a.style.height ? c.height = a.style.height : c.height = 300 : c.height = o.Height), o.UseLocalService ? (l.navInfoSync.bAndroid ? (c.iServiceType = Zn, n.detect.bNeedWasm = !0) : c.iServiceType = Vr, c.dmService = o.dmService) : (c.iServiceType = hr, n.detect.bNeedWasm = !0), c.iServiceType != Vr && c.iServiceType != Zn || (n.isString(_) && _ != "" || (_ = K()), c.host = _, $h.bSSL ? (T || (T = l.DWT.SSLPort), c.port = T) : (v || (v = l.DWT.Port), c.port = v)), us().then(Qs).then(function() {
         return new n.Promise(function(M, A) {
           Yh({ host: c.host, port: c.port, iServiceType: c.iServiceType, serviceModeCallback: function(S, V) {
             rl(c, M, function(ne, z, ue) {
@@ -27770,21 +27771,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, function(M) {
         n.closeLoadingMsg();
       }), Gt;
-    }, $h = l.navInfoSync, fu = n.win, ul = l.Lib.timestamp;
-    fu.addEventListener("beforeunload", function() {
+    }, $h = l.navInfoSync, gu = n.win, ul = l.Lib.timestamp;
+    gu.addEventListener("beforeunload", function() {
       l.Lib.page.bUnload = !0, l.DWT.Unload(), l.Lib.page.OnUnload && l.Lib.page.OnUnload();
-    }), fu.addEventListener("unload", function() {
+    }), gu.addEventListener("unload", function() {
       l.DWT.Unload();
     }), n.replaceControl = function(o, e) {
       l.DWT.ContainerMap[o] = e;
     }, n.detect.onNoControl = function(o, e, r, t) {
       t && t._bRemoteMode && !t._bNotShowMessage ? n.isFunction(l.OnRemoteWebTwainNotFoundCallback) && l.OnRemoteWebTwainNotFoundCallback(n.product.name, t._serverInfo.server, t._serverInfo.port, t._serverInfo.ssl, n.env.bMobile) : (l.DWT.licenseException.code != 0 || n.detect.bOK || n.asyncQueue.pushToDo(null, l.DWT.Load), n.product.bHTML5Edition ? l.DWT.CheckWebTwainBySocket(function() {
-        l.DWT.NeedCheckWebTwainBySocket() ? n.isFunction(l.OnHTTPCorsError) && l.OnHTTPCorsError() : Qs(o, e, r, !1, !0);
+        l.DWT.NeedCheckWebTwainBySocket() ? n.isFunction(l.OnHTTPCorsError) && l.OnHTTPCorsError() : Zs(o, e, r, !1, !0);
       }, function() {
-        Qs(o, e, r, !0, !0);
+        Zs(o, e, r, !0, !0);
       }, function() {
-        Qs(o, e, r, !1, !1);
-      }) : Qs(o, e, r, !1, !0));
+        Zs(o, e, r, !1, !1);
+      }) : Zs(o, e, r, !1, !0));
     }, l.DWT.Unload = function() {
       Qh();
       try {
@@ -27845,7 +27846,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       };
     }();
     l.DWT.Load = function() {
-      return n.product.bDWTLoading ? n.Promise.resolve() : (n.product.bDWTLoading = Gt, n.openLoadingMsg(), Ds().then(us).then(Xs).then(Qh).then(function() {
+      return n.product.bDWTLoading ? n.Promise.resolve() : (n.product.bDWTLoading = Gt, n.openLoadingMsg(), Ds().then(us).then(Qs).then(Qh).then(function() {
         l.DWT.CloseDialog();
       }).then(l.DWT._innerLoad).then(function() {
         n.product.bDWTLoading = !1, n.closeLoadingMsg();
@@ -27861,7 +27862,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             break;
           }
       }
-      a || (a = K()), l.navInfoSync.bAndroid ? oo().then(c, d) : Kh(a, u, _o, function(_, v, T, M) {
+      a || (a = K()), l.navInfoSync.bAndroid ? oo().then(c, d) : Kh(a, u, vo, function(_, v, T, M) {
         if (_ === ol && M && M.length > 0 && ed(M, n.product.getServerVersionInfo(!0)))
           return l.DWT.CloseDialog(), void (n.isFunction(c) && c(v, T));
         n.isFunction(d) && d();
@@ -28016,7 +28017,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               V.next = 50;
               break;
             case 48:
-              return V.next = 50, ef(hu, hu, T);
+              return V.next = 50, ef(fu, fu, T);
             case 50:
               V.next = 54;
               break;
@@ -28163,7 +28164,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                         case 2:
                           return it.sent, it.next = 5, A.acquireImage(o, d, !1);
                         case 5:
-                          xe = it.sent, Fe = 0, Ze = ru(u);
+                          xe = it.sent, Fe = 0, Ze = iu(u);
                         case 8:
                           return it.prev = 8, it.next = 11, A.getImageToDWT(xe, Ze);
                         case 11:
@@ -28526,9 +28527,9 @@ G.AddonReady(function(l, n) {
   * @fileoverview Dynamsoft JavaScript Library for Image IO
   * 
   */
-  (function(x, re) {
-    typeof exports == "object" && typeof module < "u" ? re(exports) : (typeof define == "function" && define.amd, re(((x = typeof Xi < "u" ? Xi : x || self).Dynamsoft = x.Dynamsoft || {}, x.Dynamsoft.ImageIO = {})));
-  })(this, function(x) {
+  (function(k, re) {
+    typeof exports == "object" && typeof module < "u" ? re(exports) : (typeof define == "function" && define.amd, re(((k = typeof Xi < "u" ? Xi : k || self).Dynamsoft = k.Dynamsoft || {}, k.Dynamsoft.ImageIO = {})));
+  })(this, function(k) {
     var re = function($, pe) {
       return re = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(se, Ie) {
         se.__proto__ = Ie;
@@ -28668,7 +28669,7 @@ G.AddonReady(function(l, n) {
       $[$.LONG_KEY = 0] = "LONG_KEY", $[$.DLS_KEY = 1] = "DLS_KEY";
     }(U || (U = {})), function($) {
       $[$.wasmBase = -4e3] = "wasmBase", $[$.wasmException = -4001] = "wasmException", $[$.wasmNoModule = -4002] = "wasmNoModule", $[$.wasmJsBase = -4100] = "wasmJsBase", $[$.wasmJsObjectNotInit = -4101] = "wasmJsObjectNotInit", $[$.wasmJsObjectTerminated = -4102] = "wasmJsObjectTerminated", $[$.wasmJsObjectInitFailed = -4103] = "wasmJsObjectInitFailed", $[$.wasmJsNotLoaded = -4104] = "wasmJsNotLoaded", $[$.wasmJsInvalidJson = -4105] = "wasmJsInvalidJson", $[$.wasmJsWorkerRunException = -4106] = "wasmJsWorkerRunException", $[$.wasmJsWorkerRunFailed = -4107] = "wasmJsWorkerRunFailed", $[$.wasmJsReadFileFailed = -4108] = "wasmJsReadFileFailed", $[$.wasmJsCoreTaskException = -4109] = "wasmJsCoreTaskException", $[$.wasmJsProcTaskException = -4110] = "wasmJsProcTaskException", $[$.wasmJsSavePdfFailed = -4111] = "wasmJsSavePdfFailed", $[$.wasmJsSaveTiffFailed = -4112] = "wasmJsSaveTiffFailed";
-    }(H || (H = {})), x.ImageType = void 0, (K = x.ImageType || (x.ImageType = {}))[K.IT_DIB = -1] = "IT_DIB", K[K.IT_RGBA = -2] = "IT_RGBA", K[K.IT_BGRA = -3] = "IT_BGRA", K[K.IT_BMP = 0] = "IT_BMP", K[K.IT_JPG = 1] = "IT_JPG", K[K.IT_PNG = 3] = "IT_PNG", K[K.IT_ALL = 5] = "IT_ALL", x.ReturnedDataType = void 0, (Y = x.ReturnedDataType || (x.ReturnedDataType = {}))[Y.RT_AUTO = -1] = "RT_AUTO", Y[Y.RT_BINARY = 1] = "RT_BINARY", Y[Y.RT_BASE64 = 2] = "RT_BASE64", function($) {
+    }(H || (H = {})), k.ImageType = void 0, (K = k.ImageType || (k.ImageType = {}))[K.IT_DIB = -1] = "IT_DIB", K[K.IT_RGBA = -2] = "IT_RGBA", K[K.IT_BGRA = -3] = "IT_BGRA", K[K.IT_BMP = 0] = "IT_BMP", K[K.IT_JPG = 1] = "IT_JPG", K[K.IT_PNG = 3] = "IT_PNG", K[K.IT_ALL = 5] = "IT_ALL", k.ReturnedDataType = void 0, (Y = k.ReturnedDataType || (k.ReturnedDataType = {}))[Y.RT_AUTO = -1] = "RT_AUTO", Y[Y.RT_BINARY = 1] = "RT_BINARY", Y[Y.RT_BASE64 = 2] = "RT_BASE64", function($) {
       $[$.SF_DEF = 0] = "SF_DEF", $[$.SF_ENABLE = 1] = "SF_ENABLE", $[$.SF_DISABLE = 2] = "SF_DISABLE";
     }(F || (F = {}));
     var Ee, Le = function() {
@@ -29324,7 +29325,7 @@ G.AddonReady(function(l, n) {
     }(), Zi = function() {
       function $(ie, _e) {
         var de, Se, Ae, ze;
-        pe.add(this), he.set(this, void 0), this._outputType = x.ImageType.IT_JPG, this._inputType = x.ImageType.IT_ALL, this._jpegQuality = 80, tt.set(this, (de = ot.License) !== null && de !== void 0 ? de : ""), ht.set(this, []), wt.set(this, null), kt.set(this, 0), Vt.set(this, ""), Nt.set(this, null), fn.set(this, null), Hn.set(this, me(ze = $, se, +E(ze, se, "f", Ie) + 1, "f", Ie)), er.set(this, null), sr.set(this, JSON.parse(JSON.stringify(ot.NavInfo))), li.set(this, ot.Mobile), Lr.set(this, location.origin), Ci.set(this, ""), Er.set(this, p.init), mr.set(this, !1), yr.set(this, (Se = ot.LicMode) !== null && Se !== void 0 ? Se : U.LONG_KEY), Gr.set(this, (Ae = ot.UUID) !== null && Ae !== void 0 ? Ae : ""), this._handleBooleanResult = function(qe, Ke) {
+        pe.add(this), he.set(this, void 0), this._outputType = k.ImageType.IT_JPG, this._inputType = k.ImageType.IT_ALL, this._jpegQuality = 80, tt.set(this, (de = ot.License) !== null && de !== void 0 ? de : ""), ht.set(this, []), wt.set(this, null), kt.set(this, 0), Vt.set(this, ""), Nt.set(this, null), fn.set(this, null), Hn.set(this, me(ze = $, se, +E(ze, se, "f", Ie) + 1, "f", Ie)), er.set(this, null), sr.set(this, JSON.parse(JSON.stringify(ot.NavInfo))), li.set(this, ot.Mobile), Lr.set(this, location.origin), Ci.set(this, ""), Er.set(this, p.init), mr.set(this, !1), yr.set(this, (Se = ot.LicMode) !== null && Se !== void 0 ? Se : U.LONG_KEY), Gr.set(this, (Ae = ot.UUID) !== null && Ae !== void 0 ? Ae : ""), this._handleBooleanResult = function(qe, Ke) {
           return !0;
         }, me(this, he, ie, "f"), me(this, tt, _e ?? ot.License, "f"), this.setLog(ot.LogLevel, ot.LogFunc, ot.LogContext);
       }
@@ -29386,7 +29387,7 @@ G.AddonReady(function(l, n) {
         var Se = { moduleName: E(this, he, "f").name, insId: E(this, Hn, "f") }, Ae = { id: me(this, kt, +E(this, kt, "f") + 1, "f"), func: ie, params: Se };
         return Ae.promise = new Promise(function(ze, qe) {
           Ae.resolve = ze, Ae.reject = qe;
-        }), Ae.func = ie, Ae.context = this, Ae.handleResult = de !== void 0 && de ? de : this._handleBasicResult, Ae.params.input = _e !== void 0 && _e ? _e : "", Ae.params.returnType = x.ReturnedDataType.RT_AUTO, Ae.params.returnBlob = !0, ot.LogLevel === C.logDebug && (Ae.params.logLevel = C.logDebug), Ae;
+        }), Ae.func = ie, Ae.context = this, Ae.handleResult = de !== void 0 && de ? de : this._handleBasicResult, Ae.params.input = _e !== void 0 && _e ? _e : "", Ae.params.returnType = k.ReturnedDataType.RT_AUTO, Ae.params.returnBlob = !0, ot.LogLevel === C.logDebug && (Ae.params.logLevel = C.logDebug), Ae;
       }, $.prototype._addTask = function(ie, _e) {
         return E(this, Er, "f") === p.destroyed ? ie.reject({ code: H.wasmJsObjectNotInit, message: E(this, mr, "f") ? "object has been disposed" : "object not init" }) : E(this, Er, "f") === p.failed ? ie.reject({ code: H.wasmJsObjectInitFailed, message: E(this, Ci, "f") }) : (_e ? E(this, ht, "f").unshift(ie) : E(this, ht, "f").push(ie), E(this, pe, "m", ui).call(this)), ie.promise;
       }, $.prototype.terminate = function(ie) {
@@ -29554,7 +29555,7 @@ G.AddonReady(function(l, n) {
               case 0:
                 return Ie = Ie ?? this._outputType, he = he ?? this._jpegQuality, tt = tt != null && tt, ht = ht != null && ht, kt = (wt = this)._createTask("ReadImage"), [4, wt._readFile(se, kt)];
               case 1:
-                return Vt = Nt.sent(), kt.params.input = [Vt, Ie, he, ht], kt.params.returnType = tt ? x.ReturnedDataType.RT_BASE64 : x.ReturnedDataType.RT_AUTO, kt.params.returnBlob = !tt, kt.handleResult = wt._handleImageData, wt._addTask(kt), [2, kt.promise];
+                return Vt = Nt.sent(), kt.params.input = [Vt, Ie, he, ht], kt.params.returnType = tt ? k.ReturnedDataType.RT_BASE64 : k.ReturnedDataType.RT_AUTO, kt.params.returnBlob = !tt, kt.handleResult = wt._handleImageData, wt._addTask(kt), [2, kt.promise];
             }
           });
         });
@@ -29575,7 +29576,7 @@ G.AddonReady(function(l, n) {
       }, pe.prototype.readTiff = function(se, Ie, he, tt) {
         se = se ?? 0, Ie = Ie ?? this._outputType, he = he != null && he, tt = tt != null && tt;
         var ht = this._createTask("ReadTiffPage");
-        return ht.params.input = [se, Ie, tt], ht.params.returnType = he ? x.ReturnedDataType.RT_BASE64 : x.ReturnedDataType.RT_AUTO, ht.params.returnBlob = !he, ht.handleResult = this._handleImageData, this._addTask(ht);
+        return ht.params.input = [se, Ie, tt], ht.params.returnType = he ? k.ReturnedDataType.RT_BASE64 : k.ReturnedDataType.RT_AUTO, ht.params.returnBlob = !he, ht.handleResult = this._handleImageData, this._addTask(ht);
       }, pe.prototype.readTiffInfo = function(se) {
         se = se ?? 0;
         var Ie = this._createTask("GetTiffPageInfo");
@@ -29600,7 +29601,7 @@ G.AddonReady(function(l, n) {
         return he = he != null && he, this._addTask(this._createTask("AddTagToNextPage", [se, Ie, he], this._handleBooleanResult));
       }, pe.prototype.getTiff = function(se) {
         var Ie = this._createTask("GetTiffStream");
-        return Ie.handleResult = this._handleImageData, Ie.params.returnType = se ?? x.ReturnedDataType.RT_AUTO, Ie.params.returnBlob = se != x.ReturnedDataType.RT_AUTO, this._addTask(Ie);
+        return Ie.handleResult = this._handleImageData, Ie.params.returnType = se ?? k.ReturnedDataType.RT_AUTO, Ie.params.returnBlob = se != k.ReturnedDataType.RT_AUTO, this._addTask(Ie);
       }, pe.prototype.getMemoryUsed = function() {
         return this._addTask(this._createTask("getMemoryUsed", null, function(se, Ie) {
           return se.memoryUsed;
@@ -29617,16 +29618,16 @@ G.AddonReady(function(l, n) {
         return J(this, function(er) {
           switch (er.label) {
             case 0:
-              return Nt = this, pe = pe ?? this._inputType, se = se ?? 0, Ie = Ie ?? 0, he = he ?? 24, tt = tt ?? 96, ht = ht ?? 96, wt = wt ?? this._outputType, kt = kt ?? this._jpegQuality, Vt = Vt ?? x.ReturnedDataType.RT_AUTO, fn = Nt._createTask("SaveImage"), [4, Nt._readFile($, fn)];
+              return Nt = this, pe = pe ?? this._inputType, se = se ?? 0, Ie = Ie ?? 0, he = he ?? 24, tt = tt ?? 96, ht = ht ?? 96, wt = wt ?? this._outputType, kt = kt ?? this._jpegQuality, Vt = Vt ?? k.ReturnedDataType.RT_AUTO, fn = Nt._createTask("SaveImage"), [4, Nt._readFile($, fn)];
             case 1:
-              return Hn = er.sent(), fn.params.input = [Hn, pe, se, Ie, he, tt, ht, wt, kt], fn.params.returnType = Vt, fn.params.returnBlob = Vt != x.ReturnedDataType.RT_BASE64, fn.handleResult = Nt._handleImageData, Nt._addTask(fn), [2, fn.promise];
+              return Hn = er.sent(), fn.params.input = [Hn, pe, se, Ie, he, tt, ht, wt, kt], fn.params.returnType = Vt, fn.params.returnBlob = Vt != k.ReturnedDataType.RT_BASE64, fn.handleResult = Nt._handleImageData, Nt._addTask(fn), [2, fn.promise];
           }
         });
       });
     }, function($) {
       $[$.NearestNeighbour = 1] = "NearestNeighbour", $[$.Bilinear = 2] = "Bilinear", $[$.Bicublic = 3] = "Bicublic", $[$.BestQuality = 5] = "BestQuality";
     }(Gi || (Gi = {}));
-    var gi, ra, Ao = function($) {
+    var gi, ra, Ro = function($) {
       function pe(se) {
         return $.call(this, ot.ImageProcModule, se) || this;
       }
@@ -29636,11 +29637,11 @@ G.AddonReady(function(l, n) {
           return J(this, function(Nt) {
             switch (Nt.label) {
               case 0:
-                return Ie = Ie != null && Ie, he = he ?? 0, tt = tt ?? 0, ht = ht != null && ht, (kt = (wt = this)._createTask("InitImageObject")).params.input = [se, he, tt], Ie || ht ? (Ie ? kt.params.input.push(x.ImageType.IT_RGBA) : kt.params.input.push(x.ImageType.IT_BGRA), wt._addTask(kt), [3, 3]) : [3, 1];
+                return Ie = Ie != null && Ie, he = he ?? 0, tt = tt ?? 0, ht = ht != null && ht, (kt = (wt = this)._createTask("InitImageObject")).params.input = [se, he, tt], Ie || ht ? (Ie ? kt.params.input.push(k.ImageType.IT_RGBA) : kt.params.input.push(k.ImageType.IT_BGRA), wt._addTask(kt), [3, 3]) : [3, 1];
               case 1:
                 return [4, wt._readFile(se, kt)];
               case 2:
-                Vt = Nt.sent(), kt.params.input[0] = Vt, kt.params.input.push(x.ImageType.IT_ALL), wt._addTask(kt), Nt.label = 3;
+                Vt = Nt.sent(), kt.params.input[0] = Vt, kt.params.input.push(k.ImageType.IT_ALL), wt._addTask(kt), Nt.label = 3;
               case 3:
                 return [2, kt.promise];
             }
@@ -29677,7 +29678,7 @@ G.AddonReady(function(l, n) {
       }, pe.prototype.setDPI = function(se, Ie, he, tt, ht, wt) {
         return ht = ht != null && ht, wt = wt ?? Gi.Bilinear, this._addTask(this._createTask("SetDPI", [se, Ie, he, tt, ht, wt], this._handleBooleanResult));
       }, pe.prototype.getImage = function(se, Ie, he, tt, ht, wt, kt, Vt, Nt) {
-        se = se ?? this._jpegQuality, Ie = Ie == null || Ie, he = he != null && he, tt = tt ?? 0, ht = ht ?? 0, wt = wt ?? 0, kt = kt == null || kt, Vt = he && Vt == null ? x.ImageType.IT_JPG : Vt ?? x.ImageType.IT_ALL, Nt = Nt != null && Nt;
+        se = se ?? this._jpegQuality, Ie = Ie == null || Ie, he = he != null && he, tt = tt ?? 0, ht = ht ?? 0, wt = wt ?? 0, kt = kt == null || kt, Vt = he && Vt == null ? k.ImageType.IT_JPG : Vt ?? k.ImageType.IT_ALL, Nt = Nt != null && Nt;
         var fn = this._createTask("GetCurrentImage");
         return fn.params.input = [Vt, tt, ht, wt, !1, se, Ie, Nt], fn.params.returnBlob = kt, fn.handleResult = this._handleImageData, this._addTask(fn);
       }, pe.prototype.getSkewAngle = function(se) {
@@ -29723,7 +29724,7 @@ G.AddonReady(function(l, n) {
               case 0:
                 if (he <= 0 || he >= se && he >= Ie)
                   return [2, { imageData: pe }];
-                ht = ht != null && ht, wt = new Ao(), Hn.label = 1;
+                ht = ht != null && ht, wt = new Ro(), Hn.label = 1;
               case 1:
                 return Hn.trys.push([1, , 9, 10]), [4, wt.initImage(pe)];
               case 2:
@@ -29754,7 +29755,7 @@ G.AddonReady(function(l, n) {
           return J(this, function(At) {
             switch (At.label) {
               case 0:
-                fn = new Ao(), At.label = 1;
+                fn = new Ro(), At.label = 1;
               case 1:
                 return At.trys.push([1, , 14, 15]), Hn = { src: null, result: null, preview: null }, er = pe.source, sr = pe.output, li = (Ie = (se = er.imageWidth) !== null && se !== void 0 ? se : er.width) !== null && Ie !== void 0 ? Ie : 0, Lr = (tt = (he = er.imageHeight) !== null && he !== void 0 ? he : er.height) !== null && tt !== void 0 ? tt : 0, Ci = er.imageData || er.data, sr == null || sr.orgImage == null && sr.previewImage == null ? [2, Hn] : (Er = (ht = er.rgba) !== null && ht !== void 0 && ht, mr = (wt = er.bgra) !== null && wt !== void 0 && wt, yr = (kt = pe.doPerspective) !== null && kt !== void 0 && kt, Gr = er.angle || 0, [4, fn.initImage(Ci, Er, li, Lr, mr)]);
               case 2:
@@ -29768,7 +29769,7 @@ G.AddonReady(function(l, n) {
               case 6:
                 return sr.orgImage ? (ui = sr.orgImage.returnBlob == null || sr.orgImage.returnBlob, Ei = er.imageBitDepth != null ? er.imageBitDepth : void 0, jn = er.imageXResolution != null ? er.imageXResolution : void 0, ye = er.imageYResolution != null ? er.imageYResolution : void 0, oe = ot.NavInfo.bMac || ot.NavInfo.biPhone || ot.NavInfo.biPad, [4, fn.getImage(sr.orgImage.quality, !1, Er || mr, Ei, jn, ye, ui, sr.orgImage.returnType, oe)]) : [3, 8];
               case 7:
-                ae = At.sent(), sr.orgImage.returnType == x.ImageType.IT_BGRA ? ae.bgra = !0 : sr.orgImage.returnType == x.ImageType.IT_RGBA && (ae.rgba = !0), Hn.result = ae, At.label = 8;
+                ae = At.sent(), sr.orgImage.returnType == k.ImageType.IT_BGRA ? ae.bgra = !0 : sr.orgImage.returnType == k.ImageType.IT_RGBA && (ae.rgba = !0), Hn.result = ae, At.label = 8;
               case 8:
                 return sr.previewImage ? (ie = li, _e = Lr, Gr != 90 && Gr != 270 || (ie = Lr, _e = li), de = Math.min(((Vt = sr.previewImage.width) !== null && Vt !== void 0 ? Vt : li) / ie, ((Nt = sr.previewImage.height) !== null && Nt !== void 0 ? Nt : Lr) / _e), Se = void 0, Ae = void 0, Gr == 90 || Gr == 270 ? (Se = Math.floor(Lr * de + 0.5), Ae = Math.floor(li * de + 0.5)) : (Se = Math.floor(li * de + 0.5), Ae = Math.floor(Lr * de + 0.5)), [4, fn.resize(Se, Ae, sr.previewImage.nInterplationMethod)]) : [3, 13];
               case 9:
@@ -29778,7 +29779,7 @@ G.AddonReady(function(l, n) {
               case 11:
                 return qe = sr.previewImage.returnBlob == null || sr.previewImage.returnBlob, [4, fn.getImage(sr.previewImage.quality, !0, Er || mr, void 0, void 0, void 0, qe, sr.previewImage.returnType)];
               case 12:
-                Ke = At.sent(), sr.previewImage.returnType == x.ImageType.IT_BGRA ? Ke.bgra = !0 : sr.previewImage.returnType == x.ImageType.IT_RGBA && (Ke.rgba = !0), Hn.preview = Ke, At.label = 13;
+                Ke = At.sent(), sr.previewImage.returnType == k.ImageType.IT_BGRA ? Ke.bgra = !0 : sr.previewImage.returnType == k.ImageType.IT_RGBA && (Ke.rgba = !0), Hn.preview = Ke, At.label = 13;
               case 13:
                 return [2, Hn];
               case 14:
@@ -29794,7 +29795,7 @@ G.AddonReady(function(l, n) {
           return J(this, function(Lr) {
             switch (Lr.label) {
               case 0:
-                ht = he ?? 85, wt = new Ao(), kt = tt ?? 0, Lr.label = 1;
+                ht = he ?? 85, wt = new Ro(), kt = tt ?? 0, Lr.label = 1;
               case 1:
                 return Lr.trys.push([1, , 9, 10]), [4, wt.initImage(pe)];
               case 2:
@@ -29808,7 +29809,7 @@ G.AddonReady(function(l, n) {
               case 6:
                 Lr.sent(), Lr.label = 7;
               case 7:
-                return Hn = se.imageBitDepth, er = se.imageXResolution, sr = se.imageYResolution, li = Hn == 1 ? x.ImageType.IT_PNG : x.ImageType.IT_JPG, [4, wt.getImage(ht, !1, !1, Hn, er, sr, !0, li)];
+                return Hn = se.imageBitDepth, er = se.imageXResolution, sr = se.imageYResolution, li = Hn == 1 ? k.ImageType.IT_PNG : k.ImageType.IT_JPG, [4, wt.getImage(ht, !1, !1, Hn, er, sr, !0, li)];
               case 8:
                 return [2, Lr.sent()];
               case 9:
@@ -29838,7 +29839,7 @@ G.AddonReady(function(l, n) {
               case 6:
                 wt = new Gn(), Nt.label = 7;
               case 7:
-                return Nt.trys.push([7, , 9, 10]), Vt = ht.imageBitDepth == 1 ? x.ImageType.IT_PNG : x.ImageType.IT_JPG, [4, wt.readImage(pe, Vt, tt, !1)];
+                return Nt.trys.push([7, , 9, 10]), Vt = ht.imageBitDepth == 1 ? k.ImageType.IT_PNG : k.ImageType.IT_JPG, [4, wt.readImage(pe, Vt, tt, !1)];
               case 8:
                 return [2, Nt.sent()];
               case 9:
@@ -29908,7 +29909,7 @@ G.AddonReady(function(l, n) {
     var pa = function($) {
       function pe(se) {
         var Ie = $.call(this, ot.PdfReaderModule, se) || this;
-        return Ur.set(Ie, 200), pt.set(Ie, 3), Ie._outputType = x.ImageType.IT_ALL, Ie;
+        return Ur.set(Ie, 200), pt.set(Ie, 3), Ie._outputType = k.ImageType.IT_ALL, Ie;
       }
       return R(pe, $), pe.prototype.open = function(se, Ie) {
         return O(this, void 0, void 0, function() {
@@ -29944,7 +29945,7 @@ G.AddonReady(function(l, n) {
         return O(this, void 0, void 0, function() {
           var Vt;
           return J(this, function(Nt) {
-            return se = se ?? 0, Ie = Ie ?? E(this, Ur, "f"), he = he ?? E(this, pt, "f"), tt = tt ?? this._outputType, wt = wt != null && wt, ht = ht != null && ht, kt = kt != null && kt, (Vt = this._createTask("ReadPdfPage")).params.input = [se, Ie, he, tt, ht, kt], Vt.params.returnType = wt ? x.ReturnedDataType.RT_BASE64 : x.ReturnedDataType.RT_AUTO, Vt.params.returnBlob = !wt, Vt.handleResult = this._handleImageData, [2, this._addTask(Vt)];
+            return se = se ?? 0, Ie = Ie ?? E(this, Ur, "f"), he = he ?? E(this, pt, "f"), tt = tt ?? this._outputType, wt = wt != null && wt, ht = ht != null && ht, kt = kt != null && kt, (Vt = this._createTask("ReadPdfPage")).params.input = [se, Ie, he, tt, ht, kt], Vt.params.returnType = wt ? k.ReturnedDataType.RT_BASE64 : k.ReturnedDataType.RT_AUTO, Vt.params.returnBlob = !wt, Vt.handleResult = this._handleImageData, [2, this._addTask(Vt)];
           });
         });
       }, pe.prototype.close = function() {
@@ -29995,7 +29996,7 @@ G.AddonReady(function(l, n) {
         return O(this, void 0, void 0, function() {
           var Ie;
           return J(this, function(he) {
-            return (Ie = this._createTask("GetModifiedPdf")).params.returnType = se ?? x.ReturnedDataType.RT_AUTO, Ie.params.returnBlob = se != x.ReturnedDataType.RT_AUTO, Ie.handleResult = this._handleImageData, [2, this._addTask(Ie)];
+            return (Ie = this._createTask("GetModifiedPdf")).params.returnType = se ?? k.ReturnedDataType.RT_AUTO, Ie.params.returnBlob = se != k.ReturnedDataType.RT_AUTO, Ie.handleResult = this._handleImageData, [2, this._addTask(Ie)];
           });
         });
       }, pe.prototype.addAnnot = function(se, Ie) {
@@ -30093,7 +30094,7 @@ G.AddonReady(function(l, n) {
       }, pe;
     }(Zi);
     Ur = /* @__PURE__ */ new WeakMap(), pt = /* @__PURE__ */ new WeakMap();
-    var No, To, oi, vi, ar, po = function($) {
+    var Vo, Co, oi, vi, ar, _o = function($) {
       function pe(se) {
         return $.call(this, se) || this;
       }
@@ -30138,7 +30139,7 @@ G.AddonReady(function(l, n) {
         return pe + (he ? "sn-" : "") + se + Ie;
       }, $.base64DecToArr = function(pe, se) {
         for (var Ie = pe.replace(/[^A-Za-z0-9\+\/]/g, ""), he = Ie.length, tt = se ? Math.ceil((3 * he + 1 >>> 2) / se) * se : 3 * he + 1 >>> 2, ht = new Uint8Array(tt), wt = void 0, kt = void 0, Vt = 0, Nt = 0, fn = 0; fn < he; fn++)
-          if (kt = 3 & fn, Vt |= E(this, No, "m", To).call(this, Ie.charCodeAt(fn)) << 18 - 6 * kt, kt === 3 || he - fn == 1) {
+          if (kt = 3 & fn, Vt |= E(this, Vo, "m", Co).call(this, Ie.charCodeAt(fn)) << 18 - 6 * kt, kt === 3 || he - fn == 1) {
             for (wt = 0; wt < 3 && Nt < tt; wt++, Nt++)
               ht[Nt] = Vt >>> (16 >>> wt & 24) & 255;
             Vt = 0;
@@ -30158,7 +30159,7 @@ G.AddonReady(function(l, n) {
         return (Date.now() % 10086).toString(36).slice(2) + Math.random().toString(36).slice(2);
       }, $;
     }();
-    No = ln, To = function($) {
+    Vo = ln, Co = function($) {
       return $ > 64 && $ < 91 ? $ - 65 : $ > 96 && $ < 123 ? $ - 71 : $ > 47 && $ < 58 ? $ + 4 : $ === 43 ? 62 : $ === 47 ? 63 : 0;
     }, function($) {
       $[$.auto = 0] = "auto", $[$.store = 1] = "store";
@@ -30191,7 +30192,7 @@ G.AddonReady(function(l, n) {
         return O(this, void 0, void 0, function() {
           var Ie;
           return J(this, function(he) {
-            return (Ie = this._createTask("GetPdfContent")).params.returnType = se ?? x.ReturnedDataType.RT_AUTO, Ie.params.returnBlob = se != x.ReturnedDataType.RT_AUTO, Ie.handleResult = this._handleImageData, [2, this._addTask(Ie)];
+            return (Ie = this._createTask("GetPdfContent")).params.returnType = se ?? k.ReturnedDataType.RT_AUTO, Ie.params.returnBlob = se != k.ReturnedDataType.RT_AUTO, Ie.handleResult = this._handleImageData, [2, this._addTask(Ie)];
           });
         });
       }, pe.prototype.newPage = function(se, Ie) {
@@ -30354,9 +30355,9 @@ G.AddonReady(function(l, n) {
         return !1;
       }, $;
     }();
-    x.ImageProc = Ao, x.ImageProcWrapper = zn, x.ImagecoreEx = Ln, x.PdfAnnot = ei, x.PdfReaderEx = po, x.PdfSettings = function() {
+    k.ImageProc = Ro, k.ImageProcWrapper = zn, k.ImagecoreEx = Ln, k.PdfAnnot = ei, k.PdfReaderEx = _o, k.PdfSettings = function() {
       this.version = void 0, this.compression = void 0, this.author = void 0, this.creationDate = void 0, this.creator = void 0, this.keywords = void 0, this.modifiedDate = void 0, this.producer = void 0, this.subject = void 0, this.title = void 0, this.quality = void 0, this.jpegMode = void 0;
-    }, x.PdfWriter = mn, x.WasmEnv = Hr, x.pdf = Rr, Object.defineProperty(x, "__esModule", { value: !0 });
+    }, k.PdfWriter = mn, k.WasmEnv = Hr, k.pdf = Rr, Object.defineProperty(k, "__esModule", { value: !0 });
   }), L.WasmEnv = L.ImageIO.WasmEnv, L.Imagecore = L.ImageIO.ImagecoreEx, L.ImageProc = L.ImageIO.ImageProc, L.PdfReader = L.ImageIO.PdfReaderEx, L.PdfWriter = L.ImageIO.PdfWriter, L.ImageProcWrapper = L.ImageIO.ImageProcWrapper, L.pdf = L.ImageIO.pdf, L.Enum_ImageType = L.ImageIO.ImageType, L.Enum_ReturnType = L.ImageIO.ReturnedDataType;
 });
 /*! 20221212133727
@@ -30387,11 +30388,11 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
     return G.Lib.isString(n) ? n.replace(/[^\x20-\x7E]|(\\")/g, "") : n;
   }, l.errors = { webcamNotInstalled: "The Webcam add-on not installed.", nonServiceNotSupportWebcamDecode: "The BarcodeReader add-on does not support reading barcodes from video streams.", decodeResultEmpty: "decode result is empty." }, l._activeXMaxIEVersion = 9, l.logLevel = 3, G.DBR.EnumAccompanyingTextRecognitionMode = { ATRM_GENERAL: 1, ATRM_SKIP: 0 }, G.DBR.EnumBarcodeColourMode = { BICM_DARK_ON_LIGHT: 1, BICM_LIGHT_ON_DARK: 2, BICM_DARK_ON_DARK: 4, BICM_LIGHT_ON_LIGHT: 8, BICM_DARK_LIGHT_MIXED: 16, BICM_DARK_ON_LIGHT_DARK_SURROUNDING: 32, BICM_SKIP: 0 }, G.DBR.EnumBarcodeComplementMode = { BCM_AUTO: 1, BCM_GENERAL: 2, BCM_SKIP: 0 }, G.DBR.EnumBarcodeFormat = { BF_ALL: -32505857, BF_ONED: 2047, BF_GS1_DATABAR: 260096, BF_CODE_39: 1, BF_CODE_128: 2, BF_CODE_93: 4, BF_CODABAR: 8, BF_ITF: 16, BF_EAN_13: 32, BF_EAN_8: 64, BF_UPC_A: 128, BF_UPC_E: 256, BF_INDUSTRIAL_25: 512, BF_CODE_39_EXTENDED: 1024, BF_GS1_DATABAR_OMNIDIRECTIONAL: 2048, BF_GS1_DATABAR_TRUNCATED: 4096, BF_GS1_DATABAR_STACKED: 8192, BF_GS1_DATABAR_STACKED_OMNIDIRECTIONAL: 16384, BF_GS1_DATABAR_EXPANDED: 32768, BF_GS1_DATABAR_EXPANDED_STACKED: 65536, BF_GS1_DATABAR_LIMITED: 131072, BF_PATCHCODE: 262144, BF_PDF417: 33554432, BF_QR_CODE: 67108864, BF_DATAMATRIX: 134217728, BF_AZTEC: 268435456, BF_MAXICODE: 536870912, BF_MICRO_QR: 1073741824, BF_MICRO_PDF417: 524288, BF_GS1_COMPOSITE: -2147483648, BF_NULL: 0 }, G.DBR.EnumBarcodeFormat_2 = { BF2_NULL: 0, BF2_POSTALCODE: 32505856, BF2_NONSTANDARD_BARCODE: 1, BF2_USPSINTELLIGENTMAIL: 1048576, BF2_POSTNET: 2097152, BF2_PLANET: 4194304, BF2_AUSTRALIANPOST: 8388608, BF2_RM4SCC: 16777216, BF2_DOTCODE: 2 }, G.DBR.EnumBinarizationMode = { BM_AUTO: 1, BM_LOCAL_BLOCK: 2, BM_SKIP: 0 }, G.DBR.EnumClarityCalculationMethod = { ECCM_CONTRAST: 1 }, G.DBR.EnumClarityFilterMode = { CFM_GENERAL: 1 }, G.DBR.EnumColourClusteringMode = { CCM_AUTO: 1, CCM_GENERAL_HSV: 2, CCM_SKIP: 0 }, G.DBR.EnumColourConversionMode = { CICM_GENERAL: 1, CICM_SKIP: 0 }, G.DBR.EnumConflictMode = { CM_IGNORE: 1, CM_OVERWRITE: 2 }, G.DBR.EnumDeformationResistingMode = { DRM_AUTO: 1, DRM_GENERAL: 2, DRM_SKIP: 0 }, G.DBR.EnumDPMCodeReadingMode = { DPMCRM_AUTO: 1, DPMCRM_GENERAL: 2, DPMCRM_SKIP: 0 }, G.DBR.EnumErrorCode = { DBR_SYSTEM_EXCEPTION: 1, DBR_SUCCESS: 0, DBR_UNKNOWN: -1e4, DBR_NO_MEMORY: -10001, DBR_NULL_REFERENCE: -10002, DBR_LICENSE_INVALID: -10003, DBR_LICENSE_EXPIRED: -10004, DBR_FILE_NOT_FOUND: -10005, DBR_FILETYPE_NOT_SUPPORTED: -10006, DBR_BPP_NOT_SUPPORTED: -10007, DBR_INDEX_INVALID: -10008, DBR_BARCODE_FORMAT_INVALID: -10009, DBR_CUSTOM_REGION_INVALID: -10010, DBR_MAX_BARCODE_NUMBER_INVALID: -10011, DBR_IMAGE_READ_FAILED: -10012, DBR_TIFF_READ_FAILED: -10013, DBR_QR_LICENSE_INVALID: -10016, DBR_1D_LICENSE_INVALID: -10017, DBR_DIB_BUFFER_INVALID: -10018, DBR_PDF417_LICENSE_INVALID: -10019, DBR_DATAMATRIX_LICENSE_INVALID: -10020, DBR_PDF_READ_FAILED: -10021, DBR_PDF_DLL_MISSING: -10022, DBR_PAGE_NUMBER_INVALID: -10023, DBR_CUSTOM_SIZE_INVALID: -10024, DBR_CUSTOM_MODULESIZE_INVALID: -10025, DBR_RECOGNITION_TIMEOUT: -10026, DBR_JSON_PARSE_FAILED: -10030, DBR_JSON_TYPE_INVALID: -10031, DBR_JSON_KEY_INVALID: -10032, DBR_JSON_VALUE_INVALID: -10033, DBR_JSON_NAME_KEY_MISSING: -10034, DBR_JSON_NAME_VALUE_DUPLICATED: -10035, DBR_TEMPLATE_NAME_INVALID: -10036, DBR_JSON_NAME_REFERENCE_INVALID: -10037, DBR_PARAMETER_VALUE_INVALID: -10038, DBR_DOMAIN_NOT_MATCHED: -10039, DBR_RESERVEDINFO_NOT_MATCHED: -10040, DBR_AZTEC_LICENSE_INVALID: -10041, DBR_LICENSE_DLL_MISSING: -10042, DBR_LICENSEKEY_NOT_MATCHED: -10043, DBR_REQUESTED_FAILED: -10044, DBR_LICENSE_INIT_FAILED: -10045, DBR_PATCHCODE_LICENSE_INVALID: -10046, DBR_POSTALCODE_LICENSE_INVALID: -10047, DBR_DPM_LICENSE_INVALID: -10048, DBR_FRAME_DECODING_THREAD_EXISTS: -10049, DBR_STOP_DECODING_THREAD_FAILED: -10050, DBR_SET_MODE_ARGUMENT_ERROR: -10051, DBR_LICENSE_CONTENT_INVALID: -10052, DBR_LICENSE_KEY_INVALID: -10053, DBR_LICENSE_DEVICE_RUNS_OUT: -10054, DBR_GET_MODE_ARGUMENT_ERROR: -10055, DBR_IRT_LICENSE_INVALID: -10056, DBR_MAXICODE_LICENSE_INVALID: -10057, DBR_GS1_DATABAR_LICENSE_INVALID: -10058, DBR_GS1_COMPOSITE_LICENSE_INVALID: -10059, DBR_DOTCODE_LICENSE_INVALID: -10061, DMERR_FAILED_TO_REACH_LTS: -20200 }, G.DBR.EnumGrayscaleTransformationMode = { GTM_INVERTED: 1, GTM_ORIGINAL: 2, GTM_SKIP: 0 }, G.DBR.EnumImagePixelFormat = { IPF_Binary: 0, IPF_BinaryInverted: 1, IPF_GrayScaled: 2, IPF_NV21: 3, IPF_RGB_565: 4, IPF_RGB_555: 5, IPF_RGB_888: 6, IPF_ARGB_8888: 7, IPF_RGB_161616: 8, IPF_ARGB_16161616: 9, IPF_ABGR_8888: 10, IPF_ABGR_16161616: 11, IPF_BGR_888: 12 }, G.DBR.EnumImagePreprocessingMode = { IPM_AUTO: 1, IPM_GENERAL: 2, IPM_GRAY_EQUALIZE: 4, IPM_GRAY_SMOOTH: 8, IPM_SHARPEN_SMOOTH: 16, IPM_MORPHOLOGY: 32, IPM_SKIP: 0 }, G.DBR.EnumIMResultDataType = { IMRDT_IMAGE: 1, IMRDT_CONTOUR: 2, IMRDT_LINESEGMENT: 4, IMRDT_LOCALIZATIONRESULT: 8, IMRDT_REGIONOFINTEREST: 16, IMRDT_QUADRILATERAL: 32 }, G.DBR.EnumIntermediateResultSavingMode = { IRSM_MEMORY: 1, IRSM_FILESYSTEM: 2, IRSM_BOTH: 4 }, G.DBR.EnumIntermediateResultType = { IRT_NO_RESULT: 0, IRT_ORIGINAL_IMAGE: 1, IRT_COLOUR_CLUSTERED_IMAGE: 2, IRT_COLOUR_CONVERTED_GRAYSCALE_IMAGE: 4, IRT_TRANSFORMED_GRAYSCALE_IMAGE: 8, IRT_PREDETECTED_REGION: 16, IRT_PREPROCESSED_IMAGE: 32, IRT_BINARIZED_IMAGE: 64, IRT_TEXT_ZONE: 128, IRT_CONTOUR: 256, IRT_LINE_SEGMENT: 512, IRT_FORM: 1024, IRT_SEGMENTATION_BLOCK: 2048, IRT_TYPED_BARCODE_ZONE: 4096, IRT_PREDETECTED_QUADRILATERAL: 8192 }, G.DBR.EnumLocalizationMode = { LM_SKIP: 0, LM_AUTO: 1, LM_CONNECTED_BLOCKS: 2, LM_LINES: 8, LM_STATISTICS: 4, LM_SCAN_DIRECTLY: 16, LM_STATISTICS_MARKS: 32, LM_STATISTICS_POSTAL_CODE: 64 }, G.DBR.EnumPDFReadingMode = { PDFRM_RASTER: 1, PDFRM_AUTO: 2, PDFRM_VECTOR: 4 }, G.DBR.EnumQRCodeErrorCorrectionLevel = { QRECL_ERROR_CORRECTION_H: 0, QRECL_ERROR_CORRECTION_L: 1, QRECL_ERROR_CORRECTION_M: 2, QRECL_ERROR_CORRECTION_Q: 3 }, G.DBR.EnumRegionPredetectionMode = { RPM_AUTO: 1, RPM_GENERAL: 2, RPM_GENERAL_RGB_CONTRAST: 4, RPM_GENERAL_GRAY_CONTRAST: 8, RPM_GENERAL_HSV_CONTRAST: 16, RPM_SKIP: 0 }, G.DBR.EnumResultCoordinateType = { RCT_PIXEL: 1, RCT_PERCENTAGE: 2 }, G.DBR.EnumResultType = { RT_STANDARD_TEXT: 0, RT_RAW_TEXT: 1, RT_CANDIDATE_TEXT: 2, RT_PARTIAL_TEXT: 3 }, G.DBR.EnumScaleUpMode = { SUM_AUTO: 1, SUM_LINEAR_INTERPOLATION: 2, SUM_NEAREST_NEIGHBOUR_INTERPOLATION: 4, SUM_SKIP: 0 }, G.DBR.EnumTerminatePhase = { TP_REGION_PREDETECTED: 1, TP_IMAGE_PREPROCESSED: 2, TP_IMAGE_BINARIZED: 4, TP_BARCODE_LOCALIZED: 8, TP_BARCODE_TYPE_DETERMINED: 16, TP_BARCODE_RECOGNIZED: 32 }, G.DBR.EnumTextAssistedCorrectionMode = { TACM_AUTO: 1, TACM_VERIFYING: 2, TACM_VERIFYING_PATCHING: 4, TACM_SKIP: 0 }, G.DBR.EnumTextFilterMode = { TFM_AUTO: 1, TFM_GENERAL_CONTOUR: 2, TFM_SKIP: 0 }, G.DBR.EnumTextResultOrderMode = { TROM_CONFIDENCE: 1, TROM_POSITION: 2, TROM_FORMAT: 4, TROM_SKIP: 0 }, G.DBR.EnumTextureDetectionMode = { TDM_AUTO: 1, TDM_GENERAL_WIDTH_CONCENTRATION: 2, TDM_SKIP: 0 };
 }(), G.AddonReady(function(l, n) {
-  var L, x = G.BarcodeReaderAddon;
+  var L, k = G.BarcodeReaderAddon;
   function re(R) {
     return R && R instanceof ArrayBuffer;
   }
-  x.Class = function() {
+  k.Class = function() {
     function R(p) {
       this._runtimeSettings = null, this._initSettingsContent = null, this._tplContentArr = [], this.bWasm = !1, this._stwain = p;
     }
@@ -30433,7 +30434,7 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
         N = N || "", H();
       }).then(function() {
         return p.src.substring(0, 11) == "data:image/" ? U._decodeBase64(p.src, N) : U._decodeUrl(p.src, N).catch(function(H) {
-          return 3 <= x.logLevel && console && console.warn && (console.warn("'_decodeImage(image, templateName)': Image src not available. Use '_decodeCanvas' instead."), console.warn(H)), self.HTMLCanvasElement ? ((H = document.createElement("canvas")).width = p.naturalWidth, H.height = p.naturalHeight, H.getContext("2d").drawImage(p, 0, 0), U._decodeCanvas(H, N)) : l.Promise.reject(Error("'_decodeImage(image, templateName)': Browser not support HTMLCanvasElement."));
+          return 3 <= k.logLevel && console && console.warn && (console.warn("'_decodeImage(image, templateName)': Image src not available. Use '_decodeCanvas' instead."), console.warn(H)), self.HTMLCanvasElement ? ((H = document.createElement("canvas")).width = p.naturalWidth, H.height = p.naturalHeight, H.getContext("2d").drawImage(p, 0, 0), U._decodeCanvas(H, N)) : l.Promise.reject(Error("'_decodeImage(image, templateName)': Browser not support HTMLCanvasElement."));
         });
       });
     }, R.prototype._decodeCanvas = function(p, N) {
@@ -30475,11 +30476,11 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
       });
     }, R.prototype._decodeUrl = function(p, N) {
       var U = this;
-      return p && p.indexOf && (p.indexOf("dwt://") == 0 || p.indexOf("dcs://") == 0) ? U._decodeDynamsoftServiceInnerUrl(p, N) : x._wasmInstance ? x._wasmInstance.decode(p) : new l.Promise(function(H, K) {
+      return p && p.indexOf && (p.indexOf("dwt://") == 0 || p.indexOf("dcs://") == 0) ? U._decodeDynamsoftServiceInnerUrl(p, N) : k._wasmInstance ? k._wasmInstance.decode(p) : new l.Promise(function(H, K) {
         var Y;
         if (!(typeof p == "string" || typeof p == "object" && p instanceof String))
           throw TypeError("'_decodeUrl(url, templateName)': Type of 'url' should be 'String'.");
-        N = N || "", x._activeXInstance ? ((Y = new ActiveXObject("MSXML2.XMLHTTP")).open("GET", p, !0), Y.overrideMimeType ? Y.overrideMimeType("text/plain; charset=x-user-defined") : Y.setRequestHeader("Accept-Charset", "x-user-defined"), Y.onreadystatechange = function() {
+        N = N || "", k._activeXInstance ? ((Y = new ActiveXObject("MSXML2.XMLHTTP")).open("GET", p, !0), Y.overrideMimeType ? Y.overrideMimeType("text/plain; charset=x-user-defined") : Y.setRequestHeader("Accept-Charset", "x-user-defined"), Y.onreadystatechange = function() {
           Y.readyState == 4 && H(new VBArray(Y.responseBody).toArray());
         }, Y.send("")) : ((Y = new XMLHttpRequest()).open("GET", p, !0), Y.responseType = "arraybuffer", Y.send(), Y.onloadend = function() {
           H(this.response);
@@ -30487,7 +30488,7 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
           K(Error(Y.error));
         });
       }).then(function(H) {
-        return x._activeXInstance ? U._activeXDecodeArray(H, N) : U._decodeArrayBuffer(H, N);
+        return k._activeXInstance ? U._activeXDecodeArray(H, N) : U._decodeArrayBuffer(H, N);
       });
     }, R.prototype._decodeDynamsoftServiceInnerUrl = function(p, N) {
       var U = this;
@@ -30522,12 +30523,12 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
         return U._innerDecode(4001, p, N);
       });
     }, R.prototype._decode = R.prototype.decode = function(p, N) {
-      return x._activeXInstance ? typeof p == "string" || p instanceof String ? this._activeXDecodeHandle(p, N) : l.Promise.reject(TypeError("'_decode(source, templateName)' in activeX: Type of 'source' should be 'String(partUrl)'.")) : x._wasmInstance ? x._wasmInstance.decode(p) : self.Blob && p instanceof Blob ? this._decodeBlob(p, N) : self.ArrayBuffer && p instanceof ArrayBuffer ? this._decodeArrayBuffer(p, N) : self.Uint8Array && p instanceof Uint8Array || self.Uint8ClampedArray && p instanceof Uint8ClampedArray ? this._decodeUint8Array(p, N) : p instanceof Array ? this._activeXDecodeArray(p, N) : self.HTMLImageElement && p instanceof HTMLImageElement ? this._decodeImage(p, N) : self.HTMLCanvasElement && p instanceof HTMLCanvasElement ? this._decodeCanvas(p, N) : self.HTMLVideoElement && p instanceof HTMLVideoElement ? this._decodeVideo(p, N) : isNaN(p) ? typeof p == "string" || p instanceof String ? p.substring(0, 11) == "data:image/" ? this._decodeBase64(p, N) : this._decodeUrl(p, N) : l.Promise.reject(TypeError("'_decode(source, templateName)' in H5: Type of 'source' should be 'Blob', 'ArrayBuffer', 'Uint8Array', 'HTMLImageElement', 'HTMLCanvasElement', 'HTMLVideoElement', 'String(base64 with image mime)' or 'String(url)'.")) : this._activeXDecodeHandle(p, N);
+      return k._activeXInstance ? typeof p == "string" || p instanceof String ? this._activeXDecodeHandle(p, N) : l.Promise.reject(TypeError("'_decode(source, templateName)' in activeX: Type of 'source' should be 'String(partUrl)'.")) : k._wasmInstance ? k._wasmInstance.decode(p) : self.Blob && p instanceof Blob ? this._decodeBlob(p, N) : self.ArrayBuffer && p instanceof ArrayBuffer ? this._decodeArrayBuffer(p, N) : self.Uint8Array && p instanceof Uint8Array || self.Uint8ClampedArray && p instanceof Uint8ClampedArray ? this._decodeUint8Array(p, N) : p instanceof Array ? this._activeXDecodeArray(p, N) : self.HTMLImageElement && p instanceof HTMLImageElement ? this._decodeImage(p, N) : self.HTMLCanvasElement && p instanceof HTMLCanvasElement ? this._decodeCanvas(p, N) : self.HTMLVideoElement && p instanceof HTMLVideoElement ? this._decodeVideo(p, N) : isNaN(p) ? typeof p == "string" || p instanceof String ? p.substring(0, 11) == "data:image/" ? this._decodeBase64(p, N) : this._decodeUrl(p, N) : l.Promise.reject(TypeError("'_decode(source, templateName)' in H5: Type of 'source' should be 'Blob', 'ArrayBuffer', 'Uint8Array', 'HTMLImageElement', 'HTMLCanvasElement', 'HTMLVideoElement', 'String(base64 with image mime)' or 'String(url)'.")) : this._activeXDecodeHandle(p, N);
     }, R.prototype._innerServiceCmd = function(p, N) {
       var U = this._stwain;
       return new l.Promise(function(H, K) {
         var Y, F = { method: "ReadBarcode", parameter: [G.Lib.product.refProductKey, 4002, "", ""], updateSettings: p, initSettingsContent: N };
-        x._activeXInstance ? H(x._activeXInstance.Process(l.stringify(F), location.protocol + "//" + location.host)) : (U._blts ? (Y = "", U && U._bRemoteMode && U._dmService && U._dmService.attrs && U._dmService.attrs.UUID && (Y = U._dmService.attrs.UUID), G.DWT.lglic(G.DWT.EnumInstance.dwt_desktop, Y).then(function(q) {
+        k._activeXInstance ? H(k._activeXInstance.Process(l.stringify(F), location.protocol + "//" + location.host)) : (U._blts ? (Y = "", U && U._bRemoteMode && U._dmService && U._dmService.attrs && U._dmService.attrs.UUID && (Y = U._dmService.attrs.UUID), G.DWT.lglic(G.DWT.EnumInstance.dwt_desktop, Y).then(function(q) {
           return F.parameter.push(q.ar), F.parameter.push(q.cu), F.parameter.push(0), F.parameter.push(""), l.stringify(F);
         })) : l.Promise.resolve(l.stringify(F))).then(function(q) {
           return l.fetch(U._dbrUrlRoot + "ReadBarcode", { mode: "cors", method: "post", body: q, dataType: "arrayBuffer" });
@@ -30544,11 +30545,11 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
         function q(Ee, Le, Oe) {
           try {
             var Te, Re, Ve, We, le = C && C(Ee);
-            for (le && le.textResults || F(new x.BarcodeReaderException(le.exception, le.description)), l.product.bHTML5Edition && Oe && Oe.config.data && (Te = l.parse(Oe.config.data), l.isArray(Te.parameter)) && 2 < Te.parameter.length && Te.parameter[1] == 4e3 && (4 < Te.parameter.length && Te.parameter[4] ? le.textResults.imageid = Te.parameter[4] : 0 <= (We = (Ve = Te.parameter[2]).indexOf("&index=")) && (le.textResults.imageid = Ve.substring(We + 7, Ve.indexOf("&t=")))), Re = 0; Re < le.textResults.length; Re++) {
+            for (le && le.textResults || F(new k.BarcodeReaderException(le.exception, le.description)), l.product.bHTML5Edition && Oe && Oe.config.data && (Te = l.parse(Oe.config.data), l.isArray(Te.parameter)) && 2 < Te.parameter.length && Te.parameter[1] == 4e3 && (4 < Te.parameter.length && Te.parameter[4] ? le.textResults.imageid = Te.parameter[4] : 0 <= (We = (Ve = Te.parameter[2]).indexOf("&index=")) && (le.textResults.imageid = Ve.substring(We + 7, Ve.indexOf("&t=")))), Re = 0; Re < le.textResults.length; Re++) {
               var je = le.textResults[Re];
               je.BarcodeText = je.barcodeText, le.exception != G.DBR.EnumErrorCode.DBR_SUCCESS && (je.exception = le.exception);
             }
-            le.exception != G.DBR.EnumErrorCode.DBR_SUCCESS && (le.textResults.exception = le.exception, le.textResults.description = le.description), x._activeXInstance && le.records && (G.Lib.each(le.records, function(fe, Me) {
+            le.exception != G.DBR.EnumErrorCode.DBR_SUCCESS && (le.textResults.exception = le.exception, le.textResults.description = le.description), k._activeXInstance && le.records && (G.Lib.each(le.records, function(fe, Me) {
               G.DWT.lavrf(Me, fe, G.DWT.EnumInstance.dwt_desktop);
             }), G.DWT.lavrf_(1, G.DWT.EnumInstance.dwt_desktop)), Y(le.textResults);
           } catch (fe) {
@@ -30563,9 +30564,9 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
           }
           return null;
         }() }, me = K._stwain;
-        x._activeXInstance ? me._blts ? G.DWT.lglic(G.DWT.EnumInstance.dwt_desktop, "").then(function(Ee) {
-          E.parameter.push(Ee.ar), E.parameter.push(Ee.cu), E.parameter.push(0), E.parameter.push(""), q(x._activeXInstance.Process(l.stringify(E), location.protocol + "//" + location.host));
-        }) : q(x._activeXInstance.Process(l.stringify(E), location.protocol + "//" + location.host)) : (O = me._dbrUrlRoot + "ReadBarcode", p == 0 && (O += "/LoadZipFromBytes?cmd=" + encodeURIComponent(l.stringify(E))), (p == 0 ? l.Promise.resolve(N) : me._blts ? (J = "", me && me._bRemoteMode && me._dmService && me._dmService.attrs && me._dmService.attrs.UUID && (J = me._dmService.attrs.UUID), G.DWT.lglic(G.DWT.EnumInstance.dwt_desktop, J).then(function(Ee) {
+        k._activeXInstance ? me._blts ? G.DWT.lglic(G.DWT.EnumInstance.dwt_desktop, "").then(function(Ee) {
+          E.parameter.push(Ee.ar), E.parameter.push(Ee.cu), E.parameter.push(0), E.parameter.push(""), q(k._activeXInstance.Process(l.stringify(E), location.protocol + "//" + location.host));
+        }) : q(k._activeXInstance.Process(l.stringify(E), location.protocol + "//" + location.host)) : (O = me._dbrUrlRoot + "ReadBarcode", p == 0 && (O += "/LoadZipFromBytes?cmd=" + encodeURIComponent(l.stringify(E))), (p == 0 ? l.Promise.resolve(N) : me._blts ? (J = "", me && me._bRemoteMode && me._dmService && me._dmService.attrs && me._dmService.attrs.UUID && (J = me._dmService.attrs.UUID), G.DWT.lglic(G.DWT.EnumInstance.dwt_desktop, J).then(function(Ee) {
           return E.parameter.push(Ee.ar), E.parameter.push(Ee.cu), E.parameter.push(0), E.parameter.push([l.product.getDWTPrefix(), l.product.getServerVersionInfo(), "/verify?id=", H, "&t=", l.getRandom()].join("")), l.stringify(E);
         })) : l.Promise.resolve(l.stringify(E))).then(function(Ee) {
           return l.fetch(O, { mode: "cors", method: "post", body: Ee, dataType: "arrayBuffer" });
@@ -30576,27 +30577,27 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
           Ee && (Le = [Le, " Http info: ", Ee.errorString, " (", Ee.httpCode, ")"].join("")), F(Error(Le));
         }));
       });
-    }, C = x._handleRetJsonString = function(p) {
+    }, C = k._handleRetJsonString = function(p) {
       var N;
       if (typeof p == "string" || typeof p == "object" && p instanceof String)
         try {
           N = l.parse(p);
         } catch {
-          N = l.parse(x.RemoveNonPrintableChar(p));
+          N = l.parse(k.RemoveNonPrintableChar(p));
         }
       else
         N = p;
       if (!N)
-        throw x.BarcodeReaderException(G.DBR.EnumErrorCode.DBR_UNKNOWN, x.errors.decodeResultEmpty);
+        throw k.BarcodeReaderException(G.DBR.EnumErrorCode.DBR_UNKNOWN, k.errors.decodeResultEmpty);
       if ("textResults" in N && l.isArray(N.textResults) || N.exception == G.DBR.EnumErrorCode.DBR_SUCCESS)
         return N;
-      throw x.BarcodeReaderException(N.exception, N.description);
+      throw k.BarcodeReaderException(N.exception, N.description);
     }, R.prototype.getAllParameterTemplateNames = function() {
       for (var p = [], N = 0; N < this._tplContentArr.length; ++N)
         p.push(this._tplContentArr[N].ImageParameter.Name);
       return p;
     }, R.prototype.getRuntimeSettings = function() {
-      return this.bWasm ? x._wasmInstance.getRuntimeSettings() : (this._runtimeSettings || (this._runtimeSettings = l.parse(x._defaultRuntimeSettingsStr)), l.Promise.resolve(this._runtimeSettings));
+      return this.bWasm ? k._wasmInstance.getRuntimeSettings() : (this._runtimeSettings || (this._runtimeSettings = l.parse(k._defaultRuntimeSettingsStr)), l.Promise.resolve(this._runtimeSettings));
     }, R.prototype.updateRuntimeSettings = function(p) {
       var N, U = this;
       if (typeof p == "string" || typeof p == "object" && p instanceof String) {
@@ -30608,37 +30609,37 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
           throw TypeError("'setTemplateSettings(settings)': Type of 'settings' should be 'String' or 'PlainObject'.");
         N = l.stringify(p);
       }
-      return p = l.parse(N), U.bWasm ? x._wasmInstance.updateRuntimeSettings(p).then(function() {
-        return x._wasmInstance.getRuntimeSettings();
+      return p = l.parse(N), U.bWasm ? k._wasmInstance.updateRuntimeSettings(p).then(function() {
+        return k._wasmInstance.getRuntimeSettings();
       }) : (U._runtimeSettings = p, U._initSettingsContent = null, U._innerServiceCmd(U._runtimeSettings, null).then(function(H) {
-        return H = x._handleRetJsonString(H), U._runtimeSettings = H.settings, U._runtimeSettings || (U._runtimeSettings = l.parse(x._defaultRuntimeSettingsStr)), H.settings;
+        return H = k._handleRetJsonString(H), U._runtimeSettings = H.settings, U._runtimeSettings || (U._runtimeSettings = l.parse(k._defaultRuntimeSettingsStr)), H.settings;
       }));
     }, R.prototype.resetRuntimeSettings = function() {
       var p = this;
-      return p.bWasm ? x._wasmInstance.resetRuntimeSettings().then(function() {
-        return x._wasmInstance.getRuntimeSettings();
-      }) : (p._runtimeSettings = l.parse(x._defaultRuntimeSettingsStr), p._initSettingsContent = null, p._innerServiceCmd(p._runtimeSettings, null).then(function(N) {
-        return N = x._handleRetJsonString(N), p._runtimeSettings = N.settings, p._runtimeSettings || (p._runtimeSettings = l.parse(x._defaultRuntimeSettingsStr)), N.settings;
+      return p.bWasm ? k._wasmInstance.resetRuntimeSettings().then(function() {
+        return k._wasmInstance.getRuntimeSettings();
+      }) : (p._runtimeSettings = l.parse(k._defaultRuntimeSettingsStr), p._initSettingsContent = null, p._innerServiceCmd(p._runtimeSettings, null).then(function(N) {
+        return N = k._handleRetJsonString(N), p._runtimeSettings = N.settings, p._runtimeSettings || (p._runtimeSettings = l.parse(k._defaultRuntimeSettingsStr)), N.settings;
       }));
     }, R.prototype.outputSettingsToString = function(p) {
       if (!p)
-        return x._defaultTemplateStr;
+        return k._defaultTemplateStr;
       for (var N = 0; N < this._tplContentArr.length; ++N)
         if (p == this._tplContentArr[N].ImageParameter.Name)
           return l.stringify(this._tplContentArr[N]);
     }, R.prototype.initRuntimeSettingsWithString = function(p) {
       var N = this;
       if (l.isString(p))
-        return N.bWasm ? x._wasmInstance.initRuntimeSettingsWithString(p).then(function() {
-          return x._wasmInstance.getRuntimeSettings();
+        return N.bWasm ? k._wasmInstance.initRuntimeSettingsWithString(p).then(function() {
+          return k._wasmInstance.getRuntimeSettings();
         }) : (N._runtimeSettings = null, N._initSettingsContent = l.parse(p), N._innerServiceCmd(null, N._initSettingsContent).then(function(U) {
-          return U = x._handleRetJsonString(U), N._runtimeSettings = U.settings, N._runtimeSettings || (N._runtimeSettings = l.parse(x._defaultRuntimeSettingsStr)), U.settings;
+          return U = k._handleRetJsonString(U), N._runtimeSettings = U.settings, N._runtimeSettings || (N._runtimeSettings = l.parse(k._defaultRuntimeSettingsStr)), U.settings;
         }));
       throw TypeError("'initRuntimeSettingsWithString(settings)': Type of 'settings' should be 'String'.");
     }, R;
-  }(), x._dbr_ax = !1, x._dbr_wasm = !1, x._dbr = !1, x._initH5 = function(R, C, p) {
+  }(), k._dbr_ax = !1, k._dbr_wasm = !1, k._dbr = !1, k._initH5 = function(R, C, p) {
     return new l.Promise(function(N, U) {
-      R._bRemoteMode && R._dmService && R._dmService.attrs && R._dmService.attrs.url && (R._dbrUrlRoot = R._dmService.attrs.url + "dcp/dbr_" + x.Version.replace(/\./g, "") + "/"), R._dbrUrlRoot || (R._dbrUrlRoot = G.DWT.NetManager.getModuleUrl("dcp/dbr_" + x.Version.replace(/\./g, "") + "/"));
+      R._bRemoteMode && R._dmService && R._dmService.attrs && R._dmService.attrs.url && (R._dbrUrlRoot = R._dmService.attrs.url + "dcp/dbr_" + k.Version.replace(/\./g, "") + "/"), R._dbrUrlRoot || (R._dbrUrlRoot = G.DWT.NetManager.getModuleUrl("dcp/dbr_" + k.Version.replace(/\./g, "") + "/"));
       var H = 5, K = { method: "POST", url: R._dbrUrlRoot + "VersionInfo?t=" + l.getRandom(), data: '{"method":"VersionInfo"}', onSuccess: function() {
         N();
       }, onError: function() {
@@ -30650,22 +30651,22 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
       }, dataType: "json", async: !0, timeout: 800 };
       l.ajax(K);
     }).then(function() {
-      return x._dbr = new x.Class(R), x._dbr._innerServiceCmd(null, null);
+      return k._dbr = new k.Class(R), k._dbr._innerServiceCmd(null, null);
     }).then(function(N) {
       try {
-        var U = x._handleRetJsonString(N);
-        x._dbr._runtimeSettings = U.settings, x._defaultRuntimeSettingsStr = l.stringify(U.settings), x._defaultTemplateStr = l.stringify(U.outputSettings), C(x._dbr);
+        var U = k._handleRetJsonString(N);
+        k._dbr._runtimeSettings = U.settings, k._defaultRuntimeSettingsStr = l.stringify(U.settings), k._defaultTemplateStr = l.stringify(U.outputSettings), C(k._dbr);
       } catch (H) {
         p(Error("Init template & runtimeSettings failed: " + H.message) || H);
       }
     }, function(N) {
       p(N);
     });
-  }, x.dbrInitPromiseFun = function(R) {
+  }, k.dbrInitPromiseFun = function(R) {
     return new l.Promise(function(C, p) {
-      x.innerDbrInit(R, C, p);
+      k.innerDbrInit(R, C, p);
     });
-  }, x.innerDbrInit = function(R, C, p) {
+  }, k.innerDbrInit = function(R, C, p) {
     function N() {
       G.DBR && G.DBR.BarcodeReader && G.DBR.BarcodeReader.createInstance && G.DBR.BarcodeReader.createInstance().then(function(J) {
         return G.DBR.EnumErrorCode.DMERR_FAILED_TO_REACH_LTS == G.DBR.BarcodeReader.lastErrorCode && (G.DWT.licenseException.code = G.DBR.BarcodeReader.lastErrorCode, G.DWT.licenseException.message = G.DBR.BarcodeReader.lastErrorString), G.DBR.BarcodeReader._bNeverShowDialog = !0, G.DWT.dbrCanvasMaxWH && (J._canvasMaxWH = G.DWT.dbrCanvasMaxWH), (Y._wasmInstance = J).getRuntimeSettings();
@@ -30723,27 +30724,27 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
       } catch {
       }
     C = { BarcodeReader: { decode: function(p) {
-      return l.License.checkProductKey(R, { Core: !0 }) ? !l.isNumber(p) || p < 0 || p >= R.HowManyImagesInBuffer ? (l.Errors.IndexOutOfRange(R), l.Promise.reject(x.BarcodeReaderException(R._errorCode, R._errorString))) : new l.Promise(function(N) {
-        x._decoding ? x._decodeQueue.push({ method: N, args: [p] }) : (x._decoding = !0, N(p));
+      return l.License.checkProductKey(R, { Core: !0 }) ? !l.isNumber(p) || p < 0 || p >= R.HowManyImagesInBuffer ? (l.Errors.IndexOutOfRange(R), l.Promise.reject(k.BarcodeReaderException(R._errorCode, R._errorString))) : new l.Promise(function(N) {
+        k._decoding ? k._decodeQueue.push({ method: N, args: [p] }) : (k._decoding = !0, N(p));
       }).then(function(N) {
         var U;
         if (l.product.bHTML5Edition) {
           if ((U = R._ImgManager.convertClientIndexToServerId(N)) == -1)
-            throw l.Errors.IndexOutOfRange(R), setTimeout(x._decodeNext, 0), x.BarcodeReaderException(R._errorCode, R._errorString);
+            throw l.Errors.IndexOutOfRange(R), setTimeout(k._decodeNext, 0), k.BarcodeReaderException(R._errorCode, R._errorString);
         } else
           U = N;
         return new l.Promise(function(H, K) {
-          x.dbrInitPromiseFun(R).then(function(Y) {
+          k.dbrInitPromiseFun(R).then(function(Y) {
             var F, q;
             if (!Y.bWasm)
               return l.product.bHTML5Edition ? Y.bWasm ? void 0 : (F = R._ImgManager.convertServerIdToClientIndex(U), q = R.GetImagePartURL(F, -1, -1), Y._innerDecode(4e3, q, "", R._clientId).then(function(O) {
-                O.imageid = R.IndexToImageID(F), setTimeout(x._decodeNext, 0), H(O), R._blts && G.DWT.lcvrf(R);
+                O.imageid = R.IndexToImageID(F), setTimeout(k._decodeNext, 0), H(O), R._blts && G.DWT.lcvrf(R);
               }, function(O) {
-                setTimeout(x._decodeNext, 0), K(O);
+                setTimeout(k._decodeNext, 0), K(O);
               })) : (F = U, q = R.GetImagePartURL(F, -1, -1), Y._innerDecode(4001, q, "").then(function(O) {
-                O.imageid = R.IndexToImageID(F), setTimeout(x._decodeNext, 0), H(O);
+                O.imageid = R.IndexToImageID(F), setTimeout(k._decodeNext, 0), H(O);
               }, function(O) {
-                setTimeout(x._decodeNext, 0), K(O);
+                setTimeout(k._decodeNext, 0), K(O);
               }));
             q = (q = Y.getRuntimeSettings()).then(function(O) {
               if (O.expectedBarcodesCount == 0)
@@ -30757,39 +30758,39 @@ G.DWT = G.DWT || {}, G.DBR = G.DBR || {}, G.aryAddonReadyFun = G.aryAddonReadyFu
               var O = R._ImgManager.convertServerIdToClientIndex(U);
               return R.GetImageURL(O, -1, -1);
             })).then(function(O) {
-              return O instanceof Blob || O instanceof ArrayBuffer ? x._wasmInstance.decode(O) : l.fetch(O, { mode: "cors", dataType: "blob" }).then(function(J) {
-                return x._wasmInstance.decode(J);
+              return O instanceof Blob || O instanceof ArrayBuffer ? k._wasmInstance.decode(O) : l.fetch(O, { mode: "cors", dataType: "blob" }).then(function(J) {
+                return k._wasmInstance.decode(J);
               });
             })).then(function(O) {
-              O.imageid = R._objImageIndexManager.convertServerIdToGuid(U), setTimeout(x._decodeNext, 0), H(O);
+              O.imageid = R._objImageIndexManager.convertServerIdToGuid(U), setTimeout(k._decodeNext, 0), H(O);
             }, function(O) {
               var J = "decode failed.";
-              O && (J = [J, " ", O.errorString, " (", O.httpCode, ")"].join("")), setTimeout(x._decodeNext, 0), K(Error(J));
+              O && (J = [J, " ", O.errorString, " (", O.httpCode, ")"].join("")), setTimeout(k._decodeNext, 0), K(Error(J));
             });
           }, function(Y) {
-            setTimeout(x._decodeNext, 0), K(Y);
+            setTimeout(k._decodeNext, 0), K(Y);
           });
         });
-      }) : l.Promise.reject(x.BarcodeReaderException(R._errorCode, R._errorString));
+      }) : l.Promise.reject(k.BarcodeReaderException(R._errorCode, R._errorString));
     }, resetRuntimeSettings: function() {
-      return l.License.checkProductKey(R, { Core: !0 }) ? x.dbrInitPromiseFun(R).then(function(p) {
+      return l.License.checkProductKey(R, { Core: !0 }) ? k.dbrInitPromiseFun(R).then(function(p) {
         return p.resetRuntimeSettings();
-      }) : l.Promise.reject(x.BarcodeReaderException(R._errorCode, R._errorString));
+      }) : l.Promise.reject(k.BarcodeReaderException(R._errorCode, R._errorString));
     }, getRuntimeSettings: function(p) {
-      return l.License.checkProductKey(R, { Core: !0 }) ? !l.isString(p) || p != "speed" && p != "balance" && p != "coverage" && p != "default" ? x.dbrInitPromiseFun(R).then(function(N) {
+      return l.License.checkProductKey(R, { Core: !0 }) ? !l.isString(p) || p != "speed" && p != "balance" && p != "coverage" && p != "default" ? k.dbrInitPromiseFun(R).then(function(N) {
         return N.getRuntimeSettings();
-      }) : this.updateRuntimeSettings(p) : l.Promise.reject(x.BarcodeReaderException(R._errorCode, R._errorString));
+      }) : this.updateRuntimeSettings(p) : l.Promise.reject(k.BarcodeReaderException(R._errorCode, R._errorString));
     }, updateRuntimeSettings: function(p) {
-      return l.License.checkProductKey(R, { Core: !0 }) ? x.dbrInitPromiseFun(R).then(function(N) {
+      return l.License.checkProductKey(R, { Core: !0 }) ? k.dbrInitPromiseFun(R).then(function(N) {
         return N.updateRuntimeSettings(p);
-      }) : l.Promise.reject(x.BarcodeReaderException(R._errorCode, R._errorString));
+      }) : l.Promise.reject(k.BarcodeReaderException(R._errorCode, R._errorString));
     }, initRuntimeSettingsWithString: function(p) {
-      return l.License.checkProductKey(R, { Core: !0 }) ? x.dbrInitPromiseFun(R).then(function(N) {
+      return l.License.checkProductKey(R, { Core: !0 }) ? k.dbrInitPromiseFun(R).then(function(N) {
         return N.initRuntimeSettingsWithString(p);
-      }) : l.Promise.reject(x.BarcodeReaderException(R._errorCode, R._errorString));
+      }) : l.Promise.reject(k.BarcodeReaderException(R._errorCode, R._errorString));
     } } }, l.product.bHTML5Edition ? (R.__addon = R.__addon || {}, l.mix(R.__addon, C)) : (R.Addon = R.Addon || {}, l.mix(R.Addon, C));
   }), l.product.unloadQueue.push(function() {
-    x._wasmInstance && (l.isFunction(x._wasmInstance.destroy) && x._wasmInstance.destroy(), x._wasmInstance = !1);
+    k._wasmInstance && (l.isFunction(k._wasmInstance.destroy) && k._wasmInstance.destroy(), k._wasmInstance = !1);
   });
 });
 /*! 20221212133727
@@ -30814,59 +30815,59 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
   }
 }(), G.AddonReady(function(l, n) {
   var L;
-  l.product.bHTML5Edition && l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(x) {
+  l.product.bHTML5Edition && l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(k) {
     var re, R = l.html5.Funs;
-    if (L = x.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumMac ? x._b64bit ? "libDynamicPdfCorex64_" + G.DWT.PdfVersion + ".dylib" : "libDynamicPdfCore_" + G.DWT.PdfVersion + ".dylib" : x.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumLinux || x.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumEmbed || x.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumChromeOS ? "libDynamicPdfCore_" + G.DWT.PdfVersion + ".so" : x._b64bit ? "DynamicPdfCorex64_" + G.DWT.PdfVersion + ".dll" : "DynamicPdfCore_" + G.DWT.PdfVersion + ".dll", !x._isMobileMode())
+    if (L = k.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumMac ? k._b64bit ? "libDynamicPdfCorex64_" + G.DWT.PdfVersion + ".dylib" : "libDynamicPdfCore_" + G.DWT.PdfVersion + ".dylib" : k.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumLinux || k.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumEmbed || k.__serverPlatform == G.DWT.EnumDWT_PlatformType.enumChromeOS ? "libDynamicPdfCore_" + G.DWT.PdfVersion + ".so" : k._b64bit ? "DynamicPdfCorex64_" + G.DWT.PdfVersion + ".dll" : "DynamicPdfCore_" + G.DWT.PdfVersion + ".dll", !k._isMobileMode())
       try {
-        x._innerSend("GetAddOnVersion", R.makeParams("pdf", L), !0, !1, !1).catch(function() {
+        k._innerSend("GetAddOnVersion", R.makeParams("pdf", L), !0, !1, !1).catch(function() {
         });
       } catch {
       }
     re = { PDF: { IsModuleInstalled: function() {
-      var C = x;
+      var C = k;
       return C._resetErr(), C._isMobileMode() ? !!G.pdf && G.pdf.IsModuleInstalled() : C._innerFun("GetAddOnVersion", R.makeParams("pdf", L)) != "";
     }, IsModuleInstalledAsync: function() {
-      var C = x;
+      var C = k;
       return C._resetErr(), C._isMobileMode() ? G.pdf ? l.Promise.resolve(G.pdf.IsModuleInstalled()) : l.Promise.resolve(!1) : C._innerFunV2("GetAddOnVersion", R.makeParams("pdf", L)).then(function(p) {
         return p != "";
       });
     }, ConvertToImage: function(H, p, N, U) {
-      var H = R.replaceLocalFilename(H), K = "ConvertPDFToImage", Y = x;
+      var H = R.replaceLocalFilename(H), K = "ConvertPDFToImage", Y = k;
       return Y._resetErr(), Y._isMobileMode() || (R.showMask(K), Y._innerSend(K, R.makeParams(H, p), !0, function(F) {
         return R.hideMask(K), N && N(), !0;
       }, function(F) {
         return R.hideMask(K), U && U(), !1;
       })), !0;
     }, SetPassword: function(C) {
-      var p = x;
+      var p = k;
       return p._resetErr(), p._isMobileMode() ? (p._pdfPassword = C, !0) : p._innerFun("SetPDFPassword", R.makeParams(C));
     }, SetConvertMode: function(C) {
-      return x._setConvertMode(C);
+      return k._setConvertMode(C);
     }, SetConvertModeAsync: function(C) {
-      return x._setConvertModeAsync(C);
+      return k._setConvertModeAsync(C);
     }, GetConvertMode: function() {
-      var C = x;
+      var C = k;
       return C._resetErr(), C._pdfConvertMode;
     }, SetResolution: function(C) {
-      var p = x;
-      return p._resetErr(), p._isMobileMode() ? (p._pdfResolution = +C, !0) : x._innerFun("SetPDFResolution", R.makeParams(C));
+      var p = k;
+      return p._resetErr(), p._isMobileMode() ? (p._pdfResolution = +C, !0) : k._innerFun("SetPDFResolution", R.makeParams(C));
     }, SetResolutionAsync: function(C) {
-      var p = x;
-      return p._resetErr(), p._isMobileMode() ? (p._pdfResolution = +C, l.Promise.resolve(!0)) : x._innerFunV2("SetPDFResolution", R.makeParams(C));
+      var p = k;
+      return p._resetErr(), p._isMobileMode() ? (p._pdfResolution = +C, l.Promise.resolve(!0)) : k._innerFunV2("SetPDFResolution", R.makeParams(C));
     }, IsTextBasedPDF: function(C, p, N) {
-      var U = x;
-      return U._resetErr(), U._isMobileMode() ? U._mobileNotSupport("IsTextBasedPDF", N) : (C = R.replaceLocalFilename(C), C = x._innerFun("IsTextBasedPDF", R.makeParams(C)), U.ErrorCode == 0 ? l.isFunction(p) && p(C) : l.isFunction(N) && N(U.ErrorCode, U.ErrorString), C);
+      var U = k;
+      return U._resetErr(), U._isMobileMode() ? U._mobileNotSupport("IsTextBasedPDF", N) : (C = R.replaceLocalFilename(C), C = k._innerFun("IsTextBasedPDF", R.makeParams(C)), U.ErrorCode == 0 ? l.isFunction(p) && p(C) : l.isFunction(N) && N(U.ErrorCode, U.ErrorString), C);
     }, Write: { Setup: function(p) {
-      var p = (p = p) || { version: 15 }, N = (2 < l.stringify(p).length && (l.isNumber(p.version) ? 1 <= p.version && p.version < 2 && (p.version = parseInt(10 * p.version)) : p.version = 15), l.isNumber(p.compression) && p.compression == G.DWT.EnumDWT_PDFCompressionType.PDF_FAX3 && (p.compression = G.DWT.EnumDWT_PDFCompressionType.PDF_FAX4), x);
+      var p = (p = p) || { version: 15 }, N = (2 < l.stringify(p).length && (l.isNumber(p.version) ? 1 <= p.version && p.version < 2 && (p.version = parseInt(10 * p.version)) : p.version = 15), l.isNumber(p.compression) && p.compression == G.DWT.EnumDWT_PDFCompressionType.PDF_FAX3 && (p.compression = G.DWT.EnumDWT_PDFCompressionType.PDF_FAX4), k);
       return N._resetErr(), N._isMobileMode() ? (N._pdfWriteSetting = p, !0) : (p = l.stringify(p), p = l.replaceAll(p, '"', '\\"'), N._innerFun("SetPDFSettings", ['["', p, '"]'].join("")));
-    } } } }, x.__addon = x.__addon || {}, l.mix(x.__addon, re);
+    } } } }, k.__addon = k.__addon || {}, l.mix(k.__addon, re);
   });
 }), G.AddonReady(function(l, n) {
   l.product.bActiveXEdition && l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(L) {
-    var x, re, R;
+    var k, re, R;
     if (!L.getSWebTwain() || !L.getSWebTwain().Addon)
       return !1;
-    G.navInfoSync.bWin && (R = !G.navInfo.bOSx64 || G.navInfo.bWOW64 ? "DynamicPdfCore_" + G.DWT.PdfVersion + ".dll" : "DynamicPdfCorex64_" + G.DWT.PdfVersion + ".dll"), re = L.getSWebTwain(), x = { PDF: { IsModuleInstalled: function() {
+    G.navInfoSync.bWin && (R = !G.navInfo.bOSx64 || G.navInfo.bWOW64 ? "DynamicPdfCore_" + G.DWT.PdfVersion + ".dll" : "DynamicPdfCorex64_" + G.DWT.PdfVersion + ".dll"), re = L.getSWebTwain(), k = { PDF: { IsModuleInstalled: function() {
       var C = re.GetAddOnVersion("pdf", R);
       return l.setErrorString(L), C != "";
     }, IsModuleInstalledAsync: function() {
@@ -30888,7 +30889,7 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
       return C = re.SetPDFResolution(C), l.Promise.resolve(l.wrapperRet(L, C));
     }, IsTextBasedPDF: function(C) {
       return C = re.IsTextBasedPDF(C), l.wrapperRet(L, C);
-    } } }, L.Addon = L.Addon || {}, l.mix(L.Addon, x);
+    } } }, L.Addon = L.Addon || {}, l.mix(L.Addon, k);
   });
 });
 var G = self.Dynamsoft || {};
@@ -30900,8 +30901,8 @@ G.AddonReady = G.AddonReady || function(l) {
 G.DWT.OCRVerInName = "10.0.0.0618";
 (function(l) {
   for (var n = [G.DWT], L = 0; L < 1; L++) {
-    var x = n[L];
-    x.EnumDWT_OCRLanguage = { OCRL_ENG: "eng", OCRL_ARA: "ara", OCRL_CHI_SIM: "chi_sim", OCRL_CHI_TRA: "chi_tra", OCRL_HIN: "hin", OCRL_URD: "urd", OCRL_SPA: "spa", OCRL_FRA: "fra", OCRL_MSA: "msa", OCRL_IND: "ind", OCRL_RUS: "rus", OCRL_BEN: "ben", OCRL_POR: "por", OCRL_PAN: "pan", OCRL_DEU: "deu", OCRL_JPN: "jpn", OCRL_FAS: "fas", OCRL_SWA: "swa", OCRL_JAV: "jav", OCRL_TEL: "tel", OCRL_TUR: "tur", OCRL_KOR: "kor", OCRL_MAR: "mar", OCRL_TAM: "tam", OCRL_VIE: "vie", OCRL_ITA: "ita", OCRL_THA: "tha" }, x.EnumDWT_OCRPageSetMode = { OCRPSM_OSD_ONLY: 0, PSM_AUTO_OSD: 1, PSM_AUTO_ONLY: 2, PSM_AUTO: 3, PSM_SINGLE_COLUMN: 4, PSM_SINGLE_BLOCK_VERT_TEXT: 5, PSM_SINGLE_BLOCK: 6, PSM_SINGLE_LINE: 7, PSM_SINGLE_WORD: 8, PSM_CIRCLE_WORD: 9, PSM_SINGLE_CHAR: 10 }, x.EnumDWT_OCROutputFormat = { OCROF_TEXT: 0, OCROF_PDFPLAINTEXT: 1, OCROF_PDFIMAGEOVERTEXT: 2, OCROF_PDFPLAINTEXT_PDFX: 3, OCROF_PDFIMAGEOVERTEXT_PDFX: 4 }, x.EnumDWT_OCRDownloadType = { OCRDT_Dll: 0, OCRDT_LANGUAGE: 1 };
+    var k = n[L];
+    k.EnumDWT_OCRLanguage = { OCRL_ENG: "eng", OCRL_ARA: "ara", OCRL_CHI_SIM: "chi_sim", OCRL_CHI_TRA: "chi_tra", OCRL_HIN: "hin", OCRL_URD: "urd", OCRL_SPA: "spa", OCRL_FRA: "fra", OCRL_MSA: "msa", OCRL_IND: "ind", OCRL_RUS: "rus", OCRL_BEN: "ben", OCRL_POR: "por", OCRL_PAN: "pan", OCRL_DEU: "deu", OCRL_JPN: "jpn", OCRL_FAS: "fas", OCRL_SWA: "swa", OCRL_JAV: "jav", OCRL_TEL: "tel", OCRL_TUR: "tur", OCRL_KOR: "kor", OCRL_MAR: "mar", OCRL_TAM: "tam", OCRL_VIE: "vie", OCRL_ITA: "ita", OCRL_THA: "tha" }, k.EnumDWT_OCRPageSetMode = { OCRPSM_OSD_ONLY: 0, PSM_AUTO_OSD: 1, PSM_AUTO_ONLY: 2, PSM_AUTO: 3, PSM_SINGLE_COLUMN: 4, PSM_SINGLE_BLOCK_VERT_TEXT: 5, PSM_SINGLE_BLOCK: 6, PSM_SINGLE_LINE: 7, PSM_SINGLE_WORD: 8, PSM_CIRCLE_WORD: 9, PSM_SINGLE_CHAR: 10 }, k.EnumDWT_OCROutputFormat = { OCROF_TEXT: 0, OCROF_PDFPLAINTEXT: 1, OCROF_PDFIMAGEOVERTEXT: 2, OCROF_PDFPLAINTEXT_PDFX: 3, OCROF_PDFIMAGEOVERTEXT_PDFX: 4 }, k.EnumDWT_OCRDownloadType = { OCRDT_Dll: 0, OCRDT_LANGUAGE: 1 };
   }
 })();
 G.DWT.OCRLanguageData_eng = "4113088";
@@ -30992,13 +30993,13 @@ G.DWT.OCRLanguageData[G.DWT.EnumDWT_OCRLanguage.OCRL_THA] = G.DWT.OCRLanguageDat
     var L = this;
     return L._left + "," + L._top + "," + L._right + "," + L._bottom;
   }, n.prototype.GetWordContent = function(L) {
-    var x = this, re = x._wordlist.length;
-    if (x._errorCode < 0)
+    var k = this, re = k._wordlist.length;
+    if (k._errorCode < 0)
       return "";
     if (L == null || L >= re || L < 0)
-      return G.Lib.Errors.OCR_InvalidIndex(x, "GetWordContent"), "";
+      return G.Lib.Errors.OCR_InvalidIndex(k, "GetWordContent"), "";
     var R = G.Lib.NewWordBasicResult();
-    return R._text = x._wordlist[L].text, R._fontName = x._wordlist[L].fontname, R._fontSize = x._wordlist[L].fontsize, R._left = x._wordlist[L].rect[0], R._top = x._wordlist[L].rect[1], R._right = x._wordlist[L].rect[2], R._bottom = x._wordlist[L].rect[3], R;
+    return R._text = k._wordlist[L].text, R._fontName = k._wordlist[L].fontname, R._fontSize = k._wordlist[L].fontsize, R._left = k._wordlist[L].rect[0], R._top = k._wordlist[L].rect[1], R._right = k._wordlist[L].rect[2], R._bottom = k._wordlist[L].rect[3], R;
   }, l.NewLineBasicResult = function() {
     return new n();
   };
@@ -31012,13 +31013,13 @@ G.DWT.OCRLanguageData[G.DWT.EnumDWT_OCRLanguage.OCRL_THA] = G.DWT.OCRLanguageDat
     var L = this;
     return L._count;
   }, n.prototype.GetLineContent = function(L) {
-    var x = this, re = x._linelist.length;
-    if (x._errorCode < 0)
+    var k = this, re = k._linelist.length;
+    if (k._errorCode < 0)
       return "";
     if (L == null || L >= re || L < 0)
-      return G.Lib.Errors.OCR_InvalidIndex(x, "GetLineContent"), "";
+      return G.Lib.Errors.OCR_InvalidIndex(k, "GetLineContent"), "";
     var R = G.Lib.NewLineBasicResult();
-    return R._count = x._linelist[L].words.length, R._left = x._linelist[L].rect[0], R._top = x._linelist[L].rect[1], R._right = x._linelist[L].rect[2], R._bottom = x._linelist[L].rect[3], R._wordlist = x._linelist[L].words, R;
+    return R._count = k._linelist[L].words.length, R._left = k._linelist[L].rect[0], R._top = k._linelist[L].rect[1], R._right = k._linelist[L].rect[2], R._bottom = k._linelist[L].rect[3], R._wordlist = k._linelist[L].words, R;
   }, l.NewPageBasicResult = function() {
     return new n();
   };
@@ -31032,21 +31033,21 @@ G.DWT.OCRLanguageData[G.DWT.EnumDWT_OCRLanguage.OCRL_THA] = G.DWT.OCRLanguageDat
     var L = this;
     return L._count;
   }, n.prototype.GetPageContent = function(L) {
-    var x = this, re = x._pagelist.length;
-    if (x._errorCode < 0)
+    var k = this, re = k._pagelist.length;
+    if (k._errorCode < 0)
       return "";
     if (L == null || L >= re || L < 0)
-      return G.Lib.Errors.OCR_InvalidIndex(x, "GetPageContent"), "";
+      return G.Lib.Errors.OCR_InvalidIndex(k, "GetPageContent"), "";
     var R = G.Lib.NewPageBasicResult();
-    return R._count = x._pagelist[L].lines.length, R._linelist = x._pagelist[L].lines, R;
+    return R._count = k._pagelist[L].lines.length, R._linelist = k._pagelist[L].lines, R;
   }, l.NewPageSetBasicResult = function() {
     return new n();
   };
 })(G.Lib);
 (function(l) {
   function n(L) {
-    var x = this;
-    x._errorCode = 0, x._errorString = "", x._resultlist = [], x._stwain = L;
+    var k = this;
+    k._errorCode = 0, k._errorString = "", k._resultlist = [], k._stwain = L;
   }
   n.prototype.GetErrorCode = function() {
     var L = this;
@@ -31058,30 +31059,30 @@ G.DWT.OCRLanguageData[G.DWT.EnumDWT_OCRLanguage.OCRL_THA] = G.DWT.OCRLanguageDat
     var L = this;
     return L._resultlist[0].format;
   }, n.prototype.GetInput = function() {
-    var L = this, x = L._resultlist[0].input;
-    if (x) {
-      var re = Number(x);
+    var L = this, k = L._resultlist[0].input;
+    if (k) {
+      var re = Number(k);
       if (!isNaN(re))
         return L._stwain._ImgManager.convertServerIdToClientIndex(re);
     }
-    return x;
+    return k;
   }, n.prototype.GetPageSetCount = function() {
     var L = this;
     return L._resultlist[0].pagesets.length;
   }, n.prototype.GetPageSetContent = function(L) {
-    var x = this, re = x._resultlist[0].pagesets.length;
-    if (x._errorCode < 0)
+    var k = this, re = k._resultlist[0].pagesets.length;
+    if (k._errorCode < 0)
       return "";
     if (L == null || L >= re || L < 0)
-      return G.Lib.Errors.OCR_InvalidIndex(x, "GetPageSetContent"), "";
+      return G.Lib.Errors.OCR_InvalidIndex(k, "GetPageSetContent"), "";
     var R = G.Lib.NewPageSetBasicResult();
-    return R._count = x._resultlist[0].pagesets[L].pages.length, R._pagelist = x._resultlist[0].pagesets[L].pages, R;
+    return R._count = k._resultlist[0].pagesets[L].pages.length, R._pagelist = k._resultlist[0].pagesets[L].pages, R;
   }, n.prototype.Get = function() {
     var L = this;
     return L._stwain._innerFun("GetOCRRestult");
   }, n.prototype.Save = function(L) {
-    var x = this, re = l.html5.Funs.replaceLocalFilename(L);
-    return x._stwain._innerFun("SaveOCRRestult", l.html5.Funs.makeParams(re));
+    var k = this, re = l.html5.Funs.replaceLocalFilename(L);
+    return k._stwain._innerFun("SaveOCRRestult", l.html5.Funs.makeParams(re));
   }, l.NewOCRBasicResult = function(L) {
     return new n(L);
   };
@@ -31095,38 +31096,38 @@ G.DWT.OCRLanguageData[G.DWT.EnumDWT_OCRLanguage.OCRL_THA] = G.DWT.OCRLanguageDat
     var L = this;
     return L.UnicodeFontName;
   }, n.prototype.SetUnicodeFontName = function(L) {
-    var x = this, re = L;
-    return l.isString(re) || (re = ""), x.UnicodeFontName = re, !0;
+    var k = this, re = L;
+    return l.isString(re) || (re = ""), k.UnicodeFontName = re, !0;
   }, n.prototype.GetUseDetectedFont = function() {
-    var L = this, x = L.UseDetectedFont;
-    return !!x;
+    var L = this, k = L.UseDetectedFont;
+    return !!k;
   }, n.prototype.SetUseDetectedFont = function(L) {
-    var x = this;
-    return x.UseDetectedFont = !!L, !0;
+    var k = this;
+    return k.UseDetectedFont = !!L, !0;
   }, n.prototype.GetMinFontSizeforMoreAccurateResult = function() {
     var L = this;
     return L.MinFontSizeforMoreAccurateResult;
   }, n.prototype.SetMinFontSizeforMoreAccurateResult = function(L) {
-    var x = this, re = L * 1;
-    return re < 0 && (re = 0), x.MinFontSizeforMoreAccurateResult = re, !0;
+    var k = this, re = L * 1;
+    return re < 0 && (re = 0), k.MinFontSizeforMoreAccurateResult = re, !0;
   }, n.prototype.GetOCRLanguage = function() {
     var L = this;
     return L.OCRLanguage;
   }, n.prototype.SetOCRLanguage = function(L) {
-    var x = this, re = L;
-    return l.isString(re) || (re = ""), x.OCRLanguage = re, !0;
+    var k = this, re = L;
+    return l.isString(re) || (re = ""), k.OCRLanguage = re, !0;
   }, n.prototype.GetPageSetMode = function() {
     var L = this;
     return L.PageSetMode;
   }, n.prototype.SetPageSetMode = function(L) {
-    var x = this, re = L * 1;
-    return (re < 0 || re > G.DWT.EnumDWT_OCRPageSetMode.PSM_SINGLE_CHAR) && (re = G.DWT.EnumDWT_OCRPageSetMode.PSM_AUTO), x.PageSetMode = re, !0;
+    var k = this, re = L * 1;
+    return (re < 0 || re > G.DWT.EnumDWT_OCRPageSetMode.PSM_SINGLE_CHAR) && (re = G.DWT.EnumDWT_OCRPageSetMode.PSM_AUTO), k.PageSetMode = re, !0;
   }, n.prototype.GetOutputFormat = function() {
     var L = this;
     return L.OutputFormat;
   }, n.prototype.SetOutputFormat = function(L) {
-    var x = this, re = L * 1;
-    return (re < 0 || re > G.DWT.EnumDWT_OCROutputFormat.OCROF_PDFIMAGEOVERTEXT_PDFX) && (re = G.DWT.EnumDWT_OCROutputFormat.OCROF_PDFIMAGEOVERTEXT), x.OutputFormat = re, !0;
+    var k = this, re = L * 1;
+    return (re < 0 || re > G.DWT.EnumDWT_OCROutputFormat.OCROF_PDFIMAGEOVERTEXT_PDFX) && (re = G.DWT.EnumDWT_OCROutputFormat.OCROF_PDFIMAGEOVERTEXT), k.OutputFormat = re, !0;
   }, l.NewOptions = function() {
     return new n();
   };
@@ -31135,7 +31136,7 @@ G.AddonReady(function(l, n) {
   if (!l.product.bHTML5Edition)
     return;
   var L;
-  function x(C) {
+  function k(C) {
     var p = l.html5.Funs;
     l.env.bMac ? L = "DynamicOCR_" + G.DWT.OCRVerInName + ".dylib" : l.env.bLinux ? L = "DynamicOCR_" + G.DWT.OCRVerInName + ".so" : G.dcp.b64bit ? L = "DynamicOCRx64_" + G.DWT.OCRVerInName + ".dll" : L = "DynamicOCR_" + G.DWT.OCRVerInName + ".dll", C._isMobileMode() || C._innerSend("GetAddOnVersion", p.makeParams("ocr", L), !0, !1, !1), C.__innerOCRBasicReadFunction = function(N, U, H, K, Y, F, q, O, J, E, me) {
       var Ee = this;
@@ -31212,7 +31213,7 @@ G.AddonReady(function(l, n) {
     })), p;
   }, R = function(C) {
     var p = l.html5.Funs, N, U = l.NewOptions();
-    x(C), N = { OCR: { SetUnicodeFontName: function(H) {
+    k(C), N = { OCR: { SetUnicodeFontName: function(H) {
       var K = C;
       return K._resetErr(), K._isMobileMode() ? K._mobileNotSupport("Addon.OCR.SetUnicodeFontName") : U.SetUnicodeFontName(H);
     }, GetUnicodeFontName: function() {
@@ -31328,16 +31329,16 @@ G.ProOCRVerInName = "1.2.0.0806";
     var L = this;
     return L._zoneCount;
   }, n.prototype.GetLetterContent = function(L) {
-    var x = this, re = x._count;
-    if (x._errorCode < 0)
+    var k = this, re = k._count;
+    if (k._errorCode < 0)
       return "";
     if (L == null || L >= re || L < 0)
-      return G.Lib.Errors.OCR_InvalidIndex(x, "GetLetterContent"), "";
+      return G.Lib.Errors.OCR_InvalidIndex(k, "GetLetterContent"), "";
     var R = G.Lib.NewLetterResult();
-    return R._text = x._letterlist[L].letter, R._left = x._letterlist[L].boundary[0], R._top = x._letterlist[L].boundary[1], R._right = x._letterlist[L].boundary[2], R._bottom = x._letterlist[L].boundary[3], R;
+    return R._text = k._letterlist[L].letter, R._left = k._letterlist[L].boundary[0], R._top = k._letterlist[L].boundary[1], R._right = k._letterlist[L].boundary[2], R._bottom = k._letterlist[L].boundary[3], R;
   }, n.prototype.GetZoneContent = function(L) {
-    var x = this, re = x._zoneCount;
-    return x._errorCode < 0 ? "" : L == null || L >= re || L < 0 ? (G.Lib.Errors.OCR_InvalidIndex(x, "GetZoneContent"), "") : x._zoneWords[L];
+    var k = this, re = k._zoneCount;
+    return k._errorCode < 0 ? "" : L == null || L >= re || L < 0 ? (G.Lib.Errors.OCR_InvalidIndex(k, "GetZoneContent"), "") : k._zoneWords[L];
   }, l.NewPageResult = function() {
     return new n();
   };
@@ -31362,8 +31363,8 @@ G.ProOCRVerInName = "1.2.0.0806";
 })(G.Lib);
 (function(l) {
   function n(L) {
-    var x = this;
-    x._errorCode = 0, x._errorString = "", x._errorlist = [], x._request = "", x._ocrTotalCount = 0, x._alreadyOCRCount = 0, x._resultlist = [], x._resultZoneDetail = [], x._stwain = L;
+    var k = this;
+    k._errorCode = 0, k._errorString = "", k._errorlist = [], k._request = "", k._ocrTotalCount = 0, k._alreadyOCRCount = 0, k._resultlist = [], k._resultZoneDetail = [], k._stwain = L;
   }
   n.prototype.GetErrorCode = function() {
     var L = this;
@@ -31374,19 +31375,19 @@ G.ProOCRVerInName = "1.2.0.0806";
   }, n.prototype.GetInput = function() {
     var L = this;
     if (L._request && L._request.input) {
-      var x = L._request.input;
-      if (x) {
-        var re = Number(x);
+      var k = L._request.input;
+      if (k) {
+        var re = Number(k);
         if (!isNaN(re))
           return L._stwain._ImgManager.convertServerIdToClientIndex(re);
       }
-      return x;
+      return k;
     } else
       return "";
   }, n.prototype.GetErrorDetailList = function() {
-    var L = this, x = 0;
-    L._errorlist && (x = L._errorlist.length);
-    for (var re = [], R = 0; R < x; R++) {
+    var L = this, k = 0;
+    L._errorlist && (k = L._errorlist.length);
+    for (var re = [], R = 0; R < k; R++) {
       var C = G.Lib.NewErrorInfo();
       C._input = L._errorlist[R].input, C._message = L._errorlist[R].message, C._page = L._errorlist[R].page, re.push(C);
     }
@@ -31401,25 +31402,25 @@ G.ProOCRVerInName = "1.2.0.0806";
     var L = this;
     return L._resultlist && L._resultlist.length ? L._resultlist.length : 0;
   }, n.prototype.GetPageContent = function(L) {
-    var x = this, re = 0;
-    if (x._resultlist && (re = x._resultlist.length), L == null || L >= re || L < 0)
-      return G.Lib.Errors.OCR_InvalidIndex(x, "GetPageContent"), "";
+    var k = this, re = 0;
+    if (k._resultlist && (re = k._resultlist.length), L == null || L >= re || L < 0)
+      return G.Lib.Errors.OCR_InvalidIndex(k, "GetPageContent"), "";
     var R = G.Lib.NewPageResult();
-    return x._resultlist ? (R._count = x._resultlist[L].length, R._letterlist = x._resultlist[L]) : R._count = 0, x._resultZoneDetail ? (R._zoneCount = x._resultZoneDetail[L].length, R._zoneWords = x._resultZoneDetail[L]) : R._zoneCount = 0, R;
+    return k._resultlist ? (R._count = k._resultlist[L].length, R._letterlist = k._resultlist[L]) : R._count = 0, k._resultZoneDetail ? (R._zoneCount = k._resultZoneDetail[L].length, R._zoneWords = k._resultZoneDetail[L]) : R._zoneCount = 0, R;
   }, n.prototype.Get = function() {
     var L = this;
     return L._stwain._innerFun("GetOCRRestult");
   }, n.prototype.Save = function(L) {
-    var x = this, re = l.html5.Funs.replaceLocalFilename(L);
-    return x._stwain._innerFun("SaveOCRRestult", l.html5.Funs.makeParams(re));
+    var k = this, re = l.html5.Funs.replaceLocalFilename(L);
+    return k._stwain._innerFun("SaveOCRRestult", l.html5.Funs.makeParams(re));
   }, l.NewOCRProResult = function(L) {
     return new n(L);
   };
 })(G.Lib);
 (function(l) {
   for (var n = [G.DWT], L = 0; L < 1; L++) {
-    var x = n[L];
-    x.EnumDWT_OCRProRecognitionModule = { OCRPM_AUTO: "AUTO", OCRPM_MOSTACCURATE: "MOSTACCURATE", OCRPM_BALANCED: "BALANCED", OCRPM_FASTEST: "FASTEST" }, x.EnumDWT_OCRProOutputFormat = { OCRPFT_TXTS: "TXTS", OCRPFT_TXTCSV: "TXTCSV", OCRPFT_TXTF: "TXTF", OCRPFT_XML: "XML", OCRPFT_IOTPDF: "IOTPDF", OCRPFT_IOTPDF_MRC: "IOTPDF_MRC" }, x.EnumDWT_OCRProPDFVersion = { OCRPPDFV_0: "1.0", OCRPPDFV_1: "1.1", OCRPPDFV_2: "1.2", OCRPPDFV_3: "1.3", OCRPPDFV_4: "1.4", OCRPPDFV_5: "1.5", OCRPPDFV_6: "1.6", OCRPPDFV_7: "1.7" }, x.EnumDWT_OCRProPDFAVersion = { OCRPPDFAV_1A: "pdf/a-1a", OCRPPDFAV_1B: "pdf/a-1b", OCRPPDFAV_2A: "pdf/a-2a", OCRPPDFAV_2B: "pdf/a-2b", OCRPPDFAV_2U: "pdf/a-2u", OCRPPDFAV_3A: "pdf/a-3a", OCRPPDFAV_3B: "pdf/a-3b", OCRPPDFAV_3U: "pdf/a-3u" }, x.EnumDWT_OCRProType = { OCRDT_File: 0, OCRDT_Index: 1 }, x.EnumDWT_OCRFindTextFlags = { OCRFT_WHOLEWORD: 1, OCRFT_MATCHCASE: 2, OCRFT_FUZZYMATCH: 4 }, x.EnumDWT_OCRFindTextAction = { OCRFT_HIGHLIGHT: 0, OCRFT_STRIKEOUT: 1, OCRFT_MARKFORREDACT: 2 };
+    var k = n[L];
+    k.EnumDWT_OCRProRecognitionModule = { OCRPM_AUTO: "AUTO", OCRPM_MOSTACCURATE: "MOSTACCURATE", OCRPM_BALANCED: "BALANCED", OCRPM_FASTEST: "FASTEST" }, k.EnumDWT_OCRProOutputFormat = { OCRPFT_TXTS: "TXTS", OCRPFT_TXTCSV: "TXTCSV", OCRPFT_TXTF: "TXTF", OCRPFT_XML: "XML", OCRPFT_IOTPDF: "IOTPDF", OCRPFT_IOTPDF_MRC: "IOTPDF_MRC" }, k.EnumDWT_OCRProPDFVersion = { OCRPPDFV_0: "1.0", OCRPPDFV_1: "1.1", OCRPPDFV_2: "1.2", OCRPPDFV_3: "1.3", OCRPPDFV_4: "1.4", OCRPPDFV_5: "1.5", OCRPPDFV_6: "1.6", OCRPPDFV_7: "1.7" }, k.EnumDWT_OCRProPDFAVersion = { OCRPPDFAV_1A: "pdf/a-1a", OCRPPDFAV_1B: "pdf/a-1b", OCRPPDFAV_2A: "pdf/a-2a", OCRPPDFAV_2B: "pdf/a-2b", OCRPPDFAV_2U: "pdf/a-2u", OCRPPDFAV_3A: "pdf/a-3a", OCRPPDFAV_3B: "pdf/a-3b", OCRPPDFAV_3U: "pdf/a-3u" }, k.EnumDWT_OCRProType = { OCRDT_File: 0, OCRDT_Index: 1 }, k.EnumDWT_OCRFindTextFlags = { OCRFT_WHOLEWORD: 1, OCRFT_MATCHCASE: 2, OCRFT_FUZZYMATCH: 4 }, k.EnumDWT_OCRFindTextAction = { OCRFT_HIGHLIGHT: 0, OCRFT_STRIKEOUT: 1, OCRFT_MARKFORREDACT: 2 };
   }
 })();
 (function(l) {
@@ -31442,12 +31443,12 @@ G.WebTwain = { Addon: { OCRPro: {} } };
   };
 })(G.WebTwain.Addon.OCRPro);
 (function() {
-  function l(n, L, x, re) {
+  function l(n, L, k, re) {
     var R = this;
-    R.left = n, R.top = L, R.right = x, R.bottom = re;
+    R.left = n, R.top = L, R.right = k, R.bottom = re;
   }
-  G.WebTwain.Addon.OCRPro.NewOCRZone = function(n, L, x, re) {
-    return new l(n, L, x, re);
+  G.WebTwain.Addon.OCRPro.NewOCRZone = function(n, L, k, re) {
+    return new l(n, L, k, re);
   };
 })();
 G.AddonReady(function(l, n) {
@@ -31510,7 +31511,7 @@ G.AddonReady(function(l, n) {
       at == 0 && (mt = mt - 1), Z.__LoadImageFromBytesForDownloadInner(0, Ve, We, mt, ct, Ue, je, fe, Me);
     };
   }
-  var x = function(Te) {
+  var k = function(Te) {
     var Re = [], Ve, We;
     return Te._ImgManager.count() <= 0 || (Ve = Te._ImgManager.getCurrentImageIndex(), Te._ImgManager.convertClientIndexToServerId(Ve), We = Te._ImgManager.getSelectedClientIndexArray(), l.isArray(We) && l.each(We, function(le) {
       var je = Te._ImgManager.convertClientIndexToServerId(le);
@@ -31590,7 +31591,7 @@ G.AddonReady(function(l, n) {
         }
         return !1;
       }
-      var mt = [], at = this.Settings, Ye = x(Te), Et = Te.__innerGetRequestJson(G.DWT.EnumDWT_OCRProType.OCRDT_Index, Ye, at, mt, We);
+      var mt = [], at = this.Settings, Ye = k(Te), Et = Te.__innerGetRequestJson(G.DWT.EnumDWT_OCRProType.OCRDT_Index, Ye, at, mt, We);
       return Te.__innerIsOCRTrial(function(Je) {
         Je || l.License.isLTS() ? fe = Te.__innerOCRReadFunction("OCRProRecognize", -1, "", 0, mt, Et, le, je) : fe = N(at.LicenseChecker, Te, "OCRProRecognize", -1, "", 0, mt, Et, le, je);
       }, je), fe;
@@ -31836,24 +31837,24 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
   } };
 }(), function(l) {
   function n(L) {
-    var x = this;
-    x._Count = 0, x._resultlist = [], x._stwain = L;
+    var k = this;
+    k._Count = 0, k._resultlist = [], k._stwain = L;
   }
   n.prototype.GetCount = function() {
     return l.WebcamErrors.Success(this._stwain), this._Count - 1;
   }, n.prototype.Get = function(L) {
-    var x = this;
-    return x._resultlist.length - 1 <= L || L < 0 ? (G.Lib.Errors.Webcam_InvalidIndex(x._stwain, "Get"), "") : (l.WebcamErrors.Success(x._stwain), x._resultlist[L]);
+    var k = this;
+    return k._resultlist.length - 1 <= L || L < 0 ? (G.Lib.Errors.Webcam_InvalidIndex(k._stwain, "Get"), "") : (l.WebcamErrors.Success(k._stwain), k._resultlist[L]);
   }, n.prototype.GetCurrent = function() {
-    var L = this, x = L._resultlist.length;
-    return x == 0 ? (G.Lib.Errors.Webcam_InvalidIndex(L._stwain, "GetCurrent"), "") : (l.WebcamErrors.Success(L._stwain), L._resultlist[x - 1]);
+    var L = this, k = L._resultlist.length;
+    return k == 0 ? (G.Lib.Errors.Webcam_InvalidIndex(L._stwain, "GetCurrent"), "") : (l.WebcamErrors.Success(L._stwain), L._resultlist[k - 1]);
   }, l.NewWebcamValue = function(L) {
     return new n(L);
   };
 }(G.Lib), function(l) {
   function n(L) {
-    var x = this;
-    x._Count = 0, x._resultlist = [], x._stwain = L;
+    var k = this;
+    k._Count = 0, k._resultlist = [], k._stwain = L;
   }
   n.prototype.GetValue = function() {
     var L = this;
@@ -31866,8 +31867,8 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
   };
 }(G.Lib), function(l) {
   function n(L) {
-    var x = this;
-    x._Count = 0, x._resultlist = [], x._stwain = L;
+    var k = this;
+    k._Count = 0, k._resultlist = [], k._stwain = L;
   }
   n.prototype.GetMinValue = function() {
     var L = this;
@@ -31889,41 +31890,41 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
   };
 }(G.Lib), G.AddonReady(function(l, n) {
   l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(L) {
-    L._innerSetWebcamValue = function(x) {
+    L._innerSetWebcamValue = function(k) {
       var re = l.NewWebcamValue(L);
-      return x && l.isArray(x) && (re._resultlist = x, re._Count = x.length), re;
-    }, L._innerSetWebcamSetting = function(x) {
+      return k && l.isArray(k) && (re._resultlist = k, re._Count = k.length), re;
+    }, L._innerSetWebcamSetting = function(k) {
       var re = l.NewWebcamSetting(L);
-      return x && l.isArray(x) && (re._resultlist = x, re._Count = x.length), re;
-    }, L._innerSetWebcamMoreSetting = function(x) {
+      return k && l.isArray(k) && (re._resultlist = k, re._Count = k.length), re;
+    }, L._innerSetWebcamMoreSetting = function(k) {
       var re = l.NewWebcamMoreSetting(L);
-      return x && l.isArray(x) && (re._resultlist = x, re._Count = x.length), re;
+      return k && l.isArray(k) && (re._resultlist = k, re._Count = k.length), re;
     };
   }), l.Addon_Events.push("OnFrameCaptured"), l.Addon_Events.push("OnCaptureSuccess"), l.Addon_Events.push("OnCaptureError");
 }), G.AddonReady(function(l, n) {
   l.product.bHTML5Edition && l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(L) {
-    var x, re = l.html5.Funs, R = l.env.bMac ? "DynamicWebcam_" + G.WebcamVerInName + ".dylib" : l.env.bLinux ? "DynamicWebcam_" + G.WebcamVerInName + ".so" : L._b64bit ? "DynamicWebcamx64_" + G.WebcamVerInName + ".dll" : "DynamicWebcam_" + G.WebcamVerInName + ".dll";
+    var k, re = l.html5.Funs, R = l.env.bMac ? "DynamicWebcam_" + G.WebcamVerInName + ".dylib" : l.env.bLinux ? "DynamicWebcam_" + G.WebcamVerInName + ".so" : L._b64bit ? "DynamicWebcamx64_" + G.WebcamVerInName + ".dll" : "DynamicWebcam_" + G.WebcamVerInName + ".dll";
     if (!L._isMobileMode())
       try {
         L._innerSend("GetAddOnVersion", re.makeParams("webcam", R), !0, !1, !1).catch(function() {
         });
       } catch {
       }
-    (x = L)._innerWebcamValueFunction = function(C, p) {
+    (k = L)._innerWebcamValueFunction = function(C, p) {
       return C = this._innerFunRaw(C, p, !1, !1), this._innerSetWebcamValue(C);
-    }, x._innerWebcamSettingFunction = function(C, p) {
+    }, k._innerWebcamSettingFunction = function(C, p) {
       return C = this._innerFunRaw(C, p, !1, !1), this._innerSetWebcamSetting(C);
-    }, x._innerWebcamMoreSettingFunction = function(C, p) {
+    }, k._innerWebcamMoreSettingFunction = function(C, p) {
       return C = this._innerFunRaw(C, p, !1, !1), this._innerSetWebcamMoreSetting(C);
-    }, x._OnCaptureSuccess = function(C) {
+    }, k._OnCaptureSuccess = function(C) {
       G.Lib.isFunction(this.__OnCaptureSuccess) && this.__OnCaptureSuccess();
-    }, x._OnCaptureError = function(N) {
+    }, k._OnCaptureError = function(N) {
       var p = N[1], N = N[2];
       G.Lib.isFunction(this.__OnCaptureError) && this.__OnCaptureError(p, N);
-    }, x._OnFrameCaptured = function(C) {
+    }, k._OnFrameCaptured = function(C) {
       var p, N = this, U = G.Lib;
       N.__videoPause || (p = (p = N.__videoQuality) || 60, N.__videoDest && N.__videoDest.UpdateVideoContainer(N.GetImageURL(-1, -1, -1, 0, p))), U.isFunction(N.__OnFrameCaptured) && N.__OnFrameCaptured(C);
-    }, x = { Webcam: { IsModuleInstalled: function() {
+    }, k = { Webcam: { IsModuleInstalled: function() {
       var C = L;
       return C._resetErr(), C._isMobileMode() ? C._mobileNotSupport("Addon.Webcam.IsModuleInstalled") : C._innerFun("GetAddOnVersion", re.makeParams("webcam", R)) != "";
     }, Download: function(C, p, N) {
@@ -32049,20 +32050,20 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
     }, SetCameraControlPropertySetting: function(C, p, N) {
       var U = L;
       return U._resetErr(), U._isMobileMode() ? U._mobileNotSupport("Addon.Webcam.SetCameraControlPropertySetting") : U._innerFun("SetWebcamCameraControlPropertySetting", re.makeParams(C, p, N));
-    } } }, L.__addon = L.__addon || {}, l.mix(L.__addon, x);
+    } } }, L.__addon = L.__addon || {}, l.mix(L.__addon, k);
   });
 }), G.AddonReady(function(l, n) {
   var L;
-  l.product.bActiveXEdition && l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(x) {
+  l.product.bActiveXEdition && l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(k) {
     var re, R, C;
-    if (!x.getSWebTwain() || !x.getSWebTwain().Addon)
+    if (!k.getSWebTwain() || !k.getSWebTwain().Addon)
       return !1;
-    G.navInfoSync.bWin && (C = !G.navInfo.bOSx64 || G.navInfo.bWOW64, L = C ? "DynamicWebcam_" + G.WebcamVerForActiveX + ".dll" : "DynamicWebcamx64_" + G.WebcamVerForActiveX + ".dll"), re = x.getSWebTwain();
+    G.navInfoSync.bWin && (C = !G.navInfo.bOSx64 || G.navInfo.bWOW64, L = C ? "DynamicWebcam_" + G.WebcamVerForActiveX + ".dll" : "DynamicWebcamx64_" + G.WebcamVerForActiveX + ".dll"), re = k.getSWebTwain();
     try {
       re.GetAddOnVersion("webcam", L);
     } catch {
     }
-    (C = x)._innerRead = function(p) {
+    (C = k)._innerRead = function(p) {
       var N;
       try {
         N = G.Lib.parse(p);
@@ -32077,60 +32078,60 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
       return p = this._innerRead(p), this._innerSetWebcamMoreSetting(p);
     }, R = { Webcam: { IsModuleInstalled: function() {
       var p = re.GetAddOnVersion("webcam", L);
-      return l.setErrorString(x), p != "";
+      return l.setErrorString(k), p != "";
     }, Download: function(p, N, U) {
       function H() {
         return G.Lib.isFunction(N) && N(), !0;
       }
       function K() {
-        return G.Lib.isFunction(U) && U(x._errorCode, x._errorString), !1;
+        return G.Lib.isFunction(U) && U(k._errorCode, k._errorString), !1;
       }
-      return l.License.checkProductKey(x, { Webcam: !0 }, !0) ? this.IsModuleInstalled() ? H() : p && p != "" ? (p = re.DownloadAddon(p), l.wrapperRet(x, p, H, K)) : (G.Lib.Errors.Webcam_InvalidRemoteFilename(x), K()) : K();
+      return l.License.checkProductKey(k, { Webcam: !0 }, !0) ? this.IsModuleInstalled() ? H() : p && p != "" ? (p = re.DownloadAddon(p), l.wrapperRet(k, p, H, K)) : (G.Lib.Errors.Webcam_InvalidRemoteFilename(k), K()) : K();
     }, GetSourceList: function() {
       var p, N;
-      return l.License.checkProductKey(x, { Webcam: !0 }, !0) ? (p = re.GetWebcamSourceList(), N = [], l.setErrorString(x), x._errorCode == 0 && (N = x._innerRead(p)) && 1 < N.length && N.splice(N.length - 1, 1), N) : [];
+      return l.License.checkProductKey(k, { Webcam: !0 }, !0) ? (p = re.GetWebcamSourceList(), N = [], l.setErrorString(k), k._errorCode == 0 && (N = k._innerRead(p)) && 1 < N.length && N.splice(N.length - 1, 1), N) : [];
     }, SelectSource: function(p) {
-      return !!l.License.checkProductKey(x, { Webcam: !0 }, !0) && (p = re.SelectWebcam(p), l.setErrorString(x), p);
+      return !!l.License.checkProductKey(k, { Webcam: !0 }, !0) && (p = re.SelectWebcam(p), l.setErrorString(k), p);
     }, CloseSource: function() {
-      x._playVideoDWT = null;
+      k._playVideoDWT = null;
       var p = re.StopCapture();
-      return l.setErrorString(x), p;
+      return l.setErrorString(k), p;
     }, GetFramePartURL: function() {
       var p;
-      return this._isPlaying() ? (p = re.GetDIB(-1), l.setErrorString(x), p) : (l.WebcamErrors.VideoNotPlayingWhenGetURL(x), "");
+      return this._isPlaying() ? (p = re.GetDIB(-1), l.setErrorString(k), p) : (l.WebcamErrors.VideoNotPlayingWhenGetURL(k), "");
     }, GetFrameURL: function() {
       return "";
     }, PlayVideo: function(p, N, U, H, K) {
       function Y() {
-        return x._playVideoDWT = null, G.Lib.isFunction(K) && K(x.ErrorCode, x.ErrorString), !1;
+        return k._playVideoDWT = null, G.Lib.isFunction(K) && K(k.ErrorCode, k.ErrorString), !1;
       }
       var F;
-      return p && p.getSWebTwain() ? l.License.checkProductKey(x, { Webcam: !0 }, !0) ? (F = p.getSWebTwain().CurrentHWND) ? (x._playVideoDWT = p, setTimeout(function() {
+      return p && p.getSWebTwain() ? l.License.checkProductKey(k, { Webcam: !0 }, !0) ? (F = p.getSWebTwain().CurrentHWND) ? (k._playVideoDWT = p, setTimeout(function() {
         var q = re.RunWebcamCmd("PlayVideo", F, null, null, U);
-        l.wrapperRet(x, q, H, Y);
-      }, 0), !0) : (l.WebcamErrors.InvalidParameter(x), Y()) : Y() : (G.Lib.WebcamErrors.InvalidParameter(x), Y());
+        l.wrapperRet(k, q, H, Y);
+      }, 0), !0) : (l.WebcamErrors.InvalidParameter(k), Y()) : Y() : (G.Lib.WebcamErrors.InvalidParameter(k), Y());
     }, PauseVideo: function() {
       return !0;
     }, StopVideo: function() {
-      x._playVideoDWT = null;
+      k._playVideoDWT = null;
       var p = re.RunWebcamCmd("StopVideo", 0, null, null, null);
-      return l.setErrorString(x), re.StopCapture(), p;
+      return l.setErrorString(k), re.StopCapture(), p;
     }, CaptureImage: function(p, N) {
       function U() {
-        return G.Lib.isFunction(N) && N(x.ErrorCode, x.ErrorString), !1;
+        return G.Lib.isFunction(N) && N(k.ErrorCode, k.ErrorString), !1;
       }
       var H;
-      return l.License.checkProductKey(x, { Webcam: !0 }, !0) ? (H = re.RunWebcamCmd("Capture", 0, function() {
-        l.isFunction(p) && setTimeout(p, 0), l.License.isLTS() && G.DWT.lcvrf(x);
-      }, U, null), l.setErrorString(x), H) : U();
+      return l.License.checkProductKey(k, { Webcam: !0 }, !0) ? (H = re.RunWebcamCmd("Capture", 0, function() {
+        l.isFunction(p) && setTimeout(p, 0), l.License.isLTS() && G.DWT.lcvrf(k);
+      }, U, null), l.setErrorString(k), H) : U();
     }, GetMediaType: function() {
-      var p = x._innerWebcamValueFunctionPlugin(re.GetMediaType());
-      return l.setErrorString(x), p;
+      var p = k._innerWebcamValueFunctionPlugin(re.GetMediaType());
+      return l.setErrorString(k), p;
     }, SetMediaType: function(p) {
-      return l.isString(p) ? (p = re.SetMediaType(p), l.setErrorString(x), p) : (l.Errors.InvalidValue(x), !1);
+      return l.isString(p) ? (p = re.SetMediaType(p), l.setErrorString(k), p) : (l.Errors.InvalidValue(k), !1);
     }, GetResolution: function() {
-      var p = x._innerWebcamValueFunctionPlugin(re.GetResolution());
-      if (l.setErrorString(x), p && p._resultlist) {
+      var p = k._innerWebcamValueFunctionPlugin(re.GetResolution());
+      if (l.setErrorString(k), p && p._resultlist) {
         var N, U, H = p._resultlist, K = [], Y = [];
         for (0 < H.length && (U = H[H.length - 1]), N = 0; N < H.length - 1; N++) {
           for (var F, q = (F = H[N]).toLowerCase().split("x"), O = (E = J = O = void 0, { value: F, p1: parseInt(q[0]), p2: parseInt(q[1]) }), J = K, E = J.length - 1; 0 <= E && J[E].p1 >= O.p1 && !(J[E].p1 == O.p1 && J[E].p2 < O.p2); )
@@ -32143,29 +32144,29 @@ G.DWT = G.DWT || {}, G.aryAddonReadyFun = G.aryAddonReadyFun || [], G.AddonReady
       }
       return p;
     }, SetResolution: function(p) {
-      return l.isNumber(p) || l.isString(p) ? (p = re.SetResolution(p), l.setErrorString(x), p) : (l.Errors.InvalidValue(x), !1);
+      return l.isNumber(p) || l.isString(p) ? (p = re.SetResolution(p), l.setErrorString(k), p) : (l.Errors.InvalidValue(k), !1);
     }, GetFrameRate: function() {
-      var p = x._innerWebcamValueFunctionPlugin(re.GetFrameRate());
-      return l.setErrorString(x), p;
+      var p = k._innerWebcamValueFunctionPlugin(re.GetFrameRate());
+      return l.setErrorString(k), p;
     }, SetFrameRate: function(p) {
-      return l.isNumber(p) ? (p = re.SetFrameRate(p), l.setErrorString(x), p) : (l.Errors.InvalidValue(x), !1);
+      return l.isNumber(p) ? (p = re.SetFrameRate(p), l.setErrorString(k), p) : (l.Errors.InvalidValue(k), !1);
     }, GetVideoPropertySetting: function(p) {
-      return p = re.GetWebcamVideoPropertySetting(p), l.setErrorString(x), x._innerWebcamSettingFunctionPlugin(p);
+      return p = re.GetWebcamVideoPropertySetting(p), l.setErrorString(k), k._innerWebcamSettingFunctionPlugin(p);
     }, GetVideoPropertyMoreSetting: function(p) {
-      return p = re.GetWebcamVideoPropertyMoreSetting(p), l.setErrorString(x), x._innerWebcamMoreSettingFunctionPlugin(p);
+      return p = re.GetWebcamVideoPropertyMoreSetting(p), l.setErrorString(k), k._innerWebcamMoreSettingFunctionPlugin(p);
     }, SetVideoPropertySetting: function(p, N, U) {
-      return p = re.SetWebcamVideoPropertySetting(p, N, U), l.setErrorString(x), p;
+      return p = re.SetWebcamVideoPropertySetting(p, N, U), l.setErrorString(k), p;
     }, SetVideoRotateMode: function(p) {
-      return p = re.SetVideoRotateMode(p), l.setErrorString(x), p;
+      return p = re.SetVideoRotateMode(p), l.setErrorString(k), p;
     }, GetCameraControlPropertySetting: function(p) {
-      return p = re.GetWebcamCameraControlSetting(p), l.setErrorString(x), x._innerWebcamSettingFunctionPlugin(p);
+      return p = re.GetWebcamCameraControlSetting(p), l.setErrorString(k), k._innerWebcamSettingFunctionPlugin(p);
     }, GetCameraControlPropertyMoreSetting: function(p) {
-      return p = re.GetWebcamCameraControlMoreSetting(p), l.setErrorString(x), x._innerWebcamMoreSettingFunctionPlugin(p);
+      return p = re.GetWebcamCameraControlMoreSetting(p), l.setErrorString(k), k._innerWebcamMoreSettingFunctionPlugin(p);
     }, SetCameraControlPropertySetting: function(p, N, U) {
-      return p = re.SetWebcamCameraControlPropertySetting(p, N, U), l.setErrorString(x), p;
+      return p = re.SetWebcamCameraControlPropertySetting(p, N, U), l.setErrorString(k), p;
     }, _isPlaying: function() {
-      return !!x._playVideoDWT;
-    } } }, x.Addon = x.Addon || {}, l.mix(x.Addon, R);
+      return !!k._playVideoDWT;
+    } } }, k.Addon = k.Addon || {}, l.mix(k.Addon, R);
   });
 });
 /*! 20221212133727
@@ -32444,10 +32445,10 @@ G.AddonReady(function(l, n) {
     } catch {
       typeof Xi == "object" ? Xi.regeneratorRuntime = R : Function("r", "regeneratorRuntime = r")(R);
     }
-  } }, x = {};
+  } }, k = {};
   function re(R) {
-    var C = x[R];
-    return C !== void 0 ? C.exports : (C = x[R] = { exports: {} }, L[R](C, C.exports, re), C.exports);
+    var C = k[R];
+    return C !== void 0 ? C.exports : (C = k[R] = { exports: {} }, L[R](C, C.exports, re), C.exports);
   }
   re.n = function(R) {
     var C = R && R.__esModule ? function() {
@@ -32464,11 +32465,11 @@ G.AddonReady(function(l, n) {
   }, function() {
     function R(te, W, g, f, b, m, I) {
       try {
-        var k = te[m](I), D = k.value;
+        var x = te[m](I), D = x.value;
       } catch (B) {
         return void g(B);
       }
-      k.done ? W(D) : Promise.resolve(D).then(f, b);
+      x.done ? W(D) : Promise.resolve(D).then(f, b);
     }
     function C(te) {
       return function() {
@@ -32476,10 +32477,10 @@ G.AddonReady(function(l, n) {
         return new Promise(function(f, b) {
           var m = te.apply(W, g);
           function I(D) {
-            R(m, f, b, I, k, "next", D);
+            R(m, f, b, I, x, "next", D);
           }
-          function k(D) {
-            R(m, f, b, I, k, "throw", D);
+          function x(D) {
+            R(m, f, b, I, x, "throw", D);
           }
           I(void 0);
         });
@@ -32553,12 +32554,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         f[g] = te[g];
       return f;
     }
-    function lt(te, W, g, X, b, m, I, k) {
-      k === void 0 && (k = !1);
-      var D, B = JSON.parse(JSON.stringify({ video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: { ideal: k ? "user" : "environment" } } })), X = X === "exact" && !b;
+    function lt(te, W, g, X, b, m, I, x) {
+      x === void 0 && (x = !1);
+      var D, B = JSON.parse(JSON.stringify({ video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: { ideal: x ? "user" : "environment" } } })), X = X === "exact" && !b;
       if (W && (B.video.width = ((D = {})[X ? "exact" : "ideal"] = W, D)), g && (B.video.height = ((D = {})[X ? "exact" : "ideal"] = g, D)), m && m.bMobile && m.bSafari && b && (D = Math.max(W || 1280, g || 720), B.video.width = ((b = {})[X ? "exact" : "ideal"] = D, b), delete B.video.height), te)
         delete B.video.facingMode, B.video.deviceId = { exact: te };
-      else if (I && !k) {
+      else if (I && !x) {
         for (var Q, ve = ["rear", "back", "rück", "arrière", "trasera", "trás", "traseira", "posteriore", "后面", "後面", "背面", "后置", "後置", "背置", "задней", "الخلفية", "후", "arka", "achterzijde", "หลัง", "baksidan", "bagside", "sau", "bak", "tylny", "takakamera", "belakang", "אחורית", "πίσω", "spate", "hátsó", "zadní", "darrere", "zadná", "задня", "stražnja", "belakang", "बैक"], ke = Be(I); !(Q = ke()).done && function() {
           var dt = Q.value, et = dt.label.toLowerCase();
           if (et && ve.some(function($e) {
@@ -32575,7 +32576,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return Kt.apply(this, arguments);
     }
     function Kt() {
-      return (Kt = C(p().mark(function te(W, g, f, b, m, I, k) {
+      return (Kt = C(p().mark(function te(W, g, f, b, m, I, x) {
         var D, B, X, Q, ve, ke;
         return p().wrap(function(dt) {
           for (; ; )
@@ -32589,7 +32590,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
                 return dt.abrupt("return", D);
               case 10:
-                if (document && document.createElement ? X = document.createElement("video") : pe(k, Dt.VIDEO_ELEMENT_REQUIRED), Q = b === "exact", m.bFirefox || !Q)
+                if (document && document.createElement ? X = document.createElement("video") : pe(x, Dt.VIDEO_ELEMENT_REQUIRED), Q = b === "exact", m.bFirefox || !Q)
                   return X.srcObject = B, dt.next = 16, X.play();
                 dt.next = 16;
                 break;
@@ -32705,12 +32706,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function He() {
       return (He = C(p().mark(function te(W, g, f) {
-        var b, m, I, k, D;
+        var b, m, I, x, D;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
               case 0:
-                return m = !1, f && (b = vr(f), m = Vt(b, W.imageWidth, W.imageHeight)), k = !1, D = { quality: 85, returnType: N.Enum_ImageType.IT_BGRA, returnBlob: !1 }, !m && f && (po(b) && b.length == 8 && (I = { points: b }), k = !0), B.abrupt("return", Or(W, g, I, k, D, !1).then(function(X) {
+                return m = !1, f && (b = vr(f), m = Vt(b, W.imageWidth, W.imageHeight)), x = !1, D = { quality: 85, returnType: N.Enum_ImageType.IT_BGRA, returnBlob: !1 }, !m && f && (_o(b) && b.length == 8 && (I = { points: b }), x = !0), B.abrupt("return", Or(W, g, I, x, D, !1).then(function(X) {
                   return W.imageData = X.src, ar(X.result), X.result;
                 }));
               case 5:
@@ -32729,21 +32730,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function bt() {
       return (bt = C(p().mark(function te(W, g, f, b) {
         var m, I;
-        return p().wrap(function(k) {
+        return p().wrap(function(x) {
           for (; ; )
-            switch (k.prev = k.next) {
+            switch (x.prev = x.next) {
               case 0:
                 if ((m = Ne(W, b)) === Z.ORIGINAL)
-                  return k.abrupt("return", { filterValue: m, filterBlob: f });
-                k.next = 3;
+                  return x.abrupt("return", { filterValue: m, filterBlob: f });
+                x.next = 3;
                 break;
               case 3:
-                return k.next = 5, W.filterHandlerByIImageData(g, f, m);
+                return x.next = 5, W.filterHandlerByIImageData(g, f, m);
               case 5:
-                return I = k.sent, k.abrupt("return", { filterValue: m, filterBlob: I });
+                return I = x.sent, x.abrupt("return", { filterValue: m, filterBlob: I });
               case 7:
               case "end":
-                return k.stop();
+                return x.stop();
             }
         }, te);
       }))).apply(this, arguments);
@@ -32752,7 +32753,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return Zt.apply(this, arguments);
     }
     function Zt() {
-      return (Zt = C(p().mark(function te(W, g, f, b, m, I, k) {
+      return (Zt = C(p().mark(function te(W, g, f, b, m, I, x) {
         var D, B, X, Q, ve, ke, dt, et, $e, gt, hn;
         return p().wrap(function(Tt) {
           for (; ; )
@@ -32810,7 +32811,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 if (b)
                   return Tt.next = 46, function() {
                     return bt.apply(this, arguments);
-                  }(g, dt, et, k);
+                  }(g, dt, et, x);
                 Tt.next = 51;
                 break;
               case 46:
@@ -32841,7 +32842,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function an() {
       return (an = C(p().mark(function te(W, g, f) {
-        var b, m, I, k, D, B, X, Q;
+        var b, m, I, x, D, B, X, Q;
         return p().wrap(function(ve) {
           for (; ; )
             switch (ve.prev = ve.next) {
@@ -32864,7 +32865,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
                 return ve.abrupt("return");
               case 9:
-                if (k = b.queryPreviewImageElement()) {
+                if (x = b.queryPreviewImageElement()) {
                   ve.next = 12;
                   break;
                 }
@@ -32884,10 +32885,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 X = ve.sent, D.preview = X.preview, delete X.preview, X = null;
               case 26:
                 return ve.next = 28, new Promise(function(ke, dt) {
-                  var et = k.src;
-                  k.src = tt.createURL(D.preview), D.detectArea && k.setAttribute("data", JSON.stringify(D.detectArea)), oi(D), D = null, k.onload = function() {
-                    k.onload = null, et && tt.revokeObjectURL(et), ke(!0);
-                  }, k.onerror = function($e) {
+                  var et = x.src;
+                  x.src = tt.createURL(D.preview), D.detectArea && x.setAttribute("data", JSON.stringify(D.detectArea)), oi(D), D = null, x.onload = function() {
+                    x.onload = null, et && tt.revokeObjectURL(et), ke(!0);
+                  }, x.onerror = function($e) {
                     dt($e);
                   };
                 });
@@ -32905,20 +32906,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function xr() {
       return (xr = C(p().mark(function te(W, g) {
-        var f, b, m, I, k, D, B, X, Q, ve;
+        var f, b, m, I, x, D, B, X, Q, ve;
         return p().wrap(function(ke) {
           for (; ; )
             switch (ke.prev = ke.next) {
               case 0:
-                if (f = W.imageWidth, b = W.imageHeight, m = g.config.scannerViewer || {}, m = m.autoDetect, I = (m = m === void 0 ? {} : m).acceptedPolygonConfidence, I = I === void 0 ? 80 : I, k = m.acceptedBlurryScore, k = k === void 0 ? 80 : k, D = g.getAreaDetectCallback()) {
+                if (f = W.imageWidth, b = W.imageHeight, m = g.config.scannerViewer || {}, m = m.autoDetect, I = (m = m === void 0 ? {} : m).acceptedPolygonConfidence, I = I === void 0 ? 80 : I, x = m.acceptedBlurryScore, x = x === void 0 ? 80 : x, D = g.getAreaDetectCallback()) {
                   ke.next = 7;
                   break;
                 }
                 return g.emit(ct, { message: "The detect function is not bind.", code: -4290 }), ke.abrupt("return", { cornerPoints: [], detectedArea: !1 });
               case 7:
-                return ke.next = 9, D(W, I, k, void 0, void 0);
+                return ke.next = 9, D(W, I, x, void 0, void 0);
               case 9:
-                return B = ke.sent, W.imageData = B.src, X = B.confidence, X = X === void 0 ? [0] : X, Q = B.blurryScore, Q = Q === void 0 ? 0 : Q, ve = B.cornerPoints, g.emit("documentDetected", B), typeof m.processFrame == "function" ? m.processFrame(B, m) ? B.detectedArea = !0 : (B.detectedArea = !1, B.cornerPoints = [0, 0, f, 0, f, b, 0, b]) : X[0] < I / 100 || Q < k || ve.every(function(dt) {
+                return B = ke.sent, W.imageData = B.src, X = B.confidence, X = X === void 0 ? [0] : X, Q = B.blurryScore, Q = Q === void 0 ? 0 : Q, ve = B.cornerPoints, g.emit("documentDetected", B), typeof m.processFrame == "function" ? m.processFrame(B, m) ? B.detectedArea = !0 : (B.detectedArea = !1, B.cornerPoints = [0, 0, f, 0, f, b, 0, b]) : X[0] < I / 100 || Q < x || ve.every(function(dt) {
                   return dt === 0;
                 }) ? (B.detectedArea = !1, B.cornerPoints = [0, 0, f, 0, f, b, 0, b]) : B.detectedArea = !0, ke.abrupt("return", B);
               case 15:
@@ -32930,7 +32931,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function hr() {
       return (hr = C(p().mark(function te(W, g, f, b, m) {
-        var I, k, D;
+        var I, x, D;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
@@ -32942,9 +32943,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               case 2:
                 if (I = f.find(function(X) {
                   return X.label === m;
-                }), k = b.find(function(X) {
+                }), x = b.find(function(X) {
                   return X.value === m;
-                }), I && I.handler && k) {
+                }), I && I.handler && x) {
                   B.next = 6;
                   break;
                 }
@@ -32952,7 +32953,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               case 6:
                 return B.next = 8, rt(g);
               case 8:
-                return D = B.sent, B.next = 11, I.handler(D, k.option);
+                return D = B.sent, B.next = 11, I.handler(D, x.option);
               case 11:
                 return D = B.sent, B.abrupt("return", D.result);
               case 13:
@@ -32964,7 +32965,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Vr() {
       return (Vr = C(p().mark(function te(W, g, f, b, m) {
-        var I, k, D;
+        var I, x, D;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
@@ -32976,15 +32977,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               case 2:
                 if (I = f.find(function(X) {
                   return X.label === m;
-                }), k = b.find(function(X) {
+                }), x = b.find(function(X) {
                   return X.value === m;
-                }), I && I.handler && k) {
+                }), I && I.handler && x) {
                   B.next = 6;
                   break;
                 }
                 return B.abrupt("return", g);
               case 6:
-                return B.next = 8, I.handler(W, k.option);
+                return B.next = 8, I.handler(W, x.option);
               case 8:
                 return D = B.sent, W.imageData = D.src, ar(D.result), B.abrupt("return", D.result);
               case 12:
@@ -33006,11 +33007,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             switch (I.prev = I.next) {
               case 0:
                 if (f)
-                  return b.blobList, m = function(k, D) {
-                    if (k == null)
+                  return b.blobList, m = function(x, D) {
+                    if (x == null)
                       return {};
-                    for (var B, X = {}, Q = Object.keys(k), ve = 0; ve < Q.length; ve++)
-                      B = Q[ve], 0 <= D.indexOf(B) || (X[B] = k[B]);
+                    for (var B, X = {}, Q = Object.keys(x), ve = 0; ve < Q.length; ve++)
+                      B = Q[ve], 0 <= D.indexOf(B) || (X[B] = x[B]);
                     return X;
                   }(b, wn), I.next = 4, Promise.resolve(f([{ iImageData: g, file: U({}, m) }]));
                 I.next = 8;
@@ -33029,7 +33030,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Mt() {
       return (Mt = C(p().mark(function te(W, g, f, b) {
-        var m, I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn;
+        var m, I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn;
         return p().wrap(function(En) {
           for (; ; )
             switch (En.prev = En.next) {
@@ -33043,11 +33044,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   En.next = 20;
                   break;
                 }
-                return k = g[0], En.next = 9, rt(k);
+                return x = g[0], En.next = 9, rt(x);
               case 9:
-                return D = En.sent, En.next = 12, Ut(D, W, !1, !1, !1, k);
+                return D = En.sent, En.next = 12, Ut(D, W, !1, !1, !1, x);
               case 12:
-                return X = En.sent, X = X.detectArea, X = { cornerPoints: X, detectedArea: !0 }, En.next = 17, Yt(W, D, !1, X, f, k);
+                return X = En.sent, X = X.detectArea, X = { cornerPoints: X, detectedArea: !0 }, En.next = 17, Yt(W, D, !1, X, f, x);
               case 17:
                 m instanceof qe && m.enableMultiImages(), En.next = 56;
                 break;
@@ -33092,7 +33093,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function $t() {
       return ($t = C(p().mark(function te(W, g, f, b, m, I) {
-        var k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir;
+        var x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir;
         return p().wrap(function(kn) {
           for (; ; )
             switch (kn.prev = kn.next) {
@@ -33111,12 +33112,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 kn.next = 30;
                 break;
               case 25:
-                k = kn.sent, f && W.setImageDataBack(ve.imageData), k.filterValue = Ne(W, null), kn.next = 48;
+                x = kn.sent, f && W.setImageDataBack(ve.imageData), x.filterValue = Ne(W, null), kn.next = 48;
                 break;
               case 30:
                 return $n.log("get BlobItem filter+Perspective+no preview"), kn.next = 33, Ut(ve, W, !0, !0, !1, I);
               case 33:
-                if (k = kn.sent, f && (W.setImageDataBack(ve.imageData), delete ve.imageData), $e = (et = k).filterBlob, hn = et.resBlob, Tt = k.resImage, (En = k) && (No(En), To(En), oi(En)), Tt && delete k.resImage, $e && delete k.filterBlob, ke.visibility.toString().toLowerCase() == "hidden")
+                if (x = kn.sent, f && (W.setImageDataBack(ve.imageData), delete ve.imageData), $e = (et = x).filterBlob, hn = et.resBlob, Tt = x.resImage, (En = x) && (Vo(En), Co(En), oi(En)), Tt && delete x.resImage, $e && delete x.filterBlob, ke.visibility.toString().toLowerCase() == "hidden")
                   return Tt = { blobList: [] }, kn.next = 44, function() {
                     return It.apply(this, arguments);
                   }(W, $e || hn, B.onSaveCapture, Tt);
@@ -33126,7 +33127,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 return W.captureLoop && W.captureLoop.setIsLooping(!1), W.emit("focusPage"), W.hideLoading("handle sigle image"), kn.abrupt("return");
               case 48:
                 if (W.emit("blurPage"), gt = W.getCurrentPage())
-                  return gt.hide(), hn = gt.getDvs(), Tt = k.resBlob || k.oriBlob, hn.DataControl.appendSync(m, [{ oriData: Tt.imageData, metadata: ei(Tt), customData: { oriBlob: k.oriBlob, detectArea: k.detectArea, filterValue: k.filterValue } }]), kn.next = 57, gt.clickMultipleImage();
+                  return gt.hide(), hn = gt.getDvs(), Tt = x.resBlob || x.oriBlob, hn.DataControl.appendSync(m, [{ oriData: Tt.imageData, metadata: ei(Tt), customData: { oriBlob: x.oriBlob, detectArea: x.detectArea, filterValue: x.filterValue } }]), kn.next = 57, gt.clickMultipleImage();
                 kn.next = 57;
                 break;
               case 57:
@@ -33151,7 +33152,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function nr() {
       return (nr = C(p().mark(function te(W, g, f, b, m) {
-        var I, k, D;
+        var I, x, D;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
@@ -33174,13 +33175,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               case 11:
                 I = B.sent;
               case 12:
-                k = I.cornerPoints, D = se(W, "config.scannerViewer"), D = D.polygonStyle, D = D === void 0 ? { stroke: "#fe8e14", strokeWidth: "2px", dashed: "solid" } : D, $n.log("get detected preview"), B.next = 18;
-                var X, Q = f, ve = k, ke = D, dt = m, et = "fe8e14";
+                x = I.cornerPoints, D = se(W, "config.scannerViewer"), D = D.polygonStyle, D = D === void 0 ? { stroke: "#fe8e14", strokeWidth: "2px", dashed: "solid" } : D, $n.log("get detected preview"), B.next = 18;
+                var X, Q = f, ve = x, ke = D, dt = m, et = "fe8e14";
                 return ke && mn(ke.stroke) && ke.stroke.indexOf("#") == 0 && (et = ke.stroke.substr(1)), ve && (ke = vr(ve), X = { points: ke, lineWidth: 5, strokeColor: et }), Or(Q, void 0, X, !1, dt, !0).then(function($e) {
                   return Q.imageData = $e.src, $e && (ar($e.result), ar($e.preview)), $e;
                 });
               case 18:
-                return D = B.sent, $n.log("get detected preview ok"), b && (W.setImageDataBack(f.imageData), delete f.imageData), B.abrupt("return", new Ht({ oriBlob: D.result, preview: D.preview, detectArea: k }));
+                return D = B.sent, $n.log("get detected preview ok"), b && (W.setImageDataBack(f.imageData), delete f.imageData), B.abrupt("return", new Ht({ oriBlob: D.result, preview: D.preview, detectArea: x }));
               case 22:
               case "end":
                 return B.stop();
@@ -33199,21 +33200,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var W, g = function(f) {
         var b = f.slice().sort(function(D, B) {
           return D.y - B.y;
-        })[0], m = f.indexOf(b), I = f[m - 1], k = f[m + 1];
-        return m === 0 && (I = f[3]), I = { x: b.x - I.x, y: b.y - I.y }, k = { x: k.x - b.x, y: k.y - b.y }, b = { x: 10, y: 0 }, I = Fr(b, I), b = Fr(b, k), k = m, I < b && (k = m === 0 ? 3 : m - 1), f.slice(k).concat(f.slice(0, k));
+        })[0], m = f.indexOf(b), I = f[m - 1], x = f[m + 1];
+        return m === 0 && (I = f[3]), I = { x: b.x - I.x, y: b.y - I.y }, x = { x: x.x - b.x, y: x.y - b.y }, b = { x: 10, y: 0 }, I = Fr(b, I), b = Fr(b, x), x = m, I < b && (x = m === 0 ? 3 : m - 1), f.slice(x).concat(f.slice(0, x));
       }(function(f) {
         var b;
         if (f && f.length === 8)
           return f = function(m) {
-            for (var I = [], k = 0; k < m.length; k += 2) {
-              var D = { x: m[k], y: m[k + 1] };
+            for (var I = [], x = 0; x < m.length; x += 2) {
+              var D = { x: m[x], y: m[x + 1] };
               I.push(D);
             }
             return I;
           }(f), b = function(m) {
             var I = { x: 0, y: 0 };
-            return m.forEach(function(k) {
-              I.x += k.x, I.y += k.y;
+            return m.forEach(function(x) {
+              I.x += x.x, I.y += x.y;
             }), I.x /= m.length, I.y /= m.length, I;
           }(f), f.sort(function(m, I) {
             return Math.atan2(m.y - b.y, m.x - b.x) - Math.atan2(I.y - b.y, I.x - b.x);
@@ -33229,7 +33230,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Or(te, W, g, f, b, m) {
       var I = void 0, I = { polygon: I, doPerspective: I, source: { angle: I }, output: { orgImage: I, previewImage: I } };
-      return Rr(te, I.source), I.source.angle = W, g && po(g.points) && g.points.length == 8 && (I.polygon = g, f && (I.doPerspective = !0)), b !== !1 && (b instanceof Object ? I.output.orgImage = b : I.output.orgImage = { quality: 85, returnType: N.Enum_ImageType.IT_JPG, returnBlob: !0 }), m !== !1 && (m instanceof Object ? I.output.previewImage = m : I.output.previewImage = { quality: 85, width: 200, height: 200, returnType: N.Enum_ImageType.IT_JPG, returnBlob: !0, nInterplationMethod: 5 }), N.ImageProcWrapper.createImage(I);
+      return Rr(te, I.source), I.source.angle = W, g && _o(g.points) && g.points.length == 8 && (I.polygon = g, f && (I.doPerspective = !0)), b !== !1 && (b instanceof Object ? I.output.orgImage = b : I.output.orgImage = { quality: 85, returnType: N.Enum_ImageType.IT_JPG, returnBlob: !0 }), m !== !1 && (m instanceof Object ? I.output.previewImage = m : I.output.previewImage = { quality: 85, width: 200, height: 200, returnType: N.Enum_ImageType.IT_JPG, returnBlob: !0, nInterplationMethod: 5 }), N.ImageProcWrapper.createImage(I);
     }
     function Jr(te) {
       return te %= 360, te < 0 && (te += 360), te;
@@ -33244,16 +33245,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Li() {
       return (Li = C(p().mark(function te(W, g, f, b, m) {
-        var I, k, D;
+        var I, x, D;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
               case 0:
                 return m === void 0 && (m = {}), B.next = 3, g.DataControl.getData(f);
               case 3:
-                return k = B.sent, I = k.customData, k = ei(W), I ? b && (To(I), oi(I)) : I = {}, m && (D = b ? ["angle", "detectArea", "filterValue", "bitDepth"] : ["angle", "detectArea", "filterValue", "bitDepth", "resBlob", "preview"], N.Lib.each(D, function(X) {
+                return x = B.sent, I = x.customData, x = ei(W), I ? b && (Co(I), oi(I)) : I = {}, m && (D = b ? ["angle", "detectArea", "filterValue", "bitDepth"] : ["angle", "detectArea", "filterValue", "bitDepth", "resBlob", "preview"], N.Lib.each(D, function(X) {
                   m[X] !== void 0 && (I[X] = m[X]);
-                }), !I.oriBlob && m.oriBlob && (I.oriBlob = vi(m.oriBlob))), g.DataControl.updateSync(f, { oriData: W.imageData, metadata: k, customData: I }, !0), B.abrupt("return", !0);
+                }), !I.oriBlob && m.oriBlob && (I.oriBlob = vi(m.oriBlob))), g.DataControl.updateSync(f, { oriData: W.imageData, metadata: x, customData: I }, !0), B.abrupt("return", !0);
               case 10:
               case "end":
                 return B.stop();
@@ -33323,52 +33324,52 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function ra() {
       return (ra = C(p().mark(function te(W) {
         var g, f, b, m, I;
-        return p().wrap(function(k) {
+        return p().wrap(function(x) {
           for (; ; )
-            switch (k.prev = k.next) {
+            switch (x.prev = x.next) {
               case 0:
                 if (g = W) {
-                  k.next = 3;
+                  x.next = 3;
                   break;
                 }
-                return k.abrupt("return");
+                return x.abrupt("return");
               case 3:
                 if (Fn()) {
-                  k.next = 5;
+                  x.next = 5;
                   break;
                 }
-                return k.abrupt("return");
+                return x.abrupt("return");
               case 5:
                 if (f = g.config.scannerViewer, f = (f === void 0 ? {} : f).torch, f = f === void 0 ? {} : f, b = (b = g.getCurrentPage()) == null || (b = b.element) == null ? void 0 : b.querySelector("." + ce.BUTTON_PREFIX + "flashBtn"), m = !1, ((I = f.visibility) == null ? void 0 : I.toString().toLowerCase()) == "hidden" ? b != null && b.classList.add(ce.hidden) : b != null && b.classList.remove(ce.hidden), (m = g.isRunPlaying()) ? g.getCapabilities().torch ? b != null && b.classList.remove(ce.disable) : (f.on = !1, b != null && b.classList.add(ce.disable)) : f.on = !1, I = b == null ? void 0 : b.querySelector("." + ce.iconFlash), !f.on) {
-                  k.next = 22;
+                  x.next = 22;
                   break;
                 }
                 if (m)
-                  return k.next = 17, function() {
+                  return x.next = 17, function() {
                     return Gi.apply(this, arguments);
                   }(g);
-                k.next = 17;
+                x.next = 17;
                 break;
               case 17:
-                b != null && b.classList.add(ce.headerSelected), I != null && I.classList.remove(ce.iconFlashOff), I != null && I.classList.add(ce.iconFlashOn), k.next = 28;
+                b != null && b.classList.add(ce.headerSelected), I != null && I.classList.remove(ce.iconFlashOff), I != null && I.classList.add(ce.iconFlashOn), x.next = 28;
                 break;
               case 22:
                 if (m)
-                  return k.next = 25, function() {
+                  return x.next = 25, function() {
                     return Gn.apply(this, arguments);
                   }(g);
-                k.next = 25;
+                x.next = 25;
                 break;
               case 25:
                 b != null && b.classList.remove(ce.headerSelected), I != null && I.classList.remove(ce.iconFlashOn), I != null && I.classList.add(ce.iconFlashOff);
               case 28:
               case "end":
-                return k.stop();
+                return x.stop();
             }
         }, te);
       }))).apply(this, arguments);
     }
-    function Ao(te) {
+    function Ro(te) {
       var W, g, f;
       return (N.navInfo.biPhone || N.navInfo.biPad) && (W = 5, g = 85, f = 3840), N.ImageProcWrapper.getMax4kImage(te, W, g, f);
     }
@@ -33379,22 +33380,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function Ur() {
       return (Ur = C(p().mark(function te(W, g, f, b, m) {
         var I;
-        return p().wrap(function(k) {
+        return p().wrap(function(x) {
           for (; ; )
-            switch (k.prev = k.next) {
+            switch (x.prev = x.next) {
               case 0:
                 if (zn(f))
-                  return I = { fileName: b, initFileName: b, curIndex: -1, saveData: !1, fromInternal: m }, k.next = 5, W.showCropPage(I, g);
-                k.next = 7;
+                  return I = { fileName: b, initFileName: b, curIndex: -1, saveData: !1, fromInternal: m }, x.next = 5, W.showCropPage(I, g);
+                x.next = 7;
                 break;
               case 5:
-                k.next = 10;
+                x.next = 10;
                 break;
               case 7:
-                return I = { fileName: b, initFileName: b, curIndex: -1, saveData: !1, fromInternal: m, visibility: f.visibility }, k.next = 10, W.showDocumentEditPage(I, g);
+                return I = { fileName: b, initFileName: b, curIndex: -1, saveData: !1, fromInternal: m, visibility: f.visibility }, x.next = 10, W.showDocumentEditPage(I, g);
               case 10:
               case "end":
-                return k.stop();
+                return x.stop();
             }
         }, te);
       }))).apply(this, arguments);
@@ -33431,10 +33432,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, te);
       }))).apply(this, arguments);
     }
-    function No(te) {
+    function Vo(te) {
       te && te.oriBlob && (delete te.oriBlob.imageData, delete te.oriBlob);
     }
-    function To(te) {
+    function Co(te) {
       te && te.resBlob && (delete te.resBlob.imageData, delete te.resBlob);
     }
     function oi(te) {
@@ -33449,7 +33450,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function ar(te) {
       te && (delete te.code, delete te.message);
     }
-    function po(te) {
+    function _o(te) {
       return Array.isArray ? Array.isArray(te) : Object.prototype.toString.call(te) === "[object Array]";
     }
     function Ln(te) {
@@ -33530,7 +33531,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (te == W)
         return 1;
       var g = !1;
-      if (po(te) && po(W)) {
+      if (_o(te) && _o(W)) {
         var f = te.length;
         if (f == W.length) {
           for (var g = !0, b = 0; b < f; b++)
@@ -33546,8 +33547,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return g === void 0 && (g = 1), Math.abs(te - W) < g;
     }
     function Vt(te, W, g) {
-      var f, b, m, I, k, D, B;
-      return !(!po(te) || te.length != 8) && (f = te[0], b = te[1], m = te[2], I = te[3], k = te[4], D = te[5], B = te[6], te = te[7], kt(f, 0) && kt(b, 0) && kt(m, W) && kt(I, 0) && kt(k, W) && kt(D, g) && kt(B, 0) && kt(te, g));
+      var f, b, m, I, x, D, B;
+      return !(!_o(te) || te.length != 8) && (f = te[0], b = te[1], m = te[2], I = te[3], x = te[4], D = te[5], B = te[6], te = te[7], kt(f, 0) && kt(b, 0) && kt(m, W) && kt(I, 0) && kt(x, W) && kt(D, g) && kt(B, 0) && kt(te, g));
     }
     var Bn = function() {
       function te(g) {
@@ -33592,8 +33593,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this._events[g];
         if (!f || f.length === 0)
           return !1;
-        for (var b = f.length, m = arguments.length, I = new Array(1 < m ? m - 1 : 0), k = 1; k < m; k++)
-          I[k - 1] = arguments[k];
+        for (var b = f.length, m = arguments.length, I = new Array(1 < m ? m - 1 : 0), x = 1; x < m; x++)
+          I[x - 1] = arguments[x];
         for (var D = 0; D < b; D++) {
           var B, X = f[D];
           X && ((B = X.fn).call.apply(B, [null].concat(I)), X.once && (f.splice(D, 1), D--));
@@ -33602,14 +33603,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this._events[g];
         if (!f || f.length === 0)
           return Promise.resolve(!0);
-        for (var b = f.length, m = Promise.resolve(!0), I = arguments.length, k = new Array(1 < I ? I - 1 : 0), D = 1; D < I; D++)
-          k[D - 1] = arguments[D];
+        for (var b = f.length, m = Promise.resolve(!0), I = arguments.length, x = new Array(1 < I ? I - 1 : 0), D = 1; D < I; D++)
+          x[D - 1] = arguments[D];
         if (f.length === 1)
-          return (g = (g = f[0]) == null ? void 0 : (g = g.fn).call.apply(g, [null].concat(k))) instanceof Promise ? g : m;
+          return (g = (g = f[0]) == null ? void 0 : (g = g.fn).call.apply(g, [null].concat(x))) instanceof Promise ? g : m;
         for (var B = 0; B < b; B++) {
           var X = f[B];
           X && function() {
-            var Q, ve = (Q = X.fn).call.apply(Q, [null].concat(k));
+            var Q, ve = (Q = X.fn).call.apply(Q, [null].concat(x));
             ve instanceof Promise && (m = m.then(function() {
               return ve;
             })), X.once && (f.splice(B, 1), B--);
@@ -33655,7 +33656,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
       var W = te.prototype;
       return W._initEl = function() {
-        var g, f, b, m, I, k, D, B, X, Q, Un = this.options, En = Un.icon, ve = Un.text, ke = Un.colorStyle, kn = Un.className, dt = Un.bHeader, et = Un.onclick, ir = Un.name, $e = Un.onmount, gt = Un.onunmount, hn = Un.dropdown, Tt = Un.order, Tt = Tt === void 0 ? 0 : Tt, Dn = Un.onSelected, Xn = Un.isSelected, Xn = Xn !== void 0 && Xn, Un = Un.visibility, Un = Un === void 0 ? "visible" : Un, vn = this.context, Nn = document.createElement("div");
+        var g, f, b, m, I, x, D, B, X, Q, Un = this.options, En = Un.icon, ve = Un.text, ke = Un.colorStyle, kn = Un.className, dt = Un.bHeader, et = Un.onclick, ir = Un.name, $e = Un.onmount, gt = Un.onunmount, hn = Un.dropdown, Tt = Un.order, Tt = Tt === void 0 ? 0 : Tt, Dn = Un.onSelected, Xn = Un.isSelected, Xn = Xn !== void 0 && Xn, Un = Un.visibility, Un = Un === void 0 ? "visible" : Un, vn = this.context, Nn = document.createElement("div");
         if (this.name = ir, this.name == "capture" && (Nn.style.background = ke.background), kn) {
           if (Un === "hidden")
             return Nn.className = kn + " " + ce.block, Nn;
@@ -33665,8 +33666,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var ir = Nn, Un = En, kn = ke.color, En = (Un && ((Tt = document.createElement("i")).className = Un, Tt.style.color = kn, ir.appendChild(Tt)), Nn), Un = ve;
         return Un && ((kn = document.createElement("p")).innerText = Un, En.appendChild(kn)), g = Nn, b = vn, m = Xn, (f = $e) && setTimeout(function() {
           f(g, b, m);
-        }, 0), gt && (this._unmount = gt.bind(null, Nn, vn)), I = et, k = vn, Nn.addEventListener("click", function(Ai) {
-          mn(I) ? k.dcs.emit(I, Ai, k) : ln(I) && I(Ai, k), Ai.preventDefault();
+        }, 0), gt && (this._unmount = gt.bind(null, Nn, vn)), I = et, x = vn, Nn.addEventListener("click", function(Ai) {
+          mn(I) ? x.dcs.emit(I, Ai, x) : ln(I) && I(Ai, x), Ai.preventDefault();
         }), B = Dn, X = vn, ir = Xn, Tt = dt, (Q = D = Nn).bSelected = ir, Q.bHeader = Tt, B && (ir && (Tt ? D.classList.add(ce.headerSelected) : D.classList.add(ce.footerSelected)), D.addEventListener("click", function(Ai) {
           Q.bSelected = !Q.bSelected, Q.bHeader ? D.classList[Q.bSelected ? "add" : "remove"](ce.headerSelected) : D.classList[Q.bSelected ? "add" : "remove"](ce.footerSelected), B != null && B(Q.bSelected, X), Ai.preventDefault();
         })), function() {
@@ -33685,7 +33686,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }();
     function Hn() {
       return (Hn = C(p().mark(function te(W, g, f, b) {
-        var m, I, k, D, B, X, Q, ve;
+        var m, I, x, D, B, X, Q, ve;
         return p().wrap(function(ke) {
           for (; ; )
             switch (ke.prev = ke.next) {
@@ -33743,7 +33744,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
                 return ke.abrupt("return");
               case 6:
-                return k = f.list, m = f.multiple, I = f.onclick, ke.next = 9, k(W, g);
+                return x = f.list, m = f.multiple, I = f.onclick, ke.next = 9, x(W, g);
               case 9:
                 if (ke.t0 = ke.sent, ke.t0) {
                   ke.next = 12;
@@ -33751,7 +33752,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
                 ke.t0 = [];
               case 12:
-                k = ke.t0, D = X(k), (B = W == null ? void 0 : W.querySelector("dropdown")) ? (B.removeEventListener("click", null), B.childNodes && B.childNodes.forEach(function(dt) {
+                x = ke.t0, D = X(x), (B = W == null ? void 0 : W.querySelector("dropdown")) ? (B.removeEventListener("click", null), B.childNodes && B.childNodes.forEach(function(dt) {
                   dt.remove();
                 }), B.appendChild(D)) : ((B = document.createElement("ul")).className = "resolutionList dropdown " + ce.displayNone, B.style.background = b.background, B.style.color = b.color, B.appendChild(D), W.appendChild(B)), ve(W, B, g), Q(B, m, I, g), ke.next = 29;
                 break;
@@ -33783,10 +33784,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return this._db.getMetadata(g);
       }, W.removeMidSync = function(g) {
         var f, b = this._db.middle._d;
-        b && (b = b[g]) && ((f = b.customData) && (No(f), To(f), oi(f), delete b.customData), mn(b.oriData) && tt.revokeObjectURL(b.oriData), mn(b.minData) && tt.revokeObjectURL(b.minData), delete b.oriData, delete b.minData, (f = b.img) && (f.src = he, f.onload = null, f.onerror = null, b.img = null)), this._db.removeMid(g), this._db.removeMetadata(g);
+        b && (b = b[g]) && ((f = b.customData) && (Vo(f), Co(f), oi(f), delete b.customData), mn(b.oriData) && tt.revokeObjectURL(b.oriData), mn(b.minData) && tt.revokeObjectURL(b.minData), delete b.oriData, delete b.minData, (f = b.img) && (f.src = he, f.onload = null, f.onerror = null, b.img = null)), this._db.removeMid(g), this._db.removeMetadata(g);
       }, W.removeSync = function(g) {
         var f;
-        this.syncDb && this.syncDb[g] && ((f = this.syncDb[g]) && (delete f.oriData, No(f.customData), To(f.customData), oi(f.customData), f.metadata && delete f.metadata, f.tags && (f.tags.slice(0), delete f.tags)), delete this.syncDb[g]), this.removeMidSync(g);
+        this.syncDb && this.syncDb[g] && ((f = this.syncDb[g]) && (delete f.oriData, Vo(f.customData), Co(f.customData), oi(f.customData), f.metadata && delete f.metadata, f.tags && (f.tags.slice(0), delete f.tags)), delete this.syncDb[g]), this.removeMidSync(g);
       }, W.dispose = function() {
         this._db = null, this.syncDb = null;
       }, te;
@@ -33828,7 +33829,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.dispose = function() {
         this._fileTree = null;
       }, te;
-    }(), ho = function() {
+    }(), fo = function() {
       function te(g, f, b) {
         this.element = null, this.headerButtons = [], this.footerButtons = [], this.className = "", this.pageName = "", this.container = null, this.isDestroyed = !1, this._fileWrapper = null, this._dvsWrapper = null, this.template = "", this._dcs = null, this._dvs = null, this._pagepubsub = new Nt(), this._dvsWrapper = new li(f), this._fileWrapper = new Lr(f.File), this.initPageOption(g, b), this._dcs = b, this._dvs = f;
       }
@@ -33899,10 +33900,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.setDefaultBackgroundColors = function(g, f, b) {
         g.background || (g.background = "#000"), f.background || (f.background = "#323232"), b.background || (b.background = "#000");
       }, W.createIconItems = function(g, f, b, m) {
-        var I, k = [], D = { dcs: this._dcs, page: this };
+        var I, x = [], D = { dcs: this._dcs, page: this };
         for (I in g)
-          g[I] && (g[I].colorStyle = I == "capture" && m ? m : f, g[I].bHeader = b, k.push(new fn(U({}, g[I], { name: I }), D)));
-        return k;
+          g[I] && (g[I].colorStyle = I == "capture" && m ? m : f, g[I].bHeader = b, x.push(new fn(U({}, g[I], { name: I }), D)));
+        return x;
       }, W.getHtmlElement = function() {
         return this.element;
       }, te;
@@ -33914,21 +33915,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Er() {
       return { icon: ce.font + " " + ce.iconLoad, onclick: (te = C(p().mark(function W(g, f) {
-        var b, m, I, k;
+        var b, m, I, x;
         return p().wrap(function(D) {
           for (; ; )
             switch (D.prev = D.next) {
               case 0:
-                if (b = f.dcs, !(k = b.getLoadCallback())) {
+                if (b = f.dcs, !(x = b.getLoadCallback())) {
                   D.next = 18;
                   break;
                 }
                 if (D.prev = 3, m = b.getCurrentPage())
-                  return b.emit("blurPage"), I = m.options.documentEditorSettings, I = zn(I === void 0 ? {} : I), D.next = 11, k(f);
+                  return b.emit("blurPage"), I = m.options.documentEditorSettings, I = zn(I === void 0 ? {} : I), D.next = 11, x(f);
                 D.next = 13;
                 break;
               case 11:
-                (k = D.sent) && !m.isDestroyed && yi(k, b, I);
+                (x = D.sent) && !m.isDestroyed && yi(x, b, I);
               case 13:
                 return D.prev = 13, b.emit("focusPage"), D.finish(13);
               case 16:
@@ -33962,19 +33963,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Gr() {
       return (Gr = C(p().mark(function te(W, g) {
-        var f, b, m, I, k, D, B;
+        var f, b, m, I, x, D, B;
         return p().wrap(function(X) {
           for (; ; )
             switch (X.prev = X.next) {
               case 0:
-                f = g.dcs, b = W.files, X.prev = 2, m = f.getCurrentPage(), m = m.options.documentEditorSettings, m = zn(m === void 0 ? {} : m), k = !(I = []), D = 0;
+                f = g.dcs, b = W.files, X.prev = 2, m = f.getCurrentPage(), m = m.options.documentEditorSettings, m = zn(m === void 0 ? {} : m), x = !(I = []), D = 0;
               case 9:
                 if (!(D < b.length)) {
                   X.next = 22;
                   break;
                 }
                 if ((B = b[D]).type == "application/pdf" || B.type == "image/tiff")
-                  return k == 0 && f.emit("video-error", Dt.IMAGE_FORMAT_INVALID), k = !0, X.abrupt("continue", 19);
+                  return x == 0 && f.emit("video-error", Dt.IMAGE_FORMAT_INVALID), x = !0, X.abrupt("continue", 19);
                 X.next = 15;
                 break;
               case 15:
@@ -34023,7 +34024,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function jn() {
       return { icon: ce.font + " " + ce.iconClose, className: ce.BUTTON_PREFIX + "closeBtn", onclick: (te = C(p().mark(function W(g, f) {
-        var b, m, I, k;
+        var b, m, I, x;
         return p().wrap(function(D) {
           for (; ; )
             switch (D.prev = D.next) {
@@ -34033,17 +34034,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 D.next = 13;
                 break;
               case 6:
-                if ((k = D.sent) == Ye)
+                if ((x = D.sent) == Ye)
                   return D.abrupt("return");
                 D.next = 11;
                 break;
               case 11:
-                if (k != Et && k != Je)
+                if (x != Et && x != Je)
                   return D.abrupt("return");
                 D.next = 13;
                 break;
               case 13:
-                if (k === void 0 && (k = Et), m._isClosed)
+                if (x === void 0 && (x = Et), m._isClosed)
                   return D.next = 17, b.navigateBack();
                 D.next = 18;
                 break;
@@ -34052,7 +34053,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               case 18:
                 return m._isClosed = !0, b.emit("blurPage"), b.stop(), D.next = 23, b.navigateBack();
               case 23:
-                m.pageName != Me || k != Et && k != Je || b.exit(m.getDvs());
+                m.pageName != Me || x != Et && x != Je || b.exit(m.getDvs());
               case 24:
               case "end":
                 return D.stop();
@@ -34092,34 +34093,34 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var g = W.dcs;
         return new Promise(function(f, b) {
           g.once("onPlayed", C(p().mark(function m() {
-            var I, k, D, B, X;
+            var I, x, D, B, X;
             return p().wrap(function(Q) {
               for (; ; )
                 switch (Q.prev = Q.next) {
                   case 0:
-                    if (k = se(g, "config.scannerViewer.resolution"), I = k.valueList, k = k.defaultValue, g.showLoading("resolution list"), Q.prev = 3, I && I.length) {
+                    if (x = se(g, "config.scannerViewer.resolution"), I = x.valueList, x = x.defaultValue, g.showLoading("resolution list"), Q.prev = 3, I && I.length) {
                       Q.next = 12;
                       break;
                     }
                     return Q.next = 7, g.getResolution();
                   case 7:
-                    D = Q.sent, k = k || { width: 1280, height: 720 }, I = D.map(function(ve) {
+                    D = Q.sent, x = x || { width: 1280, height: 720 }, I = D.map(function(ve) {
                       return { label: ve.width + "×" + ve.height, value: ve };
                     }), Q.next = 13;
                     break;
                   case 12:
-                    k = k || I[I.length - 1].value;
+                    x = x || I[I.length - 1].value;
                   case 13:
-                    if ((B = ie(k, I)) < 0)
+                    if ((B = ie(x, I)) < 0)
                       return Q.next = 17, g.getCurrentResolution();
                     Q.next = 35;
                     break;
                   case 17:
-                    if (!(X = Q.sent) || X.width == k.width && X.height == k.height) {
+                    if (!(X = Q.sent) || X.width == x.width && X.height == x.height) {
                       Q.next = 34;
                       break;
                     }
-                    return Q.prev = 19, Q.next = 22, g.setResolution(k);
+                    return Q.prev = 19, Q.next = 22, g.setResolution(x);
                   case 22:
                     return Q.next = 24, g.getCurrentResolution();
                   case 24:
@@ -34144,12 +34145,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
             }, m, null, [[3, , 36, 39], [19, 29]]);
           }))), g.on("resetResolution", function() {
-            var m, D = g.config.scannerViewer.resolution.defaultValue, I = g.config.scannerViewer.resolution.valueList, k = ie(D, I), D = (k < 0 && (I.push({ value: D, label: D.width + "×" + D.height }), k = I.length - 1), document.getElementsByClassName("resolutionList"));
+            var m, D = g.config.scannerViewer.resolution.defaultValue, I = g.config.scannerViewer.resolution.valueList, x = ie(D, I), D = (x < 0 && (I.push({ value: D, label: D.width + "×" + D.height }), x = I.length - 1), document.getElementsByClassName("resolutionList"));
             if (D && 0 < D.length) {
               var B = D[0];
               if (B.childNodes)
                 for (var X = 0; X < B.childNodes.length; X++)
-                  m = B.childNodes[X], X == k && B.onclick(m);
+                  m = B.childNodes[X], X == x && B.onclick(m);
             }
           }), g.on("resetRealResolution", function() {
             var m = g.config.scannerViewer.resolution.defaultValue;
@@ -34171,13 +34172,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       } };
     }
     function ie(b, W) {
-      var g = b.width, f = b.height, b = W.findIndex(function(k) {
-        var k = k.value || {}, I = k.width, k = k.height;
-        return I === g && k === f;
+      var g = b.width, f = b.height, b = W.findIndex(function(x) {
+        var x = x.value || {}, I = x.width, x = x.height;
+        return I === g && x === f;
       });
-      return b = b < 0 ? W.findIndex(function(k) {
-        var k = k.value || {}, I = k.width, k = k.height;
-        return I === f && k === g;
+      return b = b < 0 ? W.findIndex(function(x) {
+        var x = x.value || {}, I = x.width, x = x.height;
+        return I === f && x === g;
       }) : b;
     }
     function _e() {
@@ -34219,8 +34220,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return this._fileWrapper.getFileCount(this.fileName);
       }, g.attachDefaultEvent = function() {
         var f = this;
-        this.on("onSaveCapture", function(b, m, I, k, D) {
-          return Yt(m.dcs, I, k, D, f.fileName);
+        this.on("onSaveCapture", function(b, m, I, x, D) {
+          return Yt(m.dcs, I, x, D, f.fileName);
         });
       }, g.setDefaultColors = function(f, b, m, I) {
         this.setDefaultBackgroundColors(f, b, m), f.color || (f.color = "#fff"), f.selectedColor || (f.selectedColor = "#fe8e14"), b.maskColor || (b.maskColor = "#323232"), m.color || (m.color = "#fff"), m.selectedColor || (m.selectedColor = "#fe8e14"), I.color || (I.color = "#fff"), I.background || (I.background = "#fe8e14");
@@ -34235,7 +34236,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return te.prototype.createIconItems.call(this, f === void 0 ? {} : f, m === void 0 ? {} : m, !1, b === void 0 ? {} : b);
       }, g.initPageOption = function(f, B) {
         f.scannerViewer || (f.scannerViewer = $(B.config.scannerViewer), B.config && B.config.scannerViewer && B.config.scannerViewer.element && (f.scannerViewer.element = B.config.scannerViewer.element));
-        var B = f.scannerViewer, Q = B.resolution, m = B.autoScan, I = B.autoDetect, k = B.switchCamera, D = B.loadLocalFile, B = B.torch, X = { icon: ce.font + " " + ce.iconContinuous, className: ce.BUTTON_PREFIX + "continuousMode" }, Q = { headerButtons: { changeResBtn: Zn(Q, ae()), autoDetect: U({ isSelected: (m == null ? void 0 : m.enableAutoScan) || (I == null ? void 0 : I.enableAutoDetect) }, Zn(I, _e())), flashBtn: Zn(B, de()), closeBtn: jn() }, footerButtons: { load: Zn(D, Er()), toggleCamera: Zn(k, ye()), capture: Ei(), autoCapture: U({ isSelected: m == null ? void 0 : m.enableAutoScan }, Zn(m, oe())), multipleBtn: { onclick: ma, onmount: function(ve) {
+        var B = f.scannerViewer, Q = B.resolution, m = B.autoScan, I = B.autoDetect, x = B.switchCamera, D = B.loadLocalFile, B = B.torch, X = { icon: ce.font + " " + ce.iconContinuous, className: ce.BUTTON_PREFIX + "continuousMode" }, Q = { headerButtons: { changeResBtn: Zn(Q, ae()), autoDetect: U({ isSelected: (m == null ? void 0 : m.enableAutoScan) || (I == null ? void 0 : I.enableAutoDetect) }, Zn(I, _e())), flashBtn: Zn(B, de()), closeBtn: jn() }, footerButtons: { load: Zn(D, Er()), toggleCamera: Zn(x, ye()), capture: Ei(), autoCapture: U({ isSelected: m == null ? void 0 : m.enableAutoScan }, Zn(m, oe())), multipleBtn: { onclick: ma, onmount: function(ve) {
           ve.innerHTML = '<img class="' + ce.previewImg + `">
 <div class="dynamsoft-camera-imgCount ` + ce.displayNone + `"></div>
 <div class="dynamsoft-camera-nextArr ` + ce.font + " " + ce.iconBack + '"></div>', $n.log(ve);
@@ -34259,19 +34260,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.generatePreview = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X, Q, ve, ke, dt, et;
+          var m, I, x, D, B, X, Q, ve, ke, dt, et;
           return p().wrap(function($e) {
             for (; ; )
               switch ($e.prev = $e.next) {
                 case 0:
-                  if (m = this._fileWrapper.openFile(this.fileName), I = m.length, k = (k = this.element) == null ? void 0 : k.querySelector("." + ce.buttonMultipleImg), D = k == null ? void 0 : k.querySelector("." + ce.previewImg), k && D) {
+                  if (m = this._fileWrapper.openFile(this.fileName), I = m.length, x = (x = this.element) == null ? void 0 : x.querySelector("." + ce.buttonMultipleImg), D = x == null ? void 0 : x.querySelector("." + ce.previewImg), x && D) {
                     $e.next = 6;
                     break;
                   }
                   return $e.abrupt("return");
                 case 6:
-                  if ((B = k == null ? void 0 : k.querySelector(".dynamsoft-camera-imgCount")) && (0 < I ? (B.innerText = String(I), B.classList.remove(ce.displayNone)) : (B.innerText = "", B.classList.add(ce.displayNone))), I <= 0)
-                    return k.classList.add(ce.displayNone), D.src != he && D.src != "" && (tt.revokeObjectURL(D.src), D.src = he), D.setAttribute("data", ""), $e.abrupt("return");
+                  if ((B = x == null ? void 0 : x.querySelector(".dynamsoft-camera-imgCount")) && (0 < I ? (B.innerText = String(I), B.classList.remove(ce.displayNone)) : (B.innerText = "", B.classList.add(ce.displayNone))), I <= 0)
+                    return x.classList.add(ce.displayNone), D.src != he && D.src != "" && (tt.revokeObjectURL(D.src), D.src = he), D.setAttribute("data", ""), $e.abrupt("return");
                   $e.next = 13;
                   break;
                 case 13:
@@ -34301,7 +34302,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 30:
                   return ke = $e.sent, Q && (dt = { cornerPoints: Q }), $e.next = 34, Pn(this._dcs, dt, ke, !1, !1);
                 case 34:
-                  et = $e.sent, ve = et.preview, No(et);
+                  et = $e.sent, ve = et.preview, Vo(et);
                 case 38:
                   D.src = tt.createURL(ve), ve.imageData && delete ve.imageData, Q && D.setAttribute("data", JSON.stringify(Q));
                 case 41:
@@ -34315,12 +34316,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.playVideo = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X, Q, ve;
+          var m, I, x, D, B, X, Q, ve;
           return p().wrap(function(ke) {
             for (; ; )
               switch (ke.prev = ke.next) {
                 case 0:
-                  if (m = this._dcs, I = this.element, I = I.children[1], m.showLoading("ShowDocumentScanPage"), ke.prev = 4, D = this.options, D = D.scannerViewer, B = (D = D === void 0 ? {} : D).resolution, B = B === void 0 ? {} : B, k = D.fullScreen, D = D.deviceId, D = D === void 0 ? "" : D, X = B.valueList, X = X === void 0 ? [] : X, (B = B.defaultValue) || X && 0 < X.length && (B = X[X.length - 1].value), !m.isRunPlaying()) {
+                  if (m = this._dcs, I = this.element, I = I.children[1], m.showLoading("ShowDocumentScanPage"), ke.prev = 4, D = this.options, D = D.scannerViewer, B = (D = D === void 0 ? {} : D).resolution, B = B === void 0 ? {} : B, x = D.fullScreen, D = D.deviceId, D = D === void 0 ? "" : D, X = B.valueList, X = X === void 0 ? [] : X, (B = B.defaultValue) || X && 0 < X.length && (B = X[X.length - 1].value), !m.isRunPlaying()) {
                     ke.next = 13;
                     break;
                   }
@@ -34334,7 +34335,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   ke.next = 16;
                   break;
                 case 16:
-                  return Q = (X = { width: void 0, height: void 0 }).width, ve = X.height, B && (Q = B.width || void 0, ve = B.height || void 0), ke.next = 20, m.play(I, Q, ve, k);
+                  return Q = (X = { width: void 0, height: void 0 }).width, ve = X.height, B && (Q = B.width || void 0, ve = B.height || void 0), ke.next = 20, m.play(I, Q, ve, x);
                 case 20:
                   ke.next = 27;
                   break;
@@ -34363,7 +34364,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this._nextViewerPage = f;
       }, g.clickMultipleImage = function() {
         var f = C(p().mark(function b() {
-          var m, I, k;
+          var m, I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -34378,9 +34379,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   this.hide(), this._nextViewerPage = null, D.next = 16;
                   break;
                 case 13:
-                  return k = this._dcs.config.documentEditorSettings, k = k === void 0 ? {} : k, D.next = 16, function() {
+                  return x = this._dcs.config.documentEditorSettings, x = x === void 0 ? {} : x, D.next = 16, function() {
                     return Ur.apply(this, arguments);
-                  }(this._dcs, this._dvs, k, je, !0);
+                  }(this._dcs, this._dvs, x, je, !0);
                 case 16:
                 case "end":
                   return D.stop();
@@ -34420,11 +34421,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this._fileWrapper.openFile(this.fileName);
         if (0 < f.length)
           for (var b = f.length, m = b - 1, I = 0; I < b; I++) {
-            var k = f[I], k = this._dvsWrapper.getCustomDataSync(k);
-            k && (I == m ? k.preview = !0 : k.preview !== void 0 && delete k.preview);
+            var x = f[I], x = this._dvsWrapper.getCustomDataSync(x);
+            x && (I == m ? x.preview = !0 : x.preview !== void 0 && delete x.preview);
           }
       }, W;
-    }(ho);
+    }(fo);
     function Ke() {
       var te = this.options, b = te.scannerViewer, b = b === void 0 ? {} : b, W = b.headerStyle, W = W === void 0 ? {} : W, g = b.bodyStyle, g = g === void 0 ? {} : g, f = b.footerStyle, f = f === void 0 ? {} : f, b = b.scanButtonStyle, b = (this.setDefaultColors(W, g, f, b === void 0 ? {} : b), `
         <header style="background:` + W.background + `"></header>
@@ -34485,19 +34486,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function Jt() {
       return (Jt = C(p().mark(function te(W, g, f, b) {
-        var m, I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn, En, Un;
+        var m, I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn, En, Un;
         return p().wrap(function(Ai) {
           for (; ; )
             switch (Ai.prev = Ai.next) {
               case 0:
                 if (Un = function() {
-                  var Ar, Qr, qi, oo = document.createElement("span"), Do = document.createElement("div");
-                  Do.className = "" + ce.filterCheckBox, Ar = document.createElement("span"), (Qr = document.createElement("input")).type = "checkBox", Qr.id = "dynamsoft-camera-" + ht(6), Do.appendChild(Ar), Ar.appendChild(Qr);
-                  var ko = ((ko = b.config.documentEditorSettings) == null ? void 0 : ko.filter).applyToAll, ko = (ko && ko.enableApplyToAll && (Qr.checked = !0), (qi = document.createElement("label")).innerHTML = ko.label, qi.setAttribute("for", Qr.id), oo.appendChild(Do), oo.appendChild(qi), document.createElement("span"));
-                  return ko.className = "dynamsoft-filter-close dynamsoft-camera-font dynamsoft-camera-icon-arrow", ko.onclick = function() {
+                  var Ar, Qr, qi, oo = document.createElement("span"), ko = document.createElement("div");
+                  ko.className = "" + ce.filterCheckBox, Ar = document.createElement("span"), (Qr = document.createElement("input")).type = "checkBox", Qr.id = "dynamsoft-camera-" + ht(6), ko.appendChild(Ar), Ar.appendChild(Qr);
+                  var xo = ((xo = b.config.documentEditorSettings) == null ? void 0 : xo.filter).applyToAll, xo = (xo && xo.enableApplyToAll && (Qr.checked = !0), (qi = document.createElement("label")).innerHTML = xo.label, qi.setAttribute("for", Qr.id), oo.appendChild(ko), oo.appendChild(qi), document.createElement("span"));
+                  return xo.className = "dynamsoft-filter-close dynamsoft-camera-font dynamsoft-camera-icon-arrow", xo.onclick = function() {
                     _i(b), m = !1;
-                  }, oo.appendChild(ko), Qr.checked ? (Do.classList.add(ce.filterCheckedBox), Ar.style.background = "") : (Do.classList.remove(ce.filterCheckedBox), Ar.style.background = "none"), Qr.addEventListener("click", function() {
-                    var wa = this.checked, Ia = (wa ? (Do.classList.add(ce.filterCheckedBox), Ar.style.background = "", I ? b.filterApplyToAllValue = I.dataset.filterValue : (wa = !1, b.filterApplyToAllValue = void 0)) : (Do.classList.remove(ce.filterCheckedBox), Ar.style.background = "none", b.filterApplyToAllValue = void 0), (Ia = b.config.documentEditorSettings) == null ? void 0 : Ia.filter);
+                  }, oo.appendChild(xo), Qr.checked ? (ko.classList.add(ce.filterCheckedBox), Ar.style.background = "") : (ko.classList.remove(ce.filterCheckedBox), Ar.style.background = "none"), Qr.addEventListener("click", function() {
+                    var wa = this.checked, Ia = (wa ? (ko.classList.add(ce.filterCheckedBox), Ar.style.background = "", I ? b.filterApplyToAllValue = I.dataset.filterValue : (wa = !1, b.filterApplyToAllValue = void 0)) : (ko.classList.remove(ce.filterCheckedBox), Ar.style.background = "none", b.filterApplyToAllValue = void 0), (Ia = b.config.documentEditorSettings) == null ? void 0 : Ia.filter);
                     Ia.applyToAll || (Ia.applyToAll = {}), Ia.applyToAll.enableApplyToAll = wa;
                   }), oo;
                 }, En = function() {
@@ -34505,7 +34506,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   (Ar = I) != null && Ar.classList.remove(ce.filterSelectedItem), B != null && (Ar = B.querySelector("." + ce.filterDropDown)) != null && (Ar = Ar.querySelector("." + ce.filterSelectedItem)) != null && Ar.classList.remove(ce.filterSelectedItem);
                 }, kn = function() {
                   return (kn = C(p().mark(function Ar(Qr) {
-                    var qi, oo, Do, ko, wa, Ia, Ra, Kr, zt, ja, oa;
+                    var qi, oo, ko, xo, wa, Ia, Ra, Kr, zt, ja, oa;
                     return p().wrap(function(ki) {
                       for (; ; )
                         switch (ki.prev = ki.next) {
@@ -34515,15 +34516,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                             ki.next = 4;
                             break;
                           case 4:
-                            if (b.showLoading("click filter"), ki.prev = 5, wa = b.getCurrentPage(), 0 <= (ko = ve.getCurrentIndex()))
-                              return oo = ve.getUidByIndex(ko), Ia = wa.GetFilterDirty(), ki.next = 13, wa.getCurImageData(oo);
+                            if (b.showLoading("click filter"), ki.prev = 5, wa = b.getCurrentPage(), 0 <= (xo = ve.getCurrentIndex()))
+                              return oo = ve.getUidByIndex(xo), Ia = wa.GetFilterDirty(), ki.next = 13, wa.getCurImageData(oo);
                             ki.next = 15;
                             break;
                           case 13:
-                            Do = ki.sent, Ia || wa.ClearFilterDirty();
+                            ko = ki.sent, Ia || wa.ClearFilterDirty();
                           case 15:
-                            if (oo && Do)
-                              return Ra = ve.getRotateAngle(ko), En(), (I = qi).classList.add(ce.filterSelectedItem), Kr = qi.dataset.filterValue, ki.next = 23, Xt(Do);
+                            if (oo && ko)
+                              return Ra = ve.getRotateAngle(xo), En(), (I = qi).classList.add(ce.filterSelectedItem), Kr = qi.dataset.filterValue, ki.next = 23, Xt(ko);
                             ki.next = 38;
                             break;
                           case 23:
@@ -34534,7 +34535,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                             ja = zt, ki.next = 31;
                             break;
                           case 28:
-                            return ki.next = 30, b.filterHandlerByIImageData(Do, zt, Kr);
+                            return ki.next = 30, b.filterHandlerByIImageData(ko, zt, Kr);
                           case 30:
                             ja = ki.sent;
                           case 31:
@@ -34556,10 +34557,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }, vn = function() {
                   var Ar = B == null ? void 0 : B.querySelector("." + ce.filterDropDown);
                   Nn(Ar, !1);
-                }, I = null, k = m = !(Xn = function() {
-                  k || (ve.on(We, vn), ve.on(Re, vn), ve.on(le, function() {
+                }, I = null, x = m = !(Xn = function() {
+                  x || (ve.on(We, vn), ve.on(Re, vn), ve.on(le, function() {
                     _i(b), m = !1;
-                  }), k = !0);
+                  }), x = !0);
                 }), !(D = b.getCurrentPage()) || D.isDestroyed)
                   return Ai.abrupt("return");
                 Ai.next = 13;
@@ -34617,13 +34618,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function In() {
       return { icon: ce.font + " " + ce.iconInsert, className: ce.BUTTON_PREFIX + "insert", onclick: function(te, m) {
         var g, f, b, m = m.dcs, I = m.getCurrentPage();
-        function k(X) {
+        function x(X) {
           var Q = X.dcs;
-          Q.captureLoop.getIsLooping() ? setTimeout(k, 200, X) : X.callback.apply(null, [X.selectedFile, Q]);
+          Q.captureLoop.getIsLooping() ? setTimeout(x, 200, X) : X.callback.apply(null, [X.selectedFile, Q]);
         }
         function D(X, Q) {
           var ve;
-          X && (X.type == "application/pdf" || X.type == "image/tiff" ? Q.emit("video-error", Dt.IMAGE_FORMAT_INVALID) : (ve = Q.getCurrentPage()) instanceof ya && (Q.emit("blurPage"), Q.showLoading("insert - load image"), k({ selectedFile: X, dcs: Q, callback: ve.selectedFile })));
+          X && (X.type == "application/pdf" || X.type == "image/tiff" ? Q.emit("video-error", Dt.IMAGE_FORMAT_INVALID) : (ve = Q.getCurrentPage()) instanceof ya && (Q.emit("blurPage"), Q.showLoading("insert - load image"), x({ selectedFile: X, dcs: Q, callback: ve.selectedFile })));
         }
         function B(X, Q) {
           var ve = document.createElement("input");
@@ -34634,7 +34635,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             ve.value !== "" && 0 < (ke = ve.files).length && (Q && Q(ke[0], X), Q = null), document.body.removeChild(ve), ve.value = null, ve.files = null, ve.onchange = null, ve = null;
           }, ve.click();
         }
-        I && ((g = I._dcs.getPreviousPage()) && g instanceof _o && g.exitReuseMode(), f = m, m = (g = I).getDvs(), b = !1, f.showInsertPage({ fileName: g.getPageFileName(), footerButtons: { capture: { onclick: function(X, Q) {
+        I && ((g = I._dcs.getPreviousPage()) && g instanceof vo && g.exitReuseMode(), f = m, m = (g = I).getDvs(), b = !1, f.showInsertPage({ fileName: g.getPageFileName(), footerButtons: { capture: { onclick: function(X, Q) {
           b || (b = !0, f.getCurrentPage() instanceof ya && f.captureLoop.startManualCapture({ dcs: f }), b = !1);
         } }, load: { onclick: function(X, Q) {
           f.getCurrentPage() instanceof ya && B(f, D);
@@ -34675,17 +34676,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return !1;
       }, g.handlePageByIndex = function() {
         var f = C(p().mark(function b(m) {
-          var I, k;
+          var I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
                 case 0:
-                  if (k = this.getViewerByUid(this._viewerId), I = k.getCurrentPageUids(), !(0 <= m && m < I.length)) {
+                  if (x = this.getViewerByUid(this._viewerId), I = x.getCurrentPageUids(), !(0 <= m && m < I.length)) {
                     D.next = 9;
                     break;
                   }
-                  if (k.gotoPage(m), mn(I = k.getUidByIndex(m)) && I != "")
-                    return k = this._dvs, D.next = 9, this.handlePageByUid(I, k);
+                  if (x.gotoPage(m), mn(I = x.getUidByIndex(m)) && I != "")
+                    return x = this._dvs, D.next = 9, this.handlePageByUid(I, x);
                   D.next = 9;
                   break;
                 case 9:
@@ -34699,14 +34700,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.handlePageByUid = function() {
         var f = C(p().mark(function b(m, I) {
-          return p().wrap(function(k) {
+          return p().wrap(function(x) {
             for (; ; )
-              switch (k.prev = k.next) {
+              switch (x.prev = x.next) {
                 case 0:
-                  return k.next = 2, this.initOrigDataByUid(m);
+                  return x.next = 2, this.initOrigDataByUid(m);
                 case 2:
                 case "end":
-                  return k.stop();
+                  return x.stop();
               }
           }, b, this);
         }));
@@ -34720,32 +34721,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.show = function() {
         var f = C(p().mark(function b() {
           var m, I;
-          return p().wrap(function(k) {
+          return p().wrap(function(x) {
             for (; ; )
-              switch (k.prev = k.next) {
+              switch (x.prev = x.next) {
                 case 0:
                   if (this.isDestroyed)
-                    return k.abrupt("return");
-                  k.next = 2;
+                    return x.abrupt("return");
+                  x.next = 2;
                   break;
                 case 2:
                   if (!(I = F(this, St)[St]())) {
-                    k.next = 12;
+                    x.next = 12;
                     break;
                   }
                   if (0 <= (m = I.getCurrentIndex()))
-                    return I = I.getUidByIndex(m), k.next = 9, this.handlePageByUid(I, this._dvs);
-                  k.next = 9;
+                    return I = I.getUidByIndex(m), x.next = 9, this.handlePageByUid(I, this._dvs);
+                  x.next = 9;
                   break;
                 case 9:
                   if (this.isDestroyed) {
-                    k.next = 12;
+                    x.next = 12;
                     break;
                   }
-                  return k.next = 12, te.prototype.show.call(this);
+                  return x.next = 12, te.prototype.show.call(this);
                 case 12:
                 case "end":
-                  return k.stop();
+                  return x.stop();
               }
           }, b, this);
         }));
@@ -34756,21 +34757,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = !1;
         return f = this.element ? !this.element.classList.contains(ce.displayNone) : f;
       }, g.backupImageDataFromUids = function(f) {
-        for (var b, m, I = f.length, k = 0; k < I; k++)
-          mn(b = f[k]) && b != "" && (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(b), this.backupImageDataFromSrcUid(b, m));
+        for (var b, m, I = f.length, x = 0; x < I; x++)
+          mn(b = f[x]) && b != "" && (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(b), this.backupImageDataFromSrcUid(b, m));
       }, g.backupImageDataFromSrcUid = function(f, b) {
         this.isDestroyed || (this._backInfo.origDocumentData[f] = b ? { detectArea: b.detectArea, angle: b.angle, filterValue: b.filterValue } : { detectArea: null, angle: 0, filterValue: Z.ORIGINAL });
       }, g.isCropPage = function() {
         return !1;
-      }, g.fileDataCopyOneToViewer = function(f, b, m, I, k) {
+      }, g.fileDataCopyOneToViewer = function(f, b, m, I, x) {
         var D, B, X = (X = this._dvsWrapper) == null ? void 0 : X.getCustomDataSync(m), X = X ? Rr(X, {}) : {}, Q = X.oriBlob, ve = X.resBlob;
-        return b ? Q && Q.imageData && (D = Q.imageData, B = ei(Q)) : ve && ve.imageData && (D = ve.imageData, B = ei(ve)), D && B || (D = (b = this._dvsWrapper) == null ? void 0 : b.getOriDataSync(m), (ve = Qi(B = (Q = this._dvsWrapper) == null ? void 0 : Q.getMetaDataSync(m))).imageData = D, X.oriBlob || (X.oriBlob = vi(ve))), b = I < 0 || k <= I ? this._dvs.DataControl.appendSync(this._pageFileName, [{ oriData: D, metadata: B, customData: X }]) : this._dvs.DataControl.insertSync(this._pageFileName, [{ oriData: D, metadata: B, customData: X }], I), B = D = null, b && b.length == 1 ? (Q = b[0], this._copyRefMap[Q] = m, Q) : null;
+        return b ? Q && Q.imageData && (D = Q.imageData, B = ei(Q)) : ve && ve.imageData && (D = ve.imageData, B = ei(ve)), D && B || (D = (b = this._dvsWrapper) == null ? void 0 : b.getOriDataSync(m), (ve = Qi(B = (Q = this._dvsWrapper) == null ? void 0 : Q.getMetaDataSync(m))).imageData = D, X.oriBlob || (X.oriBlob = vi(ve))), b = I < 0 || x <= I ? this._dvs.DataControl.appendSync(this._pageFileName, [{ oriData: D, metadata: B, customData: X }]) : this._dvs.DataControl.insertSync(this._pageFileName, [{ oriData: D, metadata: B, customData: X }], I), B = D = null, b && b.length == 1 ? (Q = b[0], this._copyRefMap[Q] = m, Q) : null;
       }, g.fileDataCopyToViewer = function(f) {
-        for (var b, m = this.isCropPage(), I = f.length, k = 0; k < I; k++)
-          mn(b = f[k]) && b != "" && this.fileDataCopyOneToViewer(!1, m, b, -1, I);
+        for (var b, m = this.isCropPage(), I = f.length, x = 0; x < I; x++)
+          mn(b = f[x]) && b != "" && this.fileDataCopyOneToViewer(!1, m, b, -1, I);
       }, g.initOrigDataByUid = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X, Q;
+          var I, x, D, B, X, Q;
           return p().wrap(function(ve) {
             for (; ; )
               switch (ve.prev = ve.next) {
@@ -34792,7 +34793,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return ve.abrupt("return");
                 case 9:
-                  if (k = I.customData, k = k === void 0 ? {} : k, D = I.metadata, D = D === void 0 ? {} : D, Q = I.oriData, X = !1, k.oriBlob ? B = k.oriBlob : (B = Q, k.oriBlob = vi(Q)), mn(B))
+                  if (x = I.customData, x = x === void 0 ? {} : x, D = I.metadata, D = D === void 0 ? {} : D, Q = I.oriData, X = !1, x.oriBlob ? B = x.oriBlob : (B = Q, x.oriBlob = vi(Q)), mn(B))
                     return ve.next = 15, fetch(B);
                   ve.next = 20;
                   break;
@@ -34802,13 +34803,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   B = ve.sent, X = !0;
                 case 20:
                   if (B instanceof Blob)
-                    return ve.next = 23, Ao(B);
+                    return ve.next = 23, Ro(B);
                   ve.next = 26;
                   break;
                 case 23:
                   B = ve.sent, D.bitDepth == 1 && (B.imageBitDepth = 1), X = !0;
                 case 26:
-                  X && (k.oriBlob = vi(B), k.angle = 0);
+                  X && (x.oriBlob = vi(B), x.angle = 0);
                 case 27:
                 case "end":
                   return ve.stop();
@@ -34822,14 +34823,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this.getViewerByUid(this._viewerId), b = !1;
         if (f)
           for (var m = f.getCurrentPageUids(), I = 0; I < m.length; I++) {
-            var k = m[I];
-            if (mn(k) && k != "") {
-              var D = this._copyRefMap[k];
+            var x = m[I];
+            if (mn(x) && x != "") {
+              var D = this._copyRefMap[x];
               if (mn(D) && D != "") {
                 if (D = this._backInfo.origDocumentData[D], !D)
                   return !0;
-                var B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(k);
-                if (B && (k = B.oriBlob, b = this.compareOldValueChanged(D, B, k)))
+                var B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(x);
+                if (B && (x = B.oriBlob, b = this.compareOldValueChanged(D, B, x)))
                   break;
               }
             }
@@ -34865,7 +34866,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this._nextViewerPage = f;
       }, g.syncFiles = function() {
         var f = C(p().mark(function b(m, I) {
-          var k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn, En;
+          var x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn, En;
           return p().wrap(function(Un) {
             for (; ; )
               switch (Un.prev = Un.next) {
@@ -34875,11 +34876,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Un.next = 2;
                   break;
                 case 2:
-                  if (k = this.getViewerByUid(this._viewerId), D = 0, !k) {
+                  if (x = this.getViewerByUid(this._viewerId), D = 0, !x) {
                     Un.next = 74;
                     break;
                   }
-                  if (!(B = k.getCurrentPageUids())) {
+                  if (!(B = x.getCurrentPageUids())) {
                     Un.next = 73;
                     break;
                   }
@@ -34926,7 +34927,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   X++, Un.next = 9;
                   break;
                 case 33:
-                  0 < ve.length && (dt -= ve.length, k.removeSync(ve)), Q = 0;
+                  0 < ve.length && (dt -= ve.length, x.removeSync(ve)), Q = 0;
                 case 35:
                   if (!(Q < I.length)) {
                     Un.next = 43;
@@ -34990,9 +34991,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q++, Un.next = 62;
                   break;
                 case 71:
-                  (kn = this._dvs.File.openFile(this._pageFileName, k.uid)) && (D = kn.length);
+                  (kn = this._dvs.File.openFile(this._pageFileName, x.uid)) && (D = kn.length);
                 case 73:
-                  this._nextViewerPage && (En = k.getCurrentPageUids(), this._nextViewerPage.syncFiles(m, En));
+                  this._nextViewerPage && (En = x.getCurrentPageUids(), this._nextViewerPage.syncFiles(m, En));
                 case 74:
                   return Un.abrupt("return", D);
                 case 75:
@@ -35005,7 +35006,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return f.apply(this, arguments);
         };
       }(), g.reorderImages = function(f, b) {
-        for (var m, I, k = b.length, D = {}, B = 0; B < k; B++)
+        for (var m, I, x = b.length, D = {}, B = 0; B < x; B++)
           !mn(I = b[B]) || I == "" || mn(m = this._copyRefMap[I]) && m != "" && (D[m] = I);
         var X, Q = f.length, ve = [];
         for (B = 0; B < Q; B++)
@@ -35014,32 +35015,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.resetViewerAngleByIndexes = function(f) {
         var b = this.getViewerByUid(this._viewerId);
         if (b && f)
-          for (var m, I = f.length, k = 0; k < I; k++)
-            m = f[k], b.resetByIndex(m, !1);
+          for (var m, I = f.length, x = 0; x < I; x++)
+            m = f[x], b.resetByIndex(m, !1);
       }, g.restoreViewerCustomData = function() {
         var f = [], b = F(this, St)[St]();
         if (b)
-          for (var m, I, k = b.getCurrentPageUids(), D = k.length, B = 0; B < D; B++)
-            mn(I = k[B]) && I != "" && mn(m = this._copyRefMap[I]) && m != "" && (m = this._backInfo.origDocumentData[m]) && (I = this.restoreOneViewerCustomData(b, I, B, m)).changed && I.needReset && f.push(B);
+          for (var m, I, x = b.getCurrentPageUids(), D = x.length, B = 0; B < D; B++)
+            mn(I = x[B]) && I != "" && mn(m = this._copyRefMap[I]) && m != "" && (m = this._backInfo.origDocumentData[m]) && (I = this.restoreOneViewerCustomData(b, I, B, m)).changed && I.needReset && f.push(B);
         return f;
       }, g.regetViewerCustomDataFromSrc = function() {
         var f = [], b = F(this, St)[St]();
         if (b)
-          for (var m, I, k, D = b.getCurrentPageUids(), B = D.length, X = 0; X < B; X++)
-            mn(m = D[X]) && m != "" && mn(k = this._copyRefMap[m]) && k != "" && (I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(k)) && (k = this.restoreOneViewerCustomData(b, m, X, I)).changed && k.needReset && f.push(X);
+          for (var m, I, x, D = b.getCurrentPageUids(), B = D.length, X = 0; X < B; X++)
+            mn(m = D[X]) && m != "" && mn(x = this._copyRefMap[m]) && x != "" && (I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(x)) && (x = this.restoreOneViewerCustomData(b, m, X, I)).changed && x.needReset && f.push(X);
         return f;
       }, g.restoreOneViewerCustomData = function(f, b, m, I) {
-        var k = { changed: !1, needReset: !1 }, D = (D = this._dvsWrapper) == null ? void 0 : D.getCustomDataSync(b);
-        return !D || !I ? k : (b = D.oriBlob, this.compareOldValueChanged(I, D, b) && (I.detectArea !== void 0 && (D.detectArea = I.detectArea), D.angle != I.angle && (D.angle = I.angle, k.needReset = !0), I.filterValue !== void 0 && (D.filterValue = I.filterValue), To(D), k.changed = !0), k);
+        var x = { changed: !1, needReset: !1 }, D = (D = this._dvsWrapper) == null ? void 0 : D.getCustomDataSync(b);
+        return !D || !I ? x : (b = D.oriBlob, this.compareOldValueChanged(I, D, b) && (I.detectArea !== void 0 && (D.detectArea = I.detectArea), D.angle != I.angle && (D.angle = I.angle, x.needReset = !0), I.filterValue !== void 0 && (D.filterValue = I.filterValue), Co(D), x.changed = !0), x);
       }, g.saveViewerCustomData = function() {
         var f = F(this, St)[St]();
         if (f)
-          for (var b, m, I, k, D = f.getCurrentPageUids(), B = D.length, X = 0; X < B; X++)
-            mn(k = D[X]) && k != "" && mn(b = this._copyRefMap[k]) && b != "" && (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(b)) && (I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(k)) && (k = !1, wt(m.detectArea, I.detectArea) || (m.detectArea = I.detectArea, k = !0), m.angle != I.angle && (m.angle = I.angle, k = !0), ia(m.filterValue, I.filterValue) || (m.filterValue = I.filterValue, k = !0), k && m.resBlob && delete m.resBlob, this._backInfo.origDocumentData[b] = { detectArea: I.detectArea, angle: I.angle, filterValue: I.filterValue });
+          for (var b, m, I, x, D = f.getCurrentPageUids(), B = D.length, X = 0; X < B; X++)
+            mn(x = D[X]) && x != "" && mn(b = this._copyRefMap[x]) && b != "" && (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(b)) && (I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(x)) && (x = !1, wt(m.detectArea, I.detectArea) || (m.detectArea = I.detectArea, x = !0), m.angle != I.angle && (m.angle = I.angle, x = !0), ia(m.filterValue, I.filterValue) || (m.filterValue = I.filterValue, x = !0), x && m.resBlob && delete m.resBlob, this._backInfo.origDocumentData[b] = { detectArea: I.detectArea, angle: I.angle, filterValue: I.filterValue });
       }, g.render = function() {
       }, g.syncFileFromExternalEvent = function() {
         var f = C(p().mark(function b(m, I) {
-          var k;
+          var x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -35049,7 +35050,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   D.next = 2;
                   break;
                 case 2:
-                  return k = (k = this._fileWrapper) == null ? void 0 : k.openFile(this._backFileName), D.next = 5, this.syncFiles(m, k);
+                  return x = (x = this._fileWrapper) == null ? void 0 : x.openFile(this._backFileName), D.next = 5, this.syncFiles(m, x);
                 case 5:
                 case "end":
                   return D.stop();
@@ -35063,7 +35064,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return this._editUid;
       }, g.setEditUidAfterSyncImages = function() {
         var f = C(p().mark(function b(m) {
-          var I, k;
+          var I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -35077,8 +35078,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     D.next = 9;
                     break;
                   }
-                  if (0 <= (k = !Hr(k = I.getIndexByUid(m)) || k < 0 ? I.getCurrentIndex() : k))
-                    return D.next = 9, this.handlePageByIndex(k);
+                  if (0 <= (x = !Hr(x = I.getIndexByUid(m)) || x < 0 ? I.getCurrentIndex() : x))
+                    return D.next = 9, this.handlePageByIndex(x);
                   D.next = 9;
                   break;
                 case 9:
@@ -35091,7 +35092,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return f.apply(this, arguments);
         };
       }(), g.fillOneCustomDataByUidFirstTime = function() {
-        var f = C(p().mark(function b(m, I, k) {
+        var f = C(p().mark(function b(m, I, x) {
           var D, B, X, Q, ve, ke, dt, et, $e, gt, hn;
           return p().wrap(function(Tt) {
             for (; ; )
@@ -35114,7 +35115,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return Tt.abrupt("return");
                 case 7:
-                  if (B = D.metadata, B = B === void 0 ? {} : B, gt = D.oriData, ve = Q = !1, (ke = D.customData) || (ke = {}, D.customData = ke, ve = !0), ke.resBlob ? ($e = I && ke.oriBlob ? ke.oriBlob : ke.resBlob) && $e.imageData && (D.oriData = vi($e.imageData), D.metadata = ei($e), dt = $e.imageWidth, et = $e.imageHeight) : (($e = Qi(B)).imageData = gt, I || k || (ke.resBlob = vi($e)), ke.oriBlob ? X = ke.oriBlob : (X = $e, ke.oriBlob = vi($e)), ke.angle === void 0 && (ke.angle = 0), Q = !0), mn(X))
+                  if (B = D.metadata, B = B === void 0 ? {} : B, gt = D.oriData, ve = Q = !1, (ke = D.customData) || (ke = {}, D.customData = ke, ve = !0), ke.resBlob ? ($e = I && ke.oriBlob ? ke.oriBlob : ke.resBlob) && $e.imageData && (D.oriData = vi($e.imageData), D.metadata = ei($e), dt = $e.imageWidth, et = $e.imageHeight) : (($e = Qi(B)).imageData = gt, I || x || (ke.resBlob = vi($e)), ke.oriBlob ? X = ke.oriBlob : (X = $e, ke.oriBlob = vi($e)), ke.angle === void 0 && (ke.angle = 0), Q = !0), mn(X))
                     return Tt.next = 14, fetch(X);
                   Tt.next = 19;
                   break;
@@ -35124,7 +35125,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   X = Tt.sent, ve = !0;
                 case 19:
                   if (X instanceof Blob)
-                    return Tt.next = 22, Ao(X);
+                    return Tt.next = 22, Ro(X);
                   Tt.next = 27;
                   break;
                 case 22:
@@ -35142,7 +35143,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.fillOrigCustomDataFirstTime = function() {
         var f = C(p().mark(function b() {
-          var m, I, k;
+          var m, I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -35166,7 +35167,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     D.next = 17;
                     break;
                   }
-                  if (mn(k = m[I]) && k != "") {
+                  if (mn(x = m[I]) && x != "") {
                     D.next = 11;
                     break;
                   }
@@ -35174,7 +35175,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 11:
                   return D.next = 13, this.fillOneCustomDataByUidFirstTime(m[I], this.isCropPage(), !1);
                 case 13:
-                  this.copyOneBackupToInitData(k);
+                  this.copyOneBackupToInitData(x);
                 case 14:
                   I++, D.next = 7;
                   break;
@@ -35190,7 +35191,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }(), g.copyOneBackupToInitData = function(f) {
         f = this._copyRefMap[f], mn(f) && f != "" && (this._backInfo.initDocumentData[f] = Rr(this._backInfo.origDocumentData[f], {}));
       }, W;
-    }(ho);
+    }(fo);
     function cr() {
       var te = this;
       this.getViewerByUid(this._viewerId).on("slideFinished", C(p().mark(function W() {
@@ -35251,9 +35252,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         document.body.appendChild(g);
       }
     }
-    var Ro = O("initElement"), Co = O("initViewer"), ro = function(te) {
+    var Lo = O("initElement"), Eo = O("initViewer"), ro = function(te) {
       function W(f, b, m) {
-        return b = te.call(this, f, b, m) || this, Object.defineProperty(H(b), Co, { value: Ga }), Object.defineProperty(H(b), Ro, { value: di }), b.viewerPagerEventId = null, b._curImageData = null, b._filterDirty = !1, b._preEditPageCropData = null, b._bInsertingImage = !1, b._iInsertingIndex = -1, b.pageName = at, F(H(b), Ro)[Ro](), b._backInfo.origApplyToAll = m.filterApplyToAllValue, f.visibility == "hidden" && b.clickSaveButton(), b;
+        return b = te.call(this, f, b, m) || this, Object.defineProperty(H(b), Eo, { value: Ga }), Object.defineProperty(H(b), Lo, { value: di }), b.viewerPagerEventId = null, b._curImageData = null, b._filterDirty = !1, b._preEditPageCropData = null, b._bInsertingImage = !1, b._iInsertingIndex = -1, b.pageName = at, F(H(b), Lo)[Lo](), b._backInfo.origApplyToAll = m.filterApplyToAllValue, f.visibility == "hidden" && b.clickSaveButton(), b;
       }
       Y(W, te);
       var g = W.prototype;
@@ -35279,8 +35280,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           var m = (b = this.element) == null ? void 0 : b.querySelectorAll(".dynamsoft-camera-preFilter");
           if (m)
             for (var I = 0; I < m.length; I++) {
-              var k = m[I];
-              k && k.tagName == "IMG" && k.src && (k.style.transform = "rotate(" + f + "deg)");
+              var x = m[I];
+              x && x.tagName == "IMG" && x.src && (x.style.transform = "rotate(" + f + "deg)");
             }
         }
       }, g.getOrigAngle = function(m) {
@@ -35303,13 +35304,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return te.prototype.createIconItems.call(this, f === void 0 ? {} : f, b === void 0 ? {} : b, !1, null);
       }, g.initPageOption = function(X, b) {
         te.prototype.initPageOption.call(this, X, b);
-        var X = this.options.documentEditorSettings, m = X.remove, m = m === void 0 ? {} : m, I = X.insert, I = I === void 0 ? {} : I, k = X.filter, k = k === void 0 ? {} : k, D = X.rotateLeft, D = D === void 0 ? {} : D, B = X.crop, B = B === void 0 ? {} : B, X = (X.cropViewer, k.defaultValue), X = X === void 0 ? Z.ORIGINAL : X, Q = k.applyToAll, Q = Q === void 0 ? {} : Q, Q = (b.curFilterValue = X, Q && Q.enableApplyToAll ? b.filterApplyToAllValue = X : b.filterApplyToAllValue = void 0, { curIndex: -1, fileName: null, initFileName: this._initFileName, headerButtons: { close: { icon: ce.font + " " + ce.iconBack, className: ce.BUTTON_PREFIX + "back", onclick: function(ve, ke) {
+        var X = this.options.documentEditorSettings, m = X.remove, m = m === void 0 ? {} : m, I = X.insert, I = I === void 0 ? {} : I, x = X.filter, x = x === void 0 ? {} : x, D = X.rotateLeft, D = D === void 0 ? {} : D, B = X.crop, B = B === void 0 ? {} : B, X = (X.cropViewer, x.defaultValue), X = X === void 0 ? Z.ORIGINAL : X, Q = x.applyToAll, Q = Q === void 0 ? {} : Q, Q = (b.curFilterValue = X, Q && Q.enableApplyToAll ? b.filterApplyToAllValue = X : b.filterApplyToAllValue = void 0, { curIndex: -1, fileName: null, initFileName: this._initFileName, headerButtons: { close: { icon: ce.font + " " + ce.iconBack, className: ce.BUTTON_PREFIX + "back", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.clickBackButton();
         } }, pager: { className: "dvs-cameraPager" }, delete: Zn(m, { icon: ce.font + " " + ce.iconDelete, className: ce.BUTTON_PREFIX + "delete", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.clickDeleteButton();
         } }) }, footerButtons: { insert: Zn(I, In()), rotate: Zn(D, { icon: ce.font + " " + ce.iconRotateLeft, className: ce.BUTTON_PREFIX + "rotateLeft", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.rotateLeft();
-        } }), filter: Zn(k, _n()), crop: Zn(B, { icon: ce.font + " " + ce.iconCrop, className: ce.BUTTON_PREFIX + "crop", onclick: function(ve, ke) {
+        } }), filter: Zn(x, _n()), crop: Zn(B, { icon: ce.font + " " + ce.iconCrop, className: ce.BUTTON_PREFIX + "crop", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.clickCropButton();
         } }), save: { icon: ce.font + " " + ce.iconSave, className: ce.BUTTON_PREFIX + "save", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.clickSaveButton();
@@ -35323,7 +35324,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this.element && (m = (I = (I = this.element) == null ? void 0 : I.querySelector(".dvs-cameraPager")) == null ? void 0 : I.querySelector(".dvs-previousPage"), I = I == null ? void 0 : I.querySelector(".dvs-nextPage"), 0 <= f ? (m.classList[f <= 0 ? "add" : "remove"](ce.disable), I.classList[b === f + 1 ? "add" : "remove"](ce.disable)) : (m.classList.add(ce.disable), I.classList.add(ce.disable)));
       }, g.handlePageByUid = function() {
         var f = C(p().mark(function b(m, I) {
-          var k, D, B, X, Q, ve, ke, dt, et;
+          var x, D, B, X, Q, ve, ke, dt, et;
           return p().wrap(function($e) {
             for (; ; )
               switch ($e.prev = $e.next) {
@@ -35338,7 +35339,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   $e.next = 5;
                   break;
                 case 5:
-                  return this._isHandlingPageUid = !0, k = this._dcs, D = m, this._editUid != D && (this.setCurPageId(D), this.setCurImageData(null)), k != null && k.showLoading("handle page by uid"), $e.prev = 10, $e.next = 13, this.initOrigDataByUid(D);
+                  return this._isHandlingPageUid = !0, x = this._dcs, D = m, this._editUid != D && (this.setCurPageId(D), this.setCurImageData(null)), x != null && x.showLoading("handle page by uid"), $e.prev = 10, $e.next = 13, this.initOrigDataByUid(D);
                 case 13:
                   if (B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(D)) {
                     $e.next = 21;
@@ -35354,7 +35355,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return $e.abrupt("return");
                 case 21:
-                  if (X = B.detectArea, Q = B.filterValue, dt = B.resBlob, ve = Ne(k, Q), Q && ve == Q && dt || this.SetFilterDirty(!0), !X || !Q || this._filterDirty) {
+                  if (X = B.detectArea, Q = B.filterValue, dt = B.resBlob, ve = Ne(x, Q), Q && ve == Q && dt || this.SetFilterDirty(!0), !X || !Q || this._filterDirty) {
                     $e.next = 29;
                     break;
                   }
@@ -35368,13 +35369,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   $e.next = 42;
                   break;
                 case 36:
-                  return dt = $e.sent, $e.next = 39, k.filterHandlerByIImageData(ke, dt, ve);
+                  return dt = $e.sent, $e.next = 39, x.filterHandlerByIImageData(ke, dt, ve);
                 case 39:
                   return et = $e.sent, $e.next = 42, no(et, I, D, !1, { resBlob: et, filterValue: ve, bitDepth: et.imageBitDepth });
                 case 42:
                   this._filterDirty = !1, this.setFilterDropDownDirty();
                 case 44:
-                  return $e.prev = 44, k != null && k.hideLoading("handle page by uid"), this._isHandlingPageUid = !1, $e.finish(44);
+                  return $e.prev = 44, x != null && x.hideLoading("handle page by uid"), this._isHandlingPageUid = !1, $e.finish(44);
                 case 48:
                   if (this._nextHandlePageUid)
                     return et = this._nextHandlePageUid, this._nextHandlePageUid = null, $e.next = 53, this.handlePageByUid(et, this._dvs);
@@ -35393,7 +35394,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this._curImageData && delete this._curImageData.imageData, this._curImageData = f;
       }, g.getCurImageData = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X, Q, ve, ke, dt;
+          var I, x, D, B, X, Q, ve, ke, dt;
           return p().wrap(function(et) {
             for (; ; )
               switch (et.prev = et.next) {
@@ -35403,7 +35404,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   et.next = 2;
                   break;
                 case 2:
-                  if (I = this._dcs, !(k = this._editUid == m)) {
+                  if (I = this._dcs, !(x = this._editUid == m)) {
                     et.next = 6;
                     break;
                   }
@@ -35425,14 +35426,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 15:
                   return ke = et.sent, et.next = 18, xt(ke, Q, X);
                 case 18:
-                  ve = et.sent, k && (this.setCurImageData(ve), this.SetFilterDirty(!0)), et.next = 32;
+                  ve = et.sent, x && (this.setCurImageData(ve), this.SetFilterDirty(!0)), et.next = 32;
                   break;
                 case 22:
                   return et.next = 24, rt(B, Q);
                 case 24:
                   return ke = et.sent, et.next = 27, Ut(ke, I, !0, !1, !1);
                 case 27:
-                  dt = et.sent, D.detectArea = dt.detectArea, ve = dt.resImage, this.setCurPageId(m), k && (this.setCurImageData(ve), this.SetFilterDirty(!0));
+                  dt = et.sent, D.detectArea = dt.detectArea, ve = dt.resImage, this.setCurPageId(m), x && (this.setCurImageData(ve), this.SetFilterDirty(!0));
                 case 32:
                   return et.prev = 32, I != null && I.hideLoading("handle page by uid"), et.finish(32);
                 case 35:
@@ -35465,7 +35466,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return this._filterDirty;
       }, g.clickCropButton = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X;
+          var m, I, x, D, B, X;
           return p().wrap(function(Q) {
             for (; ; )
               switch (Q.prev = Q.next) {
@@ -35484,16 +35485,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     Q.next = 23;
                     break;
                   }
-                  if (k = this.saveViewerAngle(), D = { fileName: this._pageFileName, initFileName: this._initFileName, curIndex: I, saveData: !0, fromInternal: this.options.fromInternal, documentEditorSettings: this.options.documentEditorSettings, nextButtonCss: ce.font + " " + ce.iconSave }, (B = this._dcs.getPreviousPage()) && B instanceof _o)
+                  if (x = this.saveViewerAngle(), D = { fileName: this._pageFileName, initFileName: this._initFileName, curIndex: I, saveData: !0, fromInternal: this.options.fromInternal, documentEditorSettings: this.options.documentEditorSettings, nextButtonCss: ce.font + " " + ce.iconSave }, (B = this._dcs.getPreviousPage()) && B instanceof vo)
                     return X = this.getViewerByUid(this._viewerId), X = X.getCurrentPageUids(), B.enterReuseMode(D, X), B.gotoViewPage(I), Q.next = 17, this._dcs.navigateToPage(B);
                   Q.next = 18;
                   break;
                 case 17:
                   return Q.abrupt("return");
                 case 18:
-                  return (X = new _o(D, m, this._dcs)).gotoViewPage(I), Q.next = 22, this._dcs.navigateToPage(X);
+                  return (X = new vo(D, m, this._dcs)).gotoViewPage(I), Q.next = 22, this._dcs.navigateToPage(X);
                 case 22:
-                  this.resetViewerAngleByIndexes(k);
+                  this.resetViewerAngleByIndexes(x);
                 case 23:
                 case "end":
                   return Q.stop();
@@ -35505,7 +35506,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.updateFileDataToViewer = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn;
+          var m, I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn;
           return p().wrap(function(Tt) {
             for (; ; )
               switch (Tt.prev = Tt.next) {
@@ -35514,7 +35515,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     Tt.next = 47;
                     break;
                   }
-                  0 <= (I = m.getCurrentIndex()) && (k = m.getUidByIndex(I)), D = m.getCurrentPageUids(), Q = D.length, ke = !(ve = []), X = 0;
+                  0 <= (I = m.getCurrentIndex()) && (x = m.getUidByIndex(I)), D = m.getCurrentPageUids(), Q = D.length, ke = !(ve = []), X = 0;
                 case 7:
                   if (!(X < Q)) {
                     Tt.next = 18;
@@ -35549,7 +35550,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return Tt.abrupt("continue", 44);
                 case 24:
-                  if (ke = k == B, mn(et = this._copyRefMap[B]) && et != "") {
+                  if (ke = x == B, mn(et = this._copyRefMap[B]) && et != "") {
                     Tt.next = 28;
                     break;
                   }
@@ -35567,7 +35568,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   break;
                 case 35:
                   if (hn.angle = $e.angle, hn.detectArea = $e.detectArea, hn.resBlob && delete hn.resBlob, this._dvsWrapper.setCustomDataSync(B, hn), ke)
-                    return m.resetByIndex(I, !1), this.setCurImageData(null), Tt.next = 44, this.handlePageByUid(k, this._dvs);
+                    return m.resetByIndex(I, !1), this.setCurImageData(null), Tt.next = 44, this.handlePageByUid(x, this._dvs);
                   Tt.next = 44;
                   break;
                 case 44:
@@ -35617,7 +35618,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.clickDeleteButton = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X;
+          var m, I, x, D, B, X;
           return p().wrap(function(Q) {
             for (; ; )
               switch (Q.prev = Q.next) {
@@ -35632,8 +35633,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 4;
                   break;
                 case 4:
-                  if ((k = this._dcs).config.documentEditorSettings.remove.funcConfirmRemove)
-                    return Q.next = 8, k.config.documentEditorSettings.remove.funcConfirmRemove();
+                  if ((x = this._dcs).config.documentEditorSettings.remove.funcConfirmRemove)
+                    return Q.next = 8, x.config.documentEditorSettings.remove.funcConfirmRemove();
                   Q.next = 11;
                   break;
                 case 8:
@@ -35647,7 +35648,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 15;
                   break;
                 case 15:
-                  if (k = m.getUidByIndex(I), (X = this._dcs.getPreviousPage()) && X instanceof _o && X.exitReuseMode(), X = this.getRefUid(k, !0), D = !1, !mn(X) || X == "") {
+                  if (x = m.getUidByIndex(I), (X = this._dcs.getPreviousPage()) && X instanceof vo && X.exitReuseMode(), X = this.getRefUid(x, !0), D = !1, !mn(X) || X == "") {
                     Q.next = 29;
                     break;
                   }
@@ -35677,7 +35678,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.clickSaveButton = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X, Q;
+          var m, I, x, D, B, X, Q;
           return p().wrap(function(ve) {
             for (; ; )
               switch (ve.prev = ve.next) {
@@ -35687,7 +35688,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   ve.next = 2;
                   break;
                 case 2:
-                  if (m = this.getDvs(), I = this._dcs, B = this.getViewerByUid(this._viewerId), I.showLoading("save button init"), k = !1, D = this.options.fromInternal, ve.prev = 7, this.saveViewerAngle(), (X = I.getPreviousPage()) && X instanceof _o && X.exitReuseMode(), this.setCurImageData(null), this.SetFilterDirty(!0), !(0 < (X = B.getCurrentPageUids()).length)) {
+                  if (m = this.getDvs(), I = this._dcs, B = this.getViewerByUid(this._viewerId), I.showLoading("save button init"), x = !1, D = this.options.fromInternal, ve.prev = 7, this.saveViewerAngle(), (X = I.getPreviousPage()) && X instanceof vo && X.exitReuseMode(), this.setCurImageData(null), this.SetFilterDirty(!0), !(0 < (X = B.getCurrentPageUids()).length)) {
                     ve.next = 23;
                     break;
                   }
@@ -35701,11 +35702,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 21:
                   return ve.next = 23, this.saveFromExternal(X);
                 case 23:
-                  (Q = (B = document) == null ? void 0 : B.querySelector(".dvs-showImageArea")) && (Q.style.display == "" ? Q.style.display = "block" : Q.style.display = ""), _i(I), k = !0, I.exit(m);
+                  (Q = (B = document) == null ? void 0 : B.querySelector(".dvs-showImageArea")) && (Q.style.display == "" ? Q.style.display = "block" : Q.style.display = ""), _i(I), x = !0, I.exit(m);
                 case 28:
                   return ve.prev = 28, I.hideLoading("save button init"), ve.finish(28);
                 case 31:
-                  if (k && I.closeAllPages)
+                  if (x && I.closeAllPages)
                     return ve.next = 34, I.closeAllPages();
                   ve.next = 37;
                   break;
@@ -35729,14 +35730,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this.getViewerByUid(this._viewerId), b = !1;
         if (f)
           for (var m = f.getCurrentPageUids(), I = 0; I < m.length; I++) {
-            var k = m[I];
-            if (mn(k) && k != "") {
-              var D = this._copyRefMap[k];
+            var x = m[I];
+            if (mn(x) && x != "") {
+              var D = this._copyRefMap[x];
               if (mn(D) && D != "") {
                 if (D = this._backInfo.origDocumentData[D], !D)
                   return !0;
-                var B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(k);
-                if (B && (k = Rr(B, {}), B = k.oriBlob, k.angle = Jr(k.angle + f.getRotateAngle(I)), b = this.compareOldValueChanged(D, k, B)))
+                var B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(x);
+                if (B && (x = Rr(B, {}), B = x.oriBlob, x.angle = Jr(x.angle + f.getRotateAngle(I)), b = this.compareOldValueChanged(D, x, B)))
                   break;
               }
             }
@@ -35745,19 +35746,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.refreshViewer = function() {
         var f = C(p().mark(function b() {
           var m, I;
-          return p().wrap(function(k) {
+          return p().wrap(function(x) {
             for (; ; )
-              switch (k.prev = k.next) {
+              switch (x.prev = x.next) {
                 case 0:
                   if (m = this.getViewerByUid(this._viewerId), 0 <= (I = m.getCurrentIndex()))
-                    return I = m.getUidByIndex(I), k.next = 6, this.handlePageByUid(I, this._dvs);
-                  k.next = 7;
+                    return I = m.getUidByIndex(I), x.next = 6, this.handlePageByUid(I, this._dvs);
+                  x.next = 7;
                   break;
                 case 6:
                   m.render();
                 case 7:
                 case "end":
-                  return k.stop();
+                  return x.stop();
               }
           }, b, this);
         }));
@@ -35766,12 +35767,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g._saveToWebTwain = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X, Q, ve, ke;
+          var I, x, D, B, X, Q, ve, ke;
           return p().wrap(function(dt) {
             for (; ; )
               switch (dt.prev = dt.next) {
                 case 0:
-                  I = this._dvs, k = this._dcs, D = k.getSavePhotoCallback(), B = 0;
+                  I = this._dvs, x = this._dcs, D = x.getSavePhotoCallback(), B = 0;
                 case 3:
                   if (!(B < m.length)) {
                     dt.next = 24;
@@ -35789,7 +35790,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return dt.abrupt("continue", 21);
                 case 10:
-                  return ve = !1, Q.customData && !Q.customData.resBlob && (ve = !0), dt.next = 14, ns(k, Q, ve);
+                  return ve = !1, Q.customData && !Q.customData.resBlob && (ve = !0), dt.next = 14, ns(x, Q, ve);
                 case 14:
                   return ve = dt.sent, ke = ve.filterBlob, delete ve.filterBlob, dt.next = 19, D([{ file: ve, iImageData: ke }]);
                 case 19:
@@ -35811,12 +35812,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.saveCurrentCropData = function() {
         var f = this.getViewerByUid(this._viewerId), b = {};
         if (f)
-          for (var m, I, k, D = f.getCurrentPageUids(), B = D.length, X = 0; X < B; X++)
-            mn(m = D[X]) && m != "" && (I = this._copyRefMap[m], k = (k = this._dvsWrapper) == null ? void 0 : k.getCustomDataSync(m), b[I] = k ? { detectArea: k.detectArea, angle: k.angle, filterValue: k.filterValue } : { detectArea: null, angle: 0, filterValue: Z.ORIGINAL });
+          for (var m, I, x, D = f.getCurrentPageUids(), B = D.length, X = 0; X < B; X++)
+            mn(m = D[X]) && m != "" && (I = this._copyRefMap[m], x = (x = this._dvsWrapper) == null ? void 0 : x.getCustomDataSync(m), b[I] = x ? { detectArea: x.detectArea, angle: x.angle, filterValue: x.filterValue } : { detectArea: null, angle: 0, filterValue: Z.ORIGINAL });
         return b;
       }, g.saveFromExternal = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X, Q, ve, ke, dt, et, $e;
+          var I, x, D, B, X, Q, ve, ke, dt, et, $e;
           return p().wrap(function(gt) {
             for (; ; )
               switch (gt.prev = gt.next) {
@@ -35826,7 +35827,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   gt.next = 2;
                   break;
                 case 2:
-                  I = this._dvs, k = this._dcs.getPreviousPageByPage(this), D = m.length - 1;
+                  I = this._dvs, x = this._dcs.getPreviousPageByPage(this), D = m.length - 1;
                 case 5:
                   if (!(0 <= D)) {
                     gt.next = 37;
@@ -35862,8 +35863,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 22:
                   return gt.next = 24, ns(this._dcs, dt, !0);
                 case 24:
-                  if (et = gt.sent, $e = et.filterBlob, delete et.filterBlob, k && k instanceof _o)
-                    return gt.next = 30, k.updateUid(ke, $e, et);
+                  if (et = gt.sent, $e = et.filterBlob, delete et.filterBlob, x && x instanceof vo)
+                    return gt.next = 30, x.updateUid(ke, $e, et);
                   gt.next = 32;
                   break;
                 case 30:
@@ -35885,7 +35886,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.clickBackButton = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn;
+          var m, I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn;
           return p().wrap(function(Tt) {
             for (; ; )
               switch (Tt.prev = Tt.next) {
@@ -35895,8 +35896,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Tt.next = 2;
                   break;
                 case 2:
-                  if (m = this._dcs, I = this.getCurrentIndex(), k = m.getPreviousPage(), D = this.ifOldDocumentDataChanged(), (ke = this.options.documentEditorSettings.funcConfirmExit) && ln(ke))
-                    return dt = "", k && (dt = k.pageName), Tt.next = 12, ke(D, dt);
+                  if (m = this._dcs, I = this.getCurrentIndex(), x = m.getPreviousPage(), D = this.ifOldDocumentDataChanged(), (ke = this.options.documentEditorSettings.funcConfirmExit) && ln(ke))
+                    return dt = "", x && (dt = x.pageName), Tt.next = 12, ke(D, dt);
                   Tt.next = 19;
                   break;
                 case 12:
@@ -35910,7 +35911,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Tt.next = 19;
                   break;
                 case 19:
-                  if (B === void 0 && (B = k ? Je : Et), !k) {
+                  if (B === void 0 && (B = x ? Je : Et), !x) {
                     Tt.next = 23;
                     break;
                   }
@@ -35929,22 +35930,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Tt.next = 29;
                   break;
                 case 29:
-                  if (X = !1, Tt.prev = 30, ve = m.getCurrentPage(), _i(m), k && k instanceof _o)
-                    return k.exitReuseMode(), B == Je ? (Q = this.saveViewerAngle(), this.resetViewerAngleByIndexes(Q), this.saveViewerCustomData()) : B == Et && (this.restoreViewerCustomData(), this.resetViewerAngle()), D && (ke = k.getViewerByUid(k.getViewerUid()), dt = ke.getCurrentPageUids(), Q = k.resetCropInfoByUids(dt), k.resetViewerAngleByIndexes(Q)), this._bSyncViewerDataFromBackupData = !0, this._preEditPageCropData = this.saveCurrentCropData(), k.gotoViewPage(I), Tt.next = 42, m.navigateBack(1, !1);
+                  if (X = !1, Tt.prev = 30, ve = m.getCurrentPage(), _i(m), x && x instanceof vo)
+                    return x.exitReuseMode(), B == Je ? (Q = this.saveViewerAngle(), this.resetViewerAngleByIndexes(Q), this.saveViewerCustomData()) : B == Et && (this.restoreViewerCustomData(), this.resetViewerAngle()), D && (ke = x.getViewerByUid(x.getViewerUid()), dt = ke.getCurrentPageUids(), Q = x.resetCropInfoByUids(dt), x.resetViewerAngleByIndexes(Q)), this._bSyncViewerDataFromBackupData = !0, this._preEditPageCropData = this.saveCurrentCropData(), x.gotoViewPage(I), Tt.next = 42, m.navigateBack(1, !1);
                   Tt.next = 47;
                   break;
                 case 42:
-                  et = Tt.sent, m.showLoading("close edit page"), et.length == 1 ? k.setNextViewerPage(et.pop()) : m.destroyRemovedPages(), Tt.next = 88;
+                  et = Tt.sent, m.showLoading("close edit page"), et.length == 1 ? x.setNextViewerPage(et.pop()) : m.destroyRemovedPages(), Tt.next = 88;
                   break;
                 case 47:
-                  if (k && k instanceof qe)
-                    return B == Je ? (Q = this.saveViewerAngle(), this.resetViewerAngleByIndexes(Q), this.saveViewerCustomData()) : B == Et && (this.restoreViewerCustomData(), this.resetViewerAngle()), Tt.next = 51, k.refreshPreviewWhenChanged();
+                  if (x && x instanceof qe)
+                    return B == Je ? (Q = this.saveViewerAngle(), this.resetViewerAngleByIndexes(Q), this.saveViewerCustomData()) : B == Et && (this.restoreViewerCustomData(), this.resetViewerAngle()), Tt.next = 51, x.refreshPreviewWhenChanged();
                   Tt.next = 78;
                   break;
                 case 51:
                   return Tt.next = 53, m.navigateBack(1, !1);
                 case 53:
-                  if (et = Tt.sent, m.showLoading("close edit page"), et.length == 1 ? k.setNextViewerPage(et.pop()) : m.destroyRemovedPages(), ($e = m.getStatus()) != "playing") {
+                  if (et = Tt.sent, m.showLoading("close edit page"), et.length == 1 ? x.setNextViewerPage(et.pop()) : m.destroyRemovedPages(), ($e = m.getStatus()) != "playing") {
                     Tt.next = 60;
                     break;
                   }
@@ -35958,7 +35959,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   m.resume(), Tt.next = 74;
                   break;
                 case 64:
-                  if (gt = k.element, gt = gt.children[1], (hn = this.options.scannerViewer) && hn.resolution && hn.resolution.defaultValue)
+                  if (gt = x.element, gt = gt.children[1], (hn = this.options.scannerViewer) && hn.resolution && hn.resolution.defaultValue)
                     return Tt.next = 70, m.play(gt, hn.resolution.defaultValue.width, hn.resolution.defaultValue.height, hn.fullScreen);
                   Tt.next = 72;
                   break;
@@ -35971,7 +35972,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   m.emit("resetResolution"), m.emit("focusPage"), Tt.next = 88;
                   break;
                 case 78:
-                  if (m.showLoading("close edit page"), k)
+                  if (m.showLoading("close edit page"), x)
                     return Tt.next = 82, m.navigateBack();
                   Tt.next = 85;
                   break;
@@ -35998,13 +35999,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.insertImgByBlobItem = function() {
         var f = C(p().mark(function b(m, I) {
-          var k, D, B, X, Q;
+          var x, D, B, X, Q;
           return p().wrap(function(ve) {
             for (; ; )
               switch (ve.prev = ve.next) {
                 case 0:
-                  if (k = m.oriBlob, Q = m.detectArea, D = m.filterBlob || m.resBlob || k, X = ((X = I.config.documentEditorSettings) == null ? void 0 : X.filter) || {}, X = X.defaultValue, Q = { detectArea: Q, oriBlob: k, resBlob: D, filterValue: X, angle: 0 }, k = { oriData: D.imageData, metadata: ei(D), customData: Q }, X = I.config.scannerViewer || {}, D = X.maxDocuments, X = Q = D === void 0 ? 20 : D, D = this.getViewerByUid(this._viewerId), B = ((B = I.config.documentEditorSettings) == null ? void 0 : B.insert) || {}, B = B.position, B = (B === void 0 ? "before" : B) === "before" ? D.getCurrentIndex() : D.getCurrentIndex() + 1, !this.options.fromInternal || D.currentPageCount + 1 <= X && D.currentPageCount + 1 <= Q)
-                    return X = D.currentPageCount, (B < 0 || X - 1 < B) && (B = -1), this._bInsertingImage = !0, Q = this._dcs.getInsertPhotoCallback(), ve.next = 17, Q(this._initFileName, k, B);
+                  if (x = m.oriBlob, Q = m.detectArea, D = m.filterBlob || m.resBlob || x, X = ((X = I.config.documentEditorSettings) == null ? void 0 : X.filter) || {}, X = X.defaultValue, Q = { detectArea: Q, oriBlob: x, resBlob: D, filterValue: X, angle: 0 }, x = { oriData: D.imageData, metadata: ei(D), customData: Q }, X = I.config.scannerViewer || {}, D = X.maxDocuments, X = Q = D === void 0 ? 20 : D, D = this.getViewerByUid(this._viewerId), B = ((B = I.config.documentEditorSettings) == null ? void 0 : B.insert) || {}, B = B.position, B = (B === void 0 ? "before" : B) === "before" ? D.getCurrentIndex() : D.getCurrentIndex() + 1, !this.options.fromInternal || D.currentPageCount + 1 <= X && D.currentPageCount + 1 <= Q)
+                    return X = D.currentPageCount, (B < 0 || X - 1 < B) && (B = -1), this._bInsertingImage = !0, Q = this._dcs.getInsertPhotoCallback(), ve.next = 17, Q(this._initFileName, x, B);
                   ve.next = 19;
                   break;
                 case 17:
@@ -36025,7 +36026,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.insertFile = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X;
+          var I, x, D, B, X;
           return p().wrap(function(Q) {
             for (; ; )
               switch (Q.prev = Q.next) {
@@ -36035,12 +36036,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 3;
                   break;
                 case 3:
-                  if (Q.prev = 3, B = I.config.scannerViewer || {}, B = B.maxDocuments, k = B = B === void 0 ? 20 : B, D = this.getViewerByUid(this._viewerId), !this.options.fromInternal || D.currentPageCount + 1 <= k && D.currentPageCount + 1 <= B)
+                  if (Q.prev = 3, B = I.config.scannerViewer || {}, B = B.maxDocuments, x = B = B === void 0 ? 20 : B, D = this.getViewerByUid(this._viewerId), !this.options.fromInternal || D.currentPageCount + 1 <= x && D.currentPageCount + 1 <= B)
                     return Q.next = 10, Ie(m);
                   Q.next = 29;
                   break;
                 case 10:
-                  return k = Q.sent, Q.next = 13, rt(k);
+                  return x = Q.sent, Q.next = 13, rt(x);
                 case 13:
                   return D = Q.sent, Q.next = 16, I.packageBlobItemFromIImageData(D, !0, !0, !0);
                 case 16:
@@ -36098,12 +36099,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this.getViewerByUid(this._viewerId);
         if (f)
           for (var b = f.getCurrentPageUids(), m = 0; m < b.length; m++) {
-            var I, k, D, B = b[m];
-            !mn(B) || B == "" || (D = (D = this._dvsWrapper) == null ? void 0 : D.getCustomDataSync(B)) && (I = D.detectArea, k = D.angle, (B = this._copyRefMap[B]) && (D = D.filterValue, this._backInfo.origDocumentData[B] && (D = this._backInfo.origDocumentData[B].filterValue), this._backInfo.origDocumentData[B] = { detectArea: I, angle: k === void 0 ? 0 : k, filterValue: D }));
+            var I, x, D, B = b[m];
+            !mn(B) || B == "" || (D = (D = this._dvsWrapper) == null ? void 0 : D.getCustomDataSync(B)) && (I = D.detectArea, x = D.angle, (B = this._copyRefMap[B]) && (D = D.filterValue, this._backInfo.origDocumentData[B] && (D = this._backInfo.origDocumentData[B].filterValue), this._backInfo.origDocumentData[B] = { detectArea: I, angle: x === void 0 ? 0 : x, filterValue: D }));
           }
       }, g.appendFilterDropdownImages = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn;
+          var I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn, vn, Nn, ir, kn;
           return p().wrap(function(En) {
             for (; ; )
               switch (En.prev = En.next) {
@@ -36154,14 +36155,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 43:
                   et = null, hn || gt.unshift({ value: Z.ORIGINAL, url: tt.createURL($e), label: "Original" }), dt.some(function(Ar) {
                     return Ar.value === ke;
-                  }) || (ke = Z.ORIGINAL), 0 < gt.length && (k = document.createDocumentFragment()), gt.forEach(function(Ar, Qr) {
+                  }) || (ke = Z.ORIGINAL), 0 < gt.length && (x = document.createDocumentFragment()), gt.forEach(function(Ar, Qr) {
                     var qi = document.createElement("li");
-                    qi.innerHTML = '<img class="dynamsoft-camera-preFilter" src="' + Ar.url + '" style="transform:rotate(' + ve + 'deg)"><p>' + Ar.label + "</p>", k.appendChild(qi), qi.dataset.filterValue = Ar.value, Ar.value === ke && qi.classList.add(ce.filterSelectedItem);
+                    qi.innerHTML = '<img class="dynamsoft-camera-preFilter" src="' + Ar.url + '" style="transform:rotate(' + ve + 'deg)"><p>' + Ar.label + "</p>", x.appendChild(qi), qi.dataset.filterValue = Ar.value, Ar.value === ke && qi.classList.add(ce.filterSelectedItem);
                   });
                 case 48:
                   return En.prev = 48, En.finish(48);
                 case 50:
-                  return En.abrupt("return", k);
+                  return En.abrupt("return", x);
                 case 51:
                 case "end":
                   return En.stop();
@@ -36193,14 +36194,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           var I = b.getCurrentPageUids()[m], D = this._copyRefMap[I];
           if (!mn(D) || D == "")
             return;
-          var k = (k = this._dvsWrapper) == null ? void 0 : k.getCustomDataSync(D), D = this.restoreOneViewerCustomData(b, I, m, k);
+          var x = (x = this._dvsWrapper) == null ? void 0 : x.getCustomDataSync(D), D = this.restoreOneViewerCustomData(b, I, m, x);
           D.changed && (this.setCurImageData(null), D.needReset && f.push(m));
         }
         return f;
       }, g.saveViewerAngle = function() {
         var f = [], b = this.getViewerByUid(this._viewerId);
         if (b)
-          for (var m, I = b.getCurrentPageUids(), k = I.length, D = b.getCurrentIndex(), B = 0; B < k; B++)
+          for (var m, I = b.getCurrentPageUids(), x = I.length, D = b.getCurrentIndex(), B = 0; B < x; B++)
             mn(m = I[B]) && m != "" && this.saveViewerOneAngle(b, B == D, B, m) && f.push(B);
         return f;
       }, g.resetViewerAngle = function() {
@@ -36210,20 +36211,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             b.getRotateAngle(I) !== 0 && f.push(I);
         this.resetViewerAngleByIndexes(f);
       }, g.saveViewerOneAngle = function(D, b, B, I) {
-        var k = !1, D = D.getRotateAngle(B), B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(I);
-        return B && D != 0 && (B.angle = Jr(B.angle + D), B.resBlob && delete B.resBlob, b && this.setCurImageData(null), k = !0), k;
+        var x = !1, D = D.getRotateAngle(B), B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(I);
+        return B && D != 0 && (B.angle = Jr(B.angle + D), B.resBlob && delete B.resBlob, b && this.setCurImageData(null), x = !0), x;
       }, W;
     }(pr);
     function di() {
       var g = this.options.documentEditorSettings, g = g === void 0 ? {} : g, te = g.headerStyle, te = te === void 0 ? {} : te, W = g.bodyStyle, g = g.footerStyle, g = g === void 0 ? {} : g;
-      this.setDefaultBackgroundColors(te, W === void 0 ? {} : W, g), this.template = ['<header style="background:' + te.background + '" class="headerButtons"></header>', '<div class="' + ce.cvsContainer + '" style="width:100%;height:100%"></div>', '<footer style="background:' + g.background + '" class="footerButtons"></footer>'].join(""), this.className = ce.documentEditPage, this.createEl(), F(this, Co)[Co]();
+      this.setDefaultBackgroundColors(te, W === void 0 ? {} : W, g), this.template = ['<header style="background:' + te.background + '" class="headerButtons"></header>', '<div class="' + ce.cvsContainer + '" style="width:100%;height:100%"></div>', '<footer style="background:' + g.background + '" class="footerButtons"></footer>'].join(""), this.className = ce.documentEditPage, this.createEl(), F(this, Eo)[Eo]();
     }
     function Ga() {
       return ts.apply(this, arguments);
     }
     function ts() {
       return (ts = C(p().mark(function te() {
-        var W, g, f, b, m, I, k, D = this;
+        var W, g, f, b, m, I, x, D = this;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
@@ -36234,9 +36235,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
                 return B.abrupt("return");
               case 2:
-                b = this.options, b = b.documentEditorSettings, b = (b === void 0 ? {} : b).bodyStyle, b = b === void 0 ? {} : b, W = this._dvs, this._dcs, I = (I = this.element) == null ? void 0 : I.querySelector(".dvs-cameraPager"), k = I == null ? void 0 : I.querySelector(".dvs-previousPage"), g = I == null ? void 0 : I.querySelector(".dvs-nextPage"), (f = this.getViewerByUid(this._viewerId)).canvasBackground = b.background, f.bindView((b = this.element) == null ? void 0 : b.querySelector("." + ce.cvsContainer)), b = f.getCurrentTab(), k && g || (I.innerHTML = '<div class="dvs-previousPage ' + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + `"></div>
+                b = this.options, b = b.documentEditorSettings, b = (b === void 0 ? {} : b).bodyStyle, b = b === void 0 ? {} : b, W = this._dvs, this._dcs, I = (I = this.element) == null ? void 0 : I.querySelector(".dvs-cameraPager"), x = I == null ? void 0 : I.querySelector(".dvs-previousPage"), g = I == null ? void 0 : I.querySelector(".dvs-nextPage"), (f = this.getViewerByUid(this._viewerId)).canvasBackground = b.background, f.bindView((b = this.element) == null ? void 0 : b.querySelector("." + ce.cvsContainer)), b = f.getCurrentTab(), x && g || (I.innerHTML = '<div class="dvs-previousPage ' + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + `"></div>
       <p><span class="dvs-curPage">0</span>/<span class="dvs-totalPage">0</span></p>
-      <div class="dvs-nextPage ` + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + '"></div>', k = I == null ? void 0 : I.querySelector(".dvs-previousPage"), g = I == null ? void 0 : I.querySelector(".dvs-nextPage"), b && 0 <= b.total && (k.onclick = C(p().mark(function X() {
+      <div class="dvs-nextPage ` + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + '"></div>', x = I == null ? void 0 : I.querySelector(".dvs-previousPage"), g = I == null ? void 0 : I.querySelector(".dvs-nextPage"), b && 0 <= b.total && (x.onclick = C(p().mark(function X() {
                   var Q;
                   return p().wrap(function(ve) {
                     for (; ; )
@@ -36272,7 +36273,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }, X);
                 })), (m = this).viewerPagerEventId = f.on(le, function(X) {
                   m && X && (m.changePageNumber(X.cur, X.total), m.changeStatus(X.cur, X.total));
-                }))), b && 0 <= (I = b.total) && 0 <= (k = f.getCurrentIndex()) && (this.changeStatus(k, I), this.changePageNumber(k, I)), (g = f.ui) != null && g._resizeViewer();
+                }))), b && 0 <= (I = b.total) && 0 <= (x = f.getCurrentIndex()) && (this.changeStatus(x, I), this.changePageNumber(x, I)), (g = f.ui) != null && g._resizeViewer();
               case 16:
               case "end":
                 return B.stop();
@@ -36285,13 +36286,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function rs() {
       return (rs = C(p().mark(function te(W, g, f) {
-        var b, m, I, k, D, B, X, Q, ve, ke, dt, et, $e;
+        var b, m, I, x, D, B, X, Q, ve, ke, dt, et, $e;
         return p().wrap(function(gt) {
           for (; ; )
             switch (gt.prev = gt.next) {
               case 0:
-                if (B = g.customData, b = B.oriBlob, m = B.detectArea, k = B.filterValue, I = B.angle, I = I === void 0 ? 0 : I, B = B.bitDepth, B = B === void 0 ? 0 : B, ve = f, I = Jr(I), k = k, D = vi(b), W.filterApplyToAllValue && k && k != W.filterApplyToAllValue && (k = W.filterApplyToAllValue, ve = !0), !ve && m && k && I == 0)
-                  return (ve = g.metadata ? Qi(g.metadata) : {}).imageData = g.oriData, 0 < B && (ve.imageBitDepth = B), W.emit("resetResolution"), gt.abrupt("return", { filterBlob: ve, detectArea: m, oriBlob: D, angle: 0, filterValue: k });
+                if (B = g.customData, b = B.oriBlob, m = B.detectArea, x = B.filterValue, I = B.angle, I = I === void 0 ? 0 : I, B = B.bitDepth, B = B === void 0 ? 0 : B, ve = f, I = Jr(I), x = x, D = vi(b), W.filterApplyToAllValue && x && x != W.filterApplyToAllValue && (x = W.filterApplyToAllValue, ve = !0), !ve && m && x && I == 0)
+                  return (ve = g.metadata ? Qi(g.metadata) : {}).imageData = g.oriData, 0 < B && (ve.imageBitDepth = B), W.emit("resetResolution"), gt.abrupt("return", { filterBlob: ve, detectArea: m, oriBlob: D, angle: 0, filterValue: x });
                 gt.next = 14;
                 break;
               case 14:
@@ -36302,13 +36303,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               case 17:
                 return B = gt.sent, gt.next = 20, xt(B, I, m);
               case 20:
-                return X = gt.sent, Q = Ne(W, k), gt.next = 24, Xt(X);
+                return X = gt.sent, Q = Ne(W, x), gt.next = 24, Xt(X);
               case 24:
                 return ve = gt.sent, gt.next = 27, W.filterHandlerByIImageData(X, ve, Q);
               case 27:
                 return dt = gt.sent, W.emit("resetResolution"), gt.abrupt("return", { filterBlob: dt, detectArea: m, oriBlob: D, angle: I, filterValue: Q });
               case 32:
-                return ke = Ne(W, k), gt.next = 35, rt(b, I);
+                return ke = Ne(W, x), gt.next = 35, rt(b, I);
               case 35:
                 return dt = gt.sent, gt.next = 38, W.packageBlobItemFromIImageData(dt, !0, !0, !1, ke);
               case 38:
@@ -36336,8 +36337,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W._getMaxPoint = function() {
         return { minX: Math.min(this.probePoints[0], this.probePoints[2], this.probePoints[4], this.probePoints[6]), maxX: Math.max(this.probePoints[0], this.probePoints[2], this.probePoints[4], this.probePoints[6]), minY: Math.min(this.probePoints[1], this.probePoints[3], this.probePoints[5], this.probePoints[7]), maxY: Math.max(this.probePoints[1], this.probePoints[3], this.probePoints[5], this.probePoints[7]) };
       }, W.checkPointPosition = function(g) {
-        var I = this._getMaxPoint(), f = I.minX, b = I.maxX, m = I.minY, I = I.maxY, k = this.probePoints[2 * g], D = this.probePoints[2 * g + 1];
-        return g < 4 ? k === b && D === I ? "se" : k === b && D === m ? "ne" : k === f && D === m ? "nw" : k === f && D === I ? "sw" : null : k === b ? "e" : D === I ? "s" : k === f ? "w" : D === m ? "n" : null;
+        var I = this._getMaxPoint(), f = I.minX, b = I.maxX, m = I.minY, I = I.maxY, x = this.probePoints[2 * g], D = this.probePoints[2 * g + 1];
+        return g < 4 ? x === b && D === I ? "se" : x === b && D === m ? "ne" : x === f && D === m ? "nw" : x === f && D === I ? "sw" : null : x === b ? "e" : D === I ? "s" : x === f ? "w" : D === m ? "n" : null;
       }, W.onStartHandler = function(g, f, b) {
         var m = this.isBoxSelected(g, f);
         (m = b !== void 0 ? b : m) !== null && (this._startX = g, this._startY = f, this._lastX = g, this._lastY = f, m === -1 ? (this.isPointSelected = !1, this.activeProbePoint = null, this.mode === "normal" && (this.isMoveBox = !0)) : (this.isPointSelected = !0, this.activeProbePoint = m, this.isMoveBox = !1), this.mode === "free" && 3 < m && (this.k1 = this.slopeRatio[(1 + (b = m - 4)) % 4], this.b1 = this.probePoints[(2 * b + 3) % 8] - this.k1 * this.probePoints[(2 * b + 2) % 8], this.k2 = this.slopeRatio[(3 + b) % 4], this.b2 = this.probePoints[(2 * b + 1) % 8] - this.k2 * this.probePoints[(2 * b + 0) % 8]));
@@ -36362,18 +36363,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return 0 <= g && g <= this.width && 0 <= f && f < this.height;
       }, W._movePointNormal = function(g, f, b, m) {
         b = Math.max(this.leftEdge, Math.min(this.width, b)), m = Math.max(this.topEdge, Math.min(this.height, m));
-        var I = 0, k = 0;
+        var I = 0, x = 0;
         if (this.keepAspectRatio) {
-          var B = this._getMaxPoint(), ve = B.minX, Q = B.maxX, D = B.minY, B = B.maxY, X = this.checkPointPosition(f), Q = (Q - ve) / (B - D), ve = (Q === 0 || Q === 1 / 0 || Q === -1 / 0 || Number.isNaN(Q) ? Q = this._lastWhr : this._lastWhr = Q, k = I = 0, "width");
+          var B = this._getMaxPoint(), ve = B.minX, Q = B.maxX, D = B.minY, B = B.maxY, X = this.checkPointPosition(f), Q = (Q - ve) / (B - D), ve = (Q === 0 || Q === 1 / 0 || Q === -1 / 0 || Number.isNaN(Q) ? Q = this._lastWhr : this._lastWhr = Q, x = I = 0, "width");
           if (f < 4) {
-            if (I = b - g[2 * f], k = m - g[2 * f + 1], I === 0 || k === 0)
+            if (I = b - g[2 * f], x = m - g[2 * f + 1], I === 0 || x === 0)
               return g;
             ve = "width";
-          } else if (B = f - 4, X === "e" ? (f = (1 + B) % 4, ve = "width") : X === "s" ? (f = B, ve = "height") : X === "w" ? (f = B, ve = "width") : X === "n" && (f = (1 + B) % 4, ve = "height"), I = b - g[2 * B], k = m - g[2 * B + 1], I === 0 || k === 0)
+          } else if (B = f - 4, X === "e" ? (f = (1 + B) % 4, ve = "width") : X === "s" ? (f = B, ve = "height") : X === "w" ? (f = B, ve = "width") : X === "n" && (f = (1 + B) % 4, ve = "height"), I = b - g[2 * B], x = m - g[2 * B + 1], I === 0 || x === 0)
             return g;
-          ve === "height" ? (I = k * Q, X !== "ne" && X !== "sw" && X !== "n" && X !== "w" || (I = -I)) : (k = I / Q, X !== "ne" && X !== "sw" && X !== "n" && X !== "w" || (k = -k)), D = g[2 * f] + I, B = g[2 * f + 1] + k, ve = (D < 0 ? (I = 0 - g[2 * f], k = 0) : D > this.width ? (I = this.width - g[2 * f], k = 0) : B < 0 ? (k = 0 - g[2 * f + 1], I = 0) : B > this.height && (k = this.height - g[2 * f + 1], I = 0), g[2 * f] += I, g[2 * f + 1] += k, (f + 1) % 4), Q = (f + 3) % 4, f % 2 ? (g[2 * ve] += I, g[2 * Q + 1] += k) : (g[2 * ve + 1] += k, g[2 * Q] += I);
+          ve === "height" ? (I = x * Q, X !== "ne" && X !== "sw" && X !== "n" && X !== "w" || (I = -I)) : (x = I / Q, X !== "ne" && X !== "sw" && X !== "n" && X !== "w" || (x = -x)), D = g[2 * f] + I, B = g[2 * f + 1] + x, ve = (D < 0 ? (I = 0 - g[2 * f], x = 0) : D > this.width ? (I = this.width - g[2 * f], x = 0) : B < 0 ? (x = 0 - g[2 * f + 1], I = 0) : B > this.height && (x = this.height - g[2 * f + 1], I = 0), g[2 * f] += I, g[2 * f + 1] += x, (f + 1) % 4), Q = (f + 3) % 4, f % 2 ? (g[2 * ve] += I, g[2 * Q + 1] += x) : (g[2 * ve + 1] += x, g[2 * Q] += I);
         } else if (f < 4) {
-          if (I = b - g[2 * f], k = m - g[2 * f + 1], I === 0 && k === 0)
+          if (I = b - g[2 * f], x = m - g[2 * f + 1], I === 0 && x === 0)
             return g;
           g[2 * f] = b, g[2 * f + 1] = m, X = (f + 1) % 4, D = (f + 3) % 4, f % 2 ? (g[2 * X] = b, g[2 * D + 1] = m) : (g[2 * X + 1] = m, g[2 * D] = b);
         } else
@@ -36383,13 +36384,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         b = Math.max(this.leftEdge, Math.min(this.width, b)), m = Math.max(this.topEdge, Math.min(this.height, m));
         var I = g.slice();
         if (f < 4) {
-          var k = b - g[2 * f], D = m - g[2 * f + 1];
-          if (k == 0 && D == 0)
+          var x = b - g[2 * f], D = m - g[2 * f + 1];
+          if (x == 0 && D == 0)
             return g;
           g[2 * f] = b, g[2 * f + 1] = m;
         } else {
-          var k = f - 4, D = this.slopeRatio[k % 4], f = m - D * b, B = -f / D, X = f, Q = g[(2 * k + 9) % 8] - D * g[(2 * k + 8) % 8], ve = -Q / D, ke = this.k1, dt = this.b1, et = this.k2, $e = this.b2;
-          D === 0 ? (g[(2 * k + 3) % 8] = m, ke !== 1 / 0 && ke !== -1 / 0 && (g[(2 * k + 2) % 8] = (m - dt) / ke), g[(2 * k + 1) % 8] = m, et !== 1 / 0 && et !== -1 / 0 && (g[(2 * k + 0) % 8] = (m - $e) / et)) : D === 1 / 0 || D === -1 / 0 ? (g[(2 * k + 2) % 8] = b, g[(2 * k + 3) % 8] = ke * b + dt, g[(2 * k + 0) % 8] = b, g[(2 * k + 1) % 8] = et * b + $e) : (ke === 0 ? g[(2 * k + 2) % 8] += B - ve : ke === 1 / 0 || ke === -1 / 0 ? g[(2 * k + 3) % 8] += X - Q : (g[(2 * k + 2) % 8] = (dt - f) / (D - ke), g[(2 * k + 3) % 8] = (D * dt - ke * f) / (D - ke)), et === 0 ? g[(2 * k + 0) % 8] += B - ve : et === 1 / 0 || et === -1 / 0 ? g[(2 * k + 1) % 8] += X - Q : (g[(2 * k + 0) % 8] = ($e - f) / (D - et), g[(2 * k + 1) % 8] = (D * $e - et * f) / (D - et)));
+          var x = f - 4, D = this.slopeRatio[x % 4], f = m - D * b, B = -f / D, X = f, Q = g[(2 * x + 9) % 8] - D * g[(2 * x + 8) % 8], ve = -Q / D, ke = this.k1, dt = this.b1, et = this.k2, $e = this.b2;
+          D === 0 ? (g[(2 * x + 3) % 8] = m, ke !== 1 / 0 && ke !== -1 / 0 && (g[(2 * x + 2) % 8] = (m - dt) / ke), g[(2 * x + 1) % 8] = m, et !== 1 / 0 && et !== -1 / 0 && (g[(2 * x + 0) % 8] = (m - $e) / et)) : D === 1 / 0 || D === -1 / 0 ? (g[(2 * x + 2) % 8] = b, g[(2 * x + 3) % 8] = ke * b + dt, g[(2 * x + 0) % 8] = b, g[(2 * x + 1) % 8] = et * b + $e) : (ke === 0 ? g[(2 * x + 2) % 8] += B - ve : ke === 1 / 0 || ke === -1 / 0 ? g[(2 * x + 3) % 8] += X - Q : (g[(2 * x + 2) % 8] = (dt - f) / (D - ke), g[(2 * x + 3) % 8] = (D * dt - ke * f) / (D - ke)), et === 0 ? g[(2 * x + 0) % 8] += B - ve : et === 1 / 0 || et === -1 / 0 ? g[(2 * x + 1) % 8] += X - Q : (g[(2 * x + 0) % 8] = ($e - f) / (D - et), g[(2 * x + 1) % 8] = (D * $e - et * f) / (D - et)));
           for (var gt = 0; gt < 4; gt++) {
             var hn = g[2 * gt], Tt = g[2 * gt + 1];
             if (hn < this.leftEdge - 0.5 || hn > this.width + 0.5 || Tt < this.topEdge - 0.5 || Tt > this.height + 0.5)
@@ -36399,20 +36400,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return g;
       }, W._moveBox = function(g, f, b) {
         if (this.mode === "normal") {
-          var m = Math.min(g[0], g[2], g[4], g[6]), I = Math.max(g[0], g[2], g[4], g[6]), k = Math.min(g[1], g[3], g[5], g[7]), D = Math.max(g[1], g[3], g[5], g[7]);
-          I + (f = m + f < 0 ? -m : f) > this.width && (f = this.width - I), D + (b = k + b < 0 ? -k : b) > this.height && (b = this.height - D);
+          var m = Math.min(g[0], g[2], g[4], g[6]), I = Math.max(g[0], g[2], g[4], g[6]), x = Math.min(g[1], g[3], g[5], g[7]), D = Math.max(g[1], g[3], g[5], g[7]);
+          I + (f = m + f < 0 ? -m : f) > this.width && (f = this.width - I), D + (b = x + b < 0 ? -x : b) > this.height && (b = this.height - D);
           for (var B = 0; B < 4; B++)
             g[2 * B] += f, g[2 * B + 1] += b;
         }
         return g;
       }, W._isPointOnBox = function(g, f) {
-        var b, m, I, k;
-        return this.mode === "normal" && (b = (k = this._getMaxPoint()).minX, m = k.maxX, I = k.minY, k = k.maxY, b <= g && g <= m && I <= f && f <= k);
+        var b, m, I, x;
+        return this.mode === "normal" && (b = (x = this._getMaxPoint()).minX, m = x.maxX, I = x.minY, x = x.maxY, b <= g && g <= m && I <= f && f <= x);
       }, W.isBoxSelected = function(m, f) {
         var b = this._isPointOnBox(m, f), m = this.isCtrlPointSelected(m, f);
         return m !== null ? m : b ? -1 : null;
       }, W.isCtrlPointSelected = function(g, f) {
-        var b = this.sensorRadius, D = this._getMaxPoint(), m = D.minX, I = D.maxX, k = D.minY, D = D.maxY, B = Math.min(Math.max(b, 0.1 * (I - m)), 3 * b) * this.dpr, X = Math.min(Math.max(b, 0.1 * (D - k)), 3 * b) * this.dpr, Q = 8;
+        var b = this.sensorRadius, D = this._getMaxPoint(), m = D.minX, I = D.maxX, x = D.minY, D = D.maxY, B = Math.min(Math.max(b, 0.1 * (I - m)), 3 * b) * this.dpr, X = Math.min(Math.max(b, 0.1 * (D - x)), 3 * b) * this.dpr, Q = 8;
         this.mode === "free" && (Q = 8);
         for (var ve = 0; ve < Q; ve++) {
           var ke = this.probePoints[2 * ve], dt = this.probePoints[2 * ve + 1];
@@ -36424,7 +36425,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = (g[6] - g[0]) * (g[3] - g[1]) - (g[7] - g[1]) * (g[2] - g[0]), b = (g[0] - g[2]) * (g[5] - g[3]) - (g[1] - g[3]) * (g[4] - g[2]), m = (g[2] - g[4]) * (g[7] - g[5]) - (g[3] - g[5]) * (g[6] - g[4]), I = (g[4] - g[6]) * (g[1] - g[7]) - (g[5] - g[7]) * (g[0] - g[6]);
         if (f * b * m * I < 0)
           return !1;
-        var k = g.slice().concat(g.slice(0, 2));
+        var x = g.slice().concat(g.slice(0, 2));
         if (this.slopeRatio.length) {
           for (var D = 0; D < 2; D++)
             if (this.slopeRatio[D] !== this.slopeRatio[D + 2] && function(B, X, Q, ve) {
@@ -36455,7 +36456,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 return et = dt / ke, gt = (ke = (B[0] - X[0]) * (ve[1] - Q[1]) - (X[1] - B[1]) * (Q[0] - ve[0]), (dt = X[1] * (B[0] - X[0]) * (ve[1] - Q[1]) + (ve[0] - X[0]) * (ve[1] - Q[1]) * (B[1] - X[1]) - ve[1] * (Q[0] - ve[0]) * (X[1] - B[1])) / ke), [et, gt];
               }
               return !1;
-            }(k.slice(2 * D, 2 * D + 2), k.slice(2 * D + 2, 2 * D + 4), k.slice(2 * D + 4, 2 * D + 6), k.slice(2 * D + 6, 2 * D + 8)))
+            }(x.slice(2 * D, 2 * D + 2), x.slice(2 * D + 2, 2 * D + 4), x.slice(2 * D + 4, 2 * D + 6), x.slice(2 * D + 6, 2 * D + 8)))
               return !1;
         }
         return 0 < f * b * m * I;
@@ -36497,14 +36498,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.setZoom = function(g) {
         this._zoom = g;
       }, W.setCropArea = function(g, f) {
-        var b, m, I, k, D, B;
-        g && (b = f.relLeft, m = f.relTop, D = f.relWidth, f.relHeight, this._limitArea = f, f = this._cvs, I = this._zoom, k = this._edgeMargin, B = D = D / I, g = vr(_r(g.map(function(X, Q) {
-          return Q % 2 == 0 ? X / I + b + k : X / I + m + k;
-        }))), this._cropBox = new is({ vertexes: g, width: f.width - k - b, height: f.height - k - m, leftEdge: k + b, topEdge: k + m, imgWidth: D, imgHeight: B, mode: "free", dpr: window.devicePixelRatio }), this._isCropping && this._drawCropArea());
+        var b, m, I, x, D, B;
+        g && (b = f.relLeft, m = f.relTop, D = f.relWidth, f.relHeight, this._limitArea = f, f = this._cvs, I = this._zoom, x = this._edgeMargin, B = D = D / I, g = vr(_r(g.map(function(X, Q) {
+          return Q % 2 == 0 ? X / I + b + x : X / I + m + x;
+        }))), this._cropBox = new is({ vertexes: g, width: f.width - x - b, height: f.height - x - m, leftEdge: x + b, topEdge: x + m, imgWidth: D, imgHeight: B, mode: "free", dpr: window.devicePixelRatio }), this._isCropping && this._drawCropArea());
       }, W.getCropArea = function() {
         var g = this._cropBox, f = this._zoom, b = this._edgeMargin, m = this._limitArea;
-        return g ? vr(_r(g.vertexes.map(function(I, k) {
-          return k % 2 == 0 ? (I - m.relLeft - b) * f : (I - m.relTop - b) * f;
+        return g ? vr(_r(g.vertexes.map(function(I, x) {
+          return x % 2 == 0 ? (I - m.relLeft - b) * f : (I - m.relTop - b) * f;
         }))) : [];
       }, W.setCropStyle = function(g) {
         Rr(g, this._cropStyle), this._isCropping && this._drawCropArea();
@@ -36513,32 +36514,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         m && (f = (b = this._cvs).width, b = b.height, m.width = f - I - g.relLeft, m.height = b - I - g.relTop, m.leftEdge = I + g.relLeft, m.topEdge = I + g.relTop, m.imgWidth = g.relWidth, m.imgHeight = g.relHeight);
       }, W._initEvent = function() {
         var g = this, f = this._cvs;
-        function b(k) {
+        function b(x) {
           this._cvsBoundingRect = this._cvs.getBoundingClientRect();
           var D = this._cropBox, B = this._cvsBoundingRect;
-          D && (D = B.left, B = B.top, this._cropBox.onStartHandler(k.clientX - D, k.clientY - B));
+          D && (D = B.left, B = B.top, this._cropBox.onStartHandler(x.clientX - D, x.clientY - B));
         }
-        function m(k) {
+        function m(x) {
           var D, B;
-          this._cropBox && this._cropBox.isPointSelected && (D = (B = this._cvsBoundingRect).left, B = B.top, this._cropBox.onMoveHandler(k.clientX - D, k.clientY - B), this._drawCropArea());
+          this._cropBox && this._cropBox.isPointSelected && (D = (B = this._cvsBoundingRect).left, B = B.top, this._cropBox.onMoveHandler(x.clientX - D, x.clientY - B), this._drawCropArea());
         }
         function I() {
-          var k;
-          this._cropBox && this._cropBox.isPointSelected && (this._cropBox.onEndHandler(), this._drawCropArea(), (k = this.onAreaChanged) != null && k.call(this, this.getCropArea()));
+          var x;
+          this._cropBox && this._cropBox.isPointSelected && (this._cropBox.onEndHandler(), this._drawCropArea(), (x = this.onAreaChanged) != null && x.call(this, this.getCropArea()));
         }
-        f.addEventListener("touchstart", function(k) {
-          k = k.touches, 1 < k.length || b.call(g, k[0]);
-        }, { passive: !1 }), f.addEventListener("mousedown", b.bind(this)), f.addEventListener("touchmove", function(k) {
-          var D = k.touches;
-          1 < D.length || g._cropBox && g._cropBox.isPointSelected && (m.call(g, D[0]), k.preventDefault());
+        f.addEventListener("touchstart", function(x) {
+          x = x.touches, 1 < x.length || b.call(g, x[0]);
+        }, { passive: !1 }), f.addEventListener("mousedown", b.bind(this)), f.addEventListener("touchmove", function(x) {
+          var D = x.touches;
+          1 < D.length || g._cropBox && g._cropBox.isPointSelected && (m.call(g, D[0]), x.preventDefault());
         }, { passive: !1 }), document.addEventListener("mousemove", m.bind(this)), f.addEventListener("touchend", I.bind(this)), document.addEventListener("mouseup", I.bind(this));
       }, W._drawCropArea = function() {
         var g = this._cropBox, f = this._cvs, b = this._cropStyle;
         if (g) {
           var m = g.probePoints.slice(), g = f.getContext("2d", { willReadFrequently: !0 }), I = (g.clearRect(0, 0, f.width, f.height), b.lineWidth);
           if (I % 2 != 0)
-            for (var k = 0; k < m.length; k++)
-              m[k] = Math.floor(m[k]) - I / 2;
+            for (var x = 0; x < m.length; x++)
+              m[x] = Math.floor(m[x]) - I / 2;
           var dt = m.slice(0, 8), D = (g.fillStyle = "rgba(255,255,255,0)", g.fillRect(0, 0, f.width, f.height), g), B = dt, f = b;
           D.save(), D.beginPath(), D.strokeStyle = f.lineColor, D.lineWidth = f.lineWidth, f.lineDash === "dashed" && D.setLineDash([5, 5]), D.moveTo(B[0], B[1]);
           for (var X = 0; X < B.length; X += 2) {
@@ -36590,7 +36591,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.getCallback = function() {
         return this._callback;
       }, te;
-    }(), wr = 0, rr = 1, Dr = 2, Eo = 3, Wi = function() {
+    }(), wr = 0, rr = 1, Dr = 2, Do = 3, Wi = function() {
       function te() {
         this._cropInfoObjs = {};
       }
@@ -36603,16 +36604,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             delete this._cropInfoObjs[g];
         this._cropInfoObjs = null;
       }, te;
-    }(), Ir = O("getCropInfo"), ti = O("initCanvas"), Pi = O("initToggleButtonEvent"), co = O("getImageArea"), ji = O("initElement"), lo = O("initViewer"), _o = function(te) {
+    }(), Ir = O("getCropInfo"), ti = O("initCanvas"), Pi = O("initToggleButtonEvent"), lo = O("getImageArea"), ji = O("initElement"), ho = O("initViewer"), vo = function(te) {
       function W(f, b, m) {
-        return f = te.call(this, f, b, m) || this, Object.defineProperty(H(f), lo, { value: ps }), Object.defineProperty(H(f), ji, { value: Vs }), Object.defineProperty(H(f), co, { value: Ns }), Object.defineProperty(H(f), Pi, { value: vo }), Object.defineProperty(H(f), ti, { value: Qo }), Object.defineProperty(H(f), Ir, { value: va }), f.viewerPagerEventId = null, f.cropMng = null, f._resizeMng = null, f._cropInfoHelper = null, f._renderEvents = [], f._imageArea = null, f._reused = !1, f._bk = { _cropInfoHelper: null, _backInfo: null, _backFileName: null, _copyRefMap: null, _customData: null }, f._renderType = rr, f.pageName = mt, F(H(f), ji)[ji](), f;
+        return f = te.call(this, f, b, m) || this, Object.defineProperty(H(f), ho, { value: ps }), Object.defineProperty(H(f), ji, { value: Us }), Object.defineProperty(H(f), lo, { value: Vs }), Object.defineProperty(H(f), Pi, { value: yo }), Object.defineProperty(H(f), ti, { value: Qo }), Object.defineProperty(H(f), Ir, { value: va }), f.viewerPagerEventId = null, f.cropMng = null, f._resizeMng = null, f._cropInfoHelper = null, f._renderEvents = [], f._imageArea = null, f._reused = !1, f._bk = { _cropInfoHelper: null, _backInfo: null, _backFileName: null, _copyRefMap: null, _customData: null }, f._renderType = rr, f.pageName = mt, F(H(f), ji)[ji](), f;
       }
       Y(W, te);
       var g = W.prototype;
       return g.isCropPage = function() {
         return !0;
       }, g.enterReuseMode = function(f, b) {
-        var m, I, k, D, B = this.getViewerByUid(this._viewerId), X = B.getCurrentPageUids(), Q = 0;
+        var m, I, x, D, B = this.getViewerByUid(this._viewerId), X = B.getCurrentPageUids(), Q = 0;
         if (!this._reused) {
           for (this._reused = !0, this._bk._cropInfoHelper = this._cropInfoHelper, this._bk._backInfo = this._backInfo, this._bk._backFileName = this._backFileName, this._bk._copyRefMap = this._copyRefMap, this._bk._customData = {}, Q = 0; Q < X.length; Q++) {
             var ve = X[Q], ke = (ke = this._dvsWrapper) == null ? void 0 : ke.getCustomDataSync(ve);
@@ -36621,7 +36622,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           this._cropInfoHelper = new Wi(), this._copyRefMap = {}, this._backInfo = { origApplyToAll: "", origDocumentData: {}, initDocumentData: {} }, this._backFileName = f.fileName;
         }
         for (this.backupImageDataFromUids(b), Q = 0; Q < X.length; Q++)
-          ve = X[Q], m = b[Q], this._copyRefMap[ve] = m, (I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(ve)) && (k = (k = this._dvsWrapper) == null ? void 0 : k.getCustomDataSync(m)) && (I.detectArea = k.detectArea, I.angle = k.angle, F(this, Ir)[Ir](ve).alreadyHandle = !1, B.resetByIndex(Q, !1));
+          ve = X[Q], m = b[Q], this._copyRefMap[ve] = m, (I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(ve)) && (x = (x = this._dvsWrapper) == null ? void 0 : x.getCustomDataSync(m)) && (I.detectArea = x.detectArea, I.angle = x.angle, F(this, Ir)[Ir](ve).alreadyHandle = !1, B.resetByIndex(Q, !1));
         f.nextButtonCss && (((D = this.element) == null ? void 0 : D.querySelector("." + ce.BUTTON_PREFIX + "save i")).className = f.nextButtonCss), this._editUid = null, this.render();
       }, g.render = function() {
         var f, b = this.getViewerByUid(this._viewerId), m = b.getCurrentPageUids();
@@ -36634,8 +36635,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (this._reused) {
           var b = this.getViewerByUid(this._viewerId), m = b.getCurrentPageUids(), I = 0;
           for (this._cropInfoHelper = this._bk._cropInfoHelper, this._backInfo = this._bk._backInfo, this._backFileName = this._bk._backFileName, this._copyRefMap = this._bk._copyRefMap, I = 0; I < m.length; I++) {
-            var k, D = m[I], B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(D);
-            B && this._bk._customData && (k = this._bk._customData[D]) && (B.detectArea = k.detectArea, B.angle = k.angle), F(this, Ir)[Ir](D).alreadyHandle = !1, b.resetByIndex(I, !1);
+            var x, D = m[I], B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(D);
+            B && this._bk._customData && (x = this._bk._customData[D]) && (B.detectArea = x.detectArea, B.angle = x.angle), F(this, Ir)[Ir](D).alreadyHandle = !1, b.resetByIndex(I, !1);
           }
           this._bk._cropInfoHelper = null, this._bk._backInfo = null, this._bk._backFileName = null, this._bk._copyRefMap = null, this._bk._customData = null, this._editUid = null, this._reused = !1;
         }
@@ -36652,8 +36653,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.setPageFilename = function() {
         this._pageFileName = ["__dynamsoft_crop_files", ht(6)].join("_");
       }, g.initImageCropInfoByUid = function(f) {
-        var b, m, I, k, D, B, X;
-        this.isDestroyed || mn(f) && f != "" && (b = F(this, Ir)[Ir](f), (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(f)) && (I = (I = this._dvsWrapper) == null ? void 0 : I.getMetaDataSync(f), f = !1, X = B = 0, m.detectArea ? k = m.detectArea : (k = [], B = I.width, X = I.height, m.detectArea = k = 0 < B && 0 < X ? [0, 0, B, 0, B, X, 0, X] : k), m.angle ? D = Jr(m.angle) : m.angle = D = 0, I && (B = I.width, X = I.height, 0 < B && 0 < X && (b.w = B, b.h = X), f = Vt(k, B, X)), b.fullArea = f, b.savedArea = k, b.angle = D));
+        var b, m, I, x, D, B, X;
+        this.isDestroyed || mn(f) && f != "" && (b = F(this, Ir)[Ir](f), (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(f)) && (I = (I = this._dvsWrapper) == null ? void 0 : I.getMetaDataSync(f), f = !1, X = B = 0, m.detectArea ? x = m.detectArea : (x = [], B = I.width, X = I.height, m.detectArea = x = 0 < B && 0 < X ? [0, 0, B, 0, B, X, 0, X] : x), m.angle ? D = Jr(m.angle) : m.angle = D = 0, I && (B = I.width, X = I.height, 0 < B && 0 < X && (b.w = B, b.h = X), f = Vt(x, B, X)), b.fullArea = f, b.savedArea = x, b.angle = D));
       }, g._updateViewerSize = function() {
         var f, b, m;
         !this.isDestroyed && this.element && (b = (b = this.element) == null ? void 0 : b.querySelector("." + ce.cvsContainer)) && (f = (b = b.getBoundingClientRect()).width, b = b.height, m = (m = this.element) == null ? void 0 : m.querySelector(".dvs-WebViewer"), f -= 2 * this.cropMng.getEdgeMargin(), b -= 2 * this.cropMng.getEdgeMargin(), m.width = f, m.height = b, m.style.cssText = "width:" + f + "px;height:" + b + "px");
@@ -36670,7 +36671,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       }, g._drawFullArea = function() {
         this._setDetectCanvasSize(this._editUid);
-        var f = F(this, co)[co]();
+        var f = F(this, lo)[lo]();
         if (!f)
           return this._renderType = rr, void this.render();
         this.cropMng.resize(f), this.cropMng.setFullArea();
@@ -36683,18 +36684,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this._rotate(this._editUid, 90);
       }, g._rotateSavedArea = function(f, X, m) {
         m === void 0 && (m = null);
-        var I, k, D, B, X = Jr(X);
-        return this.cropMng && (I = (k = (f = F(this, Ir)[Ir](f)).angle % 180 == 0) ? f.w : f.h, k = k ? f.h : f.w, D = !1, (B = m || this.cropMng.getCropArea()).length == 0 && (B = f.savedArea), D = this.isAreaFulfilled(B), B = On(B, X, k, I), D ? (f.fullArea = !0, X != 0 && (f.savedArea = On(f.savedArea, X, k, I))) : (f.fullArea = !1, f.savedArea = B)), B;
+        var I, x, D, B, X = Jr(X);
+        return this.cropMng && (I = (x = (f = F(this, Ir)[Ir](f)).angle % 180 == 0) ? f.w : f.h, x = x ? f.h : f.w, D = !1, (B = m || this.cropMng.getCropArea()).length == 0 && (B = f.savedArea), D = this.isAreaFulfilled(B), B = On(B, X, x, I), D ? (f.fullArea = !0, X != 0 && (f.savedArea = On(f.savedArea, X, x, I))) : (f.fullArea = !1, f.savedArea = B)), B;
       }, g._rotate = function(f, b, m) {
         if (m === void 0 && (m = -1), !(this.isDestroyed || this.getImageCount() <= 0)) {
-          var I = this._dcs, k = this.getViewerByUid(this._viewerId), b = Jr(b), D = k.getCurrentPageUids();
+          var I = this._dcs, x = this.getViewerByUid(this._viewerId), b = Jr(b), D = x.getCurrentPageUids();
           if (D.length != 0) {
             var B = -1;
             try {
-              if (I != null && I.showLoading("rotate button init"), (B = (B = k && f ? k.getIndexByUid(f) : B) < 0 ? this.options.curIndex : B) < 0 || B >= D.length)
+              if (I != null && I.showLoading("rotate button init"), (B = (B = x && f ? x.getIndexByUid(f) : B) < 0 ? this.options.curIndex : B) < 0 || B >= D.length)
                 return;
               var X, Q, ve, ke = this._rotateSavedArea(f, b);
-              b != 0 && (this._renderType = Eo, k.rotateMode = 0, k.rotate(b, B), (Q = (X = this._dvsWrapper) == null ? void 0 : X.getCustomDataSync(f)) && (m == -1 && (m = (ve = Q.angle) === void 0 ? 0 : ve), Q.angle = Jr(m + b), Q.resBlob && delete Q.resBlob, F(this, Ir)[Ir](f).angle = Q.angle));
+              b != 0 && (this._renderType = Do, x.rotateMode = 0, x.rotate(b, B), (Q = (X = this._dvsWrapper) == null ? void 0 : X.getCustomDataSync(f)) && (m == -1 && (m = (ve = Q.angle) === void 0 ? 0 : ve), Q.angle = Jr(m + b), Q.resBlob && delete Q.resBlob, F(this, Ir)[Ir](f).angle = Q.angle));
             } finally {
               I != null && I.hideLoading("rotate button init");
             }
@@ -36736,14 +36737,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var b = this.getViewerByUid(this._viewerId);
         if (!b || (b = b.getCurrentTab(), !b) || (b = b.getCurPage(), !b) || (b = { x: b.style.left, y: b.style.top, width: b.style.width, height: b.style.height }, b.width <= 1 || b.height <= 1))
           return null;
-        var m = this.getAngle(m) % 180 == 0, D = F(this, Ir)[Ir](this._editUid), k = D.w, D = D.h, B = m ? b.width : b.height, X = m ? b.height : b.width, I = Math.min(B / k, X / D), k = Math.fround(I * k), D = Math.fround(I * D), B = Math.floor(0.5 * Math.abs(B - k)), X = Math.floor(0.5 * Math.abs(X - D));
-        return this._imageArea = { relLeft: b.x + (m ? B : X), relTop: b.y + (m ? X : B), relWidth: m ? k : D, relHeight: m ? D : k, zoom: 1 / I }, this._imageArea;
+        var m = this.getAngle(m) % 180 == 0, D = F(this, Ir)[Ir](this._editUid), x = D.w, D = D.h, B = m ? b.width : b.height, X = m ? b.height : b.width, I = Math.min(B / x, X / D), x = Math.fround(I * x), D = Math.fround(I * D), B = Math.floor(0.5 * Math.abs(B - x)), X = Math.floor(0.5 * Math.abs(X - D));
+        return this._imageArea = { relLeft: b.x + (m ? B : X), relTop: b.y + (m ? X : B), relWidth: m ? x : D, relHeight: m ? D : x, zoom: 1 / I }, this._imageArea;
       }, g._drawCropArea = function(f, b) {
         if (!this.isDestroyed && (this._setDetectCanvasSize(f), this.cropMng)) {
-          var m = F(this, co)[co]();
+          var m = F(this, lo)[lo]();
           if (!m)
             return this._renderType = rr, void this.render();
-          this.cropMng.resize(m), m = b, m = m ? vr(m = _r(m)) : F(this, Ir)[Ir](f).savedArea, this.cropMng.setCropArea(m, F(this, co)[co]());
+          this.cropMng.resize(m), m = b, m = m ? vr(m = _r(m)) : F(this, Ir)[Ir](f).savedArea, this.cropMng.setCropArea(m, F(this, lo)[lo]());
         }
       }, g._setDetectCanvasSize = function(f) {
         var b, m, I;
@@ -36753,10 +36754,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.getDetectAreaForNotRotate = function(f) {
         if (!this.cropMng)
           return [];
-        var b = this.cropMng.getCropArea(), I = F(this, co)[co]();
+        var b = this.cropMng.getCropArea(), I = F(this, lo)[lo]();
         if (!I)
           return this._renderType = rr, this.render(), [];
-        var m = I.relWidth, I = I.relHeight, k = this.cropMng._zoom;
+        var m = I.relWidth, I = I.relHeight, x = this.cropMng._zoom;
         return vr(function(D, B, X, Q) {
           var ve = [], ke = Jr(B);
           if (ke == 0)
@@ -36766,7 +36767,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             ve.push(et, hn);
           }
           return ve;
-        }(b, this.getAngle(f), Math.fround(m * k), Math.fround(I * k)));
+        }(b, this.getAngle(f), Math.fround(m * x), Math.fround(I * x)));
       }, g.isAreaFulfilled = function(f) {
         var b = this.cropMng;
         if (!b)
@@ -36784,11 +36785,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (!f)
           return !1;
         if (!(this.getImageCount() <= 0)) {
-          var b = F(this, Ir)[Ir](this._editUid), D = b.angle % 180 == 0, k = D ? b.w : b.h, D = D ? b.h : b.w, m = this._calImageArea(this._editUid);
+          var b = F(this, Ir)[Ir](this._editUid), D = b.angle % 180 == 0, x = D ? b.w : b.h, D = D ? b.h : b.w, m = this._calImageArea(this._editUid);
           if (!m)
             return !1;
-          var I, k = Math.fround(+k), D = Math.fround(+D), B = this.getCurrentArea(), X = Vt(B, k, D);
-          return X ? b.savedArea.length === 0 ? (b.savedArea = [0, 0, k - 2, 0, k - 2, D - 2, 0, D - 2], I = b.savedArea) : Vt(I = vr(I = _r(I = b.savedArea)), k, D) && (b.savedArea = I = [0, 0, k - 2, 0, k - 2, D - 2, 0, D - 2]) : (b.savedArea = B, I = [0, 0, k, 0, k, D, 0, D]), f.setCropArea(I.slice(), m), X;
+          var I, x = Math.fround(+x), D = Math.fround(+D), B = this.getCurrentArea(), X = Vt(B, x, D);
+          return X ? b.savedArea.length === 0 ? (b.savedArea = [0, 0, x - 2, 0, x - 2, D - 2, 0, D - 2], I = b.savedArea) : Vt(I = vr(I = _r(I = b.savedArea)), x, D) && (b.savedArea = I = [0, 0, x - 2, 0, x - 2, D - 2, 0, D - 2]) : (b.savedArea = B, I = [0, 0, x, 0, x, D, 0, D]), f.setCropArea(I.slice(), m), X;
         }
       }, g.setZooming = function() {
         this._zooming = !1;
@@ -36801,20 +36802,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.resetCropInfoByUids = function(f) {
         var b = [], m = this.getViewerByUid(this._viewerId);
         if (f && m)
-          for (var I, k, D = m.getCurrentPageUids().length, B = 0; B < f.length; B++)
-            !mn(k = f[B]) || k == "" || Hr(I = m.getIndexByUid(k)) && 0 <= I && I < D && (this.initImageCropInfoByUid(k), F(this, Ir)[Ir](k).alreadyHandle = !1, b.push(I));
+          for (var I, x, D = m.getCurrentPageUids().length, B = 0; B < f.length; B++)
+            !mn(x = f[B]) || x == "" || Hr(I = m.getIndexByUid(x)) && 0 <= I && I < D && (this.initImageCropInfoByUid(x), F(this, Ir)[Ir](x).alreadyHandle = !1, b.push(I));
         return b;
       }, g._resetViewerWhenChanged = function() {
         var f = [], b = [], m = this.getViewerByUid(this._viewerId);
         if (m)
-          for (var I = m.getCurrentPageUids(), k = 0; k < I.length; k++) {
-            var D, B, X, Q = I[k];
-            mn(Q) && Q != "" && F(this, Ir)[Ir](Q).alreadyHandle && (this._editUid = null, (B = this._copyRefMap[Q]) && (B = this._backInfo.origDocumentData[B]) ? (D = B.detectArea, B = B.angle, (X = (X = this._dvsWrapper) == null ? void 0 : X.getCustomDataSync(Q)) && wt(D, X.detectArea) && B == X.angle || (b.push(Q), f.push(k))) : (b.push(Q), f.push(k)));
+          for (var I = m.getCurrentPageUids(), x = 0; x < I.length; x++) {
+            var D, B, X, Q = I[x];
+            mn(Q) && Q != "" && F(this, Ir)[Ir](Q).alreadyHandle && (this._editUid = null, (B = this._copyRefMap[Q]) && (B = this._backInfo.origDocumentData[B]) ? (D = B.detectArea, B = B.angle, (X = (X = this._dvsWrapper) == null ? void 0 : X.getCustomDataSync(Q)) && wt(D, X.detectArea) && B == X.angle || (b.push(Q), f.push(x))) : (b.push(Q), f.push(x)));
           }
         return this.resetCropInfoByUids(b), f;
       }, g.clickBackButton = function() {
         var f = C(p().mark(function b() {
-          var m, I, k, D, B, X, Q, ve, ke, dt, et;
+          var m, I, x, D, B, X, Q, ve, ke, dt, et;
           return p().wrap(function($e) {
             for (; ; )
               switch ($e.prev = $e.next) {
@@ -36824,8 +36825,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   $e.next = 2;
                   break;
                 case 2:
-                  if (m = this._dcs, this.options.fromInternal, m.getCurrentPage(), I = m.getPreviousPage(), this.saveCurrentDataToUid(this._editUid), k = this.ifOldDocumentDataChanged(), X = this.options.documentEditorSettings.cropViewer, (X = (X === void 0 ? {} : X).funcConfirmExit) && ln(X))
-                    return Q = "", I && (Q = I.pageName), $e.next = 14, X(k, Q);
+                  if (m = this._dcs, this.options.fromInternal, m.getCurrentPage(), I = m.getPreviousPage(), this.saveCurrentDataToUid(this._editUid), x = this.ifOldDocumentDataChanged(), X = this.options.documentEditorSettings.cropViewer, (X = (X === void 0 ? {} : X).funcConfirmExit) && ln(X))
+                    return Q = "", I && (Q = I.pageName), $e.next = 14, X(x, Q);
                   $e.next = 21;
                   break;
                 case 14:
@@ -36890,7 +36891,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     $e.next = 85;
                     break;
                   }
-                  if (k && (X = this._resetViewerWhenChanged(), this.resetViewerAngleByIndexes(X), D == Je ? this.saveViewerCustomData() : D == Et && (X = this.restoreViewerCustomData(), this.resetViewerAngleByIndexes(X))), I instanceof ro)
+                  if (x && (X = this._resetViewerWhenChanged(), this.resetViewerAngleByIndexes(X), D == Je ? this.saveViewerCustomData() : D == Et && (X = this.restoreViewerCustomData(), this.resetViewerAngleByIndexes(X))), I instanceof ro)
                     return B = !0, m.showLoading("click crop back"), Q = this.getCurrentIndex(), I.hide(), I.gotoViewPage(Q), $e.next = 54, m.navigateBack();
                   $e.next = 56;
                   break;
@@ -36964,9 +36965,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return f.apply(this, arguments);
         };
       }(), g.initPageOption = function(Q, B) {
-        var m, I = this, B = (te.prototype.initPageOption.call(this, Q, B), this.options.documentEditorSettings.cropViewer), B = B === void 0 ? {} : B, k = B.rotateLeft, D = B.rotateRight, B = B.autoDetectBorder, X = { icon: ce.font + " " + ce.iconNext, className: ce.BUTTON_PREFIX + "save", onclick: function(ve, ke) {
+        var m, I = this, B = (te.prototype.initPageOption.call(this, Q, B), this.options.documentEditorSettings.cropViewer), B = B === void 0 ? {} : B, x = B.rotateLeft, D = B.rotateRight, B = B.autoDetectBorder, X = { icon: ce.font + " " + ce.iconNext, className: ce.BUTTON_PREFIX + "save", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.clickSaveButton();
-        } }, Q = (Q.nextButtonCss && (X.icon = Q.nextButtonCss), { footerButtons: { rotateLeft: Zn(k, { icon: ce.font + " " + ce.iconRotateLeft, className: ce.BUTTON_PREFIX + "rotateLeft", onclick: function(ve, ke) {
+        } }, Q = (Q.nextButtonCss && (X.icon = Q.nextButtonCss), { footerButtons: { rotateLeft: Zn(x, { icon: ce.font + " " + ce.iconRotateLeft, className: ce.BUTTON_PREFIX + "rotateLeft", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.rotateLeft();
         } }), rotateRight: Zn(D, { icon: ce.font + " " + ce.iconRotateRight, className: ce.BUTTON_PREFIX + "rotateRight", onclick: function(ve, ke) {
           ke = ke.dcs.getCurrentPage(), ke && ke.rotateRight();
@@ -36996,12 +36997,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this.element && (m = (I = (I = this.element) == null ? void 0 : I.querySelector(".dvs-cameraPager")) == null ? void 0 : I.querySelector(".dvs-previousPage"), I = I == null ? void 0 : I.querySelector(".dvs-nextPage"), 0 <= f ? (m.classList[f <= 0 ? "add" : "remove"](ce.disable), I.classList[b === f + 1 ? "add" : "remove"](ce.disable)) : (m.classList.add(ce.disable), I.classList.add(ce.disable)));
       }, g.handlePageByUid = function() {
         var f = C(p().mark(function b(m, I) {
-          var k, D, B, X, Q;
+          var x, D, B, X, Q;
           return p().wrap(function(ve) {
             for (; ; )
               switch (ve.prev = ve.next) {
                 case 0:
-                  if (k = this._dcs, this.isDestroyed)
+                  if (x = this._dcs, this.isDestroyed)
                     return ve.abrupt("return");
                   ve.next = 3;
                   break;
@@ -37020,7 +37021,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   ve.next = 10;
                   break;
                 case 10:
-                  return k.showLoading("handle crop page by uid"), ve.prev = 11, this._renderType = rr, ve.next = 15, this.initOrigDataByUid(m);
+                  return x.showLoading("handle crop page by uid"), ve.prev = 11, this._renderType = rr, ve.next = 15, this.initOrigDataByUid(m);
                 case 15:
                   if (this.isDestroyed)
                     return ve.abrupt("return");
@@ -37029,7 +37030,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 17:
                   this.initImageCropInfoByUid(m), D = 0, Q = F(this, Ir)[Ir](m), X = Q.fullArea, D = Q.angle, Q.alreadyHandle ? Q.angle != null && (D = Q.angle, Q.angle = 0, B = this._rotateSavedArea(m, D, Q.savedArea), Q.angle = D, this._drawCropArea(m, B)) : ((D = D ?? this.getAngle(m)) != 0 ? (Q.angle = 0, B = this._rotateSavedArea(m, 0, Q.savedArea), this._drawCropArea(m, B), this._rotate(m, D, 0)) : (B = this._rotateSavedArea(m, 0, Q.savedArea), this._drawCropArea(m, B)), this._renderType = rr, Q.alreadyHandle = !0), (Q = (D = this.element) == null ? void 0 : D.querySelector("." + ce.BUTTON_PREFIX + "toggleFullArea")) && Q.classList[X ? "add" : "remove"](ce.footerSelected);
                 case 25:
-                  return ve.prev = 25, k.hideLoading("handle crop page by uid"), ve.finish(25);
+                  return ve.prev = 25, x.hideLoading("handle crop page by uid"), ve.finish(25);
                 case 28:
                 case "end":
                   return ve.stop();
@@ -37043,15 +37044,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (mn(f) && f != "") {
           this._dcs.showLoading("crop save current data");
           try {
-            var b, m, I, k = this.getAngle(f), D = (b = this._dvsWrapper) == null ? void 0 : b.getCustomDataSync(f);
-            D && (m = !1, this.cropMng && this.cropMng.getCropMode() && (I = this.getDetectAreaForNotRotate(f), D.detectArea = I, m = !0), D.angle != k && (D.angle = k, m = !0), m && D.resBlob && delete D.resBlob);
+            var b, m, I, x = this.getAngle(f), D = (b = this._dvsWrapper) == null ? void 0 : b.getCustomDataSync(f);
+            D && (m = !1, this.cropMng && this.cropMng.getCropMode() && (I = this.getDetectAreaForNotRotate(f), D.detectArea = I, m = !0), D.angle != x && (D.angle = x, m = !0), m && D.resBlob && delete D.resBlob);
           } finally {
             this._dcs.hideLoading("crop save current data");
           }
         }
       }, g.clickSaveButton = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn;
+          var I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt, Dn, Xn;
           return p().wrap(function(vn) {
             for (; ; )
               switch (vn.prev = vn.next) {
@@ -37061,18 +37062,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   vn.next = 3;
                   break;
                 case 3:
-                  if ((I = this._dcs).showLoading("crop save"), vn.prev = 5, Q = I.getPreviousPage(), this.saveCurrentDataToUid(this._editUid), k = !1, !Q) {
+                  if ((I = this._dcs).showLoading("crop save"), vn.prev = 5, Q = I.getPreviousPage(), this.saveCurrentDataToUid(this._editUid), x = !1, !Q) {
                     vn.next = 24;
                     break;
                   }
                   if (Q instanceof ro)
-                    return (dt = this.ifOldDocumentDataChanged()) && (Q.setCurPageId(null), Q.setCurImageData(null), Q.SetFilterDirty(!0)), this.mergeChangedToSavedFileSync(), this._reused && this.saveChangedTo_bk(), dt && (this._editUid = null), this.options.fromInternal && Q.applyChanged(), k = !0, dt = this.getCurrentIndex(), Q.hide(), Q.gotoViewPage(dt), vn.next = 23, I.navigateBack();
+                    return (dt = this.ifOldDocumentDataChanged()) && (Q.setCurPageId(null), Q.setCurImageData(null), Q.SetFilterDirty(!0)), this.mergeChangedToSavedFileSync(), this._reused && this.saveChangedTo_bk(), dt && (this._editUid = null), this.options.fromInternal && Q.applyChanged(), x = !0, dt = this.getCurrentIndex(), Q.hide(), Q.gotoViewPage(dt), vn.next = 23, I.navigateBack();
                   vn.next = 24;
                   break;
                 case 23:
                   _i(I);
                 case 24:
-                  if (k) {
+                  if (x) {
                     vn.next = 85;
                     break;
                   }
@@ -37137,7 +37138,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 80:
                   return Dn.gotoViewPage(X), vn.next = 83, I.navigateToPage(Dn);
                 case 83:
-                  m || ((Xn = I.getPreviousPage()) && Xn.hide(), D = this._resetViewerWhenChanged(), this.resetViewerAngleByIndexes(D)), k = !0;
+                  m || ((Xn = I.getPreviousPage()) && Xn.hide(), D = this._resetViewerWhenChanged(), this.resetViewerAngleByIndexes(D)), x = !0;
                 case 85:
                   return vn.prev = 85, I.hideLoading("crop save"), vn.finish(85);
                 case 88:
@@ -37162,8 +37163,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return !0;
       }, g.mergeChangedToSavedFileSync = function() {
         for (var f = this.getViewerByUid(this._viewerId).getCurrentPageUids(), b = 0; b < f.length; b++) {
-          var m, I, k = f[b], D = this._copyRefMap[k];
-          !mn(D) || D == "" || (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(k)) && (k = this._backInfo.origDocumentData[D], !(I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(D)) || wt(I.detectArea, m.detectArea) && I.angle == m.angle || (D = !1, wt(I.detectArea, m.detectArea) || (I.detectArea = m.detectArea, D = !0), I.angle != m.angle && (I.angle = m.angle, D = !0), D && I.resBlob && delete I.resBlob, k && (D = !1, wt(k.detectArea, m.detectArea) || (k.detectArea = m.detectArea, D = !0), k.angle != m.angle && (k.angle = m.angle, D = !0), D && k.resBlob && delete k.resBlob)));
+          var m, I, x = f[b], D = this._copyRefMap[x];
+          !mn(D) || D == "" || (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(x)) && (x = this._backInfo.origDocumentData[D], !(I = (I = this._dvsWrapper) == null ? void 0 : I.getCustomDataSync(D)) || wt(I.detectArea, m.detectArea) && I.angle == m.angle || (D = !1, wt(I.detectArea, m.detectArea) || (I.detectArea = m.detectArea, D = !0), I.angle != m.angle && (I.angle = m.angle, D = !0), D && I.resBlob && delete I.resBlob, x && (D = !1, wt(x.detectArea, m.detectArea) || (x.detectArea = m.detectArea, D = !0), x.angle != m.angle && (x.angle = m.angle, D = !0), D && x.resBlob && delete x.resBlob)));
         }
       }, g.compareOldValueChanged = function(f, b, m) {
         if (!f || !b)
@@ -37185,13 +37186,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           var f = this._cropInfoHelper;
           this._cropInfoHelper = this._bk._cropInfoHelper;
           for (var b = this.getViewerByUid(this._viewerId).getCurrentPageUids(), m = 0; m < b.length; m++) {
-            var I, k, D = b[m], B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(D);
-            B && ((I = this._bk._customData[D]) && (k = !1, wt(I.detectArea, B.detectArea) || (I.detectArea = B.detectArea, k = !0), I.angle != B.angle && (I.angle = B.angle, k = !0), k && I.resBlob && delete I.resBlob), this._cropInfoHelper && this.initImageCropInfoByUid(D));
+            var I, x, D = b[m], B = (B = this._dvsWrapper) == null ? void 0 : B.getCustomDataSync(D);
+            B && ((I = this._bk._customData[D]) && (x = !1, wt(I.detectArea, B.detectArea) || (I.detectArea = B.detectArea, x = !0), I.angle != B.angle && (I.angle = B.angle, x = !0), x && I.resBlob && delete I.resBlob), this._cropInfoHelper && this.initImageCropInfoByUid(D));
           }
           this._cropInfoHelper = f;
         }
       }, g.updateUid = function() {
-        var f = C(p().mark(function b(m, I, k) {
+        var f = C(p().mark(function b(m, I, x) {
           var D, B;
           return p().wrap(function(X) {
             for (; ; )
@@ -37208,7 +37209,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return X.abrupt("return");
                 case 6:
-                  return X.next = 8, no(I, D, B, !0, k);
+                  return X.next = 8, no(I, D, B, !0, x);
                 case 8:
                 case "end":
                   return X.stop();
@@ -37220,29 +37221,29 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.syncFileFromExternalEvent = function() {
         var f = C(p().mark(function b(m, I) {
-          return p().wrap(function(k) {
+          return p().wrap(function(x) {
             for (; ; )
-              switch (k.prev = k.next) {
+              switch (x.prev = x.next) {
                 case 0:
                   if (this.isDestroyed)
-                    return k.abrupt("return");
-                  k.next = 2;
+                    return x.abrupt("return");
+                  x.next = 2;
                   break;
                 case 2:
                   if (this._reused)
-                    return k.next = 5, this.syncFileForReusedFromExternalEvent(m, I);
-                  k.next = 7;
+                    return x.next = 5, this.syncFileForReusedFromExternalEvent(m, I);
+                  x.next = 7;
                   break;
                 case 5:
-                  k.next = 9;
+                  x.next = 9;
                   break;
                 case 7:
-                  return k.next = 9, te.prototype.syncFileFromExternalEvent.call(this, m, I);
+                  return x.next = 9, te.prototype.syncFileFromExternalEvent.call(this, m, I);
                 case 9:
                   this.getImageCount() <= 0 && this.disableCrop();
                 case 10:
                 case "end":
-                  return k.stop();
+                  return x.stop();
               }
           }, b, this);
         }));
@@ -37251,17 +37252,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.syncFileForReusedFromExternalEvent = function() {
         var f = C(p().mark(function b(m, I) {
-          var k, D, B, X, Q, ve, ke, dt, et, $e;
+          var x, D, B, X, Q, ve, ke, dt, et, $e;
           return p().wrap(function(gt) {
             for (; ; )
               switch (gt.prev = gt.next) {
                 case 0:
                   if (this._reused)
-                    return k = this._copyRefMap, D = this._backInfo, this._copyRefMap = this._bk._copyRefMap, this._backInfo = this._bk._backInfo, X = this._fileWrapper.openFile(this._bk._backFileName), gt.next = 8, this.syncFiles(m, X);
+                    return x = this._copyRefMap, D = this._backInfo, this._copyRefMap = this._bk._copyRefMap, this._backInfo = this._bk._backInfo, X = this._fileWrapper.openFile(this._bk._backFileName), gt.next = 8, this.syncFiles(m, X);
                   gt.next = 19;
                   break;
                 case 8:
-                  for (this._copyRefMap = k, this._backInfo = D, this._bk._copyRefMap = this._copyRefMap, this._bk._backInfo = this._backInfo, B = this._fileWrapper.openFile(this._backFileName), this.backupNewImageDataFromUids(B), X = this.getViewerByUid(this._viewerId), Q = X.getCurrentPageUids(), ve = Q.length, dt = B.length, ke = 0; ke < ve; ke++)
+                  for (this._copyRefMap = x, this._backInfo = D, this._bk._copyRefMap = this._copyRefMap, this._bk._backInfo = this._backInfo, B = this._fileWrapper.openFile(this._backFileName), this.backupNewImageDataFromUids(B), X = this.getViewerByUid(this._viewerId), Q = X.getCurrentPageUids(), ve = Q.length, dt = B.length, ke = 0; ke < ve; ke++)
                     et = Q[ke], ke < dt ? ($e = B[ke], this._copyRefMap[et] = $e) : this._copyRefMap[et] = void 0;
                 case 19:
                 case "end":
@@ -37273,8 +37274,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return f.apply(this, arguments);
         };
       }(), g.backupNewImageDataFromUids = function(f) {
-        for (var b, m, I = f.length, k = 0; k < I; k++)
-          mn(b = f[k]) && b != "" && !this._backInfo.origDocumentData[b] && (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(b), this._backInfo.origDocumentData[b] = m ? { detectArea: m.detectArea, angle: m.angle, filterValue: m.filterValue } : { detectArea: null, angle: 0, filterValue: this._dcs.curFilterValue });
+        for (var b, m, I = f.length, x = 0; x < I; x++)
+          mn(b = f[x]) && b != "" && !this._backInfo.origDocumentData[b] && (m = (m = this._dvsWrapper) == null ? void 0 : m.getCustomDataSync(b), this._backInfo.origDocumentData[b] = m ? { detectArea: m.detectArea, angle: m.angle, filterValue: m.filterValue } : { detectArea: null, angle: 0, filterValue: this._dcs.curFilterValue });
       }, g.disableCrop = function() {
         this.cropMng && (this.cropMng.setCropMode(!1), this.cropMng.clearCropBox());
         var f = (f = this.element) == null ? void 0 : f.querySelector("." + ce.BUTTON_PREFIX + "toggleFullArea");
@@ -37291,26 +37292,26 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           ln(te._renderEvents[f]) && te._renderEvents[f](g);
       });
     }
-    function vo() {
+    function yo() {
       var te = this;
       this._renderEvents.push(function(g) {
         var g = g || te.getCurrentArea(), g = te.isAreaFulfilled(g), f = (f = te.element) == null ? void 0 : f.querySelector("." + ce.iconFullCrop);
         f && f.parentElement && f.parentElement.classList[g ? "add" : "remove"](ce.footerSelected);
       });
     }
-    function Ns() {
+    function Vs() {
       return this._imageArea || (this._imageArea = this._calImageArea(this._editUid)), this._imageArea;
     }
-    function Vs() {
+    function Us() {
       var g = this.options.documentEditorSettings, g = g === void 0 ? {} : g, te = g.headerStyle, te = te === void 0 ? {} : te, W = g.bodyStyle, g = g.footerStyle, g = g === void 0 ? {} : g;
-      this.setDefaultBackgroundColors(te, W === void 0 ? {} : W, g), this.template = ['<header style="background:' + te.background + '" class="headerButtons"></header>', '<div class="' + ce.cvsContainer + '"><canvas class="' + ce.detectCvs + '"></canvas></div>', '</div><footer style="background:' + g.background + '" class="footerButtons"></footer>'].join(""), this.className = ce.cropPage, this.createEl(), this._listenResize(), F(this, lo)[lo](), F(this, ti)[ti](), F(this, Pi)[Pi]();
+      this.setDefaultBackgroundColors(te, W === void 0 ? {} : W, g), this.template = ['<header style="background:' + te.background + '" class="headerButtons"></header>', '<div class="' + ce.cvsContainer + '"><canvas class="' + ce.detectCvs + '"></canvas></div>', '</div><footer style="background:' + g.background + '" class="footerButtons"></footer>'].join(""), this.className = ce.cropPage, this.createEl(), this._listenResize(), F(this, ho)[ho](), F(this, ti)[ti](), F(this, Pi)[Pi]();
     }
     function ps() {
       return _s.apply(this, arguments);
     }
     function _s() {
       return (_s = C(p().mark(function te() {
-        var W, g, f, b, m, I, k, D = this;
+        var W, g, f, b, m, I, x, D = this;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
@@ -37321,9 +37322,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
                 return B.abrupt("return");
               case 2:
-                f = this.options, f = f.documentEditorSettings, f = (f === void 0 ? {} : f).bodyStyle, f = f === void 0 ? {} : f, W = this._dvs, this._dcs, m = (m = this.element) == null ? void 0 : m.querySelector(".dvs-cameraPager"), I = m == null ? void 0 : m.querySelector(".dvs-previousPage"), k = m == null ? void 0 : m.querySelector(".dvs-nextPage"), (g = this.getViewerByUid(this._viewerId)).canvasBackground = f.background, g.bindView((f = this.element) == null ? void 0 : f.querySelector("." + ce.cvsContainer)), g.on(Ve, function() {
+                f = this.options, f = f.documentEditorSettings, f = (f === void 0 ? {} : f).bodyStyle, f = f === void 0 ? {} : f, W = this._dvs, this._dcs, m = (m = this.element) == null ? void 0 : m.querySelector(".dvs-cameraPager"), I = m == null ? void 0 : m.querySelector(".dvs-previousPage"), x = m == null ? void 0 : m.querySelector(".dvs-nextPage"), (g = this.getViewerByUid(this._viewerId)).canvasBackground = f.background, g.bindView((f = this.element) == null ? void 0 : f.querySelector("." + ce.cvsContainer)), g.on(Ve, function() {
                   if (!D.isDestroyed)
-                    if (D._renderType == Eo)
+                    if (D._renderType == Do)
                       D._renderType = wr;
                     else {
                       D._renderType != wr && (D._renderType = wr);
@@ -37335,9 +37336,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                           ln(D._renderEvents[Q]) && D._renderEvents[Q]();
                       }
                     }
-                }), this._resetCropCanvas(), f = g.getCurrentTab(), I && k || (m.innerHTML = '<div class="dvs-previousPage ' + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + `"></div>
+                }), this._resetCropCanvas(), f = g.getCurrentTab(), I && x || (m.innerHTML = '<div class="dvs-previousPage ' + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + `"></div>
       <p><span class="dvs-curPage">0</span>/<span class="dvs-totalPage">0</span></p>
-      <div class="dvs-nextPage ` + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + '"></div>', I = m == null ? void 0 : m.querySelector(".dvs-previousPage"), k = m == null ? void 0 : m.querySelector(".dvs-nextPage"), f && 0 <= f.total && (I.onclick = C(p().mark(function X() {
+      <div class="dvs-nextPage ` + ce.font + " " + ce.iconArrow + " " + ce.headerfont + " " + ce.disable + '"></div>', I = m == null ? void 0 : m.querySelector(".dvs-previousPage"), x = m == null ? void 0 : m.querySelector(".dvs-nextPage"), f && 0 <= f.total && (I.onclick = C(p().mark(function X() {
                   var Q;
                   return p().wrap(function(ve) {
                     for (; ; )
@@ -37359,7 +37360,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                           return ve.stop();
                       }
                   }, X);
-                })), k.onclick = C(p().mark(function X() {
+                })), x.onclick = C(p().mark(function X() {
                   var Q;
                   return p().wrap(function(ve) {
                     for (; ; )
@@ -37383,7 +37384,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }, X);
                 })), (b = this).viewerPagerEventId = g.on(le, function(X) {
                   D.isDestroyed || b && X && (b.changePageNumber(X.cur, X.total), b.changeStatus(X.cur, X.total));
-                }))), f && 0 <= (m = f.total) && 0 <= (I = g.getCurrentIndex()) && (this.changeStatus(I, m), this.changePageNumber(I, m), mn(k = g.getUidByIndex(I)) && k != "" && this._editUid && this.saveCurrentDataToUid(this._editUid)), (f = g.ui) != null && f._resizeViewer();
+                }))), f && 0 <= (m = f.total) && 0 <= (I = g.getCurrentIndex()) && (this.changeStatus(I, m), this.changePageNumber(I, m), mn(x = g.getUidByIndex(I)) && x != "" && this._editUid && this.saveCurrentDataToUid(this._editUid)), (f = g.ui) != null && f._resizeViewer();
               case 18:
               case "end":
                 return B.stop();
@@ -37396,8 +37397,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (m == 0)
         return $(te);
       for (var I = 0; I < te.length; I += 2) {
-        var k = void 0, X = void 0, D = Math.fround(te[I]), B = Math.fround(te[I + 1]), X = m == 90 ? (k = g - B, D) : m == 180 ? (k = f - D, g - B) : m == 270 ? (k = B, f - D) : (k = D, B);
-        b.push(k, X);
+        var x = void 0, X = void 0, D = Math.fround(te[I]), B = Math.fround(te[I + 1]), X = m == 90 ? (x = g - B, D) : m == 180 ? (x = f - D, g - B) : m == 270 ? (x = B, f - D) : (x = D, B);
+        b.push(x, X);
       }
       return b;
     }
@@ -37410,24 +37411,24 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return g.initFileName = function(f) {
         f && f.fileName && (this.fileName = f.fileName);
       }, g.attachDefaultEvent = function() {
-        this.on("onSaveCapture", function(f, b, m, I, k) {
+        this.on("onSaveCapture", function(f, b, m, I, x) {
           (function() {
             br.apply(this, arguments);
-          })(f, b, m, I, k);
+          })(f, b, m, I, x);
         });
       }, g.initPageOption = function(f, B) {
         f.scannerViewer || (f.scannerViewer = $(B.config.scannerViewer), B.config && B.config.scannerViewer && B.config.scannerViewer.element && (f.scannerViewer.element = B.config.scannerViewer.element));
-        var B = f.scannerViewer, X = B.resolution, m = B.autoScan, I = B.autoDetect, k = B.switchCamera, D = B.loadLocalFile, B = B.torch, X = { headerButtons: { changeResBtn: Zn(X, ae()), autoDetect: U({ isSelected: (m == null ? void 0 : m.enableAutoScan) || (I == null ? void 0 : I.enableAutoDetect) }, Zn(I, _e())), flashBtn: Zn(B, de()), closeBtn: jn() }, footerButtons: { load: Zn(D, Er()), toggleCamera: Zn(k, ye()), capture: Ei(), autoCapture: U({ isSelected: m == null ? void 0 : m.enableAutoScan }, Zn(m, oe())), continuous: { icon: ce.font + " " + ce.iconContinuous, className: ce.BUTTON_PREFIX + "continuousMode", visibility: "hidden" } }, scannerViewer: { resolution: { defaultValue: { width: 1280, height: 720 } }, fullScreen: !1 } };
+        var B = f.scannerViewer, X = B.resolution, m = B.autoScan, I = B.autoDetect, x = B.switchCamera, D = B.loadLocalFile, B = B.torch, X = { headerButtons: { changeResBtn: Zn(X, ae()), autoDetect: U({ isSelected: (m == null ? void 0 : m.enableAutoScan) || (I == null ? void 0 : I.enableAutoDetect) }, Zn(I, _e())), flashBtn: Zn(B, de()), closeBtn: jn() }, footerButtons: { load: Zn(D, Er()), toggleCamera: Zn(x, ye()), capture: Ei(), autoCapture: U({ isSelected: m == null ? void 0 : m.enableAutoScan }, Zn(m, oe())), continuous: { icon: ce.font + " " + ce.iconContinuous, className: ce.BUTTON_PREFIX + "continuousMode", visibility: "hidden" } }, scannerViewer: { resolution: { defaultValue: { width: 1280, height: 720 } }, fullScreen: !1 } };
         Fn() && ((I = B.visibility) == null ? void 0 : I.toString().toLowerCase()) != "hidden" || delete X.headerButtons.flashBtn, this.options = Rr(f, X);
       }, g.selectedFile = function() {
         var f = C(p().mark(function b(m, I) {
-          var k;
+          var x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
                 case 0:
-                  if (I.stop(), D.prev = 1, (k = I.getPreviousPage()) && k instanceof ro)
-                    return D.next = 6, k.insertFile(m);
+                  if (I.stop(), D.prev = 1, (x = I.getPreviousPage()) && x instanceof ro)
+                    return D.next = 6, x.insertFile(m);
                   D.next = 6;
                   break;
                 case 6:
@@ -37450,26 +37451,26 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }(qe);
     function br() {
       return (br = C(p().mark(function te(W, g, f, b, m) {
-        var I, k, D, B, X;
+        var I, x, D, B, X;
         return p().wrap(function(Q) {
           for (; ; )
             switch (Q.prev = Q.next) {
               case 0:
-                if (I = g.dcs, !(k = I.getPreviousPage()).isDestroyed && k instanceof ro) {
+                if (I = g.dcs, !(x = I.getPreviousPage()).isDestroyed && x instanceof ro) {
                   Q.next = 4;
                   break;
                 }
                 return Q.abrupt("return");
               case 4:
-                if (I.showLoading("OnInsertPageSave"), Q.prev = 5, D = I.config.scannerViewer || {}, D = D.maxDocuments, B = D = D === void 0 ? 20 : D, X = k.getViewerByUid(k.getViewerUid()), !k.options.fromInternal || X.currentPageCount + 1 <= B && X.currentPageCount + 1 <= D)
+                if (I.showLoading("OnInsertPageSave"), Q.prev = 5, D = I.config.scannerViewer || {}, D = D.maxDocuments, B = D = D === void 0 ? 20 : D, X = x.getViewerByUid(x.getViewerUid()), !x.options.fromInternal || X.currentPageCount + 1 <= B && X.currentPageCount + 1 <= D)
                   return I.config && I.config.scannerViewer && I.config.scannerViewer.autoScan && !I.config.scannerViewer.autoScan.enableAutoScan && I.setLoadingNumber(2), Q.next = 13, I.packageBlobItemFromIImageData(f, !0, !0, !1);
                 Q.next = 28;
                 break;
               case 13:
-                return B = Q.sent, Q.next = 16, k.insertImgByBlobItem(B, I);
+                return B = Q.sent, Q.next = 16, x.insertImgByBlobItem(B, I);
               case 16:
-                if (X = Q.sent, k.setInsertingImageIndex(X), 0 <= X)
-                  return Q.next = 21, k.handlePageByIndex(X);
+                if (X = Q.sent, x.setInsertingImageIndex(X), 0 <= X)
+                  return Q.next = 21, x.handlePageByIndex(X);
                 Q.next = 21;
                 break;
               case 21:
@@ -37510,14 +37511,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return f === void 0 ? Promise.reject(g) : W(f.apply(this.s, arguments));
       } }, new Gt(te);
     }
-    var Us = function() {
+    var Gs = function() {
       function te(g, f, b, m) {
         this.videoSettings = vt, this._browserInfo = null, this._isPlugOut = !1, this._resolutionSelector = null, this._cameraInfo = null, this._allCameras = null, this._videoTrack = null, this._allResolutions = [], this._curResolution = null, this._videoEle = null, this._isFill = !1, this._isUser = !1, this._useWebgl = !0, this.videoGlCvs = null, this.videoGl = null, this.glImgData = null, this.glCropImgData = null, this._cameraManager = null, this._oPub = null, this._browserInfo = N.navInfo, !this._browserInfo.bMobile && this._browserInfo.bSafari ? 15 <= parseInt(this._browserInfo.strBrowserVersion) && (this._useWebgl = !1) : this._browserInfo.bHuaWeiBrowser && (this._useWebgl = !1), this._cameraInfo = g || { deviceId: "", label: "" }, this._videoEle = f, this._allCameras = b, this._oPub = m || new Nt();
       }
       var W = te.prototype;
       return W.getFrame = function() {
-        var g, f, b = this._videoEle.videoWidth, m = this._videoEle.videoHeight, I = (this.videoGlCvs || (this.videoGlCvs = document.createElement("canvas")), this.videoGlCvs), k = this._useWebgl, D = null;
-        return (D = k ? this.videoGl || I.getContext("webgl", { alpha: !1, antialias: !1, depth: !1, stencil: !1, preserveDrawingBuffer: !0 }) || I.getContext("experimental-webgl", { alpha: !1, antialias: !1, depth: !1, stencil: !1, preserveDrawingBuffer: !0 }) : D) && k || (k = !1, this.videoGlCvs = document.createElement("canvas"), I = this.videoGlCvs), I.width == b && I.height == m || (I.height = m, I.width = b, D && D.viewport(0, 0, b, m)), k ? (this.videoGl || (k = (this.videoGl = D).createShader(D.VERTEX_SHADER), D.shaderSource(k, `
+        var g, f, b = this._videoEle.videoWidth, m = this._videoEle.videoHeight, I = (this.videoGlCvs || (this.videoGlCvs = document.createElement("canvas")), this.videoGlCvs), x = this._useWebgl, D = null;
+        return (D = x ? this.videoGl || I.getContext("webgl", { alpha: !1, antialias: !1, depth: !1, stencil: !1, preserveDrawingBuffer: !0 }) || I.getContext("experimental-webgl", { alpha: !1, antialias: !1, depth: !1, stencil: !1, preserveDrawingBuffer: !0 }) : D) && x || (x = !1, this.videoGlCvs = document.createElement("canvas"), I = this.videoGlCvs), I.width == b && I.height == m || (I.height = m, I.width = b, D && D.viewport(0, 0, b, m)), x ? (this.videoGl || (x = (this.videoGl = D).createShader(D.VERTEX_SHADER), D.shaderSource(x, `
 attribute vec4 a_position;
 attribute vec2 a_uv;
 
@@ -37527,7 +37528,7 @@ void main() {
 gl_Position = a_position;
 v_uv = a_uv;
 }
-`), D.compileShader(k), D.getShaderParameter(k, D.COMPILE_STATUS), f = D.createShader(D.FRAGMENT_SHADER), D.shaderSource(f, `
+`), D.compileShader(x), D.getShaderParameter(x, D.COMPILE_STATUS), f = D.createShader(D.FRAGMENT_SHADER), D.shaderSource(f, `
 precision lowp float;
 
 varying vec2 v_uv;
@@ -37538,17 +37539,17 @@ void main() {
 vec4 sample =  texture2D(u_texture, v_uv);
 gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
 }
-`), D.compileShader(f), D.getShaderParameter(f, D.COMPILE_STATUS), g = D.createProgram(), D.attachShader(g, k), D.attachShader(g, f), D.linkProgram(g), D.getProgramParameter(g, D.LINK_STATUS), D.useProgram(g), D.bindBuffer(D.ARRAY_BUFFER, D.createBuffer()), D.bufferData(D.ARRAY_BUFFER, new Float32Array([-1, 1, 0, 1, 1, 1, 1, 1, -1, -1, 0, 0, 1, -1, 1, 0]), D.STATIC_DRAW), k = D.getAttribLocation(g, "a_position"), D.enableVertexAttribArray(k), D.vertexAttribPointer(k, 2, D.FLOAT, !1, 16, 0), f = D.getAttribLocation(g, "a_uv"), D.enableVertexAttribArray(f), D.vertexAttribPointer(f, 2, D.FLOAT, !1, 16, 8), D.activeTexture(D.TEXTURE0), D.bindTexture(D.TEXTURE_2D, D.createTexture()), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_WRAP_S, D.CLAMP_TO_EDGE), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_WRAP_T, D.CLAMP_TO_EDGE), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_MIN_FILTER, D.NEAREST), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_MAG_FILTER, D.NEAREST), D.uniform1i(D.getUniformLocation(g, "u_texture"), 0)), (!this.glImgData || this.glImgData.length < b * m * 4) && (this.glImgData = new Uint8Array(b * m * 4)), D.texImage2D(D.TEXTURE_2D, 0, D.RGBA, D.RGBA, D.UNSIGNED_BYTE, this._videoEle), D.drawArrays(D.TRIANGLE_STRIP, 0, 4), k = this.glImgData, D.readPixels(0, 0, D.drawingBufferWidth, D.drawingBufferHeight, D.RGBA, D.UNSIGNED_BYTE, k), this.glImgData) : ((f = I.getContext("2d")).drawImage(this._videoEle, 0, 0), I.width === 0 || I.height === 0 ? null : ((!this.glImgData || this.glImgData.length < I.width * I.height * 4) && (this.glImgData = new Uint8Array(I.width * I.height * 4)), this.glImgData.set(f.getImageData(0, 0, I.width, I.height).data), this.glImgData));
+`), D.compileShader(f), D.getShaderParameter(f, D.COMPILE_STATUS), g = D.createProgram(), D.attachShader(g, x), D.attachShader(g, f), D.linkProgram(g), D.getProgramParameter(g, D.LINK_STATUS), D.useProgram(g), D.bindBuffer(D.ARRAY_BUFFER, D.createBuffer()), D.bufferData(D.ARRAY_BUFFER, new Float32Array([-1, 1, 0, 1, 1, 1, 1, 1, -1, -1, 0, 0, 1, -1, 1, 0]), D.STATIC_DRAW), x = D.getAttribLocation(g, "a_position"), D.enableVertexAttribArray(x), D.vertexAttribPointer(x, 2, D.FLOAT, !1, 16, 0), f = D.getAttribLocation(g, "a_uv"), D.enableVertexAttribArray(f), D.vertexAttribPointer(f, 2, D.FLOAT, !1, 16, 8), D.activeTexture(D.TEXTURE0), D.bindTexture(D.TEXTURE_2D, D.createTexture()), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_WRAP_S, D.CLAMP_TO_EDGE), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_WRAP_T, D.CLAMP_TO_EDGE), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_MIN_FILTER, D.NEAREST), D.texParameteri(D.TEXTURE_2D, D.TEXTURE_MAG_FILTER, D.NEAREST), D.uniform1i(D.getUniformLocation(g, "u_texture"), 0)), (!this.glImgData || this.glImgData.length < b * m * 4) && (this.glImgData = new Uint8Array(b * m * 4)), D.texImage2D(D.TEXTURE_2D, 0, D.RGBA, D.RGBA, D.UNSIGNED_BYTE, this._videoEle), D.drawArrays(D.TRIANGLE_STRIP, 0, 4), x = this.glImgData, D.readPixels(0, 0, D.drawingBufferWidth, D.drawingBufferHeight, D.RGBA, D.UNSIGNED_BYTE, x), this.glImgData) : ((f = I.getContext("2d")).drawImage(this._videoEle, 0, 0), I.width === 0 || I.height === 0 ? null : ((!this.glImgData || this.glImgData.length < I.width * I.height * 4) && (this.glImgData = new Uint8Array(I.width * I.height * 4)), this.glImgData.set(f.getImageData(0, 0, I.width, I.height).data), this.glImgData));
       }, W.capture = function() {
         var g = C(p().mark(function f(b) {
-          var m, I, k, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt;
+          var m, I, x, D, B, X, Q, ve, ke, dt, et, $e, gt, hn, Tt;
           return p().wrap(function(Dn) {
             for (; ; )
               switch (Dn.prev = Dn.next) {
                 case 0:
-                  if (b === void 0 && (b = !1), m = null, Dn.prev = 2, $n.log("capture"), X = this._videoEle, X.videoHeight, I = X.videoWidth, X = this.getVideoSizeInfo(), k = X.width, D = X.height, B = X.offsetX, X = X.offsetY, Q = this.getFrame(), ke = ve = !1, this.videoGl ? ke = !0 : ve = !0, m = { imageData: null, imageWidth: k, imageHeight: D, rgba: ve, bgra: ke }, this._isFill) {
-                    for ((!this.glCropImgData || this.glCropImgData.length < k * D * 4) && (this.glCropImgData = new Uint8Array(k * D * 4)), dt = this.glCropImgData, et = 0, $e = X + D, gt = X; gt < $e; gt++)
-                      hn = 4 * (gt * I + B), Tt = et * k * 4, dt.set(Q.subarray(hn, hn + 4 * k), Tt), et++;
+                  if (b === void 0 && (b = !1), m = null, Dn.prev = 2, $n.log("capture"), X = this._videoEle, X.videoHeight, I = X.videoWidth, X = this.getVideoSizeInfo(), x = X.width, D = X.height, B = X.offsetX, X = X.offsetY, Q = this.getFrame(), ke = ve = !1, this.videoGl ? ke = !0 : ve = !0, m = { imageData: null, imageWidth: x, imageHeight: D, rgba: ve, bgra: ke }, this._isFill) {
+                    for ((!this.glCropImgData || this.glCropImgData.length < x * D * 4) && (this.glCropImgData = new Uint8Array(x * D * 4)), dt = this.glCropImgData, et = 0, $e = X + D, gt = X; gt < $e; gt++)
+                      hn = 4 * (gt * I + B), Tt = et * x * 4, dt.set(Q.subarray(hn, hn + 4 * x), Tt), et++;
                     m.imageData = dt.buffer;
                   } else
                     m.imageData = Q.buffer;
@@ -37586,8 +37587,8 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
         var f = X.getBoundingClientRect(), g = f.width, f = f.height;
         if (g === 0 || f === 0)
           throw Dt.CAPTURE_NO_IMAGE;
-        var b, m, I, k = 0, D = 0, B = X.videoHeight, X = X.videoWidth;
-        return this._isFill ? (b = g / (X * (g = Math.max(g / X, f / B))), f = f / (B * g), m = Math.floor(X * b), I = Math.floor(B * f), k = Math.floor((1 - b) / 2 * X), D = Math.floor((1 - f) / 2 * B)) : (m = X, I = B), { width: m, height: I, offsetX: k, offsetY: D };
+        var b, m, I, x = 0, D = 0, B = X.videoHeight, X = X.videoWidth;
+        return this._isFill ? (b = g / (X * (g = Math.max(g / X, f / B))), f = f / (B * g), m = Math.floor(X * b), I = Math.floor(B * f), x = Math.floor((1 - b) / 2 * X), D = Math.floor((1 - f) / 2 * B)) : (m = X, I = B), { width: m, height: I, offsetX: x, offsetY: D };
       }, W.setFillMode = function(g) {
         this._isFill = g, this._videoEle && (this._videoEle.style.objectFit = g ? "cover" : "contain");
       }, W.setPlugOut = function() {
@@ -37596,7 +37597,7 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
         this._isPlugOut && this._oPub.emit("video-error", Dt.CAMERA_PLUG_OUT);
       }, W.getResolutions = function() {
         var g = C(p().mark(function f(b) {
-          var m, I, k, D, B, X, Q, ve, ke, dt;
+          var m, I, x, D, B, X, Q, ve, ke, dt;
           return p().wrap(function(et) {
             for (; ; )
               switch (et.prev = et.next) {
@@ -37612,7 +37613,7 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
                   }
                   return et.abrupt("return", null);
                 case 5:
-                  m = [], this._allResolutions = [], k = I = !1, et.prev = 9, B = function($e) {
+                  m = [], this._allResolutions = [], x = I = !1, et.prev = 9, B = function($e) {
                     var gt, hn, Tt, Dn = 2;
                     for (typeof Symbol < "u" && (hn = Symbol.asyncIterator, Tt = Symbol.iterator); Dn--; ) {
                       if (hn && (gt = $e[hn]) != null)
@@ -37653,14 +37654,14 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
                   et.next = 38;
                   break;
                 case 34:
-                  et.prev = 34, et.t0 = et.catch(9), k = !0, D = et.t0;
+                  et.prev = 34, et.t0 = et.catch(9), x = !0, D = et.t0;
                 case 38:
                   if (et.prev = 38, et.prev = 39, I && B.return != null)
                     return et.next = 43, B.return();
                   et.next = 43;
                   break;
                 case 43:
-                  if (et.prev = 43, k)
+                  if (et.prev = 43, x)
                     throw D;
                   et.next = 46;
                   break;
@@ -37717,22 +37718,22 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
         return g && (g = g.getVideoTracks()).length && (this._videoTrack = g[0], g = { deviceId: (f = this._videoTrack.getSettings()).deviceId, label: this._videoTrack.label }, this._cameraInfo = g), f;
       }, W.getBestMediaStream = function() {
         var g = C(p().mark(function f(b, m, I) {
-          var k, D, B, X;
+          var x, D, B, X;
           return p().wrap(function(Q) {
             for (; ; )
               switch (Q.prev = Q.next) {
                 case 0:
-                  return this.videoSettings = lt(this._cameraInfo.deviceId, b, m, I, !0, this._browserInfo, this._allCameras, this._isUser), k = this.videoSettings, Q.prev = 2, Q.next = 5, Lt(k, !0, this._browserInfo, this._allCameras);
+                  return this.videoSettings = lt(this._cameraInfo.deviceId, b, m, I, !0, this._browserInfo, this._allCameras, this._isUser), x = this.videoSettings, Q.prev = 2, Q.next = 5, Lt(x, !0, this._browserInfo, this._allCameras);
                 case 5:
-                  if (D = Q.sent, B = this.getDeviceId(D), this._cameraManager && k.bFmEnvironment && !this._isUser)
+                  if (D = Q.sent, B = this.getDeviceId(D), this._cameraManager && x.bFmEnvironment && !this._isUser)
                     return Q.next = 10, this._cameraManager.getAllCamerasInfo();
                   Q.next = 21;
                   break;
                 case 10:
-                  if (this._allCameras = Q.sent, this.videoSettings = lt(this._cameraInfo.deviceId, b, m, I, !0, this._browserInfo, this._allCameras, this._isUser), typeof (k = this.videoSettings).video == "boolean" && (k.video = {}), (X = (X = k.video.deviceId) && (X.exact || X.ideal || X)) && 0 < B.length && B != X)
+                  if (this._allCameras = Q.sent, this.videoSettings = lt(this._cameraInfo.deviceId, b, m, I, !0, this._browserInfo, this._allCameras, this._isUser), typeof (x = this.videoSettings).video == "boolean" && (x.video = {}), (X = (X = x.video.deviceId) && (X.exact || X.ideal || X)) && 0 < B.length && B != X)
                     return D.getTracks().forEach(function(ve) {
                       ve.stop();
-                    }), Q.next = 20, Lt(k, !0, this._browserInfo, this._allCameras);
+                    }), Q.next = 20, Lt(x, !0, this._browserInfo, this._allCameras);
                   Q.next = 21;
                   break;
                 case 20:
@@ -37752,12 +37753,12 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
         };
       }(), W.play = function() {
         var g = C(p().mark(function f(b, m, I) {
-          var k, D, B, X, Q;
+          var x, D, B, X, Q;
           return p().wrap(function(ve) {
             for (; ; )
               switch (ve.prev = ve.next) {
                 case 0:
-                  return (k = this._videoEle) || this.throwError(Dt.VIDEO_ELEMENT_REQUIRED), this._cameraManager = I, this._checkPlugOut(), Q = this._curResolution, X = this._allResolutions, typeof b == "number" && 0 < b && typeof m == "number" && 0 < m || (b = Q ? Q.width : 1280, m = Q ? Q.height : 720), Q = function(ke, dt) {
+                  return (x = this._videoEle) || this.throwError(Dt.VIDEO_ELEMENT_REQUIRED), this._cameraManager = I, this._checkPlugOut(), Q = this._curResolution, X = this._allResolutions, typeof b == "number" && 0 < b && typeof m == "number" && 0 < m || (b = Q ? Q.width : 1280, m = Q ? Q.height : 720), Q = function(ke, dt) {
                     for (var et = ke.width, $e = ke.height, gt = Be(dt); !(hn = gt()).done; ) {
                       var hn = hn.value;
                       if (hn.height === $e && hn.width === et)
@@ -37772,13 +37773,13 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
                   }
                   return ve.abrupt("return", Promise.reject(Dt.NO_CAMERA_SELECTED));
                 case 13:
-                  return B = D.settings, X = D.stream, k.srcObject = X, ve.next = 17, new Promise(function(ke) {
-                    k.onloadedmetadata = function(dt) {
+                  return B = D.settings, X = D.stream, x.srcObject = X, ve.next = 17, new Promise(function(ke) {
+                    x.onloadedmetadata = function(dt) {
                       ke(dt);
                     };
                   });
                 case 17:
-                  return ve.prev = 17, ve.next = 20, k.play();
+                  return ve.prev = 17, ve.next = 20, x.play();
                 case 20:
                   ve.next = 28;
                   break;
@@ -37787,9 +37788,9 @@ gl_FragColor = vec4(sample.b, sample.g, sample.r, 1.0);
                     setTimeout(ke, 1e3);
                   });
                 case 26:
-                  return ve.next = 28, k.play();
+                  return ve.next = 28, x.play();
                 case 28:
-                  return Q = { width: k.videoWidth, height: k.videoHeight }, B.width && B.height && (B.width === b && B.height === m || B.width === m && B.height === b) && (Q.width = b, Q.height = m), this._curResolution = Q, this._oPub.emit("onPlayed", k), ve.abrupt("return", Q);
+                  return Q = { width: x.videoWidth, height: x.videoHeight }, B.width && B.height && (B.width === b && B.height === m || B.width === m && B.height === b) && (Q.width = b, Q.height = m), this._curResolution = Q, this._oPub.emit("onPlayed", x), ve.abrupt("return", Q);
                 case 33:
                 case "end":
                   return ve.stop();
@@ -38032,7 +38033,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var g = W.prototype;
       return g.selectCamera = function() {
         var f = C(p().mark(function b(m) {
-          var I, k, D, B, X;
+          var I, x, D, B, X;
           return p().wrap(function(Q) {
             for (; ; )
               switch (Q.prev = Q.next) {
@@ -38043,7 +38044,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return Q.next = 3, this.getAllCamerasInfo();
                 case 3:
-                  if (I = this._allCamerasInfo, m = m || new Us(null, this.videoEl, I, this._oPub), k = null, !mn(m)) {
+                  if (I = this._allCamerasInfo, m = m || new Gs(null, this.videoEl, I, this._oPub), x = null, !mn(m)) {
                     Q.next = 21;
                     break;
                   }
@@ -38054,7 +38055,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     break;
                   }
                   if (X = I[B], m === X.deviceId)
-                    return D.deviceId = X.deviceId, D.label = X.label, k = new Us(D, this.videoEl, I, this._oPub), Q.abrupt("break", 19);
+                    return D.deviceId = X.deviceId, D.label = X.label, x = new Gs(D, this.videoEl, I, this._oPub), Q.abrupt("break", 19);
                   Q.next = 16;
                   break;
                 case 16:
@@ -38064,9 +38065,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 22;
                   break;
                 case 21:
-                  m instanceof Us && (k = m);
+                  m instanceof Gs && (x = m);
                 case 22:
-                  return this.selectedCamera && this.selectedCamera.destroy(), this.selectedCamera = k, Q.abrupt("return", k);
+                  return this.selectedCamera && this.selectedCamera.destroy(), this.selectedCamera = x, Q.abrupt("return", x);
                 case 25:
                 case "end":
                   return Q.stop();
@@ -38089,7 +38090,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             for (; ; )
               switch (I.prev = I.next) {
                 case 0:
-                  return Gs(this._oPub), I.next = 3, function() {
+                  return js(this._oPub), I.next = 3, function() {
                     return ys.apply(this, arguments);
                   }();
                 case 3:
@@ -38110,7 +38111,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         });
       }, g._initEl = function(f) {
         f ? this.videoEl = f : ((f = document.createElement("video")).className = ce.cameraVideo, f.playsInline = !0, f.muted = !0, this.videoEl = f, this._oPub.on("onPlayed", function(b) {
-          js(b);
+          zs(b);
         }));
       }, g._cameraChangedHandler = function(f) {
       }, g._requestCamera = function() {
@@ -38119,7 +38120,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             for (; ; )
               switch (m.prev = m.next) {
                 case 0:
-                  return Gs(this._oPub), this._allCamerasInfo.length === 0 && this._oPub.emit("onThrowError", Dt.NO_CAMERA), m.next = 4, this._checkAllowCamera();
+                  return js(this._oPub), this._allCamerasInfo.length === 0 && this._oPub.emit("onThrowError", Dt.NO_CAMERA), m.next = 4, this._checkAllowCamera();
                 case 4:
                 case "end":
                   return m.stop();
@@ -38161,7 +38162,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return !0;
       }, W;
     }(Bn);
-    function Gs(te) {
+    function js(te) {
       if (navigator.mediaDevices === void 0)
         throw W = location.origin, g = "https://", W.lastIndexOf(g, 0) !== 0 ? (pe(te, Dt.HTTPS_REQUIRED), Dt.HTTPS_REQUIRED) : (pe(te, Dt.MEDIADEVICES_NOT_IMPL), Dt.MEDIADEVICES_NOT_IMPL);
       if (navigator.mediaDevices.getUserMedia === void 0)
@@ -38170,7 +38171,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     function ys() {
       return (ys = C(p().mark(function te() {
-        var W, g, f, b, m, I, k, D;
+        var W, g, f, b, m, I, x, D;
         return p().wrap(function(B) {
           for (; ; )
             switch (B.prev = B.next) {
@@ -38188,9 +38189,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 B.next = 11;
                 break;
               case 11:
-                I = !1, k = Zo(g);
+                I = !1, x = Zo(g);
               case 13:
-                if ((D = k()).done) {
+                if ((D = x()).done) {
                   B.next = 20;
                   break;
                 }
@@ -38215,11 +38216,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, te);
       }))).apply(this, arguments);
     }
-    function js(te, W, g) {
+    function zs(te, W, g) {
       var f, b, m, I;
       te && (b = te.style.objectFit, W = W && g ? (I = W, g) : (I = te.videoWidth, te.videoHeight), m = (g = te.getBoundingClientRect()).width, g = g.height, f = { zoom: 1, left: 0, top: 0 }, b === "cover" ? (b = Math.max(m / I, g / W), f.zoom = b) : (m = (m - I * (b = Math.min(m / I, g / W))) / 2, I = (g - W * b) / 2, f.zoom = b, f.left = m, f.top = I), te.videoLayout = f);
     }
-    var zs = function(te) {
+    var Hs = function(te) {
       function W(f, b) {
         return f = te.call(this, f) || this, f._showCanvas = null, f._containerEl = null, f._videoEl = null, f._obEl = null, f._srcVideoInfo = null, f._videoEl = b, f._showCanvas = f.createCameraCanvas(), f;
       }
@@ -38239,10 +38240,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var b = this, m = mn(m) ? document.getElementById(m) : m;
         if (!m)
           return !1;
-        var I = this._showCanvas, k = this._videoEl, D = k.parentElement, D = (D != null && D.remove(), document.createElement("div")), B = (D.className = ce.cameraContainer, D.appendChild(k), D.appendChild(I), this._containerEl = D, m.appendChild(D), this.updateCanvasRect(), this);
+        var I = this._showCanvas, x = this._videoEl, D = x.parentElement, D = (D != null && D.remove(), document.createElement("div")), B = (D.className = ce.cameraContainer, D.appendChild(x), D.appendChild(I), this._containerEl = D, m.appendChild(D), this.updateCanvasRect(), this);
         return this._obEl = new Vn(D, function(X) {
           var Q, ve, ke;
-          N.navInfo.bMobile && (N.navInfo.biPhone || N.navInfo.biPad) && B._videoEl && 0 < B._videoEl.videoWidth && 0 < B._videoEl.videoHeight && (ke = (ke = window.orientation) == 0 || ke == 180 ? 0 : 90, B._srcVideoInfo ? ke == B._srcVideoInfo.orientation ? (Q = B._srcVideoInfo.videoWidth, ve = B._srcVideoInfo.videoHeight) : (ve = B._srcVideoInfo.videoHeight, Q = B._srcVideoInfo.videoWidth) : (B._srcVideoInfo = { videoWidth: B._videoEl.videoWidth, videoHeight: B._videoEl.videoHeight, orientation: ke }, Q = B._srcVideoInfo.videoWidth, ve = B._srcVideoInfo.videoHeight)), js(B._videoEl, Q, ve), B.updateCanvasRect(), b._oPub.emit("uiResize", X);
+          N.navInfo.bMobile && (N.navInfo.biPhone || N.navInfo.biPad) && B._videoEl && 0 < B._videoEl.videoWidth && 0 < B._videoEl.videoHeight && (ke = (ke = window.orientation) == 0 || ke == 180 ? 0 : 90, B._srcVideoInfo ? ke == B._srcVideoInfo.orientation ? (Q = B._srcVideoInfo.videoWidth, ve = B._srcVideoInfo.videoHeight) : (ve = B._srcVideoInfo.videoHeight, Q = B._srcVideoInfo.videoWidth) : (B._srcVideoInfo = { videoWidth: B._videoEl.videoWidth, videoHeight: B._videoEl.videoHeight, orientation: ke }, Q = B._srcVideoInfo.videoWidth, ve = B._srcVideoInfo.videoHeight)), zs(B._videoEl, Q, ve), B.updateCanvasRect(), b._oPub.emit("uiResize", X);
         }), !0;
       }, g.updateCanvasRect = function() {
         this._showCanvas && (this._showCanvas.width = this._showCanvas.getBoundingClientRect().width, this._showCanvas.height = this._showCanvas.getBoundingClientRect().height);
@@ -38267,19 +38268,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var W, g = te.prototype;
       return g.setCurrentPage = function() {
         var f = C(p().mark(function b(m, I) {
-          var k, D, B;
+          var x, D, B;
           return p().wrap(function(X) {
             for (; ; )
               switch (X.prev = X.next) {
                 case 0:
-                  if (I === void 0 && (I = !0), k = this._currentPage, this._currentPage = m, k && k instanceof qe ? (D = k.getDcs()) && D.emit("blurPage") : m && m instanceof qe && m.pageName == Me && (D = m.getDcs()) && D.emit("focusPage"), m)
+                  if (I === void 0 && (I = !0), x = this._currentPage, this._currentPage = m, x && x instanceof qe ? (D = x.getDcs()) && D.emit("blurPage") : m && m instanceof qe && m.pageName == Me && (D = m.getDcs()) && D.emit("focusPage"), m)
                     return X.next = 7, function() {
                       return Wt.apply(this, arguments);
                     }(m, I);
                   X.next = 7;
                   break;
                 case 7:
-                  k && !m && (B = k.getDcs()) && (B.off("blurPage"), B.off("focusPage"));
+                  x && !m && (B = x.getDcs()) && (B.off("blurPage"), B.off("focusPage"));
                 case 8:
                 case "end":
                   return X.stop();
@@ -38291,14 +38292,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.navigateTo = function() {
         var f = C(p().mark(function b(m, I) {
-          return p().wrap(function(k) {
+          return p().wrap(function(x) {
             for (; ; )
-              switch (k.prev = k.next) {
+              switch (x.prev = x.next) {
                 case 0:
-                  return I === void 0 && (I = !0), this.path.push(m), k.next = 4, this.setCurrentPage(m, I);
+                  return I === void 0 && (I = !0), this.path.push(m), x.next = 4, this.setCurrentPage(m, I);
                 case 4:
                 case "end":
-                  return k.stop();
+                  return x.stop();
               }
           }, b, this);
         }));
@@ -38359,37 +38360,37 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }), m.on("focusPage", function() {
           m.captureLoop && (m.captureLoop.setEnable(), m.config.scannerViewer.autoScan.enableAutoScan ? m.captureLoop.setAutoScan() : m.config.scannerViewer.autoDetect.enableAutoDetect && !m.config.scannerViewer.autoScan.enableAutoScan ? m.captureLoop.setAutoDetect() : m.captureLoop.changeStyle());
         })), f.moveMultipleImgPosition(), f;
-      }, g.showInsertPage = function(k, b, m) {
-        var I = m.getCurrentPage(), k = new ya(k, b, m);
-        return this.navigateTo(k), I.hide(), m.captureLoop && (m.captureLoop.setEnable(), m.once("onPlayed", function() {
+      }, g.showInsertPage = function(x, b, m) {
+        var I = m.getCurrentPage(), x = new ya(x, b, m);
+        return this.navigateTo(x), I.hide(), m.captureLoop && (m.captureLoop.setEnable(), m.once("onPlayed", function() {
           m.captureLoop && m.captureLoop.startLoop({ dcs: m });
         }), m.once("video-closed", function() {
           _i(m), m.captureLoop && m.captureLoop.stopCaptureLoop();
-        }), m.captureLoop.loadLoopTypeFromConfig()), k;
+        }), m.captureLoop.loadLoopTypeFromConfig()), x;
       }, g.showCropPage = function(f, X, m) {
-        var I = m.getCurrentPage(), k = new _o(f, X, m), D = f.documentEditorSettings || m.config.documentEditorSettings, B = this, X = f.doFillData ? k.fillOrigCustomDataFirstTime() : Promise.resolve();
+        var I = m.getCurrentPage(), x = new vo(f, X, m), D = f.documentEditorSettings || m.config.documentEditorSettings, B = this, X = f.doFillData ? x.fillOrigCustomDataFirstTime() : Promise.resolve();
         return X.then(C(p().mark(function Q() {
           var ve;
           return p().wrap(function(ke) {
             for (; ; )
               switch (ke.prev = ke.next) {
                 case 0:
-                  if (k.isDestroyed)
+                  if (x.isDestroyed)
                     return ke.abrupt("return");
                   ke.next = 2;
                   break;
                 case 2:
-                  return ve = pt(f.visibility) && pt(D.visibility), ke.next = 5, B.navigateTo(k, ve);
+                  return ve = pt(f.visibility) && pt(D.visibility), ke.next = 5, B.navigateTo(x, ve);
                 case 5:
-                  !k.isDestroyed && ve ? k.render() : k.hide(), I && I.pageName != mt.toLowerCase && I.hide();
+                  !x.isDestroyed && ve ? x.render() : x.hide(), I && I.pageName != mt.toLowerCase && I.hide();
                 case 7:
                 case "end":
                   return ke.stop();
               }
           }, Q);
-        }))), k;
+        }))), x;
       }, g.showDocumentEditPage = function(f, X, m) {
-        var I, k = m.getCurrentPage(), D = new ro(f, X, m), B = f.documentEditorSettings || m.config.documentEditorSettings, X = f.doFillData ? D.fillOrigCustomDataFirstTime() : Promise.resolve();
+        var I, x = m.getCurrentPage(), D = new ro(f, X, m), B = f.documentEditorSettings || m.config.documentEditorSettings, X = f.doFillData ? D.fillOrigCustomDataFirstTime() : Promise.resolve();
         return pt(f.visibility) && (I = this, X.then(C(p().mark(function Q() {
           var ve;
           return p().wrap(function(ke) {
@@ -38403,7 +38404,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 2:
                   return ve = pt(f.visibility) && pt(B.visibility), ke.next = 5, I.navigateTo(D, ve);
                 case 5:
-                  !D.isDestroyed && ve ? D.render() : D.hide(), k && k.pageName != at.toLowerCase && k.hide();
+                  !D.isDestroyed && ve ? D.render() : D.hide(), x && x.pageName != at.toLowerCase && x.hide();
                 case 7:
                 case "end":
                   return ke.stop();
@@ -38412,7 +38413,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         })))), D;
       }, g.removePage = function() {
         var f = C(p().mark(function b(m) {
-          var I, k;
+          var I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -38431,18 +38432,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 11:
                   return D.abrupt("return");
                 case 12:
-                  k = I - 2;
+                  x = I - 2;
                 case 13:
-                  if (!(0 <= k)) {
+                  if (!(0 <= x)) {
                     D.next = 21;
                     break;
                   }
-                  if (this.path[k] == m)
-                    return this.path.splice(k, 1), D.abrupt("return");
+                  if (this.path[x] == m)
+                    return this.path.splice(x, 1), D.abrupt("return");
                   D.next = 18;
                   break;
                 case 18:
-                  k--, D.next = 13;
+                  x--, D.next = 13;
                   break;
                 case 21:
                 case "end":
@@ -38455,17 +38456,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), g.resetCurrentPageAfterPopPage = function() {
         var f = C(p().mark(function b(m) {
-          var I, k;
+          var I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
                 case 0:
                   if (m === void 0 && (m = !0), 0 < (I = this.path).length)
-                    return k = I[I.length - 1], D.next = 6, this.setCurrentPage(k, m);
+                    return x = I[I.length - 1], D.next = 6, this.setCurrentPage(x, m);
                   D.next = 7;
                   break;
                 case 6:
-                  return D.abrupt("return", k);
+                  return D.abrupt("return", x);
                 case 7:
                   return D.abrupt("return", null);
                 case 8:
@@ -38483,7 +38484,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var f = this.path;
         return 2 <= f.length ? f[f.length - 2] : null;
       } }]) && pu(g.prototype, W), Object.defineProperty(g, "prototype", { writable: !1 }), te;
-    }(), ba = ((ho = ni = ni || {})[ho.None = 0] = "None", ho[ho.AutoScan = 1] = "AutoScan", ho[ho.AutoDetect = 2] = "AutoDetect", function() {
+    }(), ba = ((fo = ni = ni || {})[fo.None = 0] = "None", fo[fo.AutoScan = 1] = "AutoScan", fo[fo.AutoDetect = 2] = "AutoDetect", function() {
       function te(g) {
         this.isLooping = !1, this._dcs = null, this._cameraCvs = null, this._enabled = !1, this._loopType = ni.None, this.loopTimer = null, this.lastConfirmTime = 0, this.lastDetectTime = (/* @__PURE__ */ new Date()).getTime(), this._captureLoopSub = new Nt(), this._oldLoopType = [], this._dcs = g;
       }
@@ -38523,13 +38524,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.startManualCapture = function(g) {
         var f = this;
         $n.log("startManualCapture"), this._oldLoopType.push(this._loopType), this._captureLoopSub.once("onCapturedImage", function() {
-          var b = C(p().mark(function m(I, k, D) {
+          var b = C(p().mark(function m(I, x, D) {
             var B, X, Q;
             return p().wrap(function(ve) {
               for (; ; )
                 switch (ve.prev = ve.next) {
                   case 0:
-                    return B = { dcs: I, page: I.getCurrentPage() }, ve.prev = 1, X = I.config.scannerViewer, X = (X === void 0 ? {} : X).continuousScan, (X === void 0 ? {} : X).enableContinuousScan == 0 && f.loadLoopTypeFromConfig(), ve.next = 7, B.page.emitEx("onSaveCapture", !1, B, k, !0, D);
+                    return B = { dcs: I, page: I.getCurrentPage() }, ve.prev = 1, X = I.config.scannerViewer, X = (X === void 0 ? {} : X).continuousScan, (X === void 0 ? {} : X).enableContinuousScan == 0 && f.loadLoopTypeFromConfig(), ve.next = 7, B.page.emitEx("onSaveCapture", !1, B, x, !0, D);
                   case 7:
                     ve.next = 14;
                     break;
@@ -38557,7 +38558,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
             }, m, null, [[1, 9]]);
           }));
-          return function(m, I, k) {
+          return function(m, I, x) {
             return b.apply(this, arguments);
           };
         }()), this.lastConfirmTime = (/* @__PURE__ */ new Date()).getTime(), this.loopTypeIsManualScan() || (this._loopType = te.EnumLoopType_ManualScan, this._dcs.showLoading("startManualCapture start loop"), this.isLooping || (this.clearCaptureTimer(), this.innerLoop(g)));
@@ -38581,7 +38582,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.innerLoop = function(g) {
         var f = this, b = g.dcs, m = b.getAreaDetectCallback(), I = this.getDetectRemainTime();
         if (m)
-          return this.loopTypeIsNone() ? this.exitAutoCaptureFromInner(0) : void ((this._loopType != ni.AutoScan && this._loopType != ni.AutoDetect || this.isEnable()) && (clearTimeout(this.loopTimer), this.loopTimer = setTimeout(C(p().mark(function k() {
+          return this.loopTypeIsNone() ? this.exitAutoCaptureFromInner(0) : void ((this._loopType != ni.AutoScan && this._loopType != ni.AutoDetect || this.isEnable()) && (clearTimeout(this.loopTimer), this.loopTimer = setTimeout(C(p().mark(function x() {
             var D;
             return p().wrap(function(B) {
               for (; ; )
@@ -38606,16 +38607,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   case "end":
                     return B.stop();
                 }
-            }, k);
+            }, x);
           })), I)));
       }, W.innerLoopTimeout = function() {
         var g = C(p().mark(function f(b) {
-          var m, I, k, D, B, X, Q, ve, ke, dt, et, $e;
+          var m, I, x, D, B, X, Q, ve, ke, dt, et, $e;
           return p().wrap(function(gt) {
             for (; ; )
               switch (gt.prev = gt.next) {
                 case 0:
-                  if (m = b.dcs, this.lastDetectTime = (/* @__PURE__ */ new Date()).getTime(), k = m.config.scannerViewer, I = k.polygonStyle, I = I === void 0 ? { stroke: "#fe8e14", strokeWidth: "2px", dashed: "solid" } : I, k = k.autoDetect, k = k === void 0 ? {} : k, D = !0, gt.prev = 4, m.getStatus() != "playing")
+                  if (m = b.dcs, this.lastDetectTime = (/* @__PURE__ */ new Date()).getTime(), x = m.config.scannerViewer, I = x.polygonStyle, I = I === void 0 ? { stroke: "#fe8e14", strokeWidth: "2px", dashed: "solid" } : I, x = x.autoDetect, x = x === void 0 ? {} : x, D = !0, gt.prev = 4, m.getStatus() != "playing")
                     return gt.abrupt("return", !0);
                   gt.next = 7;
                   break;
@@ -38657,7 +38658,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   gt.next = 38;
                   break;
                 case 38:
-                  if (dt = k.autoCaptureDelay, dt = dt === void 0 ? 2e3 : dt, ve = (/* @__PURE__ */ new Date()).getTime(), !(this._loopType == ni.AutoScan && 0 < this.lastConfirmTime && ve - this.lastConfirmTime > dt)) {
+                  if (dt = x.autoCaptureDelay, dt = dt === void 0 ? 2e3 : dt, ve = (/* @__PURE__ */ new Date()).getTime(), !(this._loopType == ni.AutoScan && 0 < this.lastConfirmTime && ve - this.lastConfirmTime > dt)) {
                     gt.next = 55;
                     break;
                   }
@@ -38739,21 +38740,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         var g = this.getCameraCvs();
         g && g.getContext("2d", { willReadFrequently: !0 }).clearRect(0, 0, g.width, g.height);
       }, W.drawArea = function(g, f, I) {
-        var D = this.getCameraCvs(), m = D.getContext("2d", { willReadFrequently: !0 }), D = (m.save(), m.clearRect(0, 0, D.width, D.height), I.videoLayout), I = D.zoom, k = D.left, D = D.top;
-        m.translate(k, D), m.scale(I, I), m.beginPath(), m.moveTo(g[0], g[1]);
+        var D = this.getCameraCvs(), m = D.getContext("2d", { willReadFrequently: !0 }), D = (m.save(), m.clearRect(0, 0, D.width, D.height), I.videoLayout), I = D.zoom, x = D.left, D = D.top;
+        m.translate(x, D), m.scale(I, I), m.beginPath(), m.moveTo(g[0], g[1]);
         for (var B = 2; B < g.length; B += 2) {
           var X = g[B], Q = g[B + 1];
           m.lineTo(X, Q);
         }
-        m.closePath(), k = parseInt(f.strokeWidth, 10) / I, m.strokeStyle = f.stroke, m.lineCap = "round", m.lineWidth = k, f.dash === "dashed" && m.setLineDash([Math.max(2, k), Math.max(4, 2 * k)]), m.stroke(), m.restore();
+        m.closePath(), x = parseInt(f.strokeWidth, 10) / I, m.strokeStyle = f.stroke, m.lineCap = "round", m.lineWidth = x, f.dash === "dashed" && m.setLineDash([Math.max(2, x), Math.max(4, 2 * x)]), m.stroke(), m.restore();
       }, te;
     }()), Aa = (ba.EnumLoopType_ManualScan = 3, ba._defaultConfig = { autoScan: { enableAutoScan: !1 }, autoDetect: { enableAutoDetect: !1 }, enableBorderDetection: !0 }, /* @__PURE__ */ new Map()), os = /* @__PURE__ */ new Map(), ws = /* @__PURE__ */ new Map(), as = function() {
       function te(g) {
-        this._cameraMng = null, this._cameraView = null, this._uiRouters = null, this.captureLoop = null, this.filterApplyToAllValue = void 0, this.curFilterValue = void 0, this._runPlaying = !1, this._loadingConfig = { imageSource: null, background: "rgba(0, 0, 0, 0.2)" }, this._loadingNumber = 0, this.config = {}, this._container = null, this._savedFilename = null, this._externalViewerUid = null, this._oPub = null, this._areaDetectCallback = null, this._perspectiveCallback = null, this._licenseCallback = null, this._filterHandleList = [], this._savePhotoCallback = null, this._insertPhotoCallback = null, this._removeImageCallback = null, this._changeIndexCallback = null, this._freeCallback = null, this._loadCallback = null, this._exiting = !1, this._oPub = g, this._cameraMng = new vs(this._oPub), this._cameraView = new zs(this._oPub, this._cameraMng.videoEl), this._uiRouters = new bs(), this.captureLoop = new ba(this), document.addEventListener("click", io), window.addEventListener("focus", vu), window.addEventListener("blur", _u);
+        this._cameraMng = null, this._cameraView = null, this._uiRouters = null, this.captureLoop = null, this.filterApplyToAllValue = void 0, this.curFilterValue = void 0, this._runPlaying = !1, this._loadingConfig = { imageSource: null, background: "rgba(0, 0, 0, 0.2)" }, this._loadingNumber = 0, this.config = {}, this._container = null, this._savedFilename = null, this._externalViewerUid = null, this._oPub = null, this._areaDetectCallback = null, this._perspectiveCallback = null, this._licenseCallback = null, this._filterHandleList = [], this._savePhotoCallback = null, this._insertPhotoCallback = null, this._removeImageCallback = null, this._changeIndexCallback = null, this._freeCallback = null, this._loadCallback = null, this._exiting = !1, this._oPub = g, this._cameraMng = new vs(this._oPub), this._cameraView = new Hs(this._oPub, this._cameraMng.videoEl), this._uiRouters = new bs(), this.captureLoop = new ba(this), document.addEventListener("click", io), window.addEventListener("focus", vu), window.addEventListener("blur", _u);
       }
       var W = te.prototype;
       return W.bindView = function(g) {
-        return (g = mn(g = g === void 0 ? this._container : g) ? document.getElementById(g) : g) ? (this._cameraView || (this._cameraView = new zs(this._oPub, this._cameraMng.videoEl)), this.captureLoop || (this.captureLoop = new ba(this)), this._cameraView.bindView(g), this._container = g, !0) : (pe(this._oPub, Dt.VIDEO_ELEMENT_REQUIRED), !1);
+        return (g = mn(g = g === void 0 ? this._container : g) ? document.getElementById(g) : g) ? (this._cameraView || (this._cameraView = new Hs(this._oPub, this._cameraMng.videoEl)), this.captureLoop || (this.captureLoop = new ba(this)), this._cameraView.bindView(g), this._container = g, !0) : (pe(this._oPub, Dt.VIDEO_ELEMENT_REQUIRED), !1);
       }, W.unbindView = function() {
         var g;
         return (this._container = null) != (g = this._cameraView) && g.dispose(), (this._cameraView = null) != (g = this.captureLoop) && g.dispose(), this.captureLoop = null, document.body.classList.remove(ce.overflowHidden), !0;
@@ -38762,7 +38763,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.getCameraView = function() {
         return this._cameraView;
       }, W.play = function() {
-        var g = C(p().mark(function f(b, m, I, k, D) {
+        var g = C(p().mark(function f(b, m, I, x, D) {
           var B, X, Q, ve;
           return p().wrap(function(ke) {
             for (; ; )
@@ -38779,13 +38780,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   ke.next = 6;
                   break;
                 case 6:
-                  if (b && (b instanceof HTMLElement || Hs(this._oPub, typeof b, "HTMLElement"), this.bindView(b)), this._container) {
+                  if (b && (b instanceof HTMLElement || Ks(this._oPub, typeof b, "HTMLElement"), this.bindView(b)), this._container) {
                     ke.next = 9;
                     break;
                   }
                   return ke.abrupt("return", Promise.reject(Dt.VIDEO_ELEMENT_REQUIRED));
                 case 9:
-                  if (m === void 0 || Hr(m) || Hs(this._oPub, typeof m, "number"), I === void 0 || Hr(I) || Hs(this._oPub, typeof I, "number"), this._runPlaying = !0, ke.prev = 12, X = this._cameraMng.getCurrentCamera()) {
+                  if (m === void 0 || Hr(m) || Ks(this._oPub, typeof m, "number"), I === void 0 || Hr(I) || Ks(this._oPub, typeof I, "number"), this._runPlaying = !0, ke.prev = 12, X = this._cameraMng.getCurrentCamera()) {
                     ke.next = 18;
                     break;
                   }
@@ -38793,7 +38794,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 17:
                   X = ke.sent;
                 case 18:
-                  return k == null ? (Q = Ue.scannerViewer.fullScreen, this.config && this.config.scannerViewer && this.config.scannerViewer.fullScreen != null && (Q = this.config.scannerViewer.fullScreen), X.setFillMode(Q)) : X.setFillMode(k), ke.next = 21, X.play(m, I, this._cameraMng);
+                  return x == null ? (Q = Ue.scannerViewer.fullScreen, this.config && this.config.scannerViewer && this.config.scannerViewer.fullScreen != null && (Q = this.config.scannerViewer.fullScreen), X.setFillMode(Q)) : X.setFillMode(x), ke.next = 21, X.play(m, I, this._cameraMng);
                 case 21:
                   return B = ke.sent, Q = this.config.scannerViewer, ve = (Q === void 0 ? {} : Q).torch, (ve = ve === void 0 ? {} : ve).enableTorch ? ve.on = !0 : ve.on = !1, ke.next = 27, gi(this);
                 case 27:
@@ -38809,7 +38810,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               }
           }, f, this, [[12, 29]]);
         }));
-        return function(f, b, m, I, k) {
+        return function(f, b, m, I, x) {
           return g.apply(this, arguments);
         };
       }(), W.pause = function() {
@@ -38950,7 +38951,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), W.setResolution = function() {
         var g = C(p().mark(function f(b) {
-          var m, I, k;
+          var m, I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -38960,9 +38961,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   D.next = 13;
                   break;
                 case 9:
-                  return k = D.sent, D.next = 12, gi(this);
+                  return x = D.sent, D.next = 12, gi(this);
                 case 12:
-                  return D.abrupt("return", k);
+                  return D.abrupt("return", x);
                 case 13:
                   return D.abrupt("return", Promise.reject(Dt.NO_CAMERA_SELECTED));
                 case 14:
@@ -38979,13 +38980,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return g ? g.getVideoSetting() : (pe(this._oPub, Dt.NO_CAMERA_SELECTED), null);
       }, W.toggleCamera = function() {
         var g = C(p().mark(function f(b, m) {
-          var I, k, D;
+          var I, x, D;
           return p().wrap(function(B) {
             for (; ; )
               switch (B.prev = B.next) {
                 case 0:
                   if (I = this._cameraMng.getCurrentCamera())
-                    return k = this.config.scannerViewer, k = (k === void 0 ? {} : k).torch, (k = k === void 0 ? {} : k).enableTorch ? k.on = !0 : k.on = !1, B.next = 7, I.toggleCamera(b, m, this._cameraMng);
+                    return x = this.config.scannerViewer, x = (x === void 0 ? {} : x).torch, (x = x === void 0 ? {} : x).enableTorch ? x.on = !0 : x.on = !1, B.next = 7, I.toggleCamera(b, m, this._cameraMng);
                   B.next = 11;
                   break;
                 case 7:
@@ -39048,7 +39049,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, W.bindLoadHandle = function(g) {
         return !!ln(g) && (this._loadCallback = g, !0);
       }, W.bindFilterHandleList = function(g) {
-        return !!po(g) && (this._filterHandleList = g, !0);
+        return !!_o(g) && (this._filterHandleList = g, !0);
       }, W.bindFreeHandle = function(g) {
         return !!ln(g) && (this._freeCallback = g, !0);
       }, W.bindSavePhotoCallback = function(g) {
@@ -39061,19 +39062,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return !!ln(g) && (this._changeIndexCallback = g, !0);
       }, W.showDocumentScanPage = function() {
         var g = C(p().mark(function f(b, m) {
-          var I, k, D;
+          var I, x, D;
           return p().wrap(function(B) {
             for (; ; )
               switch (B.prev = B.next) {
                 case 0:
-                  return b === void 0 && (b = {}), this.captureLoop || (this.captureLoop = new ba(this)), I = this._uiRouters.showDocumentScanPage(b, m, this), k = this, D = function() {
+                  return b === void 0 && (b = {}), this.captureLoop || (this.captureLoop = new ba(this)), I = this._uiRouters.showDocumentScanPage(b, m, this), x = this, D = function() {
                     var X = C(p().mark(function Q(ve, ke, dt) {
                       var et, $e;
                       return p().wrap(function(gt) {
                         for (; ; )
                           switch (gt.prev = gt.next) {
                             case 0:
-                              return et = I.insertDataByIndex(ve, ke, dt), $e = { action: "add", fileName: I.getFileName(), fromViewerBufferChanged: !1 }, gt.next = 4, k.syncFile($e, [et]);
+                              return et = I.insertDataByIndex(ve, ke, dt), $e = { action: "add", fileName: I.getFileName(), fromViewerBufferChanged: !1 }, gt.next = 4, x.syncFile($e, [et]);
                             case 4:
                             case "end":
                               return gt.stop();
@@ -39090,7 +39091,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                         for (; ; )
                           switch (et.prev = et.next) {
                             case 0:
-                              return I.removeDataByIndex(ve, ke), dt = { action: "remove", fileName: I.getFileName(), fromViewerBufferChanged: !1 }, et.next = 4, k.syncFile(dt);
+                              return I.removeDataByIndex(ve, ke), dt = { action: "remove", fileName: I.getFileName(), fromViewerBufferChanged: !1 }, et.next = 4, x.syncFile(dt);
                             case 4:
                             case "end":
                               return et.stop();
@@ -39115,16 +39116,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }(), W.showInsertPage = function() {
         var g = C(p().mark(function f(b, m) {
           var I;
-          return p().wrap(function(k) {
+          return p().wrap(function(x) {
             for (; ; )
-              switch (k.prev = k.next) {
+              switch (x.prev = x.next) {
                 case 0:
-                  return b === void 0 && (b = {}), I = this._uiRouters.showInsertPage(b, m, this), k.next = 4, I.playVideo();
+                  return b === void 0 && (b = {}), I = this._uiRouters.showInsertPage(b, m, this), x.next = 4, I.playVideo();
                 case 4:
-                  return k.abrupt("return", I);
+                  return x.abrupt("return", I);
                 case 5:
                 case "end":
-                  return k.stop();
+                  return x.stop();
               }
           }, f, this);
         }));
@@ -39155,29 +39156,29 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return this._uiRouters.destroyRemovedPages();
       }, W.navigateBack = function() {
         var g = C(p().mark(function f(b, m) {
-          var I, k, D, B;
+          var I, x, D, B;
           return p().wrap(function(X) {
             for (; ; )
               switch (X.prev = X.next) {
                 case 0:
                   return m === void 0 && (m = !0), I = B = !0, (b = b === void 0 ? 1 : b) == 1 && (I = B = !1), this._uiRouters.navigatePopPageSync(b, B), X.next = 7, this._uiRouters.resetCurrentPageAfterPopPage(I);
                 case 7:
-                  if (k = X.sent, D = this._uiRouters.getRemovedPages(), b != 1) {
+                  if (x = X.sent, D = this._uiRouters.getRemovedPages(), b != 1) {
                     X.next = 14;
                     break;
                   }
-                  if (k)
-                    return X.next = 13, k.show();
+                  if (x)
+                    return X.next = 13, x.show();
                   X.next = 13;
                   break;
                 case 13:
                   D[0].hide();
                 case 14:
-                  if (m && this._uiRouters.destroyRemovedPages(), (!k || k instanceof qe) && this._cameraMng.getCurrentCamera() && this.closeSource(), !k) {
+                  if (m && this._uiRouters.destroyRemovedPages(), (!x || x instanceof qe) && this._cameraMng.getCurrentCamera() && this.closeSource(), !x) {
                     X.next = 20;
                     break;
                   }
-                  k instanceof qe && (B = k.element.children[1], this.bindView(B), k.pageName == Me && k.getDcs().emit("focusPage")), X.next = 22;
+                  x instanceof qe && (B = x.element.children[1], this.bindView(B), x.pageName == Me && x.getDcs().emit("focusPage")), X.next = 22;
                   break;
                 case 20:
                   return this.unbindView(), X.abrupt("return", []);
@@ -39225,14 +39226,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return Rn(g, this);
       }, W.filterHandler = function() {
         var g = C(p().mark(function f(b, m) {
-          var I, k;
+          var I, x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
                 case 0:
-                  return I = se(this.config, "documentEditorSettings.filter"), I = I.valueList, k = this._filterHandleList, D.abrupt("return", function() {
+                  return I = se(this.config, "documentEditorSettings.filter"), I = I.valueList, x = this._filterHandleList, D.abrupt("return", function() {
                     return hr.apply(this, arguments);
-                  }(this, b, k, I, m));
+                  }(this, b, x, I, m));
                 case 4:
                 case "end":
                   return D.stop();
@@ -39244,14 +39245,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         };
       }(), W.filterHandlerByIImageData = function() {
         var g = C(p().mark(function f(b, m, I) {
-          var k;
+          var x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
                 case 0:
-                  return k = this.config.documentEditorSettings, k = (k === void 0 ? {} : k).filter, k = (k === void 0 ? {} : k).valueList, D.abrupt("return", function() {
+                  return x = this.config.documentEditorSettings, x = (x === void 0 ? {} : x).filter, x = (x === void 0 ? {} : x).valueList, D.abrupt("return", function() {
                     return Vr.apply(this, arguments);
-                  }(b, m, this._filterHandleList, k, I));
+                  }(b, m, this._filterHandleList, x, I));
                 case 4:
                 case "end":
                   return D.stop();
@@ -39329,7 +39330,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         this._exiting = !0, this._freeCallback && this._freeCallback(), document.body.classList.remove(ce.overflowHidden), this._savedFilename && (this._savedFilename = null);
       }, W.syncFile = function() {
         var g = C(p().mark(function f(b, m) {
-          var I, k, D, B, X;
+          var I, x, D, B, X;
           return p().wrap(function(Q) {
             for (; ; )
               switch (Q.prev = Q.next) {
@@ -39339,7 +39340,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 2;
                   break;
                 case 2:
-                  if (k = !1, !b) {
+                  if (x = !1, !b) {
                     Q.next = 13;
                     break;
                   }
@@ -39359,7 +39360,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 case 11:
                   return Q.abrupt("return");
                 case 12:
-                  b.fromViewerBufferChanged !== void 0 && (k = b.fromViewerBufferChanged);
+                  b.fromViewerBufferChanged !== void 0 && (x = b.fromViewerBufferChanged);
                 case 13:
                   if (!(0 < (D = this._uiRouters.path).length)) {
                     Q.next = 60;
@@ -39370,7 +39371,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     break;
                   }
                   if (1 < D.length)
-                    return I = D[1], Q.next = 23, I.syncFileFromExternalEvent(k, m);
+                    return I = D[1], Q.next = 23, I.syncFileFromExternalEvent(x, m);
                   Q.next = 30;
                   break;
                 case 23:
@@ -39385,12 +39386,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 30;
                   break;
                 case 28:
-                  return Q.next = 30, I.syncFileFromExternalEvent(k, m);
+                  return Q.next = 30, I.syncFileFromExternalEvent(x, m);
                 case 30:
                   Q.next = 41;
                   break;
                 case 32:
-                  return Q.next = 34, I.syncFileFromExternalEvent(k);
+                  return Q.next = 34, I.syncFileFromExternalEvent(x);
                 case 34:
                   if (!(1 < D.length)) {
                     Q.next = 41;
@@ -39403,7 +39404,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   Q.next = 41;
                   break;
                 case 39:
-                  return Q.next = 41, I.syncFileFromExternalEvent(k);
+                  return Q.next = 41, I.syncFileFromExternalEvent(x);
                 case 41:
                   if (!X) {
                     Q.next = 60;
@@ -39464,7 +39465,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         ln(W) && W(g);
       });
     }
-    function Hs(te, W, g) {
+    function Ks(te, W, g) {
       te && te.emit("typeError", W, g);
     }
     var Ju = function(te) {
@@ -39486,7 +39487,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g._throwErr = function(f) {
         throw this.updateErrorMessage(f), f;
       }, W;
-    }(Bn), ho = function(te) {
+    }(Bn), fo = function(te) {
       function W() {
         var f = te.call(this, new Nt()) || this;
         return f.Error = null, f.videoShown = !1, f._dvs = null, f._dcs = null, f.Error = new Ju(f._oPub), f._dcs = new as(f._oPub), f;
@@ -39519,7 +39520,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.bindFilterHandleList = function(f) {
         return this._dcs.bindFilterHandleList(f), this._e(J), !0;
       }, g.bindFreeHandle = function(f) {
-        return po(f) ? (this._dcs.bindFreeHandle(f), this._e(J), !0) : (this._e(E), !1);
+        return _o(f) ? (this._dcs.bindFreeHandle(f), this._e(J), !0) : (this._e(E), !1);
       }, g._e = function(f) {
         te.prototype._emit.call(this, Te, f);
       }, g.dispose = function() {
@@ -39528,8 +39529,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, g.on = function(f, b) {
         te.prototype._on.call(this, f, b);
       }, g.emit = function(f) {
-        for (var b, m = arguments.length, I = new Array(1 < m ? m - 1 : 0), k = 1; k < m; k++)
-          I[k - 1] = arguments[k];
+        for (var b, m = arguments.length, I = new Array(1 < m ? m - 1 : 0), x = 1; x < m; x++)
+          I[x - 1] = arguments[x];
         (b = te.prototype._emit).call.apply(b, [this, f].concat(I));
       }, g.off = function(f, b) {
         te.prototype._off.call(this, f, b);
@@ -39542,7 +39543,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var g = W.prototype;
       return g.showVideo = function() {
         var f = C(p().mark(function b(m, I) {
-          var k;
+          var x;
           return p().wrap(function(D) {
             for (; ; )
               switch (D.prev = D.next) {
@@ -39564,7 +39565,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                   }
                   return D.abrupt("return", Promise.reject(me));
                 case 6:
-                  return this.videoShown = !0, (k = Rr(m, $(Ue))).scannerViewer && (this._dcs.config.scannerViewer = k.scannerViewer), k.documentEditorSettings && (this._dcs.config.documentEditorSettings = k.documentEditorSettings), k.saveData = !0, k.fromInternal = !0, D.prev = 12, this._dcs.clearExitFlag(), this._dcs.setSavedFilename(I), D.next = 17, this._dcs.showDocumentScanPage(k, this._dvs);
+                  return this.videoShown = !0, (x = Rr(m, $(Ue))).scannerViewer && (this._dcs.config.scannerViewer = x.scannerViewer), x.documentEditorSettings && (this._dcs.config.documentEditorSettings = x.documentEditorSettings), x.saveData = !0, x.fromInternal = !0, D.prev = 12, this._dcs.clearExitFlag(), this._dcs.setSavedFilename(I), D.next = 17, this._dcs.showDocumentScanPage(x, this._dvs);
                 case 17:
                   D.next = 23;
                   break;
@@ -39586,22 +39587,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }(), g.closeVideo = function() {
         this._dcs.closeAllPages(), this._dcs.exit(this._dvs);
       }, W;
-    }(ho), ho = function(te) {
+    }(fo), fo = function(te) {
       function W() {
         return te.call(this) || this;
       }
       Y(W, te);
       var g = W.prototype;
-      return g.createEditPage = function(f, k) {
-        if (!k)
+      return g.createEditPage = function(f, x) {
+        if (!x)
           throw Le;
-        var m = k.fileName;
+        var m = x.fileName;
         if (!mn(m) || m == "")
           throw Oe;
-        var I = k.viewerUid, k = Rr(k, $(Ue));
-        k.initFileName = m, k.scannerViewer && (this._dcs.config.scannerViewer = k.scannerViewer, delete k.scannerViewer);
+        var I = x.viewerUid, x = Rr(x, $(Ue));
+        x.initFileName = m, x.scannerViewer && (this._dcs.config.scannerViewer = x.scannerViewer, delete x.scannerViewer);
         var D, B, X = !0;
-        return k.documentEditorSettings && (this._dcs.config.documentEditorSettings = k.documentEditorSettings, ((B = k.documentEditorSettings.defaultViewerName) === void 0 ? mt : B).toLowerCase() == mt.toLowerCase() ? (D = "crop", mn(B = (B = this._dcs.config) == null || (B = B.documentEditorSettings) == null || (B = B.cropViewer) == null ? void 0 : B.visibility) && B.toLowerCase() == "hidden" && (X = !1)) : D = "edit"), this._dcs.setSavedFilename(m), this._dcs.setExternalViewerUid(I), k.saveData = !0, k.fromInternal = !1, k.curIndex = f, k.doFillData = !0, this._dcs.clearExitFlag(), D == "crop" && X ? this._dcs.showCropPage(k, this._dvs) : this._dcs.showDocumentEditPage(k, this._dvs);
+        return x.documentEditorSettings && (this._dcs.config.documentEditorSettings = x.documentEditorSettings, ((B = x.documentEditorSettings.defaultViewerName) === void 0 ? mt : B).toLowerCase() == mt.toLowerCase() ? (D = "crop", mn(B = (B = this._dcs.config) == null || (B = B.documentEditorSettings) == null || (B = B.cropViewer) == null ? void 0 : B.visibility) && B.toLowerCase() == "hidden" && (X = !1)) : D = "edit"), this._dcs.setSavedFilename(m), this._dcs.setExternalViewerUid(I), x.saveData = !0, x.fromInternal = !1, x.curIndex = f, x.doFillData = !0, this._dcs.clearExitFlag(), D == "crop" && X ? this._dcs.showCropPage(x, this._dvs) : this._dcs.showDocumentEditPage(x, this._dvs);
       }, g.syncFile = function(f) {
         this._dcs.syncFile(f);
       }, g.removeEditPage = function(f) {
@@ -39612,15 +39613,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }
         return !0;
       }, W;
-    }(ho);
-    window.Dynamsoft || (window.Dynamsoft = {}), window.Dynamsoft.CameraViewer = as, window.Dynamsoft.CameraModel = Bn, window.Dynamsoft.DocumentEditManager = ho;
+    }(fo);
+    window.Dynamsoft || (window.Dynamsoft = {}), window.Dynamsoft.CameraViewer = as, window.Dynamsoft.CameraModel = Bn, window.Dynamsoft.DocumentEditManager = fo;
   }();
 });
 G.AddonReady(function(l, n) {
   var L;
-  l.product.bHTML5Edition && !G.navInfoSync.bIE && (l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(x) {
+  l.product.bHTML5Edition && !G.navInfoSync.bIE && (l.DynamicLoadAddonFuns && l.DynamicLoadAddonFuns.push(function(k) {
     function re() {
-      this._stwain = x, this._viewer = null;
+      this._stwain = k, this._viewer = null;
     }
     re.prototype._getCameraViewer = function() {
       var R;
@@ -39718,7 +39719,7 @@ G.AddonReady(function(l, n) {
       R != "video-closed" && R != "video-error" ? l.Errors.EventNotExist(this._stwain) : l.isFunction(C) ? (l.log("camera addon: add event " + R), this._stwain._ImgManager && this._stwain._ImgManager.getWebViewer() ? this._stwain._ImgManager.getWebViewer().camera_on(R, C) : C()) : l.Errors.CallbackNotAFunction(this._stwain);
     }, re.prototype.off = function(R, C) {
       R != "video-closed" || R != "video-error" ? l.Errors.EventNotExist(this._stwain) : l.isUndefined(C) ? this._stwain._ImgManager && this._stwain._ImgManager.getWebViewer() && this._stwain._ImgManager.getWebViewer().off(R) : l.isFunction(C) ? (l.log("camera addon: remove event " + R), this._stwain._ImgManager && this._stwain._ImgManager.getWebViewer() ? this._stwain._ImgManager.getWebViewer().off(R, C) : C()) : l.Errors.CallbackNotAFunction(this._stwain);
-    }, x.__addon = x.__addon || {}, x.__addon.Camera = new re();
+    }, k.__addon = k.__addon || {}, k.__addon.Camera = new re();
   }), L = [G.DWT.ResourcesPath, "/addon/dynamsoft.webtwain.addon.camera.css", l.timestamp].join(""), l.addCss(L));
 });
 /*! 20221212133727
@@ -39744,7 +39745,7 @@ var G = window.Dynamsoft || {};
     var le, je = !1, fe = G.navInfoSync.bMobile;
     return G.DWT && (je = G.Lib.product.UseLocalService === !1), G.navInfo && (le = G.navInfo, fe = fe || le.bPad || le.biPhone || le.biPad), je || fe;
   }
-  var x = G, re = G.dcp, R = [1, 7, 2, "1026"], C = "upload_" + R.join(""), p = { Version: "1.0", HttpVersion: "1.1", ServerUrl: "", FileName: "", VERIFYPEER: !1, VERIFYHOST: !1, BlockSize: 10240, ThreadNum: 1, OnUploadTransferPercentage: function(le, je) {
+  var k = G, re = G.dcp, R = [1, 7, 2, "1026"], C = "upload_" + R.join(""), p = { Version: "1.0", HttpVersion: "1.1", ServerUrl: "", FileName: "", VERIFYPEER: !1, VERIFYHOST: !1, BlockSize: 10240, ThreadNum: 1, OnUploadTransferPercentage: function(le, je) {
   }, OnRunSuccess: function(le) {
   }, OnRunFailure: function(le, je, fe) {
   } }, N = 0, U = "", H = function() {
@@ -39807,33 +39808,33 @@ var G = window.Dynamsoft || {};
     var mt = le.SourceValue, at = (delete le.SourceValue, le.FormField), Ye = (delete le.FormField, l.stringify(le)), Ye = l.replaceAll(Ye, '"', "'");
     return le.ServerUrl = Z, delete le.Url, le.SourceValue = mt, le.FormField = at, Z = ['{"id":"', 1, '","method":"RunUploadFile","version":"', C, '","parameter":[', Me, ',"', Ye, '"'], le.ar && le.cu ? (Ue = [',"', le.ar, '","', le.cu, '",0]}'].join(""), delete le.ar, delete le.cu, Z.push(Ue)) : Z.push("]}"), mt = Z.join(""), fe.runWaiting++, G.FileUploader._sendCmd("RunUploadFile", mt, function(Et) {
       var Je;
-      fe.runWaiting--, Et && ((Je = Et.UploadId) && 0 < Je ? (le.id = Je, x.FileUploader.map[le.id] = le, x.FileUploader.ids.push(Et.UploadId), le.OnUploadTransferPercentage && le.OnUploadTransferPercentage(le, 0)) : (Je = Et.errorcode, Et = Et.errorstring, Je && Et ? (N = Je, U = Et) : O(), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1)));
+      fe.runWaiting--, Et && ((Je = Et.UploadId) && 0 < Je ? (le.id = Je, k.FileUploader.map[le.id] = le, k.FileUploader.ids.push(Et.UploadId), le.OnUploadTransferPercentage && le.OnUploadTransferPercentage(le, 0)) : (Je = Et.errorcode, Et = Et.errorstring, Je && Et ? (N = Je, U = Et) : O(), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1)));
     }, function(Et, Je, ce) {
-      fe.runWaiting--, x.FileUploader.parseHttpErrors(Et, Je, ce), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1);
+      fe.runWaiting--, k.FileUploader.parseHttpErrors(Et, Je, ce), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1);
     }), !0;
   }, Cancel: function(le) {
     var je;
     return !le.id || le.id < 0 ? (q(), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1), !1) : (je = '{"id":"1","method":"DeleteUploadTask","version":"' + C + '","parameter":["' + le.id + '"]}', G.FileUploader._sendCmd("DeleteUploadTask", je, function(fe) {
-      x.FileUploader.deleteJobById(le.id);
+      k.FileUploader.deleteJobById(le.id);
     }, function(fe, Me, Z) {
-      x.FileUploader.parseHttpErrors(fe, Me, Z), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1);
+      k.FileUploader.parseHttpErrors(fe, Me, Z), !le.bEvent && l.isFunction(le.OnRunFailure) && (le.bEvent = !0, le.OnRunFailure(le, N, U), le.bEvent = !1);
     }), !0);
   }, CancelAllUpload: function() {
-    var le = x.FileUploader.ids, je = '{"id":"1","method":"DeleteUploadTask","version":"' + C + '","parameter":["' + le.join(",") + '"]}';
+    var le = k.FileUploader.ids, je = '{"id":"1","method":"DeleteUploadTask","version":"' + C + '","parameter":["' + le.join(",") + '"]}';
     return 0 < this.runWaiting ? (E(), !1) : (this.runWaiting < 0 && (this.runWaiting = 0), le.length <= 0 || G.FileUploader._sendCmd("DeleteUploadTask", je, function(fe) {
       for (var Me = 0; Me < le.length; Me++)
-        x.FileUploader.deleteJobById(le[Me]);
-      x.FileUploader.ids = [], x.FileUploader.map = [];
+        k.FileUploader.deleteJobById(le[Me]);
+      k.FileUploader.ids = [], k.FileUploader.map = [];
     }, function(fe, Me, Z) {
-      x.FileUploader.parseHttpErrors(fe, Me, Z);
+      k.FileUploader.parseHttpErrors(fe, Me, Z);
     }), !0);
   }, OnUploadTransferPercentage: function(le, je) {
   }, OnRunSuccess: function(le) {
   }, OnRunFailure: function(le, je, fe) {
-  } }, (x.SourceValue = Te).prototype.Add = function(le, je, fe) {
+  } }, (k.SourceValue = Te).prototype.Add = function(le, je, fe) {
     var Me = this.job;
     l.isString(le) && le != "" ? (fe = fe || "RemoteFile", le = G.Lib.replaceAll(le, "\\\\", "\\\\"), Me.documents.push({ files: [le], fileName: je, remoteName: fe })) : (J(), !Me.bEvent && l.isFunction(Me.OnRunFailure) && (Me.bEvent = !0, Me.OnRunFailure(Me, N, U), Me.bEvent = !1));
-  }, x.FormField = Re, x.FileUploader = { ids: [], map: {}, port: 18625, protocol: "https://", ip: "127.0.0.1", wsUrl: "", running: !(Re.prototype.Add = function(le, je) {
+  }, k.FormField = Re, k.FileUploader = { ids: [], map: {}, port: 18625, protocol: "https://", ip: "127.0.0.1", wsUrl: "", running: !(Re.prototype.Add = function(le, je) {
     var fe, Me, Z = je, Ue = le;
     if (Z == null && (Z = ""), !l.isString(Ue) || Ue == "" || !l.isString(Z) || (Z = encodeURI(Z), -1 < (Ue = encodeURI(Ue)).indexOf("'") || -1 < Z.indexOf("'")))
       return !1;
@@ -39846,13 +39847,13 @@ var G = window.Dynamsoft || {};
       return Ee(), !1;
     var je;
     if (le) {
-      for (je = 0; je < x.FileUploader.ids.length; je++)
-        if (le == x.FileUploader.ids[je]) {
-          x.FileUploader.ids.splice(je, 1);
+      for (je = 0; je < k.FileUploader.ids.length; je++)
+        if (le == k.FileUploader.ids[je]) {
+          k.FileUploader.ids.splice(je, 1);
           break;
         }
-      var fe = x.FileUploader.map[le];
-      for (fe.SourceValue.job = null, delete fe.SourceValue, fe.FormField.job = null, delete fe.FormField, delete x.FileUploader.map[le], je = fe.documents.length - 1; 0 <= je; je--)
+      var fe = k.FileUploader.map[le];
+      for (fe.SourceValue.job = null, delete fe.SourceValue, fe.FormField.job = null, delete fe.FormField, delete k.FileUploader.map[le], je = fe.documents.length - 1; 0 <= je; je--)
         fe.documents.splice(je, 1);
       for (je = fe.formFields.length - 1; 0 <= je; je--)
         fe.formFields.splice(je, 1);
@@ -39860,18 +39861,18 @@ var G = window.Dynamsoft || {};
       G.FileUploader._sendCmd("DeleteUploadTask", Me);
     }
   }, _sendCmdByWS: function(le, je, fe) {
-    var Me = x.FileUploader.ws;
-    return Me && Me.readyState != G.DWT.EnumDWT_WebsocketReadyState.CLOSING && Me.readyState != G.DWT.EnumDWT_WebsocketReadyState.CLOSED || (Me = G.DWT.NetManager.newWebsocket(x.FileUploader.wsUrl), x.FileUploader.ws = Me), G.DWT.NetManager.postStringDataByWS(Me, le).then(function(Z) {
+    var Me = k.FileUploader.ws;
+    return Me && Me.readyState != G.DWT.EnumDWT_WebsocketReadyState.CLOSING && Me.readyState != G.DWT.EnumDWT_WebsocketReadyState.CLOSED || (Me = G.DWT.NetManager.newWebsocket(k.FileUploader.wsUrl), k.FileUploader.ws = Me), G.DWT.NetManager.postStringDataByWS(Me, le).then(function(Z) {
       Z = l.parse(Z), Z && "result" in Z ? l.isFunction(je) && je(Z.result) : l.isFunction(fe) && fe();
     }, fe), !0;
   }, _sendCmd: function(le, je, fe, Me) {
-    return G.DWT.ConnectWithSocket ? _sendCmdByWS(je, fe, Me) : (le = [x.FileUploader.protocol, x.FileUploader.ip, ":", x.FileUploader.port, "/dcp/", C, "/", le, "?type=1&dsver=", R.join(""), "&ts=", l.now()].join(""), l.ajax({ url: le, method: "post", dataType: "json", processData: !1, data: je, onSuccess: fe, onError: Me }));
+    return G.DWT.ConnectWithSocket ? _sendCmdByWS(je, fe, Me) : (le = [k.FileUploader.protocol, k.FileUploader.ip, ":", k.FileUploader.port, "/dcp/", C, "/", le, "?type=1&dsver=", R.join(""), "&ts=", l.now()].join(""), l.ajax({ url: le, method: "post", dataType: "json", processData: !1, data: je, onSuccess: fe, onError: Me }));
   }, parseHttpErrors: function(Z, je, fe) {
     var Me, Z = Z && l.isArray(Z) && 2 < Z.length ? (Me = Z[1], Z[2]) : (Me = je, fe);
     Z.state == 2 && Z.status == 0 ? Z.statusText === "abort" ? Y(!0) : K() : Y(!1, Me, Z.status);
   }, loadHttpBlob: function(le, je, fe, Me, Z, Ue, ct) {
     le = { method: le, url: je, dataType: "blob", async: fe, onSuccess: Me, onError: function(mt, at, Ye) {
-      x.FileUploader.parseHttpErrors(mt, at, Ye), l.isFunction(Z) && Z();
+      k.FileUploader.parseHttpErrors(mt, at, Ye), l.isFunction(Z) && Z();
     } }, l.isFunction(Ue) && (le.beforeSend = function(mt) {
       mt.addEventListener("progress", function(at) {
         delete at.totalSize, delete at.position, Ue(at);
@@ -39880,7 +39881,7 @@ var G = window.Dynamsoft || {};
   }, _OnPercentDone: function() {
   }, Download: function(le, je, fe) {
     var Me;
-    return l.isString(le) ? x.FileUploader.loadHttpBlob("get", le, !!(Me = function() {
+    return l.isString(le) ? k.FileUploader.loadHttpBlob("get", le, !!(Me = function() {
       return me(), l.isFunction(fe) && fe(N, U), !1;
     }), function(Z) {
       re.loadZip(Z, 100, je, Me);
@@ -39890,7 +39891,7 @@ var G = window.Dynamsoft || {};
       return Ee(), l.isFunction(fe) && fe(N, U), !1;
     function Me() {
       var Z, Ue = G.navInfoSync.bSSL ? (Z = "https://", G.dcp.SSLPort) : (Z = "http://", G.dcp.Port);
-      x.FileUploader.port = Ue, x.FileUploader.protocol = Z, x.FileUploader.ip = G.DWT.Host, x.FileUploader.wsUrl = G.DWT.NetManager.getWsUrl(G.DWT.Host, Ue), x.FileUploader.running = !0, je(new Oe()), setTimeout(x.FileUploader.StatusLoop, 500);
+      k.FileUploader.port = Ue, k.FileUploader.protocol = Z, k.FileUploader.ip = G.DWT.Host, k.FileUploader.wsUrl = G.DWT.NetManager.getWsUrl(G.DWT.Host, Ue), k.FileUploader.running = !0, je(new Oe()), setTimeout(k.FileUploader.StatusLoop, 500);
     }
     G.dcp.detect.bConnected ? Me() : G.DWT.NetManager.checkModuleManager(Me, fe);
   }, Close: function() {
@@ -39899,20 +39900,20 @@ var G = window.Dynamsoft || {};
   }, VersionInfo: function(le, je) {
     var fe;
     return Le(), L() ? (Ee(), l.isFunction(je) && je(N, U), !1) : (fe = '{"id":"1","method":"VersionInfo","version":"' + C + '","parameter":[]}', G.FileUploader._sendCmd("VersionInfo", fe, le, function(Me, Z, Ue) {
-      x.FileUploader.parseHttpErrors(Me, Z, Ue), l.isFunction(je) && je(N, U);
+      k.FileUploader.parseHttpErrors(Me, Z, Ue), l.isFunction(je) && je(N, U);
     }), !0);
   }, StatusLoop: function() {
-    return Le(), L() ? (Ee(), !1) : (x.FileUploader.GetUploadStatus(), x.FileUploader.running && setTimeout(x.FileUploader.StatusLoop, x.FileUploader.nextLoopTime), !0);
+    return Le(), L() ? (Ee(), !1) : (k.FileUploader.GetUploadStatus(), k.FileUploader.running && setTimeout(k.FileUploader.StatusLoop, k.FileUploader.nextLoopTime), !0);
   }, GetUploadStatus: function() {
-    if (Le(), !(x.FileUploader.ids.length <= 0)) {
+    if (Le(), !(k.FileUploader.ids.length <= 0)) {
       if (L())
         return Ee(), !1;
-      var le = '{"id":"1","method":"GetUploadStatus","version":"' + C + '","parameter":["' + x.FileUploader.ids.join(",") + '"]}';
+      var le = '{"id":"1","method":"GetUploadStatus","version":"' + C + '","parameter":["' + k.FileUploader.ids.join(",") + '"]}';
       G.FileUploader._sendCmd("GetUploadStatus", le, function(je) {
         if (l.isArray(je))
           for (var fe = 0; fe < je.length; fe++) {
-            var Me = (at = je[fe]).id, Z = x.FileUploader.map[Me], Ue = at.percentage, ct = at.errorcode, mt = at.response, at = at.errorstring;
-            Z && (ct == G.DWT.EnumTransferErrorCode.TRANS_FINISHED ? (Z.OnUploadTransferPercentage(Z, 100, We(mt)), !Z.bEvent && l.isFunction(Z.OnRunSuccess) && (Z.bEvent = !0, Z.OnRunSuccess(Z, We(mt)), Z.bEvent = !1), x.FileUploader.deleteJobById(Me)) : ct == G.DWT.EnumTransferErrorCode.TRANS_OK || ct == G.DWT.EnumTransferErrorCode.TRANS_NOT_SEND || ct == G.DWT.EnumTransferErrorCode.TRANS_WAITFOR_SEND || ct == G.DWT.EnumTransferErrorCode.TRANS_SENDING || ct == G.DWT.EnumTransferErrorCode.TRANS_PAUSE || ct == G.DWT.EnumTransferErrorCode.TRANS_TASK_PREPARE_INIT || ct == G.DWT.EnumTransferErrorCode.TRANS_TASK_INIT ? Z.OnUploadTransferPercentage(Z, Ue, We(mt)) : (!Z.bEvent && l.isFunction(Z.OnRunFailure) && (Z.bEvent = !0, Z.OnRunFailure(Z, ct, at, We(mt)), Z.bEvent = !1), x.FileUploader.deleteJobById(Me)));
+            var Me = (at = je[fe]).id, Z = k.FileUploader.map[Me], Ue = at.percentage, ct = at.errorcode, mt = at.response, at = at.errorstring;
+            Z && (ct == G.DWT.EnumTransferErrorCode.TRANS_FINISHED ? (Z.OnUploadTransferPercentage(Z, 100, We(mt)), !Z.bEvent && l.isFunction(Z.OnRunSuccess) && (Z.bEvent = !0, Z.OnRunSuccess(Z, We(mt)), Z.bEvent = !1), k.FileUploader.deleteJobById(Me)) : ct == G.DWT.EnumTransferErrorCode.TRANS_OK || ct == G.DWT.EnumTransferErrorCode.TRANS_NOT_SEND || ct == G.DWT.EnumTransferErrorCode.TRANS_WAITFOR_SEND || ct == G.DWT.EnumTransferErrorCode.TRANS_SENDING || ct == G.DWT.EnumTransferErrorCode.TRANS_PAUSE || ct == G.DWT.EnumTransferErrorCode.TRANS_TASK_PREPARE_INIT || ct == G.DWT.EnumTransferErrorCode.TRANS_TASK_INIT ? Z.OnUploadTransferPercentage(Z, Ue, We(mt)) : (!Z.bEvent && l.isFunction(Z.OnRunFailure) && (Z.bEvent = !0, Z.OnRunFailure(Z, ct, at, We(mt)), Z.bEvent = !1), k.FileUploader.deleteJobById(Me)));
           }
       }, function(je, fe, Me) {
       });
@@ -39950,7 +39951,7 @@ var G = window.Dynamsoft || {};
   }
 });
 (function() {
-  var l = screen.width, n = l > 550 ? 550 : l - 10, L = l > 680 ? 680 : l - 10, x = 0, re = {
+  var l = screen.width, n = l > 550 ? 550 : l - 10, L = l > 680 ? 680 : l - 10, k = 0, re = {
     icn_download: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAgCAYAAAAMq2gFAAABOklEQVRIie2WTW6DMBCFH4h1l22VqmqPVUEvEJa9gRt6FDhDpfx0FdJj+Arx3nldhEjEdchgWlaM9CSwMZ/fzMgQvX0TwvA+ePOpIsniRIwZGIl/n/8AGs3RWKB4JA4STjUKBo1EivLtGakEkP7Ru6vbpcpONzFxPFsazQloZyxEmkDepsYk0JIhkZGwzngfWRKvd0u1Pwf93k1NoBjg5uN+pbZuHn0gEFgQ2AVAdgTefQVzU9e2nzaplKbMkEhnK2W9oAOAC9IHIO+Yd5U/rJX2QbocnVSSqARuqse1Ki9BumrUp+U1gXkXRAoyBDIC1jNnCWRPG2Wug2SFrkkUnvHieaPqaxCpo3bL104rLySQviDbpNA0Sgl4W9kXfU9vjWPho+ZaHCHfo6r/kumfYUBEL1/jeJpqFBw/d5aBU2kHOMQAAAAASUVORK5CYII=",
     icn_install: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAA+klEQVRIid2SMWoCQRiFv3GnW7BII6ZPqeAlorewtBELsZdFOz2Q0VYkXQ6QA9iaIqU+mx2Y3QRd12WKffCY4WdmPt5jzPRT5PQOfOSHnky6/rnoqd/cJFt/0FB6I3UkWOVmZbz+GcyjLEjgeSjRzc3KuCMxzIC8fQwsbtTxqJan/jz+r7qZ4LWC2pzbgpkDmclBAG3gO011T0U+g9Mv8PayTY4u0UIQV5jGORYsAcz4oA7wBWR+SUWJAM5Az17E6gFIGUXA2goGJR8wAK1dUuiwVdECnpQZ7cOggiWy5zCcgIkCcbCX2iUKB6pfdfVLFAwUiNS4f6QaXQHE5K75dPBEiQAAAABJRU5ErkJggg==",
     icn_scan: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAADI0lEQVRIibWXTUhUURTHf+/NsxRCp3QGwhKT/MDoAyNo1apmNhYkodGmaFOWmUXQcpgo2gRN5kerllEGLWqjBqZGFH2BlSRJRVqCjpNjYOaUc1q80fnovZmnMx34w+Odc+///u+9595zlbPPBAuWBbiBPcAOoASwR3xB4BPwAngIdOV2en+n6lA5k5zYDjQBJwCHlRECk0Ar4Mvr9AbNglQRMMFBEYZE8IjgSBKXiIJIm6Gg23PQVHHT038U24DrQL1FhamsHThl7/LOxysGYmAT6BCoT/ifDuoFOqbcHlsyYp9ATQZJF1AjcC2OOMZbh9CQacYYnPzu8tQlKrYLNP8/zkU0B1weeyxxk4AzkySqYvjfKXp6opx8IiuAr1jP05S2bQ3sL4a29zA++4/bD6xTBVwCjkwp3eGAo+WQnw1b8w1jHAIuTQRXppTuWgt1JaAA90egc9Q01K0JVGWCdHch1BTr33c/Q89Y0vAqLQxl6ZJWF8He9RAWuPURHo+nbFKqiZC3XEIFOLAB9hTqpDc/wHO/paZ5ahgwQtEqOFIGNtXYD3Boo076R+DGe3jmN441gibCNAmplKXA8QooyAb7CmgZhLlw1G9T4GgZ7HRCKAytg/DO9AI0tGlVYDhxy4cEmgdhOgSVdjizGXI03acpcKxCJ/01D1ffwdvgktNuWBV4ZeQc/QmX30BgDkpz4dxmWL0SGjbB9gKY+QNX3sLQ9LLy/bVyuE+qgQdmc5K/Es5vAWcO/A5Dlgo/QjrpyMySpjfW9qkC3QIBs9FNzsGlARj7qZNOzcHlAfgys+zTzS/QpYq+pC3JgqdCOvnLSbg4AN9m0zpW20oeeUMLNZdPhIlktdSPEFwbhIlZ8xgL8Ivgg+i1GBRoTEOFVTRu7NUrz9gq844IrWmoSYXW0l7v7YXdpUn8bjsNrAVqLO9Pa3Yv0veiJRZ78wK1Au0ZnN52gdryvvjyVjMY3Tz6y6EfvTJ0LlPlBHC6oi86vfGKzdfktgjlIlwQIbCEtQxE2pSbkQIotT1i5ou1hUebi+ijbXXEN0X00dYNdFf2e0OpOvwLFunYK2i9bNwAAAAASUVORK5CYII="
@@ -39988,7 +39989,7 @@ var G = window.Dynamsoft || {};
     p && (p.href = C);
   }, G.DWT_Reconnect = function() {
     var C = G;
-    if ((/* @__PURE__ */ new Date() - x) / 1e3 > 30) {
+    if ((/* @__PURE__ */ new Date() - k) / 1e3 > 30) {
       var p = document.getElementById("dwt-btn-install");
       p && (p.innerHTML = 'Failed to connect to the service, have you run the setup?<br />If not, please run the setup and <a href="javascript:void(0)" onclick="Dynamsoft.DCP_DWT_onclickInstallButton()">click here to connect again</a>.');
       return;
@@ -40016,7 +40017,7 @@ var G = window.Dynamsoft || {};
       var N = document.getElementById("dwt-btn-install");
       if (N && N.getAttribute("html5") == "1") {
         var U = N.parentNode, H = document.createElement("div");
-        H.id = "dwt-btn-install", H.style.textAlign = "center", H.style.paddingBottom = "15px", H.innerHTML = "Connecting to the service...", H.setAttribute("html5", "1"), U.removeChild(N), U.appendChild(H), x = /* @__PURE__ */ new Date(), setTimeout(G.DWT_Reconnect, 10);
+        H.id = "dwt-btn-install", H.style.textAlign = "center", H.style.paddingBottom = "15px", H.innerHTML = "Connecting to the service...", H.setAttribute("html5", "1"), U.removeChild(N), U.appendChild(H), k = /* @__PURE__ */ new Date(), setTimeout(G.DWT_Reconnect, 10);
       } else {
         var U = N.parentNode;
         U.removeChild(N);
@@ -40306,8 +40307,9 @@ var G = window.Dynamsoft || {};
 G.DWT.AutoLoad = !1;
 G.DWT.IfAddMD5InUploadHeader = !1;
 G.DWT.IfConfineMaskWithinTheViewer = !1;
-const Xo = G;
-class Sp {
+const co = G;
+var Sp = /* @__PURE__ */ ((l) => (l[l.JPG = 0] = "JPG", l[l.PNG = 1] = "PNG", l[l.PDF = 2] = "PDF", l[l.TIFF = 3] = "TIFF", l))(Sp || {});
+class Cp {
   constructor(n) {
     ga(this, "container");
     ga(this, "filesSelected", []);
@@ -40319,19 +40321,40 @@ class Sp {
     ga(this, "formatSelect");
     ga(this, "convertButton");
     ga(this, "chooseFilesButton");
-    this.container = n, this.createElements(), this.initDWT();
+    n && (n.container && (this.container = n.container, this.createElements()), n.license && (co.DWT.ProductKey = n.license)), this.initDWT();
+  }
+  async convert(n, L) {
+    let k = [];
+    this.DWObject.RemoveAllImages(), await this.loadImageFromFile(n);
+    let re = 7, R = "";
+    if (L === 0 ? (re = co.DWT.EnumDWT_ImageType.IT_JPG, R = ".jpg") : L === 1 ? (re = co.DWT.EnumDWT_ImageType.IT_PNG, R = ".png") : L === 2 ? (re = co.DWT.EnumDWT_ImageType.IT_PDF, R = ".pdf") : L === 3 && (re = co.DWT.EnumDWT_ImageType.IT_TIF, R = ".tiff"), L > 1) {
+      let C = await this.getBlob(this.getImageIndices(), re);
+      k.push({ filename: this.getFileNameWithoutExtension(n.name) + R, blob: C });
+    } else if (this.DWObject.HowManyImagesInBuffer > 1)
+      for (let C = 0; C < this.DWObject.HowManyImagesInBuffer; C++) {
+        let p = await this.getBlob([C], re);
+        k.push({ filename: this.getFileNameWithoutExtension(n.name) + "-" + C + R, blob: p });
+      }
+    else {
+      let C = await this.getBlob([0], re);
+      k.push({ filename: this.getFileNameWithoutExtension(n.name) + R, blob: C });
+    }
+    return k;
+  }
+  getDWObject() {
+    return this.DWObject;
   }
   createElements() {
     let n = this;
     this.files = document.createElement("div");
     let L = document.createElement("div");
-    L.className = gu.actions;
-    let x = document.createElement("div");
+    L.className = Ns.actions;
+    let k = document.createElement("div");
     this.fileInput = document.createElement("input"), this.fileInput.style.display = "none", this.fileInput.multiple = !0, this.fileInput.accept = ".bmp,.jpeg,.jpg,.png,.pdf,.tiff,.tif,.zip", this.fileInput.type = "file", this.fileInput.addEventListener("change", async function() {
       n.chooseFilesButton.innerText = "Loading...", await n.appendFiles(), n.listFiles(), n.chooseFilesButton.innerText = "Choose Files";
     }), this.chooseFilesButton = this.DynamsoftButton("Choose Files"), this.chooseFilesButton.addEventListener("click", function() {
       n.fileInput.click();
-    }), x.appendChild(this.fileInput), x.appendChild(this.chooseFilesButton), L.appendChild(x), this.convertActions = document.createElement("div"), this.convertActions.className = gu.convertActions, this.convertActions.style.display = "none";
+    }), k.appendChild(this.fileInput), k.appendChild(this.chooseFilesButton), L.appendChild(k), this.convertActions = document.createElement("div"), this.convertActions.className = Ns.convertActions, this.convertActions.style.display = "none";
     let re = document.createElement("label");
     re.innerText = "To:", this.formatSelect = document.createElement("select");
     for (const C of ["JPG", "PNG", "PDF", "TIFF"])
@@ -40343,9 +40366,9 @@ class Sp {
     }), this.convertActions.appendChild(re), this.convertActions.appendChild(R), this.convertActions.appendChild(this.convertButton), L.appendChild(this.convertActions), this.container.appendChild(this.files), this.container.appendChild(L);
   }
   initDWT() {
-    Xo.DWT.AutoLoad = !1, Xo.DWT.Containers = [], Xo.DWT.ResourcesPath = "https://unpkg.com/dwt@18.0.2/dist", Xo.DWT.UseLocalService = !1;
+    co.DWT.AutoLoad = !1, co.DWT.Containers = [], co.DWT.ResourcesPath = "https://unpkg.com/dwt@18.0.2/dist", co.DWT.UseLocalService = !1;
     let n = this;
-    Xo.DWT.CreateDWTObjectEx(
+    co.DWT.CreateDWTObjectEx(
       {
         WebTwainId: "dwtcontrol"
       },
@@ -40359,7 +40382,7 @@ class Sp {
   }
   DynamsoftButton(n) {
     let L = document.createElement("a");
-    return L.innerText = n, L.className = gu.primaryBtn + " " + gu.textUpperCase, L;
+    return L.innerText = n, L.className = Ns.primaryBtn + " " + Ns.textUpperCase, L;
   }
   async appendFiles() {
     if (this.fileInput.files)
@@ -40372,22 +40395,22 @@ class Sp {
     this.files.innerHTML = "";
     for (let n = 0; n < this.filesSelected.length; n++) {
       const L = this.filesSelected[n];
-      let x = this.fileItem(L);
-      n != this.filesSelected.length - 1 && (x.style.marginBottom = "10px"), this.files.appendChild(x);
+      let k = this.fileItem(L);
+      n != this.filesSelected.length - 1 && (k.style.marginBottom = "10px"), this.files.appendChild(k);
     }
     this.filesSelected.length > 0 ? this.convertActions.style.display = "" : this.convertActions.style.display = "none";
   }
   fileItem(n) {
     let L = document.createElement("div");
-    L.className = gu.oneFile;
-    let x = document.createElement("div");
-    x.innerText = this.useEllipsesForLongText(n.name), x.style.width = "30%";
+    L.className = Ns.oneFile;
+    let k = document.createElement("div");
+    k.innerText = this.useEllipsesForLongText(n.name), k.className = Ns.title;
     let re = document.createElement("div");
     re.innerText = n.size / 1e3 + "kb";
     let R = this.DynamsoftButton("Delete"), C = this;
     return R.addEventListener("click", function() {
       C.deleteSelected(n);
-    }), L.appendChild(x), L.appendChild(re), L.appendChild(R), L;
+    }), L.appendChild(k), L.appendChild(re), L.appendChild(R), L;
   }
   deleteSelected(n) {
     let L = this.filesSelected.indexOf(n);
@@ -40401,26 +40424,26 @@ class Sp {
     let n;
     this.useZipCheckbox.checked && (n = new pf());
     for (let L = 0; L < this.filesSelected.length; L++) {
-      const x = this.filesSelected[L];
-      this.DWObject.RemoveAllImages(), await this.loadImageFromFile(x), await this.save(x, n);
+      const k = this.filesSelected[L];
+      this.DWObject.RemoveAllImages(), await this.loadImageFromFile(k), await this.save(k, n);
     }
     if (this.useZipCheckbox.checked && n) {
       let L = this;
-      n.generateAsync({ type: "blob" }).then(function(x) {
-        L.downloadBlob(x, "images.zip");
+      n.generateAsync({ type: "blob" }).then(function(k) {
+        L.downloadBlob(k, "images.zip");
       });
     }
     this.convertButton.innerText = "Convert";
   }
   async loadImageFromFile(n) {
-    return new Promise((L, x) => {
+    return new Promise((L, k) => {
       this.DWObject.LoadImageFromBinary(
         n,
         function() {
           L();
         },
         function(re, R) {
-          x(R);
+          k(R);
         }
       );
     });
@@ -40429,23 +40452,23 @@ class Sp {
     this.useZipCheckbox.checked === !1 ? await this.saveImages(n) : L && await this.appendImagesToZip(n, L);
   }
   async saveImages(n) {
-    let L = this.formatSelect.selectedIndex, x = 7, re = "";
-    if (L === 0 ? (x = Xo.DWT.EnumDWT_ImageType.IT_JPG, re = ".jpg") : L === 1 ? (x = Xo.DWT.EnumDWT_ImageType.IT_PNG, re = ".png") : L === 2 ? (x = Xo.DWT.EnumDWT_ImageType.IT_PDF, re = ".pdf") : L === 3 && (x = Xo.DWT.EnumDWT_ImageType.IT_TIF, re = ".tiff"), L > 1) {
-      let R = await this.getBlob(this.getImageIndices(), x);
+    let L = this.formatSelect.selectedIndex, k = 7, re = "";
+    if (L === 0 ? (k = co.DWT.EnumDWT_ImageType.IT_JPG, re = ".jpg") : L === 1 ? (k = co.DWT.EnumDWT_ImageType.IT_PNG, re = ".png") : L === 2 ? (k = co.DWT.EnumDWT_ImageType.IT_PDF, re = ".pdf") : L === 3 && (k = co.DWT.EnumDWT_ImageType.IT_TIF, re = ".tiff"), L > 1) {
+      let R = await this.getBlob(this.getImageIndices(), k);
       this.downloadBlob(R, this.getFileNameWithoutExtension(n.name) + re);
     } else if (this.DWObject.HowManyImagesInBuffer > 1)
       for (let R = 0; R < this.DWObject.HowManyImagesInBuffer; R++) {
-        let C = await this.getBlob([R], x);
+        let C = await this.getBlob([R], k);
         this.downloadBlob(C, this.getFileNameWithoutExtension(n.name) + "-" + R + re);
       }
     else {
-      let R = await this.getBlob([0], x);
+      let R = await this.getBlob([0], k);
       this.downloadBlob(R, this.getFileNameWithoutExtension(n.name) + re);
     }
   }
   async appendImagesToZip(n, L) {
-    let x = this.formatSelect.selectedIndex, re = 7, R = "";
-    if (x === 0 ? (re = Xo.DWT.EnumDWT_ImageType.IT_JPG, R = ".jpg") : x === 1 ? (re = Xo.DWT.EnumDWT_ImageType.IT_PNG, R = ".png") : x === 2 ? (re = Xo.DWT.EnumDWT_ImageType.IT_PDF, R = ".pdf") : x === 3 && (re = Xo.DWT.EnumDWT_ImageType.IT_TIF, R = ".tiff"), x > 1) {
+    let k = this.formatSelect.selectedIndex, re = 7, R = "";
+    if (k === 0 ? (re = co.DWT.EnumDWT_ImageType.IT_JPG, R = ".jpg") : k === 1 ? (re = co.DWT.EnumDWT_ImageType.IT_PNG, R = ".png") : k === 2 ? (re = co.DWT.EnumDWT_ImageType.IT_PDF, R = ".pdf") : k === 3 && (re = co.DWT.EnumDWT_ImageType.IT_TIF, R = ".tiff"), k > 1) {
       let C = await this.getBlob(this.getImageIndices(), re);
       L.file(this.getFileNameWithoutExtension(n.name) + R, C);
     } else if (this.DWObject.HowManyImagesInBuffer > 1)
@@ -40465,16 +40488,16 @@ class Sp {
     return n;
   }
   downloadBlob(n, L) {
-    const x = document.createElement("a");
-    x.href = URL.createObjectURL(n), x.download = L, document.body.appendChild(x), x.click(), document.body.removeChild(x);
+    const k = document.createElement("a");
+    k.href = URL.createObjectURL(n), k.download = L, document.body.appendChild(k), k.click(), document.body.removeChild(k);
   }
   getBlob(n, L) {
-    return new Promise((x, re) => {
+    return new Promise((k, re) => {
       this.DWObject.ConvertToBlob(
         n,
         L,
         function(R) {
-          x(R);
+          k(R);
         },
         function(R, C) {
           re(C);
@@ -40490,9 +40513,9 @@ class Sp {
   }
   async loadImagesFromZip(n) {
     const L = await n.arrayBuffer();
-    let x = new pf();
-    await x.loadAsync(L);
-    const re = x.files, R = Object.keys(re);
+    let k = new pf();
+    await k.loadAsync(L);
+    const re = k.files, R = Object.keys(re);
     for (let C = 0; C < R.length; C++) {
       const p = R[C], N = p.toLowerCase(), U = re[p];
       if (U.dir === !1 && (N.endsWith(".jpg") || N.endsWith(".jpeg") || N.endsWith(".png") || N.endsWith(".bmp") || N.endsWith(".pdf") || N.endsWith(".tif") || N.endsWith(".tiff"))) {
@@ -40503,5 +40526,6 @@ class Sp {
   }
 }
 export {
-  Sp as ImageConverter
+  Cp as ImageConverter,
+  Sp as ImageFormat
 };
