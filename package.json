@@ -13,6 +13,12 @@
       "require": "./dist/image-converter.umd.cjs"
     }
   },
+  "files": [
+    "dist/*.css",
+    "dist/*.js",
+    "dist/*.cjs",
+    "dist/*.d.ts"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
