@@ -4,7 +4,7 @@ import Dynamsoft from 'dwt';
 import { WebTwain } from 'dwt/dist/types/WebTwain';
 
 export class ImageConverter {
-  private container:HTMLDivElement;
+  private container!:HTMLDivElement;
   private filesSelected:File[] = [];
   private DWObject!:WebTwain;
   private fileInput!:HTMLInputElement;
@@ -14,9 +14,11 @@ export class ImageConverter {
   private formatSelect!:HTMLSelectElement;
   private convertButton!:HTMLElement;
   private chooseFilesButton!:HTMLElement;
-  constructor(container:HTMLDivElement) {
-    this.container = container;
-    this.createElements();
+  constructor(container?:HTMLDivElement) {
+    if (container) {
+      this.container = container;
+      this.createElements();
+    }
     this.initDWT();
   }
 
