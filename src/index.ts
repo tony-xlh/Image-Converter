@@ -1,2 +1,2 @@
 // src/index.ts
-export * from './ImageConverter';
+export * from './image-converter';
