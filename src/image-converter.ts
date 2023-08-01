@@ -88,8 +88,8 @@ export class ImageConverter {
   createElements(){
     let pThis = this;
     this.prompt = document.createElement("div");
-    this.prompt.innerText = "Please select files to convert."
-    this.prompt.className = "prompt"
+    this.prompt.innerText = "Please select files to convert.";
+    this.prompt.className = styles.prompt;
     this.files = document.createElement("div");
     let actionsContainer = document.createElement("div");
     actionsContainer.className = styles.actions;
