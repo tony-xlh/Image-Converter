@@ -26,7 +26,7 @@ export class ImageConverter {
   private DWObject!:WebTwain;
   private fileInput!:HTMLInputElement;
   private useZipCheckbox!:HTMLInputElement;
-  private intro!:HTMLDivElement;
+  private prompt!:HTMLDivElement;
   private files!:HTMLDivElement;
   private convertActions!:HTMLDivElement;
   private formatSelect!:HTMLSelectElement;
@@ -87,10 +87,9 @@ export class ImageConverter {
 
   createElements(){
     let pThis = this;
-    this.intro = document.createElement("div");
-    this.intro.style.background = "#F5F5F5";
-    this.intro.innerText = "Please select files to convert."
-    this.intro.style.padding = "20px";
+    this.prompt = document.createElement("div");
+    this.prompt.innerText = "Please select files to convert."
+    this.prompt.className = "prompt"
     this.files = document.createElement("div");
     let actionsContainer = document.createElement("div");
     actionsContainer.className = styles.actions;
@@ -137,7 +136,7 @@ export class ImageConverter {
     this.convertActions.appendChild(useZip);
     this.convertActions.appendChild(this.convertButton);
     actionsContainer.appendChild(this.convertActions);
-    this.container.appendChild(this.intro);
+    this.container.appendChild(this.prompt);
     this.container.appendChild(this.files);
     this.container.appendChild(actionsContainer);
   }
@@ -194,9 +193,9 @@ export class ImageConverter {
       this.files.appendChild(oneFile);
     }
     if (this.filesSelected.length > 0) {
-      this.intro.style.display = "none";      
+      this.prompt.style.display = "none";      
     }else{
-      this.intro.style.display = "";
+      this.prompt.style.display = "";
     }
   }
 
