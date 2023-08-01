@@ -26,6 +26,7 @@ export class ImageConverter {
   private DWObject!:WebTwain;
   private fileInput!:HTMLInputElement;
   private useZipCheckbox!:HTMLInputElement;
+  private intro!:HTMLDivElement;
   private files!:HTMLDivElement;
   private convertActions!:HTMLDivElement;
   private formatSelect!:HTMLSelectElement;
@@ -86,6 +87,10 @@ export class ImageConverter {
 
   createElements(){
     let pThis = this;
+    this.intro = document.createElement("div");
+    this.intro.style.background = "#F5F5F5";
+    this.intro.innerText = "Please select files to convert."
+    this.intro.style.padding = "20px";
     this.files = document.createElement("div");
     let actionsContainer = document.createElement("div");
     actionsContainer.className = styles.actions;
@@ -110,7 +115,6 @@ export class ImageConverter {
     actionsContainer.appendChild(chooseFilesContainer);
     this.convertActions = document.createElement("div");
     this.convertActions.className = styles.convertActions;
-    this.convertActions.style.display = "none";
     let formatSelector = document.createElement("label");
     formatSelector.innerText = "To:"
     this.formatSelect = document.createElement("select");
@@ -133,6 +137,7 @@ export class ImageConverter {
     this.convertActions.appendChild(useZip);
     this.convertActions.appendChild(this.convertButton);
     actionsContainer.appendChild(this.convertActions);
+    this.container.appendChild(this.intro);
     this.container.appendChild(this.files);
     this.container.appendChild(actionsContainer);
   }
@@ -189,9 +194,9 @@ export class ImageConverter {
       this.files.appendChild(oneFile);
     }
     if (this.filesSelected.length > 0) {
-      this.convertActions.style.display = "";
+      this.intro.style.display = "none";      
     }else{
-      this.convertActions.style.display = "none";
+      this.intro.style.display = "";
     }
   }
 
