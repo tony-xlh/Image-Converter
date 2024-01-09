@@ -365,11 +365,11 @@ export class ImageConverter {
   }
 
   getBlob(indices:number[],type:number){
-    return new Promise<Blob>((resolve, reject) => {
-      if (type === Dynamsoft.DWT.EnumDWT_ImageType.IT_JPG && indices.length === 1){
+    return new Promise<Blob>(async (resolve, reject) => {
+      if (type == Dynamsoft.DWT.EnumDWT_ImageType.IT_JPG && indices.length === 1){
         if (this.DWObject.GetImageBitDepth(indices[0]) == 1) {
           //If so, convert the image to Gray
-          this.DWObject.ConvertToGrayScale(indices[0]);
+          await this.convertToGrayScale(indices[0]);
         }
       }
       this.DWObject.ConvertToBlob(indices,type,
@@ -380,6 +380,20 @@ export class ImageConverter {
           reject(errorString);
         }
       )  
+    })
+  }
+  
+  convertToGrayScale(index:number){
+    return new Promise<void>((resolve, reject) => {
+      this.DWObject.ConvertToGrayScale(
+        index,
+        function(){
+          resolve();
+        },
+        function (_errorCode:number,errorMessage:string){
+          reject(errorMessage);
+        }
+      );
     })
   }
 
