@@ -130,7 +130,11 @@ export class ImageConverter {
     this.convertButton = this.DynamsoftButton("Convert");
     this.convertButton.style.marginLeft = "10px";
     this.convertButton.addEventListener("click",function(){
-      pThis.convertAndDownload();
+      try {
+        pThis.convertAndDownload();  
+      } catch (error) {
+        alert(error);
+      }
     })
     this.convertActions.appendChild(formatSelector);
     this.convertActions.appendChild(useZip);
@@ -232,10 +236,6 @@ export class ImageConverter {
   }
 
   async convertAndDownload(){
-    if (!this.DWObject) {
-      alert("Please wait for the initialization of Dynamic Web TWAIN.");
-      return;
-    }
     this.convertButton.innerText = "Converting...";
     let zip:JSZip|undefined;
     if (this.useZipCheckbox.checked) {
