@@ -362,6 +362,12 @@ export class ImageConverter {
 
   getBlob(indices:number[],type:number){
     return new Promise<Blob>((resolve, reject) => {
+      if (type === Dynamsoft.DWT.EnumDWT_ImageType.IT_JPG && indices.length === 1){
+        if (this.DWObject.GetImageBitDepth(indices[0]) == 1) {
+          //If so, convert the image to Gray
+          this.DWObject.ConvertToGrayScale(indices[0]);
+        }
+      }
       this.DWObject.ConvertToBlob(indices,type,
         function(blob:Blob){
           resolve(blob);
