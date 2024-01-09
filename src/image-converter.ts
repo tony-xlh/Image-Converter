@@ -232,6 +232,10 @@ export class ImageConverter {
   }
 
   async convertAndDownload(){
+    if (!this.DWObject) {
+      alert("Please wait for the initialization of Dynamic Web TWAIN.");
+      return;
+    }
     this.convertButton.innerText = "Converting...";
     let zip:JSZip|undefined;
     if (this.useZipCheckbox.checked) {
