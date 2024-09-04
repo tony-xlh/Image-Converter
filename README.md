@@ -1,5 +1,9 @@
 # Image-Converter
 
+![version](https://img.shields.io/npm/v/batch-image-converter.svg)
+![downloads](https://img.shields.io/npm/dm/batch-image-converter.svg)
+![jsdelivr](https://img.shields.io/jsdelivr/npm/hm/batch-image-converter.svg)
+
 Convert images files in the browser with [Dynamic Web TWAIN](https://www.dynamsoft.com/web-twain/overview).
 
 It can convert images in bmp, jpeg, png, tiff and pdf to images in jpeg, png, tiff and pdf. It runs purely in the browser.
